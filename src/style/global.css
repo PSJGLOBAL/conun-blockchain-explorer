@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+
+  background: #fafafa;
+
+  font-family: sans-serif;
+}
+
+.app {
+  width: 90vw;
+  height: 100vh;
+  background: #fff;
+}

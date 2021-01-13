@@ -1,0 +1,22 @@
+.info-table {
+  margin: 10px;
+  border: 2px solid #61affe;
+  border-radius: 10px;
+  background-color: rgba(97, 175, 254, 0.1);
+  margin-bottom: 50px;
+}
+
+.info-row {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+
+  border-top: 1px solid #61affe;
+  padding: 5px;
+}
+.info-row:first-of-type {
+  border-top: none;
+}
+
+.info-key {
+  padding-left: 20px;
+}
