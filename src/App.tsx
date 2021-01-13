@@ -2,7 +2,7 @@ import { useEffect } from "react"
 
 import { useSelector, useDispatch } from "react-redux"
 
-import * as actionTypes from "./store/actions"
+import * as actions from "./store/actions"
 
 import axios from "./axios/axiosinst"
 
@@ -24,10 +24,8 @@ function App() {
         response.status,
         response.statusText
       )
-      dispatch({
-        type: actionTypes.SET_CHANNEL_HASH,
-        payload: { hash: response.data.currentChannel },
-      })
+      dispatch(actions.setChannelHash(response.data.currentChannel))
+      console.log("Attempt set channel hash: ", response.data.currentChannel)
     })
   }, [dispatch])
 

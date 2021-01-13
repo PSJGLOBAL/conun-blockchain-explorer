@@ -17,6 +17,7 @@ interface IObjectKeys {
 
 export const APIInterface = () => {
   const channelHash = useSelector((state: State) => state.channelHash)
+  const rState = useSelector((state: State) => state)
 
   const [channelInfoData, setChannelInfoData] = useState<IObjectKeys | null>()
   const [

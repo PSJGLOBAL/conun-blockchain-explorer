@@ -5,7 +5,7 @@ import reportWebVitals from "./reportWebVitals"
 //Redux imports
 import { createStore } from "redux"
 import { Provider } from "react-redux"
-import testReducer from "./store/reducers/reducer"
+import hashReducer from "./store/reducers/reducer"
 
 // Component Imports
 import App from "./App"
@@ -15,7 +15,7 @@ import "./style/global.css"
 
 // const rootReducer =
 
-const store = createStore(testReducer)
+const store = createStore(hashReducer)
 
 ReactDOM.render(
   <Provider store={store}>

@@ -1,0 +1,1 @@
+export const SET_CHANNEL_HASH = "SET_CHANNEL_HASH"

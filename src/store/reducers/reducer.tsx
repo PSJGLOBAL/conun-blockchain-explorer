@@ -1,4 +1,4 @@
-import { SET_CHANNEL_HASH } from "../actions"
+import { SET_CHANNEL_HASH } from "../actionTypes"
 
 // In TS an action must be of a strict format. Set them here:
 type Action = {
@@ -10,7 +10,7 @@ const initialState = {
   channelHash: "",
 }
 
-const testReducer = (state = initialState, action: Action) => {
+const hashReducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case SET_CHANNEL_HASH:
       if (!action.payload) {
@@ -29,4 +29,4 @@ const testReducer = (state = initialState, action: Action) => {
   }
 }
 
-export default testReducer
+export default hashReducer
