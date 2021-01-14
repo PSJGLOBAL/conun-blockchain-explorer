@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { setBlockActivityData, setChannelInfo } from "../../store/actions"
 
 import { InfoBlock } from "../InfoBlock/InfoBlock"
+import { SiteSection } from "../../containers/SiteSection"
 
 import "./APIInterface.css"
 
@@ -20,21 +21,17 @@ type State = {
 
 export const APIInterface = () => {
   const dispatch = useDispatch()
+  const channelInfo = useSelector((state: State) => state.channelInfoData)
+  const channelHash = useSelector((state: State) => state.channelHash)
   const blockActivityData = useSelector(
     (state: State) => state.blockActivityData
   )
-  const channelInfo = useSelector((state: State) => state.channelInfoData)
 
-  const channelHash = useSelector((state: State) => state.channelHash)
-  // const [channelInfoData, setChannelInfoData] = useState<IObjectKeys | null>()
-
+  // If the channel hash is loaded, get the rest of the data
   useEffect(() => {
     if (channelHash !== "") {
-      // Get Channel Info
-      dispatch(setChannelInfo(channelHash))
-      // Get Block Activity - Redux Action performs API call
-
-      dispatch(setBlockActivityData(channelHash))
+      dispatch(setChannelInfo(channelHash)) // Get Channel Info
+      dispatch(setBlockActivityData(channelHash)) // Get Block Activity - Redux Action performs API call
     }
   }, [channelHash, dispatch])
 
