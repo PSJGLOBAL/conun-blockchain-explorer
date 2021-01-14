@@ -1,41 +1,30 @@
 import { useState, useEffect } from "react"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import axios from "../../axios/axiosinst"
-import { w3cwebsocket as W3CWebSocket } from "websocket"
+
+import { setBlockActivityData } from "../../store/actions"
 
 import { InfoBlock } from "../InfoBlock/InfoBlock"
 
 import "./APIInterface.css"
 
-type State = {
-  channelHash: string
-}
-
 interface IObjectKeys {
   [key: string]: string | number
 }
 
+type State = {
+  channelHash: string
+  blockActivityData: Array<IObjectKeys>
+}
+
 export const APIInterface = () => {
+  const dispatch = useDispatch()
+  const blockActivityData = useSelector(
+    (state: State) => state.blockActivityData
+  )
+
   const channelHash = useSelector((state: State) => state.channelHash)
-  const rState = useSelector((state: State) => state)
-
   const [channelInfoData, setChannelInfoData] = useState<IObjectKeys | null>()
-  const [
-    blockActivityData,
-    setBlockActivityData,
-  ] = useState<Array<IObjectKeys> | null>()
-  const [
-    socketActivity,
-    setSocketActivity,
-  ] = useState<Array<IObjectKeys> | null>()
-
-  const blockSocket = new W3CWebSocket(
-    `ws://192.168.100.105:8080/api/blockActivity/fdfd720dc97577884b7d9fc7a5a347da6e61f7a5f80f9f6a6be982764554a884` // Change hard code here to variable
-  )
-
-  const txnSocket = new W3CWebSocket(
-    "ws://192.168.100.105:8080/api/txActivity/fdfd720dc97577884b7d9fc7a5a347da6e61f7a5f80f9f6a6be982764554a884"
-  )
 
   useEffect(() => {
     if (channelHash !== "") {
@@ -48,33 +37,12 @@ export const APIInterface = () => {
         })
         .catch((e) => console.log(e))
       // Get Block Activity
-      axios
-        .get(`/blockActivity/${channelHash}`)
-        .then((response) => {
-          console.log("Block Activity: ", response.status, response.statusText)
-          setBlockActivityData(response.data.row)
-        })
-        .catch((e) => console.log(e))
-    }
-  }, [channelHash])
 
-  useEffect(() => {
-    blockSocket.onopen = () => {
-      console.log("WS: BLOCK: Successfully subscribed to Block Activity")
+      if (channelHash) {
+        dispatch(setBlockActivityData(channelHash))
+      }
     }
-    blockSocket.onmessage = (message) => {
-      console.log("WS: BLOCK: Received data: ", message)
-    }
-  }, [blockSocket])
-
-  useEffect(() => {
-    txnSocket.onopen = () => {
-      console.log("WS: TXN: Successfully subscribed to TXN Activity")
-    }
-    txnSocket.onmessage = (message) => {
-      console.log("WS: TXN: Received data: ", message)
-    }
-  }, [txnSocket])
+  }, [channelHash, dispatch])
 
   return (
     <main>
