@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { setBlockActivityData, setChannelInfo } from "../../store/actions"
 
 import { InfoBlock } from "../InfoBlock/InfoBlock"
-import { SiteSection } from "../../containers/SiteSection"
+import { SiteSection } from "../../containers/SiteSection" // Bundle HTML5 section and title block
 
 import "./APIInterface.css"
 
@@ -37,33 +37,28 @@ export const APIInterface = () => {
 
   return (
     <main>
-      {/* Channel Info - Display channel name, total blocks, transactions etc*/}
-      <section className="section">
-        <div className="section-title">Channel Info</div>
+      <SiteSection title="Channel Info">
+        {/* Channel Info - Display channel name, total blocks, transactions etc*/}
         {channelInfo ? (
           <InfoBlock data={{ ...channelInfo }} />
         ) : (
           <div className="loading-block">Loading Data</div>
         )}
-      </section>
-      {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
-      <section className="section">
-        <div className="section-title">Block Activity</div>
-        <div className="section-block-scrollable">
-          {blockActivityData ? (
-            blockActivityData.map((i) => (
-              <InfoBlock key={i.blockhash} data={{ ...i }} />
-            ))
-          ) : (
-            <div className="loading-block">Loading Data</div>
-          )}
-        </div>
-      </section>
-      {/* Transaction Activity  - Currently blank*/}
-      <section className="section">
-        <div className="section-title">Transaction Activity</div>
-        <div className="section-block-scrollable"></div>
-      </section>
+      </SiteSection>
+      <SiteSection title="Block Activity" scrollable={true}>
+        {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
+        {blockActivityData ? (
+          blockActivityData.map((i) => (
+            <InfoBlock key={i.blockhash} data={{ ...i }} />
+          ))
+        ) : (
+          <div className="loading-block">Loading Data</div>
+        )}
+      </SiteSection>
+      <SiteSection title="Transaction Data" scrollable={true}>
+        {/* Transaction Activity  - Currently blank*/}
+        <div>Not Yet Added</div>
+      </SiteSection>
     </main>
   )
 }
