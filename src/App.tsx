@@ -1,7 +1,6 @@
 import { useEffect } from "react"
 
 import { useSelector, useDispatch } from "react-redux"
-
 import * as actions from "./store/actions"
 
 import axios from "./axios/axiosinst"
@@ -9,8 +8,13 @@ import axios from "./axios/axiosinst"
 import Header from "./ui/Header/Header"
 import { APIInterface } from "./components/API_Interface/APIInterface"
 
+interface IObjectKeys {
+  [key: string]: string | number
+}
+
 type State = {
   channelHash: string
+  channelInfoData: IObjectKeys
 }
 
 function App() {
@@ -29,16 +33,16 @@ function App() {
     })
   }, [dispatch])
 
-  let test = "Loading"
+  let hash = "Loading"
 
   if (channelHash !== "") {
-    test = channelHash
+    hash = channelHash
   }
 
   return (
     <div className="app">
       <Header />
-      <div style={{ textAlign: "center" }}>{test}</div>
+      <div style={{ textAlign: "center" }}>{hash}</div>
       <APIInterface />
     </div>
   )

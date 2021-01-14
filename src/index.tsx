@@ -5,7 +5,7 @@ import reportWebVitals from "./reportWebVitals"
 //Redux imports
 import { createStore, applyMiddleware } from "redux"
 import { Provider } from "react-redux"
-import hashReducer from "./store/reducers/reducer"
+import mainReducer from "./store/reducers/reducer"
 
 import thunk from "redux-thunk"
 
@@ -17,7 +17,7 @@ import "./style/global.css"
 
 // const rootReducer =
 
-const store = createStore(hashReducer, applyMiddleware(thunk))
+const store = createStore(mainReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
   <Provider store={store}>

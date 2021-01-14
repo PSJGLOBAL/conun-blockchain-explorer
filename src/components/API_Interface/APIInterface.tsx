@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import axios from "../../axios/axiosinst"
+// import axios from "../../axios/axiosinst"
 
-import { setBlockActivityData } from "../../store/actions"
+import { setBlockActivityData, setChannelInfo } from "../../store/actions"
 
 import { InfoBlock } from "../InfoBlock/InfoBlock"
 
@@ -14,6 +14,7 @@ interface IObjectKeys {
 
 type State = {
   channelHash: string
+  channelInfoData: IObjectKeys
   blockActivityData: Array<IObjectKeys>
 }
 
@@ -22,40 +23,33 @@ export const APIInterface = () => {
   const blockActivityData = useSelector(
     (state: State) => state.blockActivityData
   )
+  const channelInfo = useSelector((state: State) => state.channelInfoData)
 
   const channelHash = useSelector((state: State) => state.channelHash)
-  const [channelInfoData, setChannelInfoData] = useState<IObjectKeys | null>()
+  // const [channelInfoData, setChannelInfoData] = useState<IObjectKeys | null>()
 
   useEffect(() => {
     if (channelHash !== "") {
       // Get Channel Info
-      axios
-        .get("/channels/info")
-        .then((response) => {
-          console.log("Channel Info: ", response.status, response.statusText)
-          setChannelInfoData(response.data.channels[0])
-        })
-        .catch((e) => console.log(e))
-      // Get Block Activity
+      dispatch(setChannelInfo(channelHash))
+      // Get Block Activity - Redux Action performs API call
 
-      if (channelHash) {
-        dispatch(setBlockActivityData(channelHash))
-      }
+      dispatch(setBlockActivityData(channelHash))
     }
   }, [channelHash, dispatch])
 
   return (
     <main>
-      {/* Channel Info */}
+      {/* Channel Info - Display channel name, total blocks, transactions etc*/}
       <section className="section">
         <div className="section-title">Channel Info</div>
-        {channelInfoData ? (
-          <InfoBlock data={{ ...channelInfoData }} />
+        {channelInfo ? (
+          <InfoBlock data={{ ...channelInfo }} />
         ) : (
           <div className="loading-block">Loading Data</div>
         )}
       </section>
-      {/* Block Activity */}
+      {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
       <section className="section">
         <div className="section-title">Block Activity</div>
         <div className="section-block-scrollable">
@@ -68,7 +62,7 @@ export const APIInterface = () => {
           )}
         </div>
       </section>
-      {/* Transaction Activity */}
+      {/* Transaction Activity  - Currently blank*/}
       <section className="section">
         <div className="section-title">Transaction Activity</div>
         <div className="section-block-scrollable"></div>

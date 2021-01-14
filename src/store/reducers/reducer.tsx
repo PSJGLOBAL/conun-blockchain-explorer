@@ -1,4 +1,8 @@
-import { SET_CHANNEL_HASH, BLOCK_ACTIVITY_DATA } from "../actionTypes"
+import {
+  SET_CHANNEL_HASH,
+  SET_CHANNEL_INFO,
+  BLOCK_ACTIVITY_DATA,
+} from "../actionTypes"
 
 interface IObjectKeys {
   [key: string]: string | number
@@ -14,13 +18,19 @@ type Action =
       type: "BLOCK_ACTIVITY_DATA"
       payload: { blockActivityData: Array<IObjectKeys> }
     }
+  | {
+      type: "SET_CHANNEL_INFO"
+      payload: { channelInfoData: IObjectKeys }
+    }
 
 const initialState = {
   channelHash: "",
+  channelInfoData: {},
   blockActivityData: Array<IObjectKeys>(),
 }
 
-const hashReducer = (state = initialState, action: Action) => {
+const mainReducer = (state = initialState, action: Action) => {
+  console.log(`Confirm Redux Action: `, action.type)
   switch (action.type) {
     case SET_CHANNEL_HASH:
       if (!action.payload) {
@@ -40,6 +50,14 @@ const hashReducer = (state = initialState, action: Action) => {
         ...state,
         blockActivityData: action.payload.blockActivityData,
       }
+    case SET_CHANNEL_INFO:
+      if (!action.payload) {
+        return state
+      }
+      return {
+        ...state,
+        channelInfoData: action.payload.channelInfoData,
+      }
 
     default:
       return {
@@ -48,4 +66,4 @@ const hashReducer = (state = initialState, action: Action) => {
   }
 }
 
-export default hashReducer
+export default mainReducer
