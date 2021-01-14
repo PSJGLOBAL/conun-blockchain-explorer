@@ -37,23 +37,19 @@ export const APIInterface = () => {
 
   return (
     <main>
-      <SiteSection title="Channel Info">
+      <SiteSection title="Channel Info" loading={!channelInfo}>
         {/* Channel Info - Display channel name, total blocks, transactions etc*/}
-        {channelInfo ? (
-          <InfoBlock data={{ ...channelInfo }} />
-        ) : (
-          <div className="loading-block">Loading Data</div>
-        )}
+        <InfoBlock data={{ ...channelInfo }} />
       </SiteSection>
-      <SiteSection title="Block Activity" scrollable={true}>
+      <SiteSection
+        title="Block Activity"
+        scrollable={true}
+        loading={!blockActivityData}
+      >
         {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
-        {blockActivityData ? (
-          blockActivityData.map((i) => (
-            <InfoBlock key={i.blockhash} data={{ ...i }} />
-          ))
-        ) : (
-          <div className="loading-block">Loading Data</div>
-        )}
+        {blockActivityData.map((i) => (
+          <InfoBlock key={i.blockhash} data={{ ...i }} />
+        ))}
       </SiteSection>
       <SiteSection title="Transaction Data" scrollable={true}>
         {/* Transaction Activity  - Currently blank*/}
