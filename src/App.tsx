@@ -1,9 +1,9 @@
-import { useEffect } from "react"
-
+import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import * as actions from "./store/actions"
-
 import axios from "./axios/axiosinst"
+import { w3cwebsocket as W3CWebsocket } from "websocket"
+
+import * as actions from "./store/actions"
 
 import Header from "./ui/Header/Header"
 import { APIInterface } from "./components/API_Interface/APIInterface"
@@ -20,6 +20,7 @@ type State = {
 function App() {
   const dispatch = useDispatch()
   const channelHash = useSelector((state: State) => state.channelHash)
+  const [socket, setSocket] = useState<null | W3CWebsocket>(null)
 
   useEffect(() => {
     axios.get("/curChannel").then((response) => {
@@ -31,21 +32,35 @@ function App() {
       if (response.status === 200) {
         dispatch(actions.setChannelHash(response.data.currentChannel))
       }
-
-      // console.log("Attempt set channel hash: ", response.data.currentChannel)
     })
   }, [dispatch])
 
-  let hash = "Loading"
+  useEffect(() => {
+    if (socket === null && channelHash !== "") {
+      console.log("Websocket: Initialising...")
+      const newSocket = new W3CWebsocket(
+        `ws://192.168.100.105:8080/api/blockActivity/${channelHash}`
+      )
+      setSocket(newSocket)
+    }
+  }, [channelHash, socket])
 
-  if (channelHash !== "") {
-    hash = channelHash
+  if (socket) {
+    socket.onopen = () => {
+      console.log("Websocket: Connected")
+    }
+    socket.onmessage = () => {
+      console.log("Websocket: Update flag received - dispatching API request")
+      dispatch(actions.setBlockActivityData(channelHash))
+    }
   }
 
   return (
     <div className="app">
       <Header />
-      <div style={{ textAlign: "center" }}>{hash}</div>
+      <div style={{ textAlign: "center" }}>
+        {channelHash !== "" ? channelHash : "Loading"}
+      </div>
       <APIInterface />
     </div>
   )
