@@ -37,14 +37,14 @@ export const APIInterface = () => {
 
   return (
     <main>
-      <SiteSection title="Channel Info" loading={!channelInfo}>
+      <SiteSection title="Channel Info" loading={channelInfo === {}}>
         {/* Channel Info - Display channel name, total blocks, transactions etc*/}
         <InfoBlock data={{ ...channelInfo }} />
       </SiteSection>
       <SiteSection
         title="Block Activity"
         scrollable={true}
-        loading={!blockActivityData}
+        loading={blockActivityData === []}
       >
         {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
         {blockActivityData.map((i) => (

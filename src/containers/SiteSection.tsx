@@ -1,3 +1,5 @@
+import { LoadingIcon } from "../ui/LoadingIcon/LoadingIcon"
+
 import "./SiteSection.css"
 
 type Props = {
@@ -16,7 +18,7 @@ export const SiteSection = (props: Props) => {
     <section className="section">
       <div className="section-title">{props.title}</div>
       {props.loading ? (
-        <div className="loading-block">Loading Data</div>
+        <LoadingIcon />
       ) : (
         <div className={sectionStyle}>{props.children}</div>
       )}

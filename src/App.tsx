@@ -28,8 +28,11 @@ function App() {
         response.status,
         response.statusText
       )
-      dispatch(actions.setChannelHash(response.data.currentChannel))
-      console.log("Attempt set channel hash: ", response.data.currentChannel)
+      if (response.status === 200) {
+        dispatch(actions.setChannelHash(response.data.currentChannel))
+      }
+
+      // console.log("Attempt set channel hash: ", response.data.currentChannel)
     })
   }, [dispatch])
 
