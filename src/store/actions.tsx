@@ -4,6 +4,7 @@ import {
   SET_CHANNEL_HASH,
   SET_CHANNEL_INFO,
   BLOCK_ACTIVITY_DATA,
+  TXN_ACTIVITY_DATA,
 } from "./actionTypes"
 
 //Type for object
@@ -21,6 +22,9 @@ const assembleChannelInfo = (data: IObjectKeys) => {
 
 const assembleBlockDataObj = (data: Array<IObjectKeys>) => {
   return { type: BLOCK_ACTIVITY_DATA, payload: { blockActivityData: data } }
+}
+const assembleTxnDataObj = (data: Array<IObjectKeys>) => {
+  return { type: TXN_ACTIVITY_DATA, payload: { txnActivityData: data } }
 }
 
 // Redux Action to get channel info
@@ -44,6 +48,23 @@ export const setBlockActivityData = (channelHash: string) => {
       .then((response) => {
         console.log("Block Activity: ", response.status, response.statusText)
         dispatch(assembleBlockDataObj(response.data.row))
+      })
+      .catch((e) => console.error(e))
+  }
+}
+
+// Redux Action to get transaction activity data
+export const setTxnActivityData = (channelHash: string) => {
+  return (dispatch: any) => {
+    axios
+      .get(`/txActivity/${channelHash}`)
+      .then((response) => {
+        console.log(
+          "Transaction Activity: ",
+          response.status,
+          response.statusText
+        )
+        dispatch(assembleTxnDataObj(response.data.row))
       })
       .catch((e) => console.error(e))
   }

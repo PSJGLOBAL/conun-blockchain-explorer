@@ -2,7 +2,11 @@ import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 // import axios from "../../axios/axiosinst"
 
-import { setBlockActivityData, setChannelInfo } from "../../store/actions"
+import {
+  setBlockActivityData,
+  setTxnActivityData,
+  setChannelInfo,
+} from "../../store/actions"
 
 import { InfoBlock } from "../InfoBlock/InfoBlock"
 import { SiteSection } from "../../containers/SiteSection" // Bundle HTML5 section and title block
@@ -17,6 +21,7 @@ type State = {
   channelHash: string
   channelInfoData: IObjectKeys
   blockActivityData: Array<IObjectKeys>
+  txnActivityData: Array<IObjectKeys>
 }
 
 export const APIInterface = () => {
@@ -26,12 +31,14 @@ export const APIInterface = () => {
   const blockActivityData = useSelector(
     (state: State) => state.blockActivityData
   )
+  const txnActivityData = useSelector((state: State) => state.txnActivityData)
 
   // If the channel hash is loaded, get the rest of the data
   useEffect(() => {
     if (channelHash !== "") {
       dispatch(setChannelInfo(channelHash)) // Get Channel Info
       dispatch(setBlockActivityData(channelHash)) // Get Block Activity - Redux Action performs API call
+      dispatch(setTxnActivityData(channelHash)) // Get Block Activity - Redux Action performs API call
     }
   }, [channelHash, dispatch])
 
@@ -52,8 +59,10 @@ export const APIInterface = () => {
         ))}
       </SiteSection>
       <SiteSection title="Transaction Data" scrollable={true}>
-        {/* Transaction Activity  - Currently blank*/}
-        <div>Not Yet Added</div>
+        {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
+        {txnActivityData.map((i) => (
+          <InfoBlock key={i.txhash} data={{ ...i }} />
+        ))}
       </SiteSection>
     </main>
   )
