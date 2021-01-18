@@ -6,6 +6,7 @@ import { w3cwebsocket as W3CWebsocket } from "websocket"
 import * as actions from "./store/actions"
 
 import Header from "./ui/Header/Header"
+import SelectChannel from "./components/SelectChannel/SelectChannel"
 import { APIInterface } from "./components/API_Interface/APIInterface"
 
 interface IObjectKeys {
@@ -13,6 +14,7 @@ interface IObjectKeys {
 }
 
 type State = {
+  availableChannels: Array<IObjectKeys>
   channelHash: string
   serverResponsive: boolean
   channelInfoData: IObjectKeys
@@ -62,6 +64,7 @@ function App() {
   return (
     <div className="app">
       <Header />
+      <SelectChannel />
       <div style={{ textAlign: "center" }}>
         {serverResponse
           ? channelHash !== ""

@@ -1,6 +1,7 @@
 import axios from "../axios/axiosinst"
 
 import {
+  GET_AVAILABLE_CHANNELS,
   SET_CHANNEL_HASH,
   SET_SERVER_STATUS,
   SET_CHANNEL_INFO,
@@ -11,6 +12,10 @@ import {
 //Type for object
 interface IObjectKeys {
   [key: string]: string | number
+}
+
+export const assembleAvailableChannels = (data: Array<IObjectKeys>) => {
+  return { type: GET_AVAILABLE_CHANNELS, payload: { availableChannels: data } }
 }
 
 export const setChannelHash = (hash: string) => {
@@ -30,6 +35,18 @@ const assembleBlockDataObj = (data: Array<IObjectKeys>) => {
 }
 const assembleTxnDataObj = (data: Array<IObjectKeys>) => {
   return { type: TXN_ACTIVITY_DATA, payload: { txnActivityData: data } }
+}
+
+export const getAvailableChannels = () => {
+  return (dispatch: any) => {
+    axios
+      .get("/channels/info")
+      .then((response) => {
+        console.log("Channel Info: ", response.status, response.statusText)
+        dispatch(assembleAvailableChannels(response.data.channels))
+      })
+      .catch((e) => console.error(e))
+  }
 }
 
 // Redux Action to get channel info

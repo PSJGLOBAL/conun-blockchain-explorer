@@ -1,4 +1,5 @@
 import {
+  GET_AVAILABLE_CHANNELS,
   SET_CHANNEL_HASH,
   SET_SERVER_STATUS,
   SET_CHANNEL_INFO,
@@ -12,6 +13,10 @@ interface IObjectKeys {
 
 // In TS an action must be of a strict format. Set them here:
 type Action =
+  | {
+      type: "GET_AVAILABLE_CHANNELS"
+      payload: { availableChannels: Array<IObjectKeys> }
+    }
   | {
       type: "SET_CHANNEL_HASH"
       payload: { hash: string }
@@ -36,6 +41,7 @@ type Action =
 const initialState = {
   channelHash: "",
   serverResponsive: true,
+  availableChannels: Array<IObjectKeys>(),
   channelInfoData: {},
   blockActivityData: Array<IObjectKeys>(),
   txnActivityData: Array<IObjectKeys>(),
@@ -44,6 +50,16 @@ const initialState = {
 const mainReducer = (state = initialState, action: Action) => {
   console.log(`Confirm Redux Action: `, action.type)
   switch (action.type) {
+    case GET_AVAILABLE_CHANNELS:
+      if (!action.payload) {
+        return state
+      }
+
+      return {
+        ...state,
+        availableChannelsw: action.payload.availableChannels,
+      }
+
     case SET_CHANNEL_HASH:
       if (!action.payload) {
         return state
