@@ -57,7 +57,7 @@ const mainReducer = (state = initialState, action: Action) => {
 
       return {
         ...state,
-        availableChannelsw: action.payload.availableChannels,
+        availableChannels: action.payload.availableChannels,
       }
 
     case SET_CHANNEL_HASH:

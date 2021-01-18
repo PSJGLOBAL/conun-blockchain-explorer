@@ -42,7 +42,12 @@ export const getAvailableChannels = () => {
     axios
       .get("/channels/info")
       .then((response) => {
-        console.log("Channel Info: ", response.status, response.statusText)
+        console.log(
+          "Available Channels: ",
+          response.status,
+          response.statusText
+        )
+        console.log("Available Channels: ", response.data.channels)
         dispatch(assembleAvailableChannels(response.data.channels))
       })
       .catch((e) => console.error(e))
