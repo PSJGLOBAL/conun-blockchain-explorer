@@ -1,5 +1,6 @@
 import {
   SET_CHANNEL_HASH,
+  SET_SERVER_STATUS,
   SET_CHANNEL_INFO,
   BLOCK_ACTIVITY_DATA,
   TXN_ACTIVITY_DATA,
@@ -16,6 +17,10 @@ type Action =
       payload: { hash: string }
     }
   | {
+      type: "SET_SERVER_STATUS"
+      payload: { responsive: boolean }
+    }
+  | {
       type: "BLOCK_ACTIVITY_DATA"
       payload: { blockActivityData: Array<IObjectKeys> }
     }
@@ -30,6 +35,7 @@ type Action =
 
 const initialState = {
   channelHash: "",
+  serverResponsive: true,
   channelInfoData: {},
   blockActivityData: Array<IObjectKeys>(),
   txnActivityData: Array<IObjectKeys>(),
@@ -46,6 +52,16 @@ const mainReducer = (state = initialState, action: Action) => {
       return {
         ...state,
         channelHash: action.payload.hash,
+      }
+
+    case SET_SERVER_STATUS:
+      if (!action.payload) {
+        return state
+      }
+
+      return {
+        ...state,
+        serverResponsive: action.payload.responsive,
       }
 
     case BLOCK_ACTIVITY_DATA:

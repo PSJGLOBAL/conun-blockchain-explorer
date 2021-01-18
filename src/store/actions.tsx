@@ -2,6 +2,7 @@ import axios from "../axios/axiosinst"
 
 import {
   SET_CHANNEL_HASH,
+  SET_SERVER_STATUS,
   SET_CHANNEL_INFO,
   BLOCK_ACTIVITY_DATA,
   TXN_ACTIVITY_DATA,
@@ -14,6 +15,10 @@ interface IObjectKeys {
 
 export const setChannelHash = (hash: string) => {
   return { type: SET_CHANNEL_HASH, payload: { hash: hash } }
+}
+
+export const setServerStatus = (responsive: boolean) => {
+  return { type: SET_SERVER_STATUS, payload: { responsive: responsive } }
 }
 
 const assembleChannelInfo = (data: IObjectKeys) => {

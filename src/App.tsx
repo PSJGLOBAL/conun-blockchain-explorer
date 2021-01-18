@@ -14,12 +14,14 @@ interface IObjectKeys {
 
 type State = {
   channelHash: string
+  serverResponsive: boolean
   channelInfoData: IObjectKeys
 }
 
 function App() {
   const dispatch = useDispatch()
   const channelHash = useSelector((state: State) => state.channelHash)
+  const serverResponse = useSelector((state: State) => state.serverResponsive)
   const [socket, setSocket] = useState<null | W3CWebsocket>(null)
 
   useEffect(() => {
@@ -31,6 +33,8 @@ function App() {
       )
       if (response.status === 200) {
         dispatch(actions.setChannelHash(response.data.currentChannel))
+      } else {
+        dispatch(actions.setServerStatus(false))
       }
     })
   }, [dispatch])
@@ -59,7 +63,11 @@ function App() {
     <div className="app">
       <Header />
       <div style={{ textAlign: "center" }}>
-        {channelHash !== "" ? channelHash : "Loading"}
+        {serverResponse
+          ? channelHash !== ""
+            ? channelHash
+            : "Loading"
+          : "Server Unresponsive"}
       </div>
       <APIInterface />
     </div>

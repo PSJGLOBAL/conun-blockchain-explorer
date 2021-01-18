@@ -44,21 +44,28 @@ export const APIInterface = () => {
 
   return (
     <main>
-      <SiteSection title="Channel Info" loading={channelInfo === {}}>
+      <SiteSection
+        title="Channel Info"
+        loading={Object.keys(channelInfo).length === 0}
+      >
         {/* Channel Info - Display channel name, total blocks, transactions etc*/}
         <InfoBlock data={{ ...channelInfo }} />
       </SiteSection>
       <SiteSection
         title="Block Activity"
         scrollable={true}
-        loading={blockActivityData === []}
+        loading={blockActivityData.length === 0}
       >
         {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
         {blockActivityData.map((i) => (
           <InfoBlock key={i.blockhash} data={{ ...i }} />
         ))}
       </SiteSection>
-      <SiteSection title="Transaction Data" scrollable={true}>
+      <SiteSection
+        title="Transaction Data"
+        scrollable={true}
+        loading={txnActivityData.length === 0}
+      >
         {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
         {txnActivityData.map((i) => (
           <InfoBlock key={i.txhash} data={{ ...i }} />
