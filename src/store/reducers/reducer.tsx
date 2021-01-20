@@ -5,6 +5,8 @@ import {
   SET_CHANNEL_INFO,
   BLOCK_ACTIVITY_DATA,
   TXN_ACTIVITY_DATA,
+  ADD_NEW_BLOCK,
+  ADD_NEW_TXNS,
 } from "../actionTypes"
 
 interface IObjectKeys {
@@ -36,6 +38,20 @@ type Action =
   | {
       type: "SET_CHANNEL_INFO"
       payload: { channelInfoData: IObjectKeys }
+    }
+  | {
+      type: "ADD_NEW_BLOCK"
+      payload: {
+        previousBlockData: Array<IObjectKeys>
+        newBlockData: IObjectKeys
+      }
+    }
+  | {
+      type: "ADD_NEW_TXNS"
+      payload: {
+        previousTxnData: Array<IObjectKeys>
+        newTxnsArray: Array<IObjectKeys>
+      }
     }
 
 const initialState = {
@@ -103,6 +119,28 @@ const mainReducer = (state = initialState, action: Action) => {
       return {
         ...state,
         channelInfoData: action.payload.channelInfoData,
+      }
+    case ADD_NEW_BLOCK:
+      if (!action.payload) {
+        return state
+      }
+      const updatedBlockData = [...action.payload.previousBlockData]
+      updatedBlockData.unshift(action.payload.newBlockData)
+
+      return {
+        ...state,
+        blockActivityData: updatedBlockData,
+      }
+    case ADD_NEW_TXNS:
+      if (!action.payload) {
+        return state
+      }
+      const updatedTxnData = [...action.payload.previousTxnData]
+      updatedTxnData.unshift(...action.payload.newTxnsArray)
+
+      return {
+        ...state,
+        txnActivityData: updatedTxnData,
       }
 
     default:

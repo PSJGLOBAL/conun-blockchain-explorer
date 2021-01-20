@@ -18,12 +18,18 @@ type State = {
   channelHash: string
   serverResponsive: boolean
   channelInfoData: IObjectKeys
+  blockActivityData: Array<IObjectKeys>
+  txnActivityData: Array<IObjectKeys>
 }
 
 function App() {
   const dispatch = useDispatch()
   const channelHash = useSelector((state: State) => state.channelHash)
   const serverResponse = useSelector((state: State) => state.serverResponsive)
+  const blockActivityData = useSelector(
+    (state: State) => state.blockActivityData
+  )
+  const txnActivityData = useSelector((state: State) => state.txnActivityData)
   const [socket, setSocket] = useState<null | W3CWebsocket>(null)
 
   useEffect(() => {
@@ -55,9 +61,13 @@ function App() {
     socket.onopen = () => {
       console.log("Websocket: Connected")
     }
-    socket.onmessage = () => {
-      console.log("Websocket: Update flag received - dispatching API request")
-      dispatch(actions.setBlockActivityData(channelHash))
+    socket.onmessage = (msg) => {
+      const socketData = JSON.parse(msg.data.toString())
+      console.log("Websocket: Message received: ", socketData)
+      const { txdata, notify_type, ...socketBlocks } = socketData
+      const socketTxns = txdata
+      dispatch(actions.addNewBlock(blockActivityData, socketBlocks))
+      dispatch(actions.addNewTxns(txnActivityData, socketTxns))
     }
   }
 

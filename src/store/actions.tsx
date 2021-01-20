@@ -7,6 +7,8 @@ import {
   SET_CHANNEL_INFO,
   BLOCK_ACTIVITY_DATA,
   TXN_ACTIVITY_DATA,
+  ADD_NEW_BLOCK,
+  ADD_NEW_TXNS,
 } from "./actionTypes"
 
 //Type for object
@@ -35,6 +37,28 @@ const assembleBlockDataObj = (data: Array<IObjectKeys>) => {
 }
 const assembleTxnDataObj = (data: Array<IObjectKeys>) => {
   return { type: TXN_ACTIVITY_DATA, payload: { txnActivityData: data } }
+}
+
+export const addNewBlock = (
+  previousBlockData: Array<IObjectKeys>,
+  newBlockObj: IObjectKeys
+) => {
+  return {
+    type: ADD_NEW_BLOCK,
+    payload: {
+      previousBlockData: previousBlockData,
+      newBlockData: newBlockObj,
+    },
+  }
+}
+export const addNewTxns = (
+  previousTxnData: Array<IObjectKeys>,
+  newTxnsArray: Array<IObjectKeys>
+) => {
+  return {
+    type: ADD_NEW_TXNS,
+    payload: { previousTxnData: previousTxnData, newTxnsArray: newTxnsArray },
+  }
 }
 
 export const getAvailableChannels = () => {
