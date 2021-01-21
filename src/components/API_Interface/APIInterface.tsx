@@ -13,25 +13,18 @@ import { SiteSection } from "../../containers/SiteSection" // Bundle HTML5 secti
 
 import "./APIInterface.css"
 
-interface IObjectKeys {
-  [key: string]: string | number
-}
-
-type State = {
-  channelHash: string
-  channelInfoData: IObjectKeys
-  blockActivityData: Array<IObjectKeys>
-  txnActivityData: Array<IObjectKeys>
-}
+import { State } from "../../utility/types"
 
 export const APIInterface = () => {
   const dispatch = useDispatch()
-  const channelInfo = useSelector((state: State) => state.channelInfoData)
-  const channelHash = useSelector((state: State) => state.channelHash)
+  const channelInfo = useSelector((state: State) => state.basic.channelInfoData)
+  const channelHash = useSelector((state: State) => state.basic.channelHash)
   const blockActivityData = useSelector(
-    (state: State) => state.blockActivityData
+    (state: State) => state.block.blockActivityData
   )
-  const txnActivityData = useSelector((state: State) => state.txnActivityData)
+  const txnActivityData = useSelector(
+    (state: State) => state.txn.txnActivityData
+  )
 
   // If the channel hash is loaded, get the rest of the data
   useEffect(() => {

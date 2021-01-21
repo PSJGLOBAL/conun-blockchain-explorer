@@ -1,10 +1,8 @@
 import "./InfoBlock.css"
 
-interface IObjectKeys {
-  [key: string]: string | number
-}
+import { ObjectType } from "../../utility/types"
 interface Props {
-  data: IObjectKeys
+  data: ObjectType
 }
 
 export const InfoBlock = (props: Props) => {

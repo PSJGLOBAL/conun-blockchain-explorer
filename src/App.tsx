@@ -6,30 +6,23 @@ import { w3cwebsocket as W3CWebsocket } from "websocket"
 import * as actions from "./store/actions"
 
 import Header from "./ui/Header/Header"
-import SelectChannel from "./components/SelectChannel/SelectChannel"
+// import SelectChannel from "./components/SelectChannel/SelectChannel"
 import { APIInterface } from "./components/API_Interface/APIInterface"
 
-interface IObjectKeys {
-  [key: string]: string | number
-}
-
-type State = {
-  availableChannels: Array<IObjectKeys>
-  channelHash: string
-  serverResponsive: boolean
-  channelInfoData: IObjectKeys
-  blockActivityData: Array<IObjectKeys>
-  txnActivityData: Array<IObjectKeys>
-}
+import { State } from "./utility/types"
 
 function App() {
   const dispatch = useDispatch()
-  const channelHash = useSelector((state: State) => state.channelHash)
-  const serverResponse = useSelector((state: State) => state.serverResponsive)
-  const blockActivityData = useSelector(
-    (state: State) => state.blockActivityData
+  const channelHash = useSelector((state: State) => state.basic.channelHash)
+  const serverResponse = useSelector(
+    (state: State) => state.basic.serverResponsive
   )
-  const txnActivityData = useSelector((state: State) => state.txnActivityData)
+  const blockActivityData = useSelector(
+    (state: State) => state.block.blockActivityData
+  )
+  const txnActivityData = useSelector(
+    (state: State) => state.txn.txnActivityData
+  )
   const [socket, setSocket] = useState<null | W3CWebsocket>(null)
 
   useEffect(() => {

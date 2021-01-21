@@ -1,24 +1,14 @@
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import * as actions from "../../store/actions"
-
-interface IObjectKeys {
-  [key: string]: string | number
-}
-
-type State = {
-  channelHash: string
-  availableChannels: Array<IObjectKeys>
-  serverResponsive: boolean
-  channelInfoData: IObjectKeys
-}
+import { State } from "../../utility/types"
 
 function SelectChannel() {
   const dispatch = useDispatch()
   const availableChannels = useSelector(
-    (state: State) => state.availableChannels
+    (state: State) => state.basic.availableChannels
   )
-  const channelHash = useSelector((state: State) => state.channelHash)
+  const channelHash = useSelector((state: State) => state.basic.channelHash)
   const [selectedChannel, setSelectedChannel] = useState<string>("")
 
   useEffect(() => {

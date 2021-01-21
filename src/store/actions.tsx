@@ -12,11 +12,9 @@ import {
 } from "./actionTypes"
 
 //Type for object
-interface IObjectKeys {
-  [key: string]: string | number
-}
+import { ObjectType } from "../utility/types"
 
-export const assembleAvailableChannels = (data: Array<IObjectKeys>) => {
+export const assembleAvailableChannels = (data: Array<ObjectType>) => {
   return { type: GET_AVAILABLE_CHANNELS, payload: { availableChannels: data } }
 }
 
@@ -28,20 +26,20 @@ export const setServerStatus = (responsive: boolean) => {
   return { type: SET_SERVER_STATUS, payload: { responsive: responsive } }
 }
 
-const assembleChannelInfo = (data: IObjectKeys) => {
+const assembleChannelInfo = (data: ObjectType) => {
   return { type: SET_CHANNEL_INFO, payload: { channelInfoData: data } }
 }
 
-const assembleBlockDataObj = (data: Array<IObjectKeys>) => {
+const assembleBlockDataObj = (data: Array<ObjectType>) => {
   return { type: BLOCK_ACTIVITY_DATA, payload: { blockActivityData: data } }
 }
-const assembleTxnDataObj = (data: Array<IObjectKeys>) => {
+const assembleTxnDataObj = (data: Array<ObjectType>) => {
   return { type: TXN_ACTIVITY_DATA, payload: { txnActivityData: data } }
 }
 
 export const addNewBlock = (
-  previousBlockData: Array<IObjectKeys>,
-  newBlockObj: IObjectKeys
+  previousBlockData: Array<ObjectType>,
+  newBlockObj: ObjectType
 ) => {
   return {
     type: ADD_NEW_BLOCK,
@@ -52,8 +50,8 @@ export const addNewBlock = (
   }
 }
 export const addNewTxns = (
-  previousTxnData: Array<IObjectKeys>,
-  newTxnsArray: Array<IObjectKeys>
+  previousTxnData: Array<ObjectType>,
+  newTxnsArray: Array<ObjectType>
 ) => {
   return {
     type: ADD_NEW_TXNS,
