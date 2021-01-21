@@ -74,7 +74,6 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <SelectChannel />
       <div style={{ textAlign: "center" }}>
         {serverResponse
           ? channelHash !== ""
