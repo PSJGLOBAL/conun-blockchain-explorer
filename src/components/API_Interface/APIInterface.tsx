@@ -31,11 +31,11 @@ export const APIInterface = () => {
   // If the channel hash is loaded, get the rest of the data
   useEffect(() => {
     if (activeChannelHash && activeChannelHash !== "") {
-      dispatch(setChannelInfo(activeChannelHash.toString())) // Get Channel Info
+      dispatch(setChannelInfo(activeChannel)) // Set Channel Info
       dispatch(setBlockActivityData(activeChannelHash.toString())) // Get Block Activity - Redux Action performs API call
       dispatch(setTxnActivityData(activeChannelHash.toString())) // Get Block Activity - Redux Action performs API call
     }
-  }, [activeChannelHash, dispatch])
+  }, [activeChannelHash, activeChannel, dispatch])
 
   return (
     <main>

@@ -30,7 +30,7 @@ export const setServerStatus = (responsive: boolean) => {
   return { type: SET_SERVER_STATUS, payload: { responsive: responsive } }
 }
 
-const assembleChannelInfo = (data: ObjectType) => {
+export const setChannelInfo = (data: ChannelObject) => {
   return { type: SET_CHANNEL_INFO, payload: { channelInfoData: data } }
 }
 
@@ -81,17 +81,17 @@ export const getAvailableChannels = () => {
 }
 
 // Redux Action to get channel info
-export const setChannelInfo = (channelHash: string) => {
-  return (dispatch: any) => {
-    axios
-      .get("/channels/info")
-      .then((response) => {
-        console.log("Channel Info: ", response.status, response.statusText)
-        dispatch(assembleChannelInfo(response.data.channels[0]))
-      })
-      .catch((e) => console.error(e))
-  }
-}
+// export const setChannelInfo = (channelData: ChannelObject) => {
+//   return (dispatch: any) => {
+//     axios
+//       .get("/channels/info")
+//       .then((response) => {
+//         console.log("Channel Info: ", response.status, response.statusText)
+//         dispatch(assembleChannelInfo(response.data.channels[0]))
+//       })
+//       .catch((e) => console.error(e))
+//   }
+// }
 
 // Redux Action to get block activity data
 export const setBlockActivityData = (channelHash: string) => {

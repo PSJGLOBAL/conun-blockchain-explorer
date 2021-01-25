@@ -28,7 +28,7 @@ type Action =
     }
   | {
       type: typeof SET_CHANNEL_INFO
-      payload: { channelInfoData: ObjectType }
+      payload: { channelInfoData: ChannelObject }
     }
 
 const initialState = {
