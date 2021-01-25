@@ -1,24 +1,28 @@
 import { useSelector, useDispatch } from "react-redux"
 import * as actions from "../../store/actions"
 import { State, ChannelObject } from "../../utility/types"
+import "./SelectChannel.css"
 
 function SelectChannel() {
   const dispatch = useDispatch()
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
+  const serverResponse = useSelector(
+    (state: State) => state.basic.serverResponsive
+  )
   const availableChannels = useSelector(
     (state: State) => state.basic.availableChannels
   )
   //Add fake channel for test purposes
 
-  const fakeChannelList = availableChannels.concat([
-    {
-      id: 80,
-      channelname: "Null Channel",
-      channel_genesis_hash: "Null Hash",
-      channel_hash: "this field doesn't do anything",
-      createdat: "just now",
-    },
-  ])
+  // const fakeChannelList = availableChannels.concat([
+  //   {
+  //     id: 80,
+  //     channelname: "Null Channel",
+  //     channel_genesis_hash: "Null Hash",
+  //     channel_hash: "this field doesn't do anything",
+  //     createdat: "just now",
+  //   },
+  // ])
 
   const setCachedChannel = (channel: ChannelObject) => {
     console.log("SELECT CHANNEL: Setting Cached Channel: ", channel.channelname)
@@ -36,7 +40,7 @@ function SelectChannel() {
     const { value } = e.target
 
     // Extract the right channel object based on the channel hash
-    const newChannel = fakeChannelList.filter((i) => {
+    const newChannel = availableChannels.filter((i) => {
       return i.channel_genesis_hash === value
     })[0] // [0] because realistically, there should only be one.
 
@@ -61,12 +65,13 @@ function SelectChannel() {
   return (
     <div>
       <select
+        className="channel-selector"
         value={activeChannel.channel_genesis_hash?.toString()}
         onChange={(e) => {
           handleChannelSelection(e)
         }}
       >
-        {fakeChannelList.map((i) => {
+        {availableChannels.map((i) => {
           return (
             <option key={i.id} value={i.channel_genesis_hash}>
               {i.channelname}
@@ -74,6 +79,13 @@ function SelectChannel() {
           )
         })}
       </select>
+      <span className="channel-selector-hash">
+        {serverResponse
+          ? activeChannel.channel_genesis_hash !== ""
+            ? activeChannel.channel_genesis_hash
+            : "Loading"
+          : "Server Unresponsive"}
+      </span>
     </div>
   )
 }

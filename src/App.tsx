@@ -14,9 +14,6 @@ function App() {
   const dispatch = useDispatch()
   // const activeChannelHash = useSelector((state: State) => state.basic.activeChannelHash)
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
-  const serverResponse = useSelector(
-    (state: State) => state.basic.serverResponsive
-  )
   const blockActivityData = useSelector(
     (state: State) => state.block.blockActivityData
   )
@@ -60,13 +57,6 @@ function App() {
     <div className="app">
       <Header />
       <SelectChannel />
-      <div style={{ textAlign: "center" }}>
-        {serverResponse
-          ? activeChannelHash !== ""
-            ? activeChannelHash
-            : "Loading"
-          : "Server Unresponsive"}
-      </div>
       <APIInterface />
     </div>
   )
