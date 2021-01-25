@@ -3,7 +3,11 @@ import { useSelector, useDispatch } from "react-redux"
 import { State } from "../../utility/types"
 import * as actions from "../../store/actions"
 
-export const ChannelProvider = (props: any) => {
+type Props = {
+  children: React.ReactNode
+}
+
+export const ChannelProvider = (props: Props) => {
   const dispatch = useDispatch()
   const availableChannels = useSelector(
     (state: State) => state.basic.availableChannels

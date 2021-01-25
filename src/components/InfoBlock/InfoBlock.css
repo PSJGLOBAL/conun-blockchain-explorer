@@ -1,8 +1,20 @@
+.block-data-table {
+  --table-border: #61affe !important;
+  --table-bkg-color: #eaf5ff !important;
+}
+.txn-data-table {
+  --table-border: #59dd4d !important;
+  --table-bkg-color: #e0ffdd !important;
+}
+
 .info-table {
+  --table-border: #a561fe;
+  --table-bkg-color: #eee4fd;
+
   margin: 10px;
-  border: 2px solid #61affe;
+  border: 2px solid var(--table-border);
   border-radius: 10px;
-  background-color: rgba(97, 175, 254, 0.1);
+  background-color: var(--table-bkg-color);
   margin-bottom: 50px;
 }
 
@@ -10,7 +22,7 @@
   display: grid;
   grid-template-columns: 1fr 4fr;
 
-  border-top: 1px solid #61affe;
+  border-top: 1px solid var(--table-border);
   padding: 5px;
 }
 .info-row:first-of-type {

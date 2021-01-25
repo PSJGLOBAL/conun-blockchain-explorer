@@ -9,6 +9,8 @@ import {
 } from "../../store/actions"
 
 import { InfoBlock } from "../InfoBlock/InfoBlock"
+import { BlockDataBlock } from "../BlockDataBlock/BlockDataBlock"
+import { TxnDataBlock } from "../TxnDataBlock/TxnDataBlock"
 import { SiteSection } from "../../containers/SiteSection" // Bundle HTML5 section and title block
 
 import "./APIInterface.css"
@@ -53,7 +55,7 @@ export const APIInterface = () => {
       >
         {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
         {blockActivityData.map((i) => (
-          <InfoBlock key={i.blockhash} data={{ ...i }} />
+          <BlockDataBlock key={i.blockhash} data={{ ...i }} />
         ))}
       </SiteSection>
       <SiteSection
@@ -63,7 +65,7 @@ export const APIInterface = () => {
       >
         {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
         {txnActivityData.map((i) => (
-          <InfoBlock key={i.txhash} data={{ ...i }} />
+          <TxnDataBlock key={i.txhash} data={{ ...i }} />
         ))}
       </SiteSection>
     </main>
