@@ -18,22 +18,24 @@ import { State } from "../../utility/types"
 export const APIInterface = () => {
   const dispatch = useDispatch()
   const channelInfo = useSelector((state: State) => state.basic.channelInfoData)
-  const channelHash = useSelector((state: State) => state.basic.channelHash)
+  const activeChannel = useSelector((state: State) => state.basic.activeChannel)
+
   const blockActivityData = useSelector(
     (state: State) => state.block.blockActivityData
   )
   const txnActivityData = useSelector(
     (state: State) => state.txn.txnActivityData
   )
+  const activeChannelHash = activeChannel.channel_genesis_hash
 
   // If the channel hash is loaded, get the rest of the data
   useEffect(() => {
-    if (channelHash !== "") {
-      dispatch(setChannelInfo(channelHash)) // Get Channel Info
-      dispatch(setBlockActivityData(channelHash)) // Get Block Activity - Redux Action performs API call
-      dispatch(setTxnActivityData(channelHash)) // Get Block Activity - Redux Action performs API call
+    if (activeChannelHash && activeChannelHash !== "") {
+      dispatch(setChannelInfo(activeChannelHash.toString())) // Get Channel Info
+      dispatch(setBlockActivityData(activeChannelHash.toString())) // Get Block Activity - Redux Action performs API call
+      dispatch(setTxnActivityData(activeChannelHash.toString())) // Get Block Activity - Redux Action performs API call
     }
-  }, [channelHash, dispatch])
+  }, [activeChannelHash, dispatch])
 
   return (
     <main>

@@ -14,6 +14,7 @@ import thunk from "redux-thunk"
 
 // Component Imports
 import App from "./App"
+import { ChannelProvider } from "./components/ChannelProvider/ChannelProvider"
 
 // CSS
 import "./style/global.css"
@@ -28,7 +29,9 @@ const store = createStore(rootReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ChannelProvider>
+      <App />
+    </ChannelProvider>
   </Provider>,
 
   document.getElementById("root")

@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import axios from "./axios/axiosinst"
 import { w3cwebsocket as W3CWebsocket } from "websocket"
 
 import * as actions from "./store/actions"
 
 import Header from "./ui/Header/Header"
-// import SelectChannel from "./components/SelectChannel/SelectChannel"
+import SelectChannel from "./components/SelectChannel/SelectChannel"
 import { APIInterface } from "./components/API_Interface/APIInterface"
-import { ChannelProvider } from "./components/ChannelProvider/ChannelProvider"
 
 import { State } from "./utility/types"
 
 function App() {
   const dispatch = useDispatch()
-  const channelHash = useSelector((state: State) => state.basic.channelHash)
+  // const activeChannelHash = useSelector((state: State) => state.basic.activeChannelHash)
+  const activeChannel = useSelector((state: State) => state.basic.activeChannel)
   const serverResponse = useSelector(
     (state: State) => state.basic.serverResponsive
   )
@@ -26,30 +25,22 @@ function App() {
   )
   const [socket, setSocket] = useState<null | W3CWebsocket>(null)
 
+  const activeChannelHash = activeChannel.channel_genesis_hash
+
+  // Check if active channel was updated (via ChannelProvider)
   useEffect(() => {
-    axios.get("/curChannel").then((response) => {
-      console.log(
-        "Received channel hash: ",
-        response.status,
-        response.statusText
-      )
-      if (response.status === 200) {
-        dispatch(actions.setChannelHash(response.data.currentChannel))
-      } else {
-        dispatch(actions.setServerStatus(false))
-      }
-    })
-  }, [dispatch])
+    console.log("APP: ActiveChannel: ", activeChannel)
+  }, [activeChannel])
 
   useEffect(() => {
-    if (socket === null && channelHash !== "") {
+    if (socket === null && activeChannelHash !== "") {
       console.log("Websocket: Initialising...")
       const newSocket = new W3CWebsocket(
-        `ws://192.168.100.105:8080/api/blockActivity/${channelHash}`
+        `ws://192.168.100.105:8080/api/blockActivity/${activeChannelHash}`
       )
       setSocket(newSocket)
     }
-  }, [channelHash, socket])
+  }, [activeChannelHash, socket])
 
   if (socket) {
     socket.onopen = () => {
@@ -68,11 +59,11 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <ChannelProvider />
+      <SelectChannel />
       <div style={{ textAlign: "center" }}>
         {serverResponse
-          ? channelHash !== ""
-            ? channelHash
+          ? activeChannelHash !== ""
+            ? activeChannelHash
             : "Loading"
           : "Server Unresponsive"}
       </div>

@@ -9,10 +9,11 @@ import {
   TXN_ACTIVITY_DATA,
   ADD_NEW_BLOCK,
   ADD_NEW_TXNS,
+  SET_ACTIVE_CHANNEL,
 } from "./actionTypes"
 
 //Type for object
-import { ObjectType } from "../utility/types"
+import { ObjectType, ChannelObject } from "../utility/types"
 
 export const assembleAvailableChannels = (data: Array<ObjectType>) => {
   return { type: GET_AVAILABLE_CHANNELS, payload: { availableChannels: data } }
@@ -20,6 +21,9 @@ export const assembleAvailableChannels = (data: Array<ObjectType>) => {
 
 export const setChannelHash = (hash: string) => {
   return { type: SET_CHANNEL_HASH, payload: { hash: hash } }
+}
+export const setActiveChannel = (channelData: ChannelObject) => {
+  return { type: SET_ACTIVE_CHANNEL, payload: { channelData: channelData } }
 }
 
 export const setServerStatus = (responsive: boolean) => {

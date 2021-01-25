@@ -3,15 +3,20 @@ import {
   SET_CHANNEL_HASH,
   SET_SERVER_STATUS,
   SET_CHANNEL_INFO,
+  SET_ACTIVE_CHANNEL,
 } from "../actionTypes"
 
-import { ObjectType } from "../../utility/types"
+import { ObjectType, ChannelObject } from "../../utility/types"
 
 // In TS an action must be of a strict format. Set them here:
 type Action =
   | {
       type: typeof GET_AVAILABLE_CHANNELS
       payload: { availableChannels: Array<ObjectType> }
+    }
+  | {
+      type: typeof SET_ACTIVE_CHANNEL
+      payload: { channelData: ChannelObject }
     }
   | {
       type: typeof SET_CHANNEL_HASH
@@ -27,6 +32,7 @@ type Action =
     }
 
 const initialState = {
+  activeChannel: {},
   channelHash: "",
   serverResponsive: true,
   availableChannels: Array<ObjectType>(),
@@ -51,6 +57,11 @@ const basicReducer = (state = initialState, action: Action) => {
         return state
       }
       return { ...state, channelHash: action.payload.hash }
+    case SET_ACTIVE_CHANNEL:
+      if (!action.payload) {
+        return state
+      }
+      return { ...state, activeChannel: action.payload.channelData }
 
     case SET_SERVER_STATUS:
       if (!action.payload) {
