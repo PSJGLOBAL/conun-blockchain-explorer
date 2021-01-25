@@ -3,11 +3,11 @@ export interface ObjectType {
 }
 
 export type ChannelObject = {
-  channel_genesis_hash: string | number | null
-  channel_hash?: string | number | null
-  channelname: string | number | null
-  createdat: string | number | null
-  id: number | string | null
+  channel_genesis_hash: string
+  channel_hash: string
+  channelname: string
+  createdat: string
+  id: string
 }
 
 export type State = {

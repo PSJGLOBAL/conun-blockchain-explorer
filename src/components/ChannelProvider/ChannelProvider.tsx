@@ -4,12 +4,11 @@ import { State } from "../../utility/types"
 import * as actions from "../../store/actions"
 
 export const ChannelProvider = (props: any) => {
-  console.group("CHANNEL PROVIDER")
   const dispatch = useDispatch()
   const availableChannels = useSelector(
     (state: State) => state.basic.availableChannels
   )
-  const activeChannel = useSelector((state: State) => state.basic.activeChannel)
+
   // Attempt to load the channel the user last used
 
   useEffect(() => {
@@ -20,13 +19,13 @@ export const ChannelProvider = (props: any) => {
     let cachedChannel = null
     if (localStorage.getItem("Conun-BCE-Cached-Genesis-Hash")) {
       cachedChannel = {
-        channel_genesis_hash: localStorage.getItem(
-          "Conun-BCE-Cached-Genesis-Hash"
-        ),
-        channel_hash: localStorage.getItem("Conun-BCE-Cached-Hash"),
-        channelname: localStorage.getItem("Conun-BCE-Cached-Channel-Name"),
-        id: localStorage.getItem("Conun-BCE-Cached-Channel-ID"),
-        createdat: localStorage.getItem("Conun-BCE-Cached-Created"),
+        channel_genesis_hash:
+          localStorage.getItem("Conun-BCE-Cached-Genesis-Hash") || "",
+        channel_hash: localStorage.getItem("Conun-BCE-Cached-Hash") || "",
+        channelname:
+          localStorage.getItem("Conun-BCE-Cached-Channel-Name") || "",
+        id: localStorage.getItem("Conun-BCE-Cached-Channel-ID") || "",
+        createdat: localStorage.getItem("Conun-BCE-Cached-Created") || "",
       }
     }
 
@@ -37,17 +36,18 @@ export const ChannelProvider = (props: any) => {
 
       if (cachedChannel !== null) {
         // If the user has a previously used channel, set it here
-
+        console.log("CHANNEL PROVIDER: Cached channel detected")
         dispatch(actions.setActiveChannel(cachedChannel))
       } else {
         // Else, set the active channel to be the first channel in the list
+        console.log("CHANNEL PROVIDER: No cached channel found")
         dispatch(
           actions.setActiveChannel({
-            id: availableChannels[0].id,
-            channelname: availableChannels[0].channelname,
-            channel_genesis_hash: availableChannels[0].channel_genesis_hash,
-            channel_hash: availableChannels[0].channel_hash,
-            createdat: availableChannels[0].createdat,
+            id: availableChannels[0].id.toString(),
+            channelname: availableChannels[0].channelname.toString(),
+            channel_genesis_hash: availableChannels[0].channel_genesis_hash.toString(),
+            channel_hash: availableChannels[0].channel_hash.toString(),
+            createdat: availableChannels[0].createdat.toString(),
           })
         )
       }
@@ -55,7 +55,8 @@ export const ChannelProvider = (props: any) => {
       //If the list is empty, the server will be down.
       dispatch(actions.setServerStatus(false))
     }
-    console.groupEnd()
   }, [availableChannels, dispatch])
-  return <>{activeChannel ? props.children : <div>NO CHANNEL</div>}</>
+  return (
+    <>{availableChannels.length > 0 ? props.children : <div>NO CHANNEL</div>}</>
+  )
 }
