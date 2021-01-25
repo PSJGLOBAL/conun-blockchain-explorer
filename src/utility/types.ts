@@ -16,3 +16,10 @@ export type State = {
     txnActivityData: Array<ObjectType>
   }
 }
+export type ChannelObject = {
+  channel_genesis_hash: string
+  channel_hash?: string
+  channelname: string
+  createdat: string
+  id: number | string
+}

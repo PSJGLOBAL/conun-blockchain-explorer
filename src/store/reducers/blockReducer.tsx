@@ -26,7 +26,7 @@ const initialState = {
 }
 
 const blockReducer = (state = initialState, action: Action) => {
-  console.log(`Confirm Redux Action: `, action.type)
+  // console.log(`Confirm Redux Action: `, action.type)
   switch (action.type) {
     case BLOCK_ACTIVITY_DATA:
       if (!action.payload) {

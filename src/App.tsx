@@ -8,6 +8,7 @@ import * as actions from "./store/actions"
 import Header from "./ui/Header/Header"
 // import SelectChannel from "./components/SelectChannel/SelectChannel"
 import { APIInterface } from "./components/API_Interface/APIInterface"
+import { ChannelProvider } from "./components/ChannelProvider/ChannelProvider"
 
 import { State } from "./utility/types"
 
@@ -67,6 +68,7 @@ function App() {
   return (
     <div className="app">
       <Header />
+      <ChannelProvider />
       <div style={{ textAlign: "center" }}>
         {serverResponse
           ? channelHash !== ""
