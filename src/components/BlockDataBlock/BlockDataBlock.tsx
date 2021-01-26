@@ -35,6 +35,10 @@ export const BlockDataBlock = (props: Props) => {
           <div className="info-col info-key">Created At:</div>
           <div className="info-col info-val">{props.data.createdt}</div>
         </div>
+        <div className="info-row">
+          <div className="info-col info-key">Transaction Count:</div>
+          <div className="info-col info-val">{props.data.txcount}</div>
+        </div>
       </div>
       {showModal && <BlockModal data={props.data} clickHandler={closeModal} />}
     </>
