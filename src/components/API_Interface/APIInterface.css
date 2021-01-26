@@ -15,7 +15,7 @@ main {
 }
 
 .section-block-scrollable {
-  max-height: 260px;
+  max-height: 560px;
   overflow-y: scroll;
 }
 

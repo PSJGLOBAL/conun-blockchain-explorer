@@ -13,12 +13,18 @@ body {
   height: 100vh;
   background: #fff;
 }
+
+.splitcolumns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 .modal {
   position: fixed;
   z-index: 5;
 }
-.modal-table {
-}
+/* .modal-table {
+} */
 
 .modal-background {
   top: 0;

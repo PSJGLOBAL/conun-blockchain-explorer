@@ -40,7 +40,12 @@ export const BlockDataBlock = (props: Props) => {
           <div className="info-col info-val">{props.data.txcount}</div>
         </div>
       </div>
-      {showModal && <BlockModal data={props.data} clickHandler={closeModal} />}
+      {showModal && (
+        <BlockModal
+          blocknum={props.data.blocknum.toString()}
+          clickHandler={closeModal}
+        />
+      )}
     </>
   )
 }

@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { BlockModal } from "../BlockModal/BlockModal"
+import { TxnModal } from "../TxnModal/TxnModal"
 
 import { truncate } from "../../utility/functions"
 import { ObjectType } from "../../utility/types"
@@ -35,7 +35,12 @@ export const TxnDataBlock = (props: Props) => {
           <div className="info-col info-val">{props.data.createdt}</div>
         </div>
       </div>
-      {showModal && <BlockModal data={props.data} clickHandler={closeModal} />}
+      {showModal && (
+        <TxnModal
+          txnID={props.data.txhash.toString()}
+          clickHandler={closeModal}
+        />
+      )}
     </>
   )
 }
