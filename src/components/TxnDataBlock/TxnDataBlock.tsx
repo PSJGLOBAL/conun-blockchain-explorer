@@ -4,6 +4,8 @@ import { TxnModal } from "../TxnModal/TxnModal"
 
 import { truncate } from "../../utility/functions"
 import { ObjectType } from "../../utility/types"
+
+import Identicon from "react-identicons"
 interface Props {
   data: ObjectType
 }
@@ -15,7 +17,10 @@ export const TxnDataBlock = (props: Props) => {
     setShowModal(false)
   }
   return (
-    <>
+    <div className="info-table-outer txn-data-table">
+      <div className="info-table-icon">
+        <Identicon size={15} string={props.data.txhash.toString()} />
+      </div>
       <div
         className="info-table txn-data-table"
         onClick={() => setShowModal(true)}
@@ -41,6 +46,6 @@ export const TxnDataBlock = (props: Props) => {
           clickHandler={closeModal}
         />
       )}
-    </>
+    </div>
   )
 }

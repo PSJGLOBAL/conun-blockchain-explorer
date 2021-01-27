@@ -15,12 +15,16 @@
   border: 2px solid var(--table-border);
   border-radius: 10px;
   background-color: var(--table-bkg-color);
-  margin-bottom: 50px;
 }
-
+.info-table-outer {
+  display: grid;
+  grid-template-columns: 20px auto;
+  align-items: center;
+  margin-bottom: 10px;
+}
 .info-row {
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 2fr 3fr;
 
   border-top: 1px solid var(--table-border);
   padding: 5px;
@@ -31,4 +35,15 @@
 
 .info-key {
   padding-left: 20px;
+}
+
+.info-table-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--table-bkg-color);
+  border: 2px solid var(--table-border);
+  border-radius: 5px;
+  height: 30px;
+  width: 30px;
 }

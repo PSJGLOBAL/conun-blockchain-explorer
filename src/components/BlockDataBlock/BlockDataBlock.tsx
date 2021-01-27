@@ -4,6 +4,7 @@ import { BlockModal } from "../BlockModal/BlockModal"
 
 import { truncate } from "../../utility/functions"
 import { ObjectType } from "../../utility/types"
+import Identicon from "react-identicons"
 interface Props {
   data: ObjectType
 }
@@ -16,7 +17,10 @@ export const BlockDataBlock = (props: Props) => {
   }
 
   return (
-    <>
+    <div className="info-table-outer block-data-table">
+      <div className="info-table-icon">
+        <Identicon size={15} string={props.data.blockhash.toString()} />
+      </div>
       <div
         className="info-table block-data-table"
         onClick={() => setShowModal(true)}
@@ -28,7 +32,7 @@ export const BlockDataBlock = (props: Props) => {
         <div className="info-row">
           <div className="info-col info-key">Block Hash:</div>
           <div className="info-col info-val">
-            {truncate(props.data.blockhash.toString())}
+            <span>{truncate(props.data.blockhash.toString())}</span>
           </div>
         </div>
         <div className="info-row">
@@ -36,7 +40,7 @@ export const BlockDataBlock = (props: Props) => {
           <div className="info-col info-val">{props.data.createdt}</div>
         </div>
         <div className="info-row">
-          <div className="info-col info-key">Transaction Count:</div>
+          <div className="info-col info-key">Tx Count:</div>
           <div className="info-col info-val">{props.data.txcount}</div>
         </div>
       </div>
@@ -46,6 +50,6 @@ export const BlockDataBlock = (props: Props) => {
           clickHandler={closeModal}
         />
       )}
-    </>
+    </div>
   )
 }
