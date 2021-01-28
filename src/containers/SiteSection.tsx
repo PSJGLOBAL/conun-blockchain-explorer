@@ -14,7 +14,7 @@ export const SiteSection = memo((props: Props) => {
   console.log("Site Section Rendered: ", props.title)
   let sectionStyle = "section-block"
   if (props.scrollable) {
-    sectionStyle += "-scrollable"
+    sectionStyle += " block-scrollable"
   }
   return (
     <section className="section">

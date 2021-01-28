@@ -1,0 +1,4 @@
+.recent-txn-table {
+  grid-template-columns: 35px auto auto auto;
+  margin: 5px;
+}

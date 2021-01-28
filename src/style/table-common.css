@@ -1,0 +1,24 @@
+.info-table {
+  display: grid;
+}
+
+.info-table-col {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  padding: 10px;
+}
+
+.info-table-icon-col {
+  background-color: var(--bkg);
+  padding: 5px;
+  border-radius: var(--radius);
+}
+.info-table-icon-cell {
+  padding: 5px 5px 1px 5px; /* The icon has its own padding underneath :S*/
+  background-color: var(--fore);
+  border-radius: 5px;
+}
+.info-table-txcount-cell {
+  background-color: var(--bkg);
+}

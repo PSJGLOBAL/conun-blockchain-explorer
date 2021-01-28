@@ -9,6 +9,7 @@ import {
 } from "../../store/actions"
 
 import { InfoBlock } from "../InfoBlock/InfoBlock"
+import { StatsBlock } from "../../containers/StatsBlock/Statsblock"
 import { BlockDataBlock } from "../BlockDataBlock/BlockDataBlock"
 import { TxnDataBlock } from "../TxnDataBlock/TxnDataBlock"
 import { SiteSection } from "../../containers/SiteSection" // Bundle HTML5 section and title block
@@ -39,18 +40,23 @@ export const APIInterface = () => {
     }
   }, [activeChannelHash, activeChannel, dispatch])
 
-  return (
-    <main>
-      <SiteSection
+  /*
+
+<SiteSection
         title="Channel Info"
         loading={Object.keys(channelInfo).length === 0}
       >
-        {/* Channel Info - Display channel name, total blocks, transactions etc*/}
         <InfoBlock data={{ ...channelInfo }} />
       </SiteSection>
+
+*/
+
+  return (
+    <main>
+      <StatsBlock />
       <div className="splitcolumns">
         <SiteSection
-          title="Block Activity"
+          title="Recent Blocks"
           scrollable={true}
           loading={blockActivityData.length === 0}
         >
@@ -60,7 +66,7 @@ export const APIInterface = () => {
           ))}
         </SiteSection>
         <SiteSection
-          title="Transaction Data"
+          title="Recent Transactions"
           scrollable={true}
           loading={txnActivityData.length === 0}
         >

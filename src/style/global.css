@@ -1,17 +1,27 @@
 body {
+  --bkg: #efefef;
+  --fore: #fff;
+  --hilite: #ee6259;
+  --font: #000000;
+  --radius: 10px;
+
   margin: 0;
   display: flex;
   justify-content: center;
 
-  background: #fafafa;
+  background: #efefef;
 
   font-family: sans-serif;
+}
+main {
+  margin: 0;
+  padding: 0;
 }
 
 .app {
   width: 90vw;
   height: 100vh;
-  background: #fff;
+  background: var(--bkg);
 }
 
 .splitcolumns {
@@ -35,4 +45,8 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: rgba(153, 153, 153, 0.9);
+}
+
+.font-hilite {
+  color: var(--hilite);
 }

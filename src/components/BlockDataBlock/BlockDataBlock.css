@@ -1,0 +1,4 @@
+.recent-block-table {
+  grid-template-columns: 35px auto auto auto 45px;
+  margin: 5px;
+}

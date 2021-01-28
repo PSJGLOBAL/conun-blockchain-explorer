@@ -1,10 +1,14 @@
 import { useState, memo } from "react"
+import { formatDistanceToNowStrict } from "date-fns"
 
 import { BlockModal } from "../BlockModal/BlockModal"
 
 import { truncate } from "../../utility/functions"
 import { ObjectType } from "../../utility/types"
 import Identicon from "react-identicons"
+import ReactTooltip from "react-tooltip"
+import "./BlockDataBlock.css"
+import { colourPallet } from "../../utility/colours"
 interface Props {
   data: ObjectType
 }
@@ -17,39 +21,50 @@ export const BlockDataBlock = memo((props: Props) => {
   }
 
   return (
-    <div className="info-table-outer block-data-table">
-      <div className="info-table-icon">
-        <Identicon size={15} string={props.data.blockhash.toString()} />
-      </div>
-      <div
-        className="info-table block-data-table"
-        onClick={() => setShowModal(true)}
-      >
-        <div className="info-table-row block-txn-row">
-          <div className="info-col info-key">Block Number:</div>
-          <div className="info-col info-val">{props.data.blocknum}</div>
-        </div>
-        <div className="info-table-row block-txn-row">
-          <div className="info-col info-key">Block Hash:</div>
-          <div className="info-col info-val">
-            <span>{truncate(props.data.blockhash.toString())}</span>
-          </div>
-        </div>
-        <div className="info-table-row block-txn-row">
-          <div className="info-col info-key">Created At:</div>
-          <div className="info-col info-val">{props.data.createdt}</div>
-        </div>
-        <div className="info-table-row block-txn-row">
-          <div className="info-col info-key">Tx Count:</div>
-          <div className="info-col info-val">{props.data.txcount}</div>
+    <div
+      className="info-table recent-block-table"
+      onClick={() => setShowModal(true)}
+    >
+      <div className="info-table-col info-table-icon-col">
+        <div className="info-table-icon-cell">
+          <Identicon
+            palette={colourPallet}
+            size={15}
+            string={props.data.blockhash.toString()}
+          />
         </div>
       </div>
+      <div className="info-table-col">
+        <span className="font-hilite">B:</span>
+        <span>{props.data.blocknum}</span>
+      </div>
+      <div className="info-table-col">
+        <span className="font-hilite">#:</span>
+        <span data-tip={props.data.blockhash}>
+          {truncate(props.data.blockhash.toString())}
+        </span>
+      </div>
+      <div className="info-table-col">
+        <span className="font-hilite">T:</span>
+        <span data-tip={props.data.createdt}>
+          {formatDistanceToNowStrict(new Date(props.data.createdt))} ago
+        </span>
+      </div>
+
+      <div className="info-table-col info-table-icon-col">
+        <div className="info-table-txcount-cell">
+          <span className="font-hilite">Tx:</span>
+          <span>{props.data.txcount}</span>
+        </div>
+      </div>
+
       {showModal && (
         <BlockModal
           blocknum={props.data.blocknum.toString()}
           clickHandler={closeModal}
         />
       )}
+      <ReactTooltip />
     </div>
   )
 })

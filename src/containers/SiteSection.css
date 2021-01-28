@@ -1,4 +1,24 @@
+/* .section {
+  
+} */
+.section-title {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  background-color: var(--fore);
+  padding: 20px;
+  margin: 10px;
+  border-radius: var(--radius);
+}
+
 .loading-block {
   text-align: center;
   padding-top: 20px;
+}
+
+.section-block {
+  background-color: var(--fore);
+  padding: 20px;
+  margin: 10px;
+  border-radius: var(--radius);
 }
