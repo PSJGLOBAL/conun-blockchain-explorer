@@ -19,7 +19,7 @@ main {
 }
 
 .app {
-  width: 90vw;
+  max-width: 1150px;
   height: 100vh;
   background: var(--bkg);
 }
@@ -50,3 +50,7 @@ main {
 .font-hilite {
   color: var(--hilite);
 }
+
+/* @media only screen and (max-width: 1010px) {
+
+}   */

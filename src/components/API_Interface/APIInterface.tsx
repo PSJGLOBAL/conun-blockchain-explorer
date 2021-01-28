@@ -6,6 +6,7 @@ import {
   setBlockActivityData,
   setTxnActivityData,
   setChannelInfo,
+  setChannelStats,
 } from "../../store/actions"
 
 import { InfoBlock } from "../InfoBlock/InfoBlock"
@@ -20,7 +21,7 @@ import { State } from "../../utility/types"
 
 export const APIInterface = () => {
   const dispatch = useDispatch()
-  const channelInfo = useSelector((state: State) => state.basic.channelInfoData)
+
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
 
   const blockActivityData = useSelector(
@@ -37,6 +38,7 @@ export const APIInterface = () => {
       dispatch(setChannelInfo(activeChannel)) // Set Channel Info
       dispatch(setBlockActivityData(activeChannelHash.toString())) // Get Block Activity - Redux Action performs API call
       dispatch(setTxnActivityData(activeChannelHash.toString())) // Get Block Activity - Redux Action performs API call
+      dispatch(setChannelStats(activeChannelHash.toString()))
     }
   }, [activeChannelHash, activeChannel, dispatch])
 

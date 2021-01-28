@@ -17,6 +17,7 @@ export type State = {
     channelHash: string
     serverResponsive: boolean
     channelInfoData: ObjectType
+    channelStats: ObjectType
   }
   block: {
     blockActivityData: Array<ObjectType>

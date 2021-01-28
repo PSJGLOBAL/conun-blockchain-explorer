@@ -51,7 +51,7 @@ export const BlockDataBlock = memo((props: Props) => {
         </span>
       </div>
 
-      <div className="info-table-col info-table-icon-col">
+      <div className="info-table-col info-table-txcount-col">
         <div className="info-table-txcount-cell">
           <span className="font-hilite">Tx:</span>
           <span>{props.data.txcount}</span>

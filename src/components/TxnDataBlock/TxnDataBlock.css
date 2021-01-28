@@ -2,3 +2,10 @@
   grid-template-columns: 35px auto auto auto;
   margin: 5px;
 }
+
+@media only screen and (max-width: 1010px) {
+  .recent-txn-table {
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 35px auto;
+  }
+}

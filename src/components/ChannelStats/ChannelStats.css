@@ -1,0 +1,23 @@
+.channel-stats-table {
+  display: grid;
+  grid-template-columns: 80px 1fr 80px 1fr;
+}
+
+.channel-stats-icon-col {
+  width: 50px;
+  padding: 5px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 24pt;
+
+  border: 3px solid var(--hilite);
+  border-radius: var(--radius);
+}
+
+.channel-stats-data-col {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}

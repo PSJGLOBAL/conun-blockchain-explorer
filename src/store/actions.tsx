@@ -5,6 +5,7 @@ import {
   SET_CHANNEL_HASH,
   SET_SERVER_STATUS,
   SET_CHANNEL_INFO,
+  SET_CHANNEL_STATS,
   BLOCK_ACTIVITY_DATA,
   TXN_ACTIVITY_DATA,
   ADD_NEW_BLOCK,
@@ -32,6 +33,9 @@ export const setServerStatus = (responsive: boolean) => {
 
 export const setChannelInfo = (data: ChannelObject) => {
   return { type: SET_CHANNEL_INFO, payload: { channelInfoData: data } }
+}
+export const assembleChannelStats = (data: ObjectType) => {
+  return { type: SET_CHANNEL_STATS, payload: { channelStats: data } }
 }
 
 const assembleBlockDataObj = (data: Array<ObjectType>) => {
@@ -80,18 +84,17 @@ export const getAvailableChannels = () => {
   }
 }
 
-// Redux Action to get channel info
-// export const setChannelInfo = (channelData: ChannelObject) => {
-//   return (dispatch: any) => {
-//     axios
-//       .get("/channels/info")
-//       .then((response) => {
-//         console.log("Channel Info: ", response.status, response.statusText)
-//         dispatch(assembleChannelInfo(response.data.channels[0]))
-//       })
-//       .catch((e) => console.error(e))
-//   }
-// }
+export const setChannelStats = (channelHash: string) => {
+  return (dispatch: any) => {
+    axios
+      .get(`/status/${channelHash}`)
+      .then((response) => {
+        console.log("Channel Info: ", response.status, response.statusText)
+        dispatch(assembleChannelStats(response.data))
+      })
+      .catch((e) => console.error(e))
+  }
+}
 
 // Redux Action to get block activity data
 export const setBlockActivityData = (channelHash: string) => {

@@ -4,6 +4,7 @@ import {
   SET_SERVER_STATUS,
   SET_CHANNEL_INFO,
   SET_ACTIVE_CHANNEL,
+  SET_CHANNEL_STATS,
 } from "../actionTypes"
 
 import { ObjectType, ChannelObject } from "../../utility/types"
@@ -30,6 +31,10 @@ type Action =
       type: typeof SET_CHANNEL_INFO
       payload: { channelInfoData: ChannelObject }
     }
+  | {
+      type: typeof SET_CHANNEL_STATS
+      payload: { channelStats: ObjectType }
+    }
 
 const initialState = {
   activeChannel: {},
@@ -37,6 +42,7 @@ const initialState = {
   serverResponsive: true,
   availableChannels: Array<ObjectType>(),
   channelInfoData: {},
+  channelStats: {},
 }
 
 const basicReducer = (state = initialState, action: Action) => {
@@ -79,6 +85,14 @@ const basicReducer = (state = initialState, action: Action) => {
       return {
         ...state,
         channelInfoData: action.payload.channelInfoData,
+      }
+    case SET_CHANNEL_STATS:
+      if (!action.payload) {
+        return state
+      }
+      return {
+        ...state,
+        channelStats: action.payload.channelStats,
       }
 
     default:
