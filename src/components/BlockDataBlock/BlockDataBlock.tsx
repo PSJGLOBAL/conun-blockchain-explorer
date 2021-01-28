@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, memo } from "react"
 
 import { BlockModal } from "../BlockModal/BlockModal"
 
@@ -9,7 +9,7 @@ interface Props {
   data: ObjectType
 }
 
-export const BlockDataBlock = (props: Props) => {
+export const BlockDataBlock = memo((props: Props) => {
   const [showModal, setShowModal] = useState<boolean>(false)
 
   const closeModal = () => {
@@ -25,21 +25,21 @@ export const BlockDataBlock = (props: Props) => {
         className="info-table block-data-table"
         onClick={() => setShowModal(true)}
       >
-        <div className="info-row">
+        <div className="info-table-row block-txn-row">
           <div className="info-col info-key">Block Number:</div>
           <div className="info-col info-val">{props.data.blocknum}</div>
         </div>
-        <div className="info-row">
+        <div className="info-table-row block-txn-row">
           <div className="info-col info-key">Block Hash:</div>
           <div className="info-col info-val">
             <span>{truncate(props.data.blockhash.toString())}</span>
           </div>
         </div>
-        <div className="info-row">
+        <div className="info-table-row block-txn-row">
           <div className="info-col info-key">Created At:</div>
           <div className="info-col info-val">{props.data.createdt}</div>
         </div>
-        <div className="info-row">
+        <div className="info-table-row block-txn-row">
           <div className="info-col info-key">Tx Count:</div>
           <div className="info-col info-val">{props.data.txcount}</div>
         </div>
@@ -52,4 +52,4 @@ export const BlockDataBlock = (props: Props) => {
       )}
     </div>
   )
-}
+})

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, memo } from "react"
 
 import { TxnModal } from "../TxnModal/TxnModal"
 
@@ -10,7 +10,7 @@ interface Props {
   data: ObjectType
 }
 
-export const TxnDataBlock = (props: Props) => {
+export const TxnDataBlock = memo((props: Props) => {
   const [showModal, setShowModal] = useState<boolean>(false)
 
   const closeModal = () => {
@@ -25,17 +25,17 @@ export const TxnDataBlock = (props: Props) => {
         className="info-table txn-data-table"
         onClick={() => setShowModal(true)}
       >
-        <div className="info-row">
+        <div className="info-table-row block-txn-row">
           <div className="info-col info-key">Transaction Hash:</div>
           <div className="info-col info-val">
             {truncate(props.data.txhash.toString())}
           </div>
         </div>
-        <div className="info-row">
+        <div className="info-table-row block-txn-row">
           <div className="info-col info-key">Contract:</div>
           <div className="info-col info-val">{props.data.chaincodename}</div>
         </div>
-        <div className="info-row">
+        <div className="info-table-row block-txn-row">
           <div className="info-col info-key">Created At:</div>
           <div className="info-col info-val">{props.data.createdt}</div>
         </div>
@@ -48,4 +48,4 @@ export const TxnDataBlock = (props: Props) => {
       )}
     </div>
   )
-}
+})

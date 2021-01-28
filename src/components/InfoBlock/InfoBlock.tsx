@@ -1,7 +1,7 @@
 import "./InfoBlock.css"
 
 import { ObjectType } from "../../utility/types"
-import { truncate } from "../../utility/functions"
+// import { truncate } from "../../utility/functions"
 interface Props {
   data: ObjectType
 }
@@ -13,11 +13,9 @@ export const InfoBlock = (props: Props) => {
   const cells = keys.map((k: string) => {
     if (data[k] !== "") {
       return (
-        <div className="info-row" key={k}>
+        <div className="info-table-row channel-row" key={k}>
           <div className="info-col info-key">{k}</div>
-          <div className="info-col info-val">
-            {truncate(data[k].toString())}
-          </div>
+          <div className="info-col info-val">{data[k].toString()}</div>
         </div>
       )
     }

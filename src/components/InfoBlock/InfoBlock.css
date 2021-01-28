@@ -22,14 +22,20 @@
   align-items: center;
   margin-bottom: 10px;
 }
-.info-row {
+.channel-row {
+  grid-template-columns: 1fr 4fr;
+}
+.block-txn-row {
+  grid-template-columns: 3fr 7fr;
+}
+
+.info-table-row {
   display: grid;
-  grid-template-columns: 2fr 3fr;
 
   border-top: 1px solid var(--table-border);
   padding: 5px;
 }
-.info-row:first-of-type {
+.info-table-row:first-of-type {
   border-top: none;
 }
 

@@ -1,4 +1,5 @@
 import { LoadingIcon } from "../ui/LoadingIcon/LoadingIcon"
+import { memo } from "react"
 
 import "./SiteSection.css"
 
@@ -9,7 +10,8 @@ type Props = {
   loading?: boolean
 }
 
-export const SiteSection = (props: Props) => {
+export const SiteSection = memo((props: Props) => {
+  console.log("Site Section Rendered: ", props.title)
   let sectionStyle = "section-block"
   if (props.scrollable) {
     sectionStyle += "-scrollable"
@@ -24,4 +26,4 @@ export const SiteSection = (props: Props) => {
       )}
     </section>
   )
-}
+})
