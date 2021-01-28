@@ -3,7 +3,13 @@
   margin: 5px;
 }
 
-@media only screen and (max-width: 1010px) {
+@media only screen and (max-width: 1010px) and (min-width: 700px) {
+  .recent-block-table {
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 35px auto 45px;
+  }
+}
+@media only screen and (max-width: 500px) {
   .recent-block-table {
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 35px auto 45px;

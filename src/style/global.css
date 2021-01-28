@@ -51,6 +51,8 @@ main {
   color: var(--hilite);
 }
 
-/* @media only screen and (max-width: 1010px) {
-
-}   */
+@media only screen and (max-width: 699px) {
+  .splitcolumns {
+    grid-template-columns: 1fr;
+  }
+}

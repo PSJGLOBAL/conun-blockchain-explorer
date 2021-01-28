@@ -13,7 +13,7 @@ main {
 
 .block-scrollable {
   max-height: 560px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .loading-block {
