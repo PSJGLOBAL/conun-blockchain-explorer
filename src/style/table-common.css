@@ -1,5 +1,12 @@
 .info-table {
   display: grid;
+  margin: 5px;
+  padding: 5px;
+  border-top: 1px solid var(--bkg);
+}
+
+.info-table:first-of-type {
+  border-top: none;
 }
 
 .info-table-col {

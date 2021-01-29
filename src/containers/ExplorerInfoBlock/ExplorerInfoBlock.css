@@ -1,0 +1,10 @@
+.app-service-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 20px !important;
+  font-weight: bold;
+}
+
+.app-service-icons {
+  margin: 10px;
+}

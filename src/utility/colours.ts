@@ -1,18 +1,1 @@
-export const colourPallet = [
-  "#bb0000",
-  "#bf4810",
-  "#c39020",
-  "#c7d830",
-  "#cc2040",
-  "#d06850",
-  "#d4b060",
-  "#d8f870",
-  "#dd4080",
-  "#e18890",
-  "#e5d0a0",
-  "#ea18b0",
-  "#ee60c0",
-  "#f2a8d0",
-  "#f6f0e0",
-  "#fb38f0",
-]
+export const colourPallet = ["#ee6259", "#a7443e", "#ee9959", "#eec159"]
