@@ -9,6 +9,7 @@ import {
   setChannelStats,
 } from "../../../store/actions"
 
+import WebSocketProvider from "../../WebSocketProvider/WebSocketProvider"
 import { InfoBlock } from "../InfoBlock/InfoBlock"
 import { StatsBlock } from "../../../containers/StatsBlock/Statsblock"
 import { BlockDataBlock } from "../BlockDataBlock/BlockDataBlock"
@@ -55,6 +56,7 @@ export const InterfaceMain = () => {
 
   return (
     <main>
+      <WebSocketProvider />
       <StatsBlock />
       <div className="splitcolumns">
         <SiteSection

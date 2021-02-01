@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { State } from "../../../utility/types"
 import * as actions from "../../../store/actions"
+import { Redirect } from "react-router-dom"
 
 type Props = {
   children: React.ReactNode
@@ -61,6 +62,12 @@ export const ChannelProvider = (props: Props) => {
     }
   }, [availableChannels, dispatch])
   return (
-    <>{availableChannels.length > 0 ? props.children : <div>NO CHANNEL</div>}</>
+    <>
+      {availableChannels.length > 0 ? (
+        props.children
+      ) : (
+        <Redirect to="/disconnected" />
+      )}
+    </>
   )
 }

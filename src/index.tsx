@@ -2,6 +2,8 @@ import React from "react"
 import ReactDOM from "react-dom"
 import reportWebVitals from "./reportWebVitals"
 
+import { BrowserRouter } from "react-router-dom"
+
 //Redux imports
 import { createStore, applyMiddleware, combineReducers } from "redux"
 import { Provider } from "react-redux"
@@ -28,11 +30,13 @@ const rootReducer = combineReducers({
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
-  <Provider store={store}>
-    <ChannelProvider>
-      <App />
-    </ChannelProvider>
-  </Provider>,
+  <BrowserRouter>
+    <Provider store={store}>
+      <ChannelProvider>
+        <App />
+      </ChannelProvider>
+    </Provider>
+  </BrowserRouter>,
 
   document.getElementById("root")
 )
