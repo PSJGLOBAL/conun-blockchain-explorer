@@ -7,19 +7,19 @@ import {
   setTxnActivityData,
   setChannelInfo,
   setChannelStats,
-} from "../../store/actions"
+} from "../../../store/actions"
 
 import { InfoBlock } from "../InfoBlock/InfoBlock"
-import { StatsBlock } from "../../containers/StatsBlock/Statsblock"
+import { StatsBlock } from "../../../containers/StatsBlock/Statsblock"
 import { BlockDataBlock } from "../BlockDataBlock/BlockDataBlock"
 import { TxnDataBlock } from "../TxnDataBlock/TxnDataBlock"
-import { SiteSection } from "../../containers/SiteSection" // Bundle HTML5 section and title block
+import { SiteSection } from "../../../containers/SiteSection" // Bundle HTML5 section and title block
 
-import "./APIInterface.css"
+import "./InterfaceMain.css"
 
-import { State } from "../../utility/types"
+import { State } from "../../../utility/types"
 
-export const APIInterface = () => {
+export const InterfaceMain = () => {
   const dispatch = useDispatch()
 
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)

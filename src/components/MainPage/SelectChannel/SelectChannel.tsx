@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux"
-import * as actions from "../../store/actions"
-import { State, ChannelObject } from "../../utility/types"
+import * as actions from "../../../store/actions"
+import { State, ChannelObject } from "../../../utility/types"
 import "./SelectChannel.css"
 
 function SelectChannel() {

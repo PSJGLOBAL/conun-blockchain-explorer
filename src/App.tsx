@@ -1,7 +1,7 @@
 import HeadBlock from "./ui/HeadBlock/HeadBlock"
 
 import WebSocketProvider from "./components/WebSocketProvider/WebSocketProvider"
-import { APIInterface } from "./components/API_Interface/APIInterface"
+import { InterfaceMain } from "./components/MainPage/InterfaceMain/InterfaceMain"
 import { HeadBar } from "./ui/HeadBar/HeadBar"
 
 function App() {
@@ -10,8 +10,7 @@ function App() {
       <HeadBar />
       <HeadBlock />
       <WebSocketProvider />
-      {/* <SelectChannel /> */}
-      <APIInterface />
+      <InterfaceMain />
     </div>
   )
 }

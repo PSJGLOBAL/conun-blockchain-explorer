@@ -14,7 +14,7 @@ import thunk from "redux-thunk"
 
 // Component Imports
 import App from "./App"
-import { ChannelProvider } from "./components/ChannelProvider/ChannelProvider"
+import { ChannelProvider } from "./components/MainPage/ChannelProvider/ChannelProvider"
 
 // CSS
 import "./style/global.css"

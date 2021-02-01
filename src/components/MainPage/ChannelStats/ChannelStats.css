@@ -11,9 +11,6 @@
   align-items: center;
 
   font-size: 24pt;
-
-  border: 3px solid var(--hilite);
-  border-radius: var(--radius);
 }
 
 .channel-stats-data-col {

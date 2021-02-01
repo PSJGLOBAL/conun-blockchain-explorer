@@ -1,5 +1,5 @@
 import { ExplorerInfoBlock } from "../ExplorerInfoBlock/ExplorerInfoBlock"
-import { GraphBlock } from "../../components/GraphBlock/GraphBlock"
+import { GraphBlock } from "../../components/MainPage/GraphBlock/GraphBlock"
 
 export const StatsBlock = () => {
   return (

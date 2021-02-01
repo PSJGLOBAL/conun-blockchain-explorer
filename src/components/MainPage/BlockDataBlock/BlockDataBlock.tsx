@@ -3,8 +3,8 @@ import { formatDistanceToNowStrict } from "date-fns"
 
 import { BlockModal } from "../BlockModal/BlockModal"
 
-import { truncate } from "../../utility/functions"
-import { ObjectType } from "../../utility/types"
+import { truncate } from "../../../utility/functions"
+import { ObjectType } from "../../../utility/types"
 import Identicon from "react-identicons"
 import ReactTooltip from "react-tooltip"
 import "./BlockDataBlock.css"

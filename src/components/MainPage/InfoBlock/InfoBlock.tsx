@@ -1,6 +1,6 @@
 import "./InfoBlock.css"
 
-import { ObjectType } from "../../utility/types"
+import { ObjectType } from "../../../utility/types"
 // import { truncate } from "../../utility/functions"
 interface Props {
   data: ObjectType

@@ -4,12 +4,12 @@ import { formatDistanceToNowStrict } from "date-fns"
 
 import { TxnModal } from "../TxnModal/TxnModal"
 
-import { truncate } from "../../utility/functions"
-import { ObjectType } from "../../utility/types"
+import { truncate } from "../../../utility/functions"
+import { ObjectType } from "../../../utility/types"
 import ReactTooltip from "react-tooltip"
 
 import "./TxnDataBlock.css"
-import "../../style/table-common.css"
+import "../../../style/table-common.css"
 interface Props {
   data: ObjectType
 }

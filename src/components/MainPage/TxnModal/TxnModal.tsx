@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import axios from "axios"
-import { ObjectType, State } from "../../utility/types"
+import { ObjectType, State } from "../../../utility/types"
 
 interface Props {
   clickHandler: () => void

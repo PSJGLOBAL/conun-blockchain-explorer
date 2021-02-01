@@ -1,4 +1,4 @@
-import { ChannelStats } from "../../components/ChannelStats/ChannelStats"
+import { ChannelStats } from "../../components/MainPage/ChannelStats/ChannelStats"
 import "./ExplorerInfoBlock.css"
 
 export const ExplorerInfoBlock = () => {

@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { State } from "../../utility/types"
-import * as actions from "../../store/actions"
+import { State } from "../../../utility/types"
+import * as actions from "../../../store/actions"
 
 type Props = {
   children: React.ReactNode
