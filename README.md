@@ -11,4 +11,5 @@ In the project directory, you can run:
 
 ## Current Progress
 
-The current version of the app operates as an API interface - it shows the results of particular API calls.
+The current version of the Blockchain Explorer is a MVP version.
+It includes websocket capabilities that allow you to view activity on the blockchain network in real time.
