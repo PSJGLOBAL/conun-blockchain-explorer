@@ -1,0 +1,6 @@
+.graph-controls-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  margin: 5px;
+}

@@ -25,7 +25,7 @@ export const TxnModal = (props: Props) => {
   }, [activeChannelHash, props.txnID])
 
   let content = (
-    <div className="info-row">
+    <div className="modal-row">
       <div className="info-col info-key">Error:</div>
       <div className="info-col info-val">No data was found</div>
     </div>
@@ -34,37 +34,37 @@ export const TxnModal = (props: Props) => {
   if (txnData) {
     content = (
       <>
-        <div className="info-row">
+        <div className="modal-row">
           <div className="info-col info-key"></div>
           <div className="info-col info-val">
             <h4>Transaction Details</h4>
           </div>
         </div>
-        <div className="info-row">
+        <div className="modal-row">
           <div className="info-col info-key">Transaction Hash:</div>
           <div className="info-col info-val">{txnData.txhash}</div>
         </div>
-        <div className="info-row">
+        <div className="modal-row">
           <div className="info-col info-key">Timestamp:</div>
           <div className="info-col info-val">{txnData.createdt}</div>
         </div>
-        <div className="info-row">
+        <div className="modal-row">
           <div className="info-col info-key">Validity:</div>
           <div className="info-col info-val">{txnData.validation_code}</div>
         </div>
-        <div className="info-row">
+        <div className="modal-row">
           <div className="info-col info-key">Channel:</div>
           <div className="info-col info-val">{txnData.channelname}</div>
         </div>
-        <div className="info-row">
+        <div className="modal-row">
           <div className="info-col info-key">Contract:</div>
           <div className="info-col info-val">{txnData.chaincodename}</div>
         </div>
-        <div className="info-row">
+        <div className="modal-row">
           <div className="info-col info-key">Creator ID:</div>
           <div className="info-col info-val">{txnData.creator_msp_id}</div>
         </div>
-        <div className="info-row">
+        <div className="modal-row">
           <div className="info-col info-key">Payload Proposal Hash:</div>
           <div className="info-col info-val">
             {txnData.payload_proposal_hash}

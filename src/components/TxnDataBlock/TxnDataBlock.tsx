@@ -18,7 +18,13 @@ export const TxnDataBlock = memo((props: Props) => {
   const [showModal, setShowModal] = useState<boolean>(false)
 
   const closeModal = () => {
+    console.log("MODAL: Close")
     setShowModal(false)
+  }
+
+  const openModal = () => {
+    console.log("MODAL: Open")
+    setShowModal(true)
   }
 
   let icon = null
@@ -31,13 +37,14 @@ export const TxnDataBlock = memo((props: Props) => {
     )
   }
   return (
-    <div
-      className="info-table recent-txn-table"
-      onClick={() => setShowModal(true)}
-    >
-      <div className="info-table-col info-table-icon-col">
+    <div className="info-table recent-txn-table">
+      <div className="info-table-col info-table-icon-col" onClick={openModal}>
         <div className="info-table-icon-cell">
-          <Identicon size={15} string={props.data.txhash.toString()} />
+          <Identicon
+            fg="#ffffff"
+            size={15}
+            string={props.data.txhash.toString()}
+          />
         </div>
       </div>
 

@@ -1,0 +1,23 @@
+#nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--fore);
+}
+
+#nav-block {
+  width: 1400px;
+  padding: 20px;
+}
+
+.nav-logo {
+  height: 50px;
+  width: auto;
+}

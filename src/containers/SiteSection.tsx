@@ -10,7 +10,7 @@ type Props = {
   loading?: boolean
 }
 
-export const SiteSection = memo((props: Props) => {
+export const SiteSection = (props: Props) => {
   console.log("Site Section Rendered: ", props.title)
   let sectionStyle = "section-block"
   if (props.scrollable) {
@@ -26,4 +26,4 @@ export const SiteSection = memo((props: Props) => {
       )}
     </section>
   )
-})
+}

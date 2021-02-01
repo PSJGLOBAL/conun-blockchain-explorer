@@ -1,4 +1,4 @@
-import { useState, memo } from "react"
+import { useState } from "react"
 import { formatDistanceToNowStrict } from "date-fns"
 
 import { BlockModal } from "../BlockModal/BlockModal"
@@ -8,27 +8,32 @@ import { ObjectType } from "../../utility/types"
 import Identicon from "react-identicons"
 import ReactTooltip from "react-tooltip"
 import "./BlockDataBlock.css"
-import { colourPallet } from "../../utility/colours"
+
 interface Props {
   data: ObjectType
 }
 
-export const BlockDataBlock = memo((props: Props) => {
+export const BlockDataBlock = (props: Props) => {
   const [showModal, setShowModal] = useState<boolean>(false)
 
   const closeModal = () => {
+    console.log("MODAL: Close")
     setShowModal(false)
   }
 
+  const openModal = () => {
+    console.log("MODAL: Open")
+    setShowModal(true)
+  }
+
+  console.log("MODAL: verify state: ", showModal)
+
   return (
-    <div
-      className="info-table recent-block-table"
-      onClick={() => setShowModal(true)}
-    >
-      <div className="info-table-col info-table-icon-col">
+    <div className="info-table recent-block-table">
+      <div className="info-table-col info-table-icon-col" onClick={openModal}>
         <div className="info-table-icon-cell">
           <Identicon
-            palette={colourPallet}
+            fg="#ffffff"
             size={15}
             string={props.data.blockhash.toString()}
           />
@@ -58,13 +63,13 @@ export const BlockDataBlock = memo((props: Props) => {
         </div>
       </div>
 
-      {showModal && (
+      {showModal === true ? (
         <BlockModal
           blocknum={props.data.blocknum.toString()}
           clickHandler={closeModal}
         />
-      )}
+      ) : null}
       <ReactTooltip />
     </div>
   )
-})
+}

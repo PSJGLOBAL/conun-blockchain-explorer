@@ -19,7 +19,7 @@ main {
 }
 
 .app {
-  max-width: 1150px;
+  width: 1400px;
   height: 100vh;
   background: var(--bkg);
 }
@@ -54,5 +54,11 @@ main {
 @media only screen and (max-width: 699px) {
   .splitcolumns {
     grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .app {
+    width: 95vw;
   }
 }

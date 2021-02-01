@@ -17,7 +17,7 @@
 }
 
 .info-table-icon-col {
-  background-color: var(--bkg);
+  background-color: #ccc;
   padding: 5px;
   border-radius: var(--radius);
 }
@@ -28,11 +28,23 @@
 }
 .info-table-icon-cell {
   padding: 5px 5px 1px 5px; /* The icon has its own padding underneath :S*/
-  background-color: var(--fore);
+  /* background-color: var(--fore); */
   border-radius: 5px;
 }
 .info-table-txcount-cell {
   background-color: var(--bkg);
+}
+
+.modal-table {
+  background-color: var(--fore);
+  border-radius: var(--radius);
+  /* width: 400px; */
+}
+
+.modal-row {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  margin: 10px;
 }
 
 @media only screen and (max-width: 1010px) and (min-width: 700px) {

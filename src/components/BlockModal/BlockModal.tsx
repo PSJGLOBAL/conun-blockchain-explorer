@@ -25,7 +25,7 @@ export const BlockModal = (props: Props) => {
   }, [activeChannelHash, props.blocknum])
 
   let content = (
-    <div className="info-row">
+    <div className="modal-row">
       <div className="info-col info-key">Error:</div>
       <div className="info-col info-val">No data was found</div>
     </div>
@@ -34,31 +34,31 @@ export const BlockModal = (props: Props) => {
   if (blockData) {
     content = (
       <>
-        <div className="info-row">
+        <div className="modal-row">
           <div className="info-col info-key"></div>
           <div className="info-col info-val">
             <h4>Block Details</h4>
           </div>
         </div>
-        <div className="info-row">
+        <div className="modal-row">
           <div className="info-col info-key">Block Number:</div>
           <div className="info-col info-val">{blockData.number}</div>
         </div>
-        <div className="info-row">
+        <div className="modal-row">
           <div className="info-col info-key">Block Hash:</div>
           <div className="info-col info-val">
             {"This data is not yet available"}
           </div>
         </div>
-        <div className="info-row">
+        <div className="modal-row">
           <div className="info-col info-key">Data Hash:</div>
           <div className="info-col info-val">{blockData.data_hash}</div>
         </div>
-        <div className="info-row">
+        <div className="modal-row">
           <div className="info-col info-key">Previous Hash:</div>
           <div className="info-col info-val">{blockData.previous_hash}</div>
         </div>
-        <div className="info-row">
+        <div className="modal-row">
           <div className="info-col info-key">Transactions:</div>
           <div className="info-col info-val">
             {"This data is not yet available"}
@@ -69,8 +69,11 @@ export const BlockModal = (props: Props) => {
   }
 
   return (
-    <div className="modal modal-background" onClick={props.clickHandler}>
-      <div className="modal modal-table info-table">{content}</div>
+    <div
+      className="modal modal-background"
+      onClick={() => props.clickHandler()}
+    >
+      <div className="modal modal-table">{content}</div>
     </div>
   )
 }

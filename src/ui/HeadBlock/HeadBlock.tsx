@@ -1,4 +1,4 @@
-import "./Header.css"
+import "./HeadBlock.css"
 import SelectChannel from "../../components/SelectChannel/SelectChannel"
 
 const Header = () => {
