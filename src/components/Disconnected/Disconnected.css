@@ -1,0 +1,13 @@
+.disconnected {
+  /* width: 1400px; */
+  height: 300px;
+
+  margin-top: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--fore);
+  border-radius: var(--radius);
+}
