@@ -1,5 +1,10 @@
 .recent-block-table {
-  grid-template-columns: 35px auto auto auto 45px;
+  grid-template-columns: 35px 1fr 2fr 2fr 45px;
+  margin: 5px;
+}
+
+.recent-block-header {
+  grid-template-columns: 35px 1fr 2fr 2fr 45px;
   margin: 5px;
 }
 

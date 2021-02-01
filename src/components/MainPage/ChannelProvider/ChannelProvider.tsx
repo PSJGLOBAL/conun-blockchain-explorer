@@ -4,7 +4,6 @@ import { State } from "../../../utility/types"
 import * as actions from "../../../store/actions"
 // import { Redirect } from "react-router-dom"
 import { Disconnected } from "../../Disconnected/Disconnected"
-import { fromUnixTime } from "date-fns"
 
 type Props = {
   children: React.ReactNode

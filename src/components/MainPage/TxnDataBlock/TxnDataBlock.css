@@ -1,5 +1,9 @@
 .recent-txn-table {
-  grid-template-columns: 35px auto auto auto;
+  grid-template-columns: 35px 1fr 3fr 3fr;
+  margin: 5px;
+}
+.recent-txn-header {
+  grid-template-columns: 35px 1fr 3fr 3fr;
   margin: 5px;
 }
 

@@ -1,5 +1,4 @@
 import { LoadingIcon } from "../ui/LoadingIcon/LoadingIcon"
-import { memo } from "react"
 
 import "./SiteSection.css"
 

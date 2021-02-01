@@ -10,7 +10,6 @@ import {
 } from "../../../store/actions"
 
 import WebSocketProvider from "../../WebSocketProvider/WebSocketProvider"
-import { InfoBlock } from "../InfoBlock/InfoBlock"
 import { StatsBlock } from "../../../containers/StatsBlock/Statsblock"
 import { BlockDataBlock } from "../BlockDataBlock/BlockDataBlock"
 import { TxnDataBlock } from "../TxnDataBlock/TxnDataBlock"
@@ -64,6 +63,13 @@ export const InterfaceMain = () => {
           scrollable={true}
           loading={blockActivityData.length === 0}
         >
+          <div className="info-table recent-block-header">
+            <div className="table-header-cell"> </div>
+            <div className="table-header-cell">Num.</div>
+            <div className="table-header-cell">Hash</div>
+            <div className="table-header-cell">Time</div>
+            <div className="table-header-cell">Txns</div>
+          </div>
           {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
           {blockActivityData.map((i) => (
             <BlockDataBlock key={i.blockhash} data={{ ...i }} />
@@ -74,6 +80,12 @@ export const InterfaceMain = () => {
           scrollable={true}
           loading={txnActivityData.length === 0}
         >
+          <div className="info-table recent-txn-header">
+            <div className="table-header-cell"> </div>
+            <div className="table-header-cell">Contract</div>
+            <div className="table-header-cell">Hash</div>
+            <div className="table-header-cell">Time</div>
+          </div>
           {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
           {txnActivityData.map((i) => (
             <TxnDataBlock key={i.txhash} data={{ ...i }} />
