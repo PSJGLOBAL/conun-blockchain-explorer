@@ -7,15 +7,29 @@
   margin: 5px;
 }
 
+.recent-txn-contract-icon-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media only screen and (max-width: 1010px) and (min-width: 700px) {
   .recent-txn-table {
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 35px auto;
+  }
+  .recent-txn-contract-icon-col {
+    padding-left: 10px;
+    justify-content: flex-start;
   }
 }
 @media only screen and (max-width: 500px) {
   .recent-txn-table {
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 35px auto;
+  }
+  .recent-txn-contract-icon-col {
+    justify-content: flex-start;
+    padding-left: 10px;
   }
 }

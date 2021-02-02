@@ -48,7 +48,7 @@ export const TxnDataBlock = memo((props: Props) => {
         </div>
       </div>
 
-      <div className="info-table-col">
+      <div className="info-table-col recent-txn-contract-icon-col">
         {icon ? (
           icon
         ) : (

@@ -1,4 +1,4 @@
-import { AreaChart, Area } from "recharts"
+import { AreaChart, Area, CartesianGrid } from "recharts"
 import { ObjectType } from "../../../utility/types"
 
 type Props = {
@@ -10,6 +10,7 @@ export const TheGraph = (props: Props) => {
 
   return (
     <AreaChart width={640} height={120} data={data}>
+      <CartesianGrid width={630} height={110} />
       <Area
         type="monotone"
         dataKey="count"
