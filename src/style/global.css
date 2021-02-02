@@ -40,6 +40,25 @@ main {
   border-radius: var(--radius);
 }
 
+.section-table-link {
+  width: 100%;
+  height: 50px;
+
+  padding: 20px;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: var(--radius);
+
+  background-color: var(--hilite);
+
+  color: white;
+  text-decoration: none;
+}
+
 .loading-block {
   text-align: center;
   padding-top: 20px;

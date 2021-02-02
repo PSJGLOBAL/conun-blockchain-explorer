@@ -19,11 +19,7 @@ export const TxnActivitySection = (props: Props) => {
 
   return (
     <section className="section">
-      <div className="section-title">
-        <NavLink to={props.mainpage ? "/explorer/txns" : "/explorer"}>
-          Recent Transactions
-        </NavLink>
-      </div>
+      <div className="section-title">Recent Transactions</div>
       <div className="section-block">
         <div className="info-table recent-txn-header">
           <div className="table-header-cell"> </div>
@@ -35,6 +31,14 @@ export const TxnActivitySection = (props: Props) => {
         {txnActivityData.map((i) => (
           <TxnDataBlock key={i.txhash} data={{ ...i }} />
         ))}
+        <div>
+          <NavLink
+            className="section-table-link"
+            to={props.mainpage ? "/explorer/blocks" : "/explorer"}
+          >
+            View All Transactions
+          </NavLink>
+        </div>
       </div>
     </section>
   )
