@@ -17,7 +17,6 @@ export const SiteSection = (props: Props) => {
   }
   return (
     <section className="section">
-      <div className="section-title">{props.title}</div>
       {props.loading ? (
         <LoadingIcon />
       ) : (

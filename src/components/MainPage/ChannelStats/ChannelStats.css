@@ -18,3 +18,8 @@
   justify-content: flex-start;
   align-items: center;
 }
+
+.channel-stats-icon {
+  width: 50px;
+  height: auto;
+}

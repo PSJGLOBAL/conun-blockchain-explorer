@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import axios from "axios"
+import axios from "../../../axios/axiosinst"
 import { ObjectType, State } from "../../../utility/types"
+
+import { Modal } from "../../../ui/Modal/Modal"
 
 interface Props {
   clickHandler: () => void
@@ -15,9 +17,7 @@ export const TxnModal = (props: Props) => {
 
   useEffect(() => {
     axios
-      .get(
-        `http://192.168.100.105:8080/api/transaction/${activeChannelHash}/${props.txnID}`
-      )
+      .get(`/transaction/${activeChannelHash}/${props.txnID}`)
       .then((response) => {
         setTxnData(response.data.row)
       })
@@ -74,9 +74,5 @@ export const TxnModal = (props: Props) => {
     )
   }
 
-  return (
-    <div className="modal modal-background" onClick={props.clickHandler}>
-      <div className="modal modal-table info-table">{content}</div>
-    </div>
-  )
+  return <Modal onClose={props.clickHandler}>{content}</Modal>
 }

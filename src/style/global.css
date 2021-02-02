@@ -29,6 +29,29 @@ main {
   grid-template-columns: 1fr 1fr;
 }
 
+.section-title {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  background-color: var(--fore);
+  padding: 20px;
+  margin: 10px;
+  margin-bottom: 20px;
+  border-radius: var(--radius);
+}
+
+.loading-block {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.section-block {
+  background-color: var(--fore);
+  padding: 20px;
+  margin: 10px;
+  border-radius: var(--radius);
+}
+
 .modal {
   position: fixed;
   z-index: 5;
