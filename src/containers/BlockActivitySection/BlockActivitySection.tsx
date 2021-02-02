@@ -35,7 +35,7 @@ export const BlockActivitySection = (props: Props) => {
         <div>
           <NavLink
             className="section-table-link"
-            to={props.mainpage ? "/explorer/blocks" : "/explorer"}
+            to={props.mainpage ? "/blocks" : "/"}
           >
             View All Blocks
           </NavLink>

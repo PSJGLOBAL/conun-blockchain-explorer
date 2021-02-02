@@ -34,7 +34,7 @@ export const TxnActivitySection = (props: Props) => {
         <div>
           <NavLink
             className="section-table-link"
-            to={props.mainpage ? "/explorer/blocks" : "/explorer"}
+            to={props.mainpage ? "/txns" : "/"}
           >
             View All Transactions
           </NavLink>

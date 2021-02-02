@@ -3,7 +3,7 @@ import { InterfaceMain } from "./components/MainPage/InterfaceMain/InterfaceMain
 import { Disconnected } from "./components/Disconnected/Disconnected"
 import { HeadBar } from "./ui/HeadBar/HeadBar"
 
-import { Route, Switch, Redirect } from "react-router-dom"
+import { Route, Switch } from "react-router-dom"
 
 function App() {
   return (
@@ -11,9 +11,8 @@ function App() {
       <HeadBar />
       <HeadBlock />
       <Switch>
-        <Route path="/explorer" component={InterfaceMain} />
         <Route path="/disconnected" component={Disconnected} />
-        <Redirect from="/" to="/explorer" />
+        <Route path="/" component={InterfaceMain} />
       </Switch>
     </div>
   )

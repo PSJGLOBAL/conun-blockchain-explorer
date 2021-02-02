@@ -39,10 +39,10 @@ export const InterfaceMain = () => {
       <WebSocketProvider />
       <StatsBlock />
       <Switch>
-        <Route path="/explorer/blocks" component={BlockActivitySection} />
-        <Route path="/explorer/txns" component={TxnActivitySection} />
+        <Route path="/blocks" component={BlockActivitySection} />
+        <Route path="/txns" component={TxnActivitySection} />
         <Route
-          path="/explorer"
+          path="/"
           exact
           render={() => {
             return (
