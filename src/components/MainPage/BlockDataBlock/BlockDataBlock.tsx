@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import { formatDistanceToNowStrict } from "date-fns"
 
 import { BlockModal } from "../BlockModal/BlockModal"
@@ -25,8 +25,6 @@ export const BlockDataBlock = (props: Props) => {
     console.log("MODAL: Open")
     setShowModal(true)
   }
-
-  console.log("MODAL: verify state: ", showModal)
 
   return (
     <div className="info-table recent-block-table">
