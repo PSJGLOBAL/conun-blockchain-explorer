@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux"
 import { State } from "../../../utility/types"
 import "./ChannelStats.css"
-import blocksIcon from "../../../style/blocks-icon.svg"
-import txnIcon from "../../../style/txn-icon.svg"
+import blocksIcon from "../../../style/images/blocks-icon.svg"
+import txnIcon from "../../../style/images/txn-icon.svg"
 
 export const ChannelStats = () => {
   const channelStats = useSelector((state: State) => state.basic.channelStats)

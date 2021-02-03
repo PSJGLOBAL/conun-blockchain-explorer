@@ -1,6 +1,6 @@
-/* .section {
-  
-} */
+.section {
+  transition: width 2s;
+}
 .section-title {
   display: flex;
   align-items: center;

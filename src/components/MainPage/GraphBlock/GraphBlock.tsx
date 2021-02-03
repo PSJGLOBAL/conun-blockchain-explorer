@@ -18,26 +18,24 @@ export const GraphBlock = () => {
   useEffect(() => {
     switch (graphMode) {
       case "txn-hour":
-        axios.get(`/txByHour/{${activeChannelHash}}/1`).then((response) => {
+        axios.get(`/txByHour/${activeChannelHash}/1`).then((response) => {
           setGraphData(response.data.rows)
         })
         break
       case "txn-min":
-        axios.get(`/txByMinute/{${activeChannelHash}}/1`).then((response) => {
+        axios.get(`/txByMinute/${activeChannelHash}/1`).then((response) => {
           setGraphData(response.data.rows)
         })
         break
       case "block-hour":
-        axios.get(`/blocksByHour/{${activeChannelHash}}/1`).then((response) => {
+        axios.get(`blocksByHour/${activeChannelHash}/1`).then((response) => {
           setGraphData(response.data.rows)
         })
         break
       case "block-min":
-        axios
-          .get(`/blocksByMinute/{${activeChannelHash}}/1`)
-          .then((response) => {
-            setGraphData(response.data.rows)
-          })
+        axios.get(`/blocksByMinute/${activeChannelHash}/1`).then((response) => {
+          setGraphData(response.data.rows)
+        })
         break
       default:
         console.error("GRAPHMODE: Error")

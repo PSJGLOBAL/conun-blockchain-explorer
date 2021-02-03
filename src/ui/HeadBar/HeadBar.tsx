@@ -1,5 +1,5 @@
 import "./HeadBar.css"
-import logo from "../../style/conun-logo.svg"
+import logo from "../../style/images/conun-logo.svg"
 
 export const HeadBar = () => {
   return (

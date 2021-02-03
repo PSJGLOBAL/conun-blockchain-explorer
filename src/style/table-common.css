@@ -33,6 +33,7 @@
   padding: 5px 5px 1px 5px; /* The icon has its own padding underneath :S*/
   /* background-color: var(--fore); */
   border-radius: 5px;
+  cursor: pointer;
 }
 .info-table-txcount-cell {
   background-color: var(--bkg);

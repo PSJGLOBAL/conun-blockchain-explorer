@@ -12,6 +12,8 @@
   padding: 1px;
   /* margin: 2px; */
   text-align: center;
+  font-weight: bold;
+  user-select: none;
   border-radius: 0 0 var(--radius) var(--radius);
 }
 
