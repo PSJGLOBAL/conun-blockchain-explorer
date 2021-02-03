@@ -22,7 +22,7 @@ function WebSocketProvider() {
     if (socket === null && activeChannelHash !== "") {
       console.log("Websocket: Initialising...")
       const newSocket = new W3CWebsocket(
-        `ws://192.168.100.105:8080/api/blockActivity/${activeChannelHash}`
+        `ws://192.168.100.105:8081/api/blockActivity/${activeChannelHash}`
       )
       setSocket(newSocket)
     }

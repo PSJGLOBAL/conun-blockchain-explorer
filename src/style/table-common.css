@@ -3,6 +3,17 @@
   margin: 5px;
   padding: 5px;
   border-top: 1px solid var(--bkg);
+  border-radius: var(--radius);
+  animation: appear 2s forwards;
+}
+
+@keyframes appear {
+  0% {
+    background-color: var(--hilite);
+  }
+  100% {
+    background-color: var(--fore);
+  }
 }
 
 .info-table:first-of-type {
