@@ -7,6 +7,7 @@ type Props = {
 
 export const TheGraph = (props: Props) => {
   const { data } = props
+  console.log(data)
 
   return (
     <AreaChart width={640} height={120} data={data}>

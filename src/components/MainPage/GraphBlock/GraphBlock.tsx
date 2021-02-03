@@ -16,17 +16,38 @@ export const GraphBlock = () => {
   const [graphData, setGraphData] = useState<Array<ObjectType>>([])
 
   useEffect(() => {
-    if (graphMode === "txn-min") {
-      axios.get(`/txByMinute/{${activeChannelHash}}/1`).then((response) => {
-        setGraphData(response.data.rows)
-      })
+    switch (graphMode) {
+      case "txn-hour":
+        axios.get(`/txByHour/{${activeChannelHash}}/1`).then((response) => {
+          setGraphData(response.data.rows)
+        })
+        break
+      case "txn-min":
+        axios.get(`/txByMinute/{${activeChannelHash}}/1`).then((response) => {
+          setGraphData(response.data.rows)
+        })
+        break
+      case "block-hour":
+        axios.get(`/blocksByHour/{${activeChannelHash}}/1`).then((response) => {
+          setGraphData(response.data.rows)
+        })
+        break
+      case "block-min":
+        axios
+          .get(`/blocksByMinute/{${activeChannelHash}}/1`)
+          .then((response) => {
+            setGraphData(response.data.rows)
+          })
+        break
+      default:
+        console.error("GRAPHMODE: Error")
     }
   }, [activeChannelHash, graphMode])
 
   return (
     <div className="section-block">
       <TheGraph data={graphData} />
-      <GraphControls />
+      <GraphControls clickHandler={setGraphMode} active={graphMode} />
     </div>
   )
 }

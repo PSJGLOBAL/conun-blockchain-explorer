@@ -38,26 +38,23 @@ export const BlockDataBlock = (props: Props) => {
         </div>
       </div>
       <div className="info-table-col">
-        <span className="font-hilite">B:</span>
-        <span>{props.data.blocknum}</span>
+        <span className="font-hilite">{props.data.blocknum}</span>
       </div>
       <div className="info-table-col">
-        <span className="font-hilite">#:</span>
         <span data-tip={props.data.blockhash}>
           {truncate(props.data.blockhash.toString())}
         </span>
       </div>
       <div className="info-table-col">
-        <span className="font-hilite">T:</span>
-        <span data-tip={props.data.createdt}>
+        <span className="font-hilite" data-tip={props.data.createdt}>
           {formatDistanceToNowStrict(new Date(props.data.createdt))} ago
         </span>
       </div>
 
       <div className="info-table-col info-table-txcount-col">
         <div className="info-table-txcount-cell">
-          <span className="font-hilite">Tx:</span>
-          <span>{props.data.txcount}</span>
+          {/* <span>Tx:</span> */}
+          <span className="font-hilite">{props.data.txcount}</span>
         </div>
       </div>
 

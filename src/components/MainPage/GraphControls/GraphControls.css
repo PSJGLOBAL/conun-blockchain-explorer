@@ -1,6 +1,21 @@
 .graph-controls-table {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
 
-  margin: 5px;
+  /* margin: 5px; */
+  cursor: pointer;
+}
+
+.graph-controls-tab {
+  height: 110%;
+  width: 100%;
+  padding: 1px;
+  /* margin: 2px; */
+  text-align: center;
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.graph-controls-active {
+  background-color: var(--hilite);
+  color: white;
 }

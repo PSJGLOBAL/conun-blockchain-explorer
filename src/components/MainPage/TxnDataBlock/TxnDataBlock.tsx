@@ -53,7 +53,6 @@ export const TxnDataBlock = memo((props: Props) => {
           icon
         ) : (
           <>
-            <span className="font-hilite">C:</span>
             <span data-tip={props.data.chaincodename}>
               {props.data.chaincodename}
             </span>
@@ -61,14 +60,12 @@ export const TxnDataBlock = memo((props: Props) => {
         )}
       </div>
       <div className="info-table-col">
-        <span className="font-hilite">#:</span>
         <span data-tip={props.data.txhash}>
           {truncate(props.data.txhash.toString())}
         </span>
       </div>
       <div className="info-table-col">
-        <span className="font-hilite">T:</span>
-        <span data-tip={props.data.createdt}>
+        <span className="font-hilite" data-tip={props.data.createdt}>
           {formatDistanceToNowStrict(new Date(props.data.createdt))} ago
         </span>
       </div>

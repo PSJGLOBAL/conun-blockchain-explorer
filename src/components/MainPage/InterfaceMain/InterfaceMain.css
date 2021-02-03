@@ -28,3 +28,6 @@ main {
 .table-header-txn {
   grid-template-columns: 35px 1fr 3fr 3fr;
 }
+.table-header-cell {
+  text-align: center;
+}
