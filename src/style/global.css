@@ -2,6 +2,7 @@ body {
   --bkg: #f0efef;
   --fore: #fff;
   --hilite: #e95654;
+  --hihover: #ee6c6a;
   --font: #000000;
   --radius: 10px;
 
@@ -32,12 +33,19 @@ main {
 .section-title {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 50px;
   background-color: var(--fore);
   padding: 20px;
   margin: 10px;
   margin-bottom: 20px;
   border-radius: var(--radius);
+}
+.section-title span {
+  font-size: 22px;
+  font-weight: bolder;
+
+  padding: 5px 20px;
 }
 
 .section-table-link {
@@ -57,6 +65,9 @@ main {
 
   color: white;
   text-decoration: none;
+}
+.section-table-link:hover {
+  background-color: var(--hihover);
 }
 
 .loading-block {

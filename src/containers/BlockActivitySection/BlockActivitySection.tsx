@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom"
 import { useSelector } from "react-redux"
 
 import { BlockDataBlock } from "../../components/MainPage/BlockDataBlock/BlockDataBlock"
+import { PaginationMenu } from "../../components/MainPage/PaginationMenu/PaginationMenu"
 
 import "../../components/MainPage/InterfaceMain/InterfaceMain.css"
 
@@ -19,7 +20,10 @@ export const BlockActivitySection = (props: Props) => {
 
   return (
     <section className="section">
-      <div className="section-title">Recent Blocks</div>
+      <div className="section-title">
+        <span>Recent Blocks</span>
+        {!props.mainpage && <PaginationMenu />}
+      </div>
       <div className="section-block">
         <div className="info-table recent-block-header">
           <div className="table-header-cell"> </div>

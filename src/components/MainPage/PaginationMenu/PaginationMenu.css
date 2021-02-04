@@ -1,0 +1,32 @@
+.pagination-container {
+  display: flex;
+}
+
+.pagination-button {
+  height: 20px;
+  margin: 2px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--hilite);
+  border-radius: 5px;
+  padding: 7px;
+}
+
+.pagination-button:hover {
+  background-color: var(--hihover);
+}
+.pagination-text-cell {
+  width: 50px;
+}
+
+.pagination-icon-cell {
+  width: 30px;
+}
+
+.pagination-icon {
+  font-size: 20pt;
+  color: white;
+}

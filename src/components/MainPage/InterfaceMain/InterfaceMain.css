@@ -3,14 +3,6 @@ main {
   box-sizing: border-box;
 }
 
-.section-title {
-  font-size: 22px;
-  font-weight: bolder;
-
-  padding: 5px 20px;
-  /* background-color: aqua; */
-}
-
 .block-scrollable {
   max-height: 560px;
   overflow-y: auto;
