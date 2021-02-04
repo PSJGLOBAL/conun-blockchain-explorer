@@ -12,16 +12,6 @@ export const GraphControls = (props: Props) => {
     <div className="graph-controls-table">
       <div
         className={
-          active === "txn-hour"
-            ? "graph-controls-tab graph-controls-active"
-            : "graph-controls-tab"
-        }
-        onClick={() => clickHandler("txn-hour")}
-      >
-        Tx/Hour
-      </div>
-      <div
-        className={
           active === "txn-min"
             ? "graph-controls-tab graph-controls-active"
             : "graph-controls-tab"
@@ -32,13 +22,13 @@ export const GraphControls = (props: Props) => {
       </div>
       <div
         className={
-          active === "block-hour"
+          active === "txn-hour"
             ? "graph-controls-tab graph-controls-active"
             : "graph-controls-tab"
         }
-        onClick={() => clickHandler("block-hour")}
+        onClick={() => clickHandler("txn-hour")}
       >
-        Blocks/Hour
+        Tx/Hour
       </div>
       <div
         className={
@@ -49,6 +39,16 @@ export const GraphControls = (props: Props) => {
         onClick={() => clickHandler("block-min")}
       >
         Blocks/Min
+      </div>
+      <div
+        className={
+          active === "block-hour"
+            ? "graph-controls-tab graph-controls-active"
+            : "graph-controls-tab"
+        }
+        onClick={() => clickHandler("block-hour")}
+      >
+        Blocks/Hour
       </div>
     </div>
   )

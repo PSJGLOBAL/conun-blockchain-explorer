@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react"
+import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import axios from "../../../axios/axiosinst"
 import { ObjectType, State } from "../../../utility/types"
@@ -34,11 +34,8 @@ export const BlockModal = (props: Props) => {
   if (blockData) {
     content = (
       <>
-        <div className="modal-row">
-          <div className="info-col info-key"></div>
-          <div className="info-col info-val">
-            <h4>Block Details</h4>
-          </div>
+        <div className="modal-header">
+          <h2>Block Details</h2>
         </div>
         <div className="modal-row">
           <div className="info-col info-key">Block Number:</div>

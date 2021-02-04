@@ -71,24 +71,6 @@ main {
   border-radius: var(--radius);
 }
 
-.modal {
-  position: fixed;
-  z-index: 5;
-}
-/* .modal-table {
-} */
-
-.modal-background {
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(153, 153, 153, 0.9);
-}
-
 .font-hilite {
   color: var(--hilite);
 }

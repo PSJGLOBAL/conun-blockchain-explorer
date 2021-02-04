@@ -15,6 +15,14 @@ export const ExplorerInfoBlock = () => {
           </span>
         </div>
       </div>
+      <div className="section-block app-service-table">
+        <div className="font-hilite">
+          <span>Other services? idk</span>
+          <span className="app-service-icons">
+            <i className="fas fa-hdd font-hilite"></i>
+          </span>
+        </div>
+      </div>
     </div>
   )
 }

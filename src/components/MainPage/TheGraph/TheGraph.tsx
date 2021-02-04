@@ -1,4 +1,11 @@
-import { AreaChart, Area, CartesianGrid, XAxis, YAxis } from "recharts"
+import {
+  AreaChart,
+  Area,
+  CartesianGrid,
+  CartesianAxis,
+  XAxis,
+  YAxis,
+} from "recharts"
 import { ObjectType } from "../../../utility/types"
 import { format } from "date-fns"
 
@@ -11,6 +18,7 @@ export const TheGraph = (props: Props) => {
   const timeAgoData = data.map((i) => {
     return {
       ...i,
+      count: Number(i.count),
       datetime: format(new Date(i.datetime.toString()), "kk:mm"),
     }
   })
@@ -18,8 +26,14 @@ export const TheGraph = (props: Props) => {
   return (
     <AreaChart width={580} height={240} data={timeAgoData}>
       <CartesianGrid width={560} height={200} />
-      <XAxis dataKey="datetime" interval="preserveStartEnd" />
-      <YAxis dataKey="count" />
+      <CartesianAxis width={560} height={200} />
+      <XAxis id="xaxis" dataKey="datetime" interval="preserveStartEnd" />
+      <YAxis
+        id="yaxis"
+        type="number"
+        dataKey="count"
+        interval="preserveStartEnd"
+      />
       <Area
         type="monotone"
         dataKey="count"

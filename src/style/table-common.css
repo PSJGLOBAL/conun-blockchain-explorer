@@ -21,7 +21,7 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10%);
+    transform: translateY(-15%);
   }
   80% {
     transform: translateY(0);
@@ -66,18 +66,6 @@
 }
 .info-table-txcount-cell {
   background-color: var(--bkg);
-}
-
-.modal-table {
-  background-color: var(--fore);
-  border-radius: var(--radius);
-  /* width: 400px; */
-}
-
-.modal-row {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  margin: 10px;
 }
 
 @media only screen and (max-width: 1010px) and (min-width: 700px) {

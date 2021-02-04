@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react"
+import { useState } from "react"
 import { formatDistanceToNowStrict } from "date-fns"
 
 import { BlockModal } from "../BlockModal/BlockModal"

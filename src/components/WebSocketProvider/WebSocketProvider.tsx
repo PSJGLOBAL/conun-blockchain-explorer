@@ -39,9 +39,9 @@ function WebSocketProvider() {
 
       const { txdata, notify_type, ...socketBlocks } = socketData
       console.log("Websocket: ", txdata)
-      // const socketTxns = txdata
+      const socketTxns = txdata
       dispatch(actions.addNewBlock(blockActivityData, socketBlocks))
-      // dispatch(actions.addNewTxns(txnActivityData, socketTxns))
+      dispatch(actions.addNewTxns(txnActivityData, socketTxns))
     }
   }
 

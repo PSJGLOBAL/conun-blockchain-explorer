@@ -36,7 +36,6 @@ export const InterfaceMain = () => {
 
   return (
     <main>
-      <WebSocketProvider />
       <StatsBlock />
       <Switch>
         <Route path="/blocks" component={BlockActivitySection} />
@@ -46,10 +45,13 @@ export const InterfaceMain = () => {
           exact
           render={() => {
             return (
-              <div className="splitcolumns">
-                <BlockActivitySection mainpage={true} />
-                <TxnActivitySection mainpage={true} />
-              </div>
+              <>
+                <WebSocketProvider />
+                <div className="splitcolumns">
+                  <BlockActivitySection mainpage={true} />
+                  <TxnActivitySection mainpage={true} />
+                </div>
+              </>
             )
           }}
         />

@@ -34,11 +34,8 @@ export const TxnModal = (props: Props) => {
   if (txnData) {
     content = (
       <>
-        <div className="modal-row">
-          <div className="info-col info-key"></div>
-          <div className="info-col info-val">
-            <h4>Transaction Details</h4>
-          </div>
+        <div className="modal-header">
+          <h2>Transaction Details</h2>
         </div>
         <div className="modal-row">
           <div className="info-col info-key">Transaction Hash:</div>
