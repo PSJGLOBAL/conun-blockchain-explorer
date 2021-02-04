@@ -27,44 +27,46 @@ export const BlockDataBlock = (props: Props) => {
   }
 
   return (
-    <div className="info-table recent-block-table">
-      <div className="info-table-col info-table-icon-col" onClick={openModal}>
-        <div className="info-table-icon-cell">
-          <Identicon
-            fg="#ffffff"
-            size={15}
-            string={props.data.blockhash.toString()}
+    <div className="info-table-row">
+      <div className="info-table recent-block-table table-animate">
+        <div className="info-table-col info-table-icon-col" onClick={openModal}>
+          <div className="info-table-icon-cell">
+            <Identicon
+              fg="#ffffff"
+              size={15}
+              string={props.data.blockhash.toString()}
+            />
+          </div>
+        </div>
+        <div className="info-table-col">
+          <span className="font-hilite">{props.data.blocknum}</span>
+        </div>
+        <div className="info-table-col">
+          <span data-tip={props.data.blockhash}>
+            {truncate(props.data.blockhash.toString())}
+          </span>
+        </div>
+        <div className="info-table-col">
+          <span className="font-hilite" data-tip={props.data.createdt}>
+            {formatDistanceToNowStrict(new Date(props.data.createdt))} ago
+          </span>
+        </div>
+
+        <div className="info-table-col info-table-txcount-col">
+          <div className="info-table-txcount-cell">
+            {/* <span>Tx:</span> */}
+            <span className="font-hilite">{props.data.txcount}</span>
+          </div>
+        </div>
+
+        {showModal === true ? (
+          <BlockModal
+            blocknum={props.data.blocknum.toString()}
+            clickHandler={closeModal}
           />
-        </div>
+        ) : null}
+        <ReactTooltip />
       </div>
-      <div className="info-table-col">
-        <span className="font-hilite">{props.data.blocknum}</span>
-      </div>
-      <div className="info-table-col">
-        <span data-tip={props.data.blockhash}>
-          {truncate(props.data.blockhash.toString())}
-        </span>
-      </div>
-      <div className="info-table-col">
-        <span className="font-hilite" data-tip={props.data.createdt}>
-          {formatDistanceToNowStrict(new Date(props.data.createdt))} ago
-        </span>
-      </div>
-
-      <div className="info-table-col info-table-txcount-col">
-        <div className="info-table-txcount-cell">
-          {/* <span>Tx:</span> */}
-          <span className="font-hilite">{props.data.txcount}</span>
-        </div>
-      </div>
-
-      {showModal === true ? (
-        <BlockModal
-          blocknum={props.data.blocknum.toString()}
-          clickHandler={closeModal}
-        />
-      ) : null}
-      <ReactTooltip />
     </div>
   )
 }

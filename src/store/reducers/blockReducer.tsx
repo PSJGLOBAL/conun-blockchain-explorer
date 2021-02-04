@@ -46,7 +46,7 @@ const blockReducer = (state = initialState, action: Action) => {
 
       return {
         ...state,
-        blockActivityData: updatedBlockData,
+        blockActivityData: updatedBlockData.slice(0, 10), // Keep only 10 blocks in the table
       }
     default:
       return {

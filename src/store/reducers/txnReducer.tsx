@@ -46,7 +46,7 @@ const txnReducer = (state = initialState, action: Action) => {
 
       return {
         ...state,
-        txnActivityData: updatedTxnData,
+        txnActivityData: updatedTxnData.slice(0, 10), //maintain only 10 blocks on this page
       }
 
     default:

@@ -37,45 +37,47 @@ export const TxnDataBlock = memo((props: Props) => {
     )
   }
   return (
-    <div className="info-table recent-txn-table">
-      <div className="info-table-col info-table-icon-col" onClick={openModal}>
-        <div className="info-table-icon-cell">
-          <Identicon
-            fg="#ffffff"
-            size={15}
-            string={props.data.txhash.toString()}
-          />
+    <div className="info-table-row">
+      <div className="info-table recent-txn-table table-animate">
+        <div className="info-table-col info-table-icon-col" onClick={openModal}>
+          <div className="info-table-icon-cell">
+            <Identicon
+              fg="#ffffff"
+              size={15}
+              string={props.data.txhash.toString()}
+            />
+          </div>
         </div>
-      </div>
 
-      <div className="info-table-col recent-txn-contract-icon-col">
-        {icon ? (
-          icon
-        ) : (
-          <>
-            <span data-tip={props.data.chaincodename}>
-              {props.data.chaincodename}
-            </span>
-          </>
+        <div className="info-table-col recent-txn-contract-icon-col">
+          {icon ? (
+            icon
+          ) : (
+            <>
+              <span data-tip={props.data.chaincodename}>
+                {props.data.chaincodename}
+              </span>
+            </>
+          )}
+        </div>
+        <div className="info-table-col">
+          <span data-tip={props.data.txhash}>
+            {truncate(props.data.txhash.toString())}
+          </span>
+        </div>
+        <div className="info-table-col">
+          <span className="font-hilite" data-tip={props.data.createdt}>
+            {formatDistanceToNowStrict(new Date(props.data.createdt))} ago
+          </span>
+        </div>
+        {showModal && (
+          <TxnModal
+            txnID={props.data.txhash.toString()}
+            clickHandler={closeModal}
+          />
         )}
+        <ReactTooltip />
       </div>
-      <div className="info-table-col">
-        <span data-tip={props.data.txhash}>
-          {truncate(props.data.txhash.toString())}
-        </span>
-      </div>
-      <div className="info-table-col">
-        <span className="font-hilite" data-tip={props.data.createdt}>
-          {formatDistanceToNowStrict(new Date(props.data.createdt))} ago
-        </span>
-      </div>
-      {showModal && (
-        <TxnModal
-          txnID={props.data.txhash.toString()}
-          clickHandler={closeModal}
-        />
-      )}
-      <ReactTooltip />
     </div>
   )
 })
