@@ -15,9 +15,11 @@ export const Modal = (props: Props) => {
   return (
     <div
       className="modal modal-background"
-      onClick={() => props.onClose()}
-      onKeyDown={(e) => {
-        console.log(e.key)
+      onClick={(e) => {
+        const classes = (e.target as Element).classList
+        if (classes.contains("modal-background")) {
+          props.onClose()
+        }
       }}
     >
       <div className="modal modal-table">{props.children}</div>

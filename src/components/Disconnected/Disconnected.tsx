@@ -10,7 +10,7 @@ export const Disconnected = () => {
       <div className="app">
         <HeadBlock />
         <main className="disconnected">
-          No channels could be found. Perhaps your server is down?
+          No channels could be found. If the server is down, contact Aziz.
         </main>
       </div>
     </>

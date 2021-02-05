@@ -34,14 +34,18 @@ export const BlockActivitySection = (props: Props) => {
         </div>
         {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
         {blockActivityData.map((i) => (
-          <BlockDataBlock key={i.blockhash} data={{ ...i }} />
+          <BlockDataBlock
+            key={i.blockhash}
+            mainpage={props.mainpage}
+            data={{ ...i }}
+          />
         ))}
         <div>
           <NavLink
             className="section-table-link"
             to={props.mainpage ? "/blocks" : "/"}
           >
-            View All Blocks
+            {props.mainpage ? "View More Blocks" : "Back To Home"}
           </NavLink>
         </div>
       </div>

@@ -1,5 +1,5 @@
 body {
-  --bkg: #f0efef;
+  --bkg: #eef0f6;
   --fore: #fff;
   --hilite: #e95654;
   --hihover: #ee6c6a;
@@ -10,7 +10,7 @@ body {
   display: flex;
   justify-content: center;
 
-  background: #efefef;
+  background: var(--bkg);
 
   font-family: sans-serif;
 }
@@ -34,16 +34,16 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 50px;
+  height: 10px;
   background-color: var(--fore);
-  padding: 20px;
-  margin: 10px;
-  margin-bottom: 20px;
-  border-radius: var(--radius);
+  padding: 20px 20px 0 20px;
+  margin: 10px 10px 0 10px;
+  margin-bottom: 0px;
+  border-radius: var(--radius) var(--radius) 0 0;
 }
 .section-title span {
-  font-size: 22px;
-  font-weight: bolder;
+  font-size: 16px;
+  font-weight: bold;
 
   padding: 5px 20px;
 }
@@ -78,8 +78,8 @@ main {
 .section-block {
   background-color: var(--fore);
   padding: 20px;
-  margin: 10px;
-  border-radius: var(--radius);
+  margin: 0 10px 10px 10px;
+  border-radius: 0 0 var(--radius) var(--radius);
 }
 
 .font-hilite {

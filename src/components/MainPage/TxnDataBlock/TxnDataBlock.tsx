@@ -11,6 +11,7 @@ import ReactTooltip from "react-tooltip"
 import "./TxnDataBlock.css"
 import "../../../style/table-common.css"
 interface Props {
+  mainpage?: true
   data: ObjectType
 }
 
@@ -41,11 +42,7 @@ export const TxnDataBlock = memo((props: Props) => {
       <div className="info-table recent-txn-table table-animate">
         <div className="info-table-col info-table-icon-col" onClick={openModal}>
           <div className="info-table-icon-cell">
-            <Identicon
-              fg="#ffffff"
-              size={15}
-              string={props.data.txhash.toString()}
-            />
+            <Identicon size={15} string={props.data.txhash.toString()} />
           </div>
         </div>
 
@@ -61,8 +58,13 @@ export const TxnDataBlock = memo((props: Props) => {
           )}
         </div>
         <div className="info-table-col">
-          <span data-tip={props.data.txhash}>
-            {truncate(props.data.txhash.toString())}
+          <span
+            className="info-table-content-span"
+            data-tip={props.data.txhash}
+          >
+            {props.mainpage
+              ? truncate(props.data.txhash.toString())
+              : props.data.txhash.toString()}
           </span>
         </div>
         <div className="info-table-col">

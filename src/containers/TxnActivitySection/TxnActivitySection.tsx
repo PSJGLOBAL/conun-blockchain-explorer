@@ -33,14 +33,18 @@ export const TxnActivitySection = (props: Props) => {
         </div>
         {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
         {txnActivityData.map((i) => (
-          <TxnDataBlock key={i.txhash} data={{ ...i }} />
+          <TxnDataBlock
+            key={i.txhash}
+            mainpage={props.mainpage}
+            data={{ ...i }}
+          />
         ))}
         <div>
           <NavLink
             className="section-table-link"
             to={props.mainpage ? "/txns" : "/"}
           >
-            View All Transactions
+            {props.mainpage ? "View More Transactions" : "Back To Home"}
           </NavLink>
         </div>
       </div>

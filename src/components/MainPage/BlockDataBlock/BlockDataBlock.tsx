@@ -10,6 +10,7 @@ import ReactTooltip from "react-tooltip"
 import "./BlockDataBlock.css"
 
 interface Props {
+  mainpage?: true
   data: ObjectType
 }
 
@@ -31,11 +32,7 @@ export const BlockDataBlock = (props: Props) => {
       <div className="info-table recent-block-table table-animate">
         <div className="info-table-col info-table-icon-col" onClick={openModal}>
           <div className="info-table-icon-cell">
-            <Identicon
-              fg="#ffffff"
-              size={15}
-              string={props.data.blockhash.toString()}
-            />
+            <Identicon size={15} string={props.data.blockhash.toString()} />
           </div>
         </div>
         <div className="info-table-col">
@@ -43,7 +40,9 @@ export const BlockDataBlock = (props: Props) => {
         </div>
         <div className="info-table-col">
           <span data-tip={props.data.blockhash}>
-            {truncate(props.data.blockhash.toString())}
+            {props.mainpage
+              ? truncate(props.data.blockhash.toString())
+              : props.data.blockhash.toString()}
           </span>
         </div>
         <div className="info-table-col">

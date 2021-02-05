@@ -1,5 +1,6 @@
 .pagination-container {
   display: flex;
+  user-select: none;
 }
 
 .pagination-button {
