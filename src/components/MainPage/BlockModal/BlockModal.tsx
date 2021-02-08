@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import axios from "../../../axios/axiosinst"
-import { ObjectType, State } from "../../../utility/types"
+import { State } from "../../../utility/types"
 
 import { Modal } from "../../../ui/Modal/Modal"
 
@@ -11,15 +11,16 @@ interface Props {
 }
 
 export const BlockModal = (props: Props) => {
-  const [blockData, setBlockData] = useState<ObjectType>({})
+  const [blockData, setBlockData] = useState<any>(null)
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
   const activeChannelHash = activeChannel.channel_genesis_hash
 
   useEffect(() => {
     axios
-      .get(`/block/${activeChannelHash}/${props.blocknum}`)
+      .get(`/block/transactions/${activeChannelHash}/${props.blocknum}`)
       .then((response) => {
-        setBlockData(response.data)
+        console.log("BLOCK MODAL: Data: ", response.data.data)
+        setBlockData(response.data.data)
       })
       .catch((e) => console.error(e))
   }, [activeChannelHash, props.blocknum])
@@ -32,6 +33,7 @@ export const BlockModal = (props: Props) => {
   )
 
   if (blockData) {
+    const txContent = blockData.txhash.map((t: string) => <div>{t}</div>)
     content = (
       <>
         <div className="modal-header">
@@ -39,27 +41,29 @@ export const BlockModal = (props: Props) => {
         </div>
         <div className="modal-row">
           <div className="info-col info-key">Block Number:</div>
-          <div className="info-col info-val">{blockData.number}</div>
+          <div className="info-col info-val">{blockData.blocknum}</div>
+        </div>
+        <div className="modal-row">
+          <div className="info-col info-key">Block Number:</div>
+          <div className="info-col info-val">{blockData.blksize}</div>
         </div>
         <div className="modal-row">
           <div className="info-col info-key">Block Hash:</div>
-          <div className="info-col info-val">
-            {"This data is not yet available"}
-          </div>
+          <div className="info-col info-val">{blockData.blockhash}</div>
         </div>
         <div className="modal-row">
           <div className="info-col info-key">Data Hash:</div>
-          <div className="info-col info-val">{blockData.data_hash}</div>
+          <div className="info-col info-val">{blockData.datahash}</div>
         </div>
         <div className="modal-row">
           <div className="info-col info-key">Previous Hash:</div>
-          <div className="info-col info-val">{blockData.previous_hash}</div>
+          <div className="info-col info-val">{blockData.prehash}</div>
         </div>
         <div className="modal-row">
-          <div className="info-col info-key">Transactions:</div>
-          <div className="info-col info-val">
-            {"This data is not yet available"}
+          <div className="info-col info-key">
+            Transactions: {blockData.txcount}
           </div>
+          <div className="info-col info-val">{txContent}</div>
         </div>
       </>
     )
