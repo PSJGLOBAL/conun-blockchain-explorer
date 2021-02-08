@@ -74,38 +74,14 @@ export const TxnDataBlock = memo((props: Props) => {
             {formatDistanceToNowStrict(new Date(props.data.createdt))} ago
           </span>
         </div>
-        {showModal && (
-          <TxnModal
-            txnID={props.data.txhash.toString()}
-            clickHandler={closeModal}
-          />
-        )}
-        <ReactTooltip />
       </div>
+      {showModal && (
+        <TxnModal
+          txnID={props.data.txhash.toString()}
+          clickHandler={closeModal}
+        />
+      )}
+      <ReactTooltip backgroundColor="#e95654" />
     </div>
   )
 })
-
-// <div className="info-table-outer txn-data-table">
-//       <div className="info-table-icon">
-//         <Identicon size={15} string={props.data.txhash.toString()} />
-//       </div>
-//       <div
-//         className="info-table txn-data-table"
-//         onClick={() => setShowModal(true)}
-//       >
-//         <div className="info-table-row block-txn-row">
-//           <div className="info-col info-key">Transaction Hash:</div>
-//           <div className="info-col info-val">
-//             {truncate(props.data.txhash.toString())}
-//           </div>
-//         </div>
-//         <div className="info-table-row block-txn-row">
-//           <div className="info-col info-key">Contract:</div>
-//           <div className="info-col info-val">{props.data.chaincodename}</div>
-//         </div>
-//         <div className="info-table-row block-txn-row">
-//           <div className="info-col info-key">Created At:</div>
-//           <div className="info-col info-val">{props.data.createdt}</div>
-//         </div>
-//       </div>

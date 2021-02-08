@@ -38,25 +38,6 @@ export const InterfaceMain = () => {
     <main>
       <StatsBlock />
       <div className="splitcolumns">
-        {/* <Switch>
-        <Route path="/blocks" component={BlockActivitySection} />
-        <Route path="/txns" component={TxnActivitySection} />
-        <Route
-          path="/"
-          exact
-          render={() => {
-            return (
-              <>
-                <WebSocketProvider />
-                <div className="splitcolumns">
-                  <BlockActivitySection mainpage={true} />
-                  <TxnActivitySection mainpage={true} />
-                </div>
-              </>
-            )
-          }}
-        />
-      </Switch> */}
         <Route path="/" exact component={WebSocketProvider} />
         <Route path={["/", "/blocks"]} exact component={BlockActivitySection} />
         <Route path={["/", "/txns"]} exact component={TxnActivitySection} />

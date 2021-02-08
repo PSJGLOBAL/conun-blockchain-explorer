@@ -57,15 +57,14 @@ export const BlockDataBlock = (props: Props) => {
             <span className="font-hilite">{props.data.txcount}</span>
           </div>
         </div>
-
-        {showModal === true ? (
-          <BlockModal
-            blocknum={props.data.blocknum.toString()}
-            clickHandler={closeModal}
-          />
-        ) : null}
-        <ReactTooltip />
       </div>
+      {showModal === true ? (
+        <BlockModal
+          blocknum={props.data.blocknum.toString()}
+          clickHandler={closeModal}
+        />
+      ) : null}
+      <ReactTooltip backgroundColor="#e95654" />
     </div>
   )
 }
