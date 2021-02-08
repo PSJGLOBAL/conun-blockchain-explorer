@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { Route, Switch } from "react-router-dom"
+import { Route } from "react-router-dom"
 
 import {
   setBlockActivityData,
@@ -37,7 +37,8 @@ export const InterfaceMain = () => {
   return (
     <main>
       <StatsBlock />
-      <Switch>
+      <div className="splitcolumns">
+        {/* <Switch>
         <Route path="/blocks" component={BlockActivitySection} />
         <Route path="/txns" component={TxnActivitySection} />
         <Route
@@ -55,7 +56,11 @@ export const InterfaceMain = () => {
             )
           }}
         />
-      </Switch>
+      </Switch> */}
+        <Route path="/" exact component={WebSocketProvider} />
+        <Route path={["/", "/blocks"]} exact component={BlockActivitySection} />
+        <Route path={["/", "/txns"]} exact component={TxnActivitySection} />
+      </div>
     </main>
   )
 }

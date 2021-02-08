@@ -9,7 +9,9 @@ import "../../components/MainPage/InterfaceMain/InterfaceMain.css"
 
 import { State } from "../../utility/types"
 
-type Props = {
+import { RouteComponentProps } from "react-router-dom"
+
+type Props = RouteComponentProps & {
   mainpage?: true
 }
 
@@ -18,11 +20,13 @@ export const BlockActivitySection = (props: Props) => {
     (state: State) => state.block.blockActivityData
   )
 
+  const fullPage = props.match.path === "/blocks"
+
   return (
-    <section className="section">
+    <section className={fullPage ? "section section-full" : "section"}>
       <div className="section-title">
         <span>Recent Blocks</span>
-        {!props.mainpage && <PaginationMenu />}
+        {fullPage && <PaginationMenu />}
       </div>
       <div className="section-block">
         <div className="info-table recent-block-header">
@@ -36,17 +40,20 @@ export const BlockActivitySection = (props: Props) => {
         {blockActivityData.map((i) => (
           <BlockDataBlock
             key={i.blockhash}
-            mainpage={props.mainpage}
+            fullPage={fullPage}
             data={{ ...i }}
           />
         ))}
         <div>
-          <NavLink
-            className="section-table-link"
-            to={props.mainpage ? "/blocks" : "/"}
-          >
-            {props.mainpage ? "View More Blocks" : "Back To Home"}
-          </NavLink>
+          {fullPage ? (
+            <NavLink className="section-table-link" to={"/"}>
+              Back To Home
+            </NavLink>
+          ) : (
+            <NavLink className="section-table-link" to={"/blocks"}>
+              View More Blocks
+            </NavLink>
+          )}
         </div>
       </div>
     </section>

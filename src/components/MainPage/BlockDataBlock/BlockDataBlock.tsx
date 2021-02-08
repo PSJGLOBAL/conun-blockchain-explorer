@@ -9,8 +9,8 @@ import Identicon from "react-identicons"
 import ReactTooltip from "react-tooltip"
 import "./BlockDataBlock.css"
 
-interface Props {
-  mainpage?: true
+type Props = {
+  fullPage: boolean
   data: ObjectType
 }
 
@@ -40,9 +40,9 @@ export const BlockDataBlock = (props: Props) => {
         </div>
         <div className="info-table-col">
           <span data-tip={props.data.blockhash}>
-            {props.mainpage
-              ? truncate(props.data.blockhash.toString())
-              : props.data.blockhash.toString()}
+            {props.fullPage
+              ? props.data.blockhash.toString()
+              : truncate(props.data.blockhash.toString())}
           </span>
         </div>
         <div className="info-table-col">

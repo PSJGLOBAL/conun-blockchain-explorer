@@ -9,7 +9,9 @@ import "../../components/MainPage/InterfaceMain/InterfaceMain.css"
 
 import { State } from "../../utility/types"
 
-type Props = {
+import { RouteComponentProps } from "react-router-dom"
+
+type Props = RouteComponentProps & {
   mainpage?: true
 }
 
@@ -18,11 +20,13 @@ export const TxnActivitySection = (props: Props) => {
     (state: State) => state.txn.txnActivityData
   )
 
+  const fullPage = props.match.path === "/txns"
+
   return (
-    <section className="section">
+    <section className={fullPage ? "section section-full" : "section"}>
       <div className="section-title">
         <span>Recent Transactions</span>
-        {!props.mainpage && <PaginationMenu />}
+        {fullPage && <PaginationMenu />}
       </div>
       <div className="section-block">
         <div className="info-table recent-txn-header">
@@ -33,19 +37,18 @@ export const TxnActivitySection = (props: Props) => {
         </div>
         {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
         {txnActivityData.map((i) => (
-          <TxnDataBlock
-            key={i.txhash}
-            mainpage={props.mainpage}
-            data={{ ...i }}
-          />
+          <TxnDataBlock key={i.txhash} fullPage={fullPage} data={{ ...i }} />
         ))}
         <div>
-          <NavLink
-            className="section-table-link"
-            to={props.mainpage ? "/txns" : "/"}
-          >
-            {props.mainpage ? "View More Transactions" : "Back To Home"}
-          </NavLink>
+          {fullPage ? (
+            <NavLink className="section-table-link" to={"/"}>
+              Back To Home
+            </NavLink>
+          ) : (
+            <NavLink className="section-table-link" to={"/txns"}>
+              View More Transactions
+            </NavLink>
+          )}
         </div>
       </div>
     </section>

@@ -11,7 +11,7 @@ import ReactTooltip from "react-tooltip"
 import "./TxnDataBlock.css"
 import "../../../style/table-common.css"
 interface Props {
-  mainpage?: true
+  fullPage: boolean
   data: ObjectType
 }
 
@@ -62,9 +62,11 @@ export const TxnDataBlock = memo((props: Props) => {
             className="info-table-content-span"
             data-tip={props.data.txhash}
           >
-            {props.mainpage
-              ? truncate(props.data.txhash.toString())
-              : props.data.txhash.toString()}
+            <span data-tip={props.data.blockhash}>
+              {props.fullPage
+                ? props.data.txhash.toString()
+                : truncate(props.data.txhash.toString())}
+            </span>
           </span>
         </div>
         <div className="info-table-col">
