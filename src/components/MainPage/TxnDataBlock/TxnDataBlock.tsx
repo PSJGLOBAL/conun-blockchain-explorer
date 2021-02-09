@@ -28,13 +28,13 @@ export const TxnDataBlock = (props: Props) => {
   return (
     <div className="info-table-row">
       <div className="info-table recent-txn-table table-animate">
-        <NavLink to={`/txns/${props.data.txhash}`}>
-          <div className="info-table-col info-table-icon-col">
+        <div className="info-table-col info-table-icon-col">
+          <NavLink to={`/txns/${props.data.txhash}`}>
             <div className="info-table-icon-cell">
               <Identicon size={15} string={props.data.txhash.toString()} />
             </div>
-          </div>
-        </NavLink>
+          </NavLink>
+        </div>
 
         <div className="info-table-col recent-txn-contract-icon-col">
           {icon ? (

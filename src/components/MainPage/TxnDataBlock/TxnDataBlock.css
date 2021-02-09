@@ -20,7 +20,6 @@
   }
   .recent-txn-contract-icon-col {
     padding-left: 10px;
-    justify-content: flex-start;
   }
 }
 @media only screen and (max-width: 500px) {
@@ -29,7 +28,6 @@
     grid-template-columns: 35px auto;
   }
   .recent-txn-contract-icon-col {
-    justify-content: flex-start;
     padding-left: 10px;
   }
 }
