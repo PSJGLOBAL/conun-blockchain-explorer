@@ -1,36 +1,21 @@
-import { useState, memo } from "react"
 import { NavLink } from "react-router-dom"
 
 import { formatDistanceToNowStrict } from "date-fns"
 import Identicon from "react-identicons"
 import ReactTooltip from "react-tooltip"
 
-import { TxnModal } from "../TxnModal/TxnModal"
-
 import { truncate } from "../../../utility/functions"
 import { ObjectType } from "../../../utility/types"
 
 import "./TxnDataBlock.css"
-import "../../../style/table-common.css"
+import "../../../style/css/table-common.css"
 
 interface Props {
   fullPage: boolean
   data: ObjectType
 }
 
-export const TxnDataBlock = memo((props: Props) => {
-  const [showModal, setShowModal] = useState<boolean>(false)
-
-  const closeModal = () => {
-    console.log("MODAL: Close")
-    setShowModal(false)
-  }
-
-  const openModal = () => {
-    console.log("MODAL: Open")
-    setShowModal(true)
-  }
-
+export const TxnDataBlock = (props: Props) => {
   let icon = null
   if (props.data.chaincodename === "coin") {
     icon = (
@@ -43,11 +28,13 @@ export const TxnDataBlock = memo((props: Props) => {
   return (
     <div className="info-table-row">
       <div className="info-table recent-txn-table table-animate">
-        <div className="info-table-col info-table-icon-col" onClick={openModal}>
-          <div className="info-table-icon-cell">
-            <Identicon size={15} string={props.data.txhash.toString()} />
+        <NavLink to={`/txns/${props.data.txhash}`}>
+          <div className="info-table-col info-table-icon-col">
+            <div className="info-table-icon-cell">
+              <Identicon size={15} string={props.data.txhash.toString()} />
+            </div>
           </div>
-        </div>
+        </NavLink>
 
         <div className="info-table-col recent-txn-contract-icon-col">
           {icon ? (
@@ -66,14 +53,9 @@ export const TxnDataBlock = memo((props: Props) => {
             data-tip={props.data.txhash}
           >
             <span data-tip={props.data.blockhash}>
-              <NavLink
-                className="info-table-link"
-                to={`/txns/${props.data.txhash}`}
-              >
-                {props.fullPage
-                  ? props.data.txhash.toString()
-                  : truncate(props.data.txhash.toString())}
-              </NavLink>
+              {props.fullPage
+                ? props.data.txhash.toString()
+                : truncate(props.data.txhash.toString())}
             </span>
           </span>
         </div>
@@ -83,13 +65,7 @@ export const TxnDataBlock = memo((props: Props) => {
           </span>
         </div>
       </div>
-      {showModal && (
-        <TxnModal
-          txnID={props.data.txhash.toString()}
-          clickHandler={closeModal}
-        />
-      )}
       <ReactTooltip backgroundColor="#e95654" />
     </div>
   )
-})
+}

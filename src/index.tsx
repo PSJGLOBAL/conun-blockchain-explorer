@@ -19,7 +19,7 @@ import App from "./App"
 import { ChannelProvider } from "./components/MainPage/ChannelProvider/ChannelProvider"
 
 // CSS
-import "./style/global.css"
+import "./style/css/global.css"
 
 const rootReducer = combineReducers({
   basic: basicReducer,

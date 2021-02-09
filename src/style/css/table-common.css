@@ -39,19 +39,23 @@
 }
 
 .info-table-icon-col {
-  /* background-color: #ccc; */
+  cursor: pointer;
   padding: 5px;
-  border: 2px solid var(--bkg);
+  border: 2px solid;
+  border-color: var(--bkg);
   border-radius: var(--radius);
-  animation: icon-animate 0.7s ease-in forwards;
+  animation: icon-animate 0.7s ease-in;
+}
+.info-table-icon-col:hover {
+  border-color: var(--hihover);
 }
 
 @keyframes icon-animate {
   0% {
-    border: 2px solid var(--hilite);
+    border-color: var(--hilite);
   }
   100% {
-    border: 2px solid var(--bkg);
+    border-color: var(--bkg);
   }
 }
 .info-table-txcount-col {
@@ -61,9 +65,8 @@
 }
 .info-table-icon-cell {
   padding: 5px 5px 1px 5px; /* The icon has its own padding underneath :S*/
-  border-radius: 5px;
-  cursor: pointer;
 }
+
 .info-table-txcount-cell {
   background-color: var(--bkg);
 }
@@ -74,7 +77,7 @@
 
 .info-table-link {
   text-decoration: none;
-  color: black;
+  color: var(--hihover);
 }
 
 @media only screen and (max-width: 1010px) and (min-width: 700px) {
