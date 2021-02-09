@@ -12,17 +12,6 @@ function SelectChannel() {
   const availableChannels = useSelector(
     (state: State) => state.basic.availableChannels
   )
-  //Add fake channel for test purposes
-
-  // const fakeChannelList = availableChannels.concat([
-  //   {
-  //     id: 80,
-  //     channelname: "Null Channel",
-  //     channel_genesis_hash: "Null Hash",
-  //     channel_hash: "this field doesn't do anything",
-  //     createdat: "just now",
-  //   },
-  // ])
 
   const setCachedChannel = (channel: ChannelObject) => {
     console.log("SELECT CHANNEL: Setting Cached Channel: ", channel.channelname)
@@ -63,7 +52,7 @@ function SelectChannel() {
   }
 
   const content = (
-    <div>
+    <>
       <select
         className="channel-selector"
         value={activeChannel.channel_genesis_hash?.toString()}
@@ -86,11 +75,11 @@ function SelectChannel() {
             : "Loading"
           : "Server Unresponsive"}
       </span>
-    </div>
+    </>
   )
 
   if (availableChannels.length > 1) {
-    return content
+    return <div>{content}</div>
   } else {
     return <div></div>
   }

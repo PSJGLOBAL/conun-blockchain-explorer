@@ -1,15 +1,18 @@
 import { useState, memo } from "react"
-import Identicon from "react-identicons"
+import { NavLink } from "react-router-dom"
+
 import { formatDistanceToNowStrict } from "date-fns"
+import Identicon from "react-identicons"
+import ReactTooltip from "react-tooltip"
 
 import { TxnModal } from "../TxnModal/TxnModal"
 
 import { truncate } from "../../../utility/functions"
 import { ObjectType } from "../../../utility/types"
-import ReactTooltip from "react-tooltip"
 
 import "./TxnDataBlock.css"
 import "../../../style/table-common.css"
+
 interface Props {
   fullPage: boolean
   data: ObjectType
@@ -63,9 +66,14 @@ export const TxnDataBlock = memo((props: Props) => {
             data-tip={props.data.txhash}
           >
             <span data-tip={props.data.blockhash}>
-              {props.fullPage
-                ? props.data.txhash.toString()
-                : truncate(props.data.txhash.toString())}
+              <NavLink
+                className="info-table-link"
+                to={`/txns/${props.data.txhash}`}
+              >
+                {props.fullPage
+                  ? props.data.txhash.toString()
+                  : truncate(props.data.txhash.toString())}
+              </NavLink>
             </span>
           </span>
         </div>

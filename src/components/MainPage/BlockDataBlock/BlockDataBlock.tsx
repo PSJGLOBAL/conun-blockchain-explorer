@@ -1,13 +1,16 @@
 import { useState } from "react"
+import { NavLink } from "react-router-dom"
+
 import { formatDistanceToNowStrict } from "date-fns"
+import Identicon from "react-identicons"
+import ReactTooltip from "react-tooltip"
 
 import { BlockModal } from "../BlockModal/BlockModal"
 
 import { truncate } from "../../../utility/functions"
 import { ObjectType } from "../../../utility/types"
-import Identicon from "react-identicons"
-import ReactTooltip from "react-tooltip"
 import "./BlockDataBlock.css"
+import "../../../style/table-common.css"
 
 type Props = {
   fullPage: boolean
@@ -36,7 +39,14 @@ export const BlockDataBlock = (props: Props) => {
           </div>
         </div>
         <div className="info-table-col">
-          <span className="font-hilite">{props.data.blocknum}</span>
+          <span className="font-hilite">
+            <NavLink
+              className="info-table-link"
+              to={`/blocks/${props.data.blocknum}`}
+            >
+              {props.data.blocknum}
+            </NavLink>
+          </span>
         </div>
         <div className="info-table-col">
           <span data-tip={props.data.blockhash}>
@@ -53,7 +63,6 @@ export const BlockDataBlock = (props: Props) => {
 
         <div className="info-table-col info-table-txcount-col">
           <div className="info-table-txcount-cell">
-            {/* <span>Tx:</span> */}
             <span className="font-hilite">{props.data.txcount}</span>
           </div>
         </div>
