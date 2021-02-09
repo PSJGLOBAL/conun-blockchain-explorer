@@ -1,0 +1,16 @@
+.search {
+  width: 80%;
+}
+.search-box {
+  display: flex;
+}
+.search-input-field {
+  width: 100%;
+  border: none;
+}
+
+.search-icon {
+  width: 30px;
+  height: auto;
+  padding: 5px;
+}
