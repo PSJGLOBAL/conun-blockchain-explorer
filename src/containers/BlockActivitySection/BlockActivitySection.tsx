@@ -23,12 +23,18 @@ export const BlockActivitySection = (props: Props) => {
   const fullPage = props.match.path === "/blocks"
 
   return (
-    <section className={fullPage ? "section section-full" : "section"}>
+    <section
+      className={
+        fullPage
+          ? "section section-block section-full"
+          : "section section-block"
+      }
+    >
       <div className="section-title">
         <span>Recent Blocks</span>
         {fullPage && <PaginationMenu />}
       </div>
-      <div className="section-block">
+      <>
         <div className="info-table recent-block-header">
           <div className="table-header-cell"> </div>
           <div className="table-header-cell">Num.</div>
@@ -55,7 +61,7 @@ export const BlockActivitySection = (props: Props) => {
             </NavLink>
           )}
         </div>
-      </div>
+      </>
     </section>
   )
 }

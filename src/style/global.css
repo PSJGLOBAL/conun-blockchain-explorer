@@ -43,11 +43,7 @@ main {
   align-items: center;
   justify-content: space-between;
   height: 10px;
-  background-color: var(--fore);
-  padding: 20px 20px 0 20px;
-  margin: 10px 10px 0 10px;
-  margin-bottom: 0px;
-  border-radius: var(--radius) var(--radius) 0 0;
+  padding: 20px;
 }
 .section-title span {
   font-size: 16px;
@@ -87,7 +83,7 @@ main {
   background-color: var(--fore);
   padding: 20px;
   margin: 0 10px 10px 10px;
-  border-radius: 0 0 var(--radius) var(--radius);
+  border-radius: var(--radius);
 }
 
 .font-hilite {

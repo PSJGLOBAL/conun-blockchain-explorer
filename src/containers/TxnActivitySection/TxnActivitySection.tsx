@@ -23,12 +23,18 @@ export const TxnActivitySection = (props: Props) => {
   const fullPage = props.match.path === "/txns"
 
   return (
-    <section className={fullPage ? "section section-full" : "section"}>
+    <section
+      className={
+        fullPage
+          ? "section section-block section-full"
+          : "section section-block"
+      }
+    >
       <div className="section-title">
         <span>Recent Transactions</span>
         {fullPage && <PaginationMenu />}
       </div>
-      <div className="section-block">
+      <>
         <div className="info-table recent-txn-header">
           <div className="table-header-cell"> </div>
           <div className="table-header-cell">Contract</div>
@@ -50,7 +56,7 @@ export const TxnActivitySection = (props: Props) => {
             </NavLink>
           )}
         </div>
-      </div>
+      </>
     </section>
   )
 }
