@@ -62,7 +62,7 @@ function SelectChannel() {
     )
   }
 
-  return (
+  const content = (
     <div>
       <select
         className="channel-selector"
@@ -88,5 +88,11 @@ function SelectChannel() {
       </span>
     </div>
   )
+
+  if (availableChannels.length > 1) {
+    return content
+  } else {
+    return <div></div>
+  }
 }
 export default SelectChannel
