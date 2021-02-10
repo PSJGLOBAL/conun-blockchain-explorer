@@ -20,4 +20,6 @@
 .nav-logo {
   height: 50px;
   width: auto;
+  user-select: none;
+  -webkit-user-drag: none;
 }
