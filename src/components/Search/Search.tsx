@@ -1,5 +1,8 @@
 import { useState, useEffect, useRef } from "react"
 import axios from "../../axios/axiosinst"
+import { Redirect } from "react-router-dom"
+
+// import { ObjectType } from "../../utility/types"
 
 import searchIcon from "../../style/images/search-icon.svg"
 import "./Search.css"
@@ -7,8 +10,8 @@ import "./Search.css"
 export const Search = () => {
   const [searchTerms, setSearchTerms] = useState<string>("")
   const [hasSearched, setHasSearched] = useState<boolean>(false)
-  const [result, setResult] = useState<string>("")
-  const [display, setDisplay] = useState<string>("")
+  const [result, setResult] = useState<any>(null)
+  const [display, setDisplay] = useState<any>("")
 
   const searchRef = useRef<HTMLInputElement | null>(null)
 
@@ -47,6 +50,25 @@ export const Search = () => {
     if (result) {
       //This function will be used to evaluate the results - if the search was successful, set result to a link
       console.log("SEARCH: RESULT: ", result)
+      if (result.found === true) {
+        switch (result.data.data_type) {
+          case 1:
+            setDisplay(<Redirect to={`/blocks/${result.data.id}`} />)
+            setSearchTerms("")
+            setHasSearched(false)
+            break
+          case 2:
+            setDisplay(<Redirect to={`/txns/${result.data.id}`} />)
+            setSearchTerms("")
+            setHasSearched(false)
+            break
+          case 3:
+            setDisplay("Wallet")
+            break
+          default:
+            setDisplay(result.data.data_type)
+        }
+      }
     }
   }, [result])
 
@@ -64,7 +86,7 @@ export const Search = () => {
           }}
         />
       </div>
-      <div></div>
+      <div>{display}</div>
     </div>
   )
 }
