@@ -1,9 +1,19 @@
 body {
   --bkg: #eef0f6;
   --fore: #fff;
+
   --hilite: #e95654;
   --hihover: #ee6c6a;
   --font: #000000;
+
+  /* --hilite: #375bd2;
+  --hihover: #6dc0d5;
+  --hibright: #8cdfd6;
+  --neutral: #b2cede;
+  --dark: #5a716a; */
+
+  --font: #252c2a;
+
   --radius: 10px;
 
   margin: 0;
