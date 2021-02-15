@@ -52,7 +52,7 @@ export const BlockActivitySection = (props: Props) => {
         ))}
         <div>
           {fullPage ? (
-            <NavLink className="section-table-link" to={"/"}>
+            <NavLink className="section-table-link hover-gradient" to={"/"}>
               Back To Home
             </NavLink>
           ) : (

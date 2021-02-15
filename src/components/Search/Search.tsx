@@ -74,7 +74,7 @@ export const Search = () => {
           placeholder={
             searchFail
               ? searchFail
-              : "Search by block number or Transaction hash"
+              : "Search by block number or transaction hash"
           }
           value={searchTerms}
           onChange={(e) => {
@@ -89,11 +89,13 @@ export const Search = () => {
           }}
         />
         <div className="search-error-icon" onClick={clearSearch}>
-          {searchFail ? (
-            <i className="fas fa-exclamation-circle" />
-          ) : (
-            <i className="fas fa-times-circle"></i>
-          )}
+          {searchTerms ? (
+            searchFail ? (
+              <i className="fas fa-exclamation-circle" />
+            ) : (
+              <i className="fas fa-times-circle"></i>
+            )
+          ) : null}
         </div>
       </div>
     </div>

@@ -40,7 +40,7 @@ export const TheGraph = (props: Props) => {
         fill="#ffa7ac"
         stroke="#ee6259"
         baseLine={0}
-        dot={true}
+        dot={{ strokeWidth: 0, fill: "orange" }}
       />
     </AreaChart>
   )
