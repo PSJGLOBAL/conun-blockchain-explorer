@@ -23,3 +23,7 @@
   user-select: none;
   -webkit-user-drag: none;
 }
+
+.nav-logo:hover {
+  opacity: 0.7;
+}

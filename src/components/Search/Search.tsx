@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useRef } from "react"
 import axios from "../../axios/axiosinst"
-import { Redirect } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
 // import { ObjectType } from "../../utility/types"
 
@@ -9,11 +9,11 @@ import "./Search.css"
 
 export const Search = () => {
   const [searchTerms, setSearchTerms] = useState<string>("")
-  const [hasSearched, setHasSearched] = useState<boolean>(false)
-  const [result, setResult] = useState<any>(null)
-  const [display, setDisplay] = useState<any>("")
+  const [searchFail, setSearchFail] = useState<string>("")
 
   const searchRef = useRef<HTMLInputElement | null>(null)
+
+  let history = useHistory()
 
   // Need a clear search button,
   // A search successful button,
@@ -24,53 +24,45 @@ export const Search = () => {
 
   function handleSearchInput(str: string) {
     setSearchTerms(str)
-    setHasSearched(false)
   }
 
-  useEffect(() => {
-    const searchTimer = setTimeout(() => {
-      // const currentSearch = searchRef.current?.value
-      if (hasSearched === false && searchTerms !== "") {
-        axios
-          .get(`/search/hash/${searchTerms}`)
-          .then((response) => {
-            setResult(response.data)
-          })
-          .catch((e) => console.error(e))
-      }
-      setHasSearched(true)
-    }, 700)
+  function clearSearch() {
+    setSearchTerms("")
+    setSearchFail("")
+  }
 
-    return () => {
-      clearTimeout(searchTimer)
-    }
-  })
+  function doAPISearch() {
+    if (searchTerms !== "") {
+      axios
+        .get(`/search/hash/${searchTerms}`)
+        .then((response) => {
+          // setResult(response.data)
+          const data = response.data
 
-  useEffect(() => {
-    if (result) {
-      //This function will be used to evaluate the results - if the search was successful, set result to a link
-      console.log("SEARCH: RESULT: ", result)
-      if (result.found === true) {
-        switch (result.data.data_type) {
-          case 1:
-            setDisplay(<Redirect to={`/blocks/${result.data.id}`} />)
-            setSearchTerms("")
-            setHasSearched(false)
-            break
-          case 2:
-            setDisplay(<Redirect to={`/txns/${result.data.id}`} />)
-            setSearchTerms("")
-            setHasSearched(false)
-            break
-          case 3:
-            setDisplay("Wallet")
-            break
-          default:
-            setDisplay(result.data.data_type)
-        }
-      }
+          if (data.status === 200) {
+            const responseType = data.data.data_type
+
+            switch (responseType) {
+              case 1:
+                history.push(`/blocks/${data.data.id}`)
+                break
+              case 2:
+                history.push(`/txns/${data.data.id}`)
+                break
+              default:
+                setSearchFail("Response was an invalid type!")
+              //case 3: //It's the wallet type
+            }
+          } else {
+            setSearchFail("Invalid search terms.")
+          }
+        })
+        .catch((e) => {
+          console.error(e)
+          setSearchFail("Oops! There was no response.")
+        })
     }
-  }, [result])
+  }
 
   return (
     <div className="search">
@@ -79,14 +71,31 @@ export const Search = () => {
         <input
           ref={searchRef}
           className="search-input-field"
-          placeholder="Search by block number or Transaction hash"
+          placeholder={
+            searchFail
+              ? searchFail
+              : "Search by block number or Transaction hash"
+          }
           value={searchTerms}
           onChange={(e) => {
             handleSearchInput(e.target.value)
           }}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              setSearchFail("")
+              doAPISearch()
+              setSearchTerms("")
+            }
+          }}
         />
+        <div className="search-error-icon" onClick={clearSearch}>
+          {searchFail ? (
+            <i className="fas fa-exclamation-circle" />
+          ) : (
+            <i className="fas fa-times-circle"></i>
+          )}
+        </div>
       </div>
-      <div>{display}</div>
     </div>
   )
 }

@@ -16,3 +16,11 @@
   user-select: none;
   -webkit-user-drag: none;
 }
+.search-error-icon {
+  font-size: 20pt;
+  color: var(--hilite);
+  margin: 5px;
+}
+.search-error-icon:hover {
+  color: var(--hihover);
+}

@@ -21,7 +21,7 @@ main {
 
 .app {
   width: 1400px;
-  height: 100vh;
+  min-height: 100vh;
   background: var(--bkg);
 }
 
@@ -91,6 +91,23 @@ main {
 
 .font-hilite {
   color: var(--hilite);
+}
+
+footer {
+  position: fixed;
+
+  left: 0;
+  bottom: 0;
+
+  height: 20px;
+  width: 100vw;
+
+  padding: 10px;
+
+  display: flex;
+  justify-content: center;
+
+  background-color: var(--fore);
 }
 
 @media only screen and (max-width: 699px) {
