@@ -19,10 +19,19 @@ main {
   padding: 0;
 }
 
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 99.9vw;
+  /* height: 100vh; */
+  background: var(--bkg);
+}
+
 .app {
   width: 1400px;
-  min-height: 100vh;
-  background: var(--bkg);
+  min-height: calc(100vh - 60px);
 }
 
 .splitcolumns {
@@ -94,15 +103,13 @@ main {
 }
 
 footer {
-  position: fixed;
-
-  left: 0;
-  bottom: 0;
+  justify-self: flex-end;
 
   height: 20px;
-  width: 100vw;
+  width: 100%;
 
-  padding: 10px;
+  box-sizing: border-box;
+  padding: 30px;
 
   display: flex;
   justify-content: center;

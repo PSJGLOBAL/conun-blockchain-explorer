@@ -10,7 +10,7 @@ import { Route, Switch } from "react-router-dom"
 
 function App() {
   return (
-    <>
+    <div className="app-container">
       <div className="app">
         <HeadBar />
         <HeadBlock />
@@ -26,7 +26,7 @@ function App() {
         </Switch>
       </div>
       <Footer />
-    </>
+    </div>
   )
 }
 export default App
