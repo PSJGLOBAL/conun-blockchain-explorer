@@ -22,4 +22,6 @@
 .channel-stats-icon {
   width: 50px;
   height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
 }

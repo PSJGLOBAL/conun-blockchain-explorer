@@ -1,11 +1,4 @@
-import {
-  AreaChart,
-  Area,
-  CartesianGrid,
-  CartesianAxis,
-  XAxis,
-  YAxis,
-} from "recharts"
+import { AreaChart, Area, XAxis, YAxis, Tooltip } from "recharts"
 import { ObjectType } from "../../../utility/types"
 import { format } from "date-fns"
 
@@ -24,15 +17,26 @@ export const TheGraph = (props: Props) => {
   })
 
   return (
-    <AreaChart width={580} height={240} data={timeAgoData}>
-      <CartesianGrid width={560} height={200} />
-      <CartesianAxis width={560} height={200} />
-      <XAxis id="xaxis" dataKey="datetime" interval="preserveStartEnd" />
+    <AreaChart
+      margin={{ top: 10, right: 0, bottom: 0, left: -40 }}
+      width={640}
+      height={260}
+      data={timeAgoData}
+    >
+      <XAxis
+        id="xaxis"
+        dataKey="datetime"
+        // interval="preserveStartEnd"
+        minTickGap={40}
+        axisLine={false}
+      />
       <YAxis
         id="yaxis"
         type="number"
         dataKey="count"
         interval="preserveStartEnd"
+        axisLine={false}
+        // tickLine={false}
       />
       <Area
         type="monotone"
@@ -42,6 +46,7 @@ export const TheGraph = (props: Props) => {
         baseLine={0}
         dot={{ strokeWidth: 0, fill: "orange" }}
       />
+      <Tooltip />
     </AreaChart>
   )
 }

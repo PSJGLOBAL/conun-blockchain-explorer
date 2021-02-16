@@ -84,7 +84,7 @@ main {
   margin: -20px -20px 10px -20px;
 
   background-image: var(--gradient-fill);
-  color: #fff;
+  color: var(--font);
   border-radius: 5px 5px 0px 0px;
 }
 

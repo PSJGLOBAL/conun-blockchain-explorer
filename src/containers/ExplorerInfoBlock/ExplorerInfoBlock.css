@@ -1,7 +1,6 @@
 .app-service-table {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-
+  grid-template-columns: 150px 1fr;
   align-items: center;
 
   height: 50px;
@@ -11,5 +10,14 @@
 }
 
 .app-service-icons {
-  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-service-icon-image {
+  width: 40px;
+  user-select: none;
+  -webkit-user-drag: none;
 }
