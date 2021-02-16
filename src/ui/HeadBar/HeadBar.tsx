@@ -5,7 +5,7 @@ import logo from "../../style/images/conun-logo.svg"
 
 export const HeadBar = () => {
   return (
-    <nav id="nav">
+    <nav id="nav" className="textured-bkg">
       <div id="nav-block">
         <NavLink to="/">
           <img className="nav-logo" src={logo} alt="Conun Logo" />

@@ -18,8 +18,8 @@ export const TheGraph = (props: Props) => {
 
   return (
     <AreaChart
-      margin={{ top: 10, right: 0, bottom: 0, left: -40 }}
-      width={640}
+      margin={{ top: 10, right: 0, bottom: 0, left: -30 }}
+      width={620}
       height={260}
       data={timeAgoData}
     >
@@ -36,6 +36,7 @@ export const TheGraph = (props: Props) => {
         dataKey="count"
         interval="preserveStartEnd"
         axisLine={false}
+        allowDecimals={false}
         // tickLine={false}
       />
       <Area

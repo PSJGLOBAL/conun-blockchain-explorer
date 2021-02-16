@@ -3,8 +3,12 @@ body {
   --fore: #fff;
 
   --hilite: #e95654;
-  --hihover: #fd8b89;
-  --font: #000000;
+  --hihover: #feb0af;
+  /* --font: #000000; */
+
+  --lolite: #495867;
+  --hiblue: #74b3ce;
+  --higreen: #09bc8a;
 
   /* --hilite: #375bd2;
   --hihover: #6dc0d5;
@@ -12,7 +16,9 @@ body {
   --neutral: #b2cede;
   --dark: #5a716a; */
 
-  --font: #252c2a;
+  --font: #495867;
+
+  --bgkImg: url("../images/ethersteal.svg");
 
   --radius: 10px;
 
@@ -45,12 +51,16 @@ main {
   }
 }
 
+.textured-bkg {
+  background-image: var(--bgkImg);
+}
+
 .app-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 99.9vw;
+  width: 99.2vw;
   /* height: 100vh; */
   background: var(--bkg);
 }
@@ -112,7 +122,7 @@ main {
 
   background-color: var(--hilite);
 
-  color: var(--font);
+  color: #fff;
   text-decoration: none;
 }
 .section-table-link:hover {
@@ -153,21 +163,6 @@ main {
 
 .font-hilite {
   color: var(--hilite);
-}
-
-footer {
-  justify-self: flex-end;
-
-  height: 20px;
-  width: 100%;
-
-  box-sizing: border-box;
-  padding: 30px;
-
-  display: flex;
-  justify-content: center;
-
-  background-color: var(--fore);
 }
 
 @media only screen and (max-width: 699px) {
