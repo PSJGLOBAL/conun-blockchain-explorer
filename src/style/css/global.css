@@ -3,7 +3,7 @@ body {
   --fore: #fff;
 
   --hilite: #e95654;
-  --hihover: #ee6c6a;
+  --hihover: #fd8b89;
   --font: #000000;
 
   /* --hilite: #375bd2;
@@ -41,7 +41,7 @@ main {
     background: var(--hilite);
   }
   100% {
-    background: var(--hibright);
+    background: var(--hihover);
   }
 }
 

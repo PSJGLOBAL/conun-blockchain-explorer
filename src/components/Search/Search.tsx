@@ -89,13 +89,18 @@ export const Search = () => {
           }}
         />
         <div className="search-error-icon" onClick={clearSearch}>
-          {searchTerms ? (
+          {searchFail ? (
+            <i className="fas fa-exclamation-circle" />
+          ) : searchTerms ? (
+            <i className="fas fa-times-circle"></i>
+          ) : null}
+          {/* {searchTerms ? (
             searchFail ? (
               <i className="fas fa-exclamation-circle" />
             ) : (
               <i className="fas fa-times-circle"></i>
             )
-          ) : null}
+          ) : null} */}
         </div>
       </div>
     </div>

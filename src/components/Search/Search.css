@@ -11,6 +11,10 @@
 }
 
 .search-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   width: 26px;
   height: auto;
   padding: 5px;
@@ -18,9 +22,13 @@
   -webkit-user-drag: none;
 }
 .search-error-icon {
-  font-size: 20pt;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16pt;
   color: var(--hilite);
   margin: 5px;
+  text-align: center;
 }
 .search-error-icon:hover {
   color: var(--hihover);
