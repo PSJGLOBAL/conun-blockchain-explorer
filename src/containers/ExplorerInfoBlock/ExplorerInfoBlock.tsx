@@ -1,3 +1,5 @@
+import ReactTooltip from "react-tooltip"
+
 import { ChannelStats } from "../../components/MainPage/ChannelStats/ChannelStats"
 import "./ExplorerInfoBlock.css"
 
@@ -26,25 +28,51 @@ export const ExplorerInfoBlock = () => {
         </div>
         <div className="app-service-icons">
           <span className="app-service-icon-unit">
-            <img src={cubeCombIcon} className="app-service-icon-image" alt="" />
+            <img
+              src={cubeCombIcon}
+              className="app-service-icon-image"
+              alt=""
+              data-tip={"Drive"}
+            />
           </span>
           <span className="app-service-icon-unit">
-            <img src={wDiamondIcon} className="app-service-icon-image" alt="" />
+            <img
+              src={wDiamondIcon}
+              className="app-service-icon-image"
+              alt=""
+              data-tip={"Engine"}
+            />
           </span>
           <span className="app-service-icon-unit">
-            <img src={familiarIcon} className="app-service-icon-image" alt="" />
+            <img
+              src={familiarIcon}
+              className="app-service-icon-image"
+              alt=""
+              data-tip={"Drive"}
+            />
           </span>
           <span className="app-service-icon-unit">
-            <img src={linkyIcon} className="app-service-icon-image" alt="" />
+            <img
+              src={linkyIcon}
+              className="app-service-icon-image"
+              alt=""
+              data-tip={"Engine"}
+            />
           </span>
           <span className="app-service-icon-unit">
-            <img src={wArrowsIcon} className="app-service-icon-image" alt="" />
+            <img
+              src={wArrowsIcon}
+              className="app-service-icon-image"
+              alt=""
+              data-tip={"Drive"}
+            />
           </span>
           <span className="app-service-icon-unit">
             <img
               src={oldSquareIcon}
               className="app-service-icon-image"
               alt=""
+              data-tip={"Engine"}
             />
           </span>
         </div>
@@ -72,6 +100,7 @@ export const ExplorerInfoBlock = () => {
           <span className="app-service-icon-unit">
             <img src={tartanIcon} className="app-service-icon-image" alt="" />
           </span>
+          <ReactTooltip backgroundColor="#e95654" />
         </div>
       </div>
     </div>

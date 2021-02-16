@@ -7,6 +7,8 @@ import ReactTooltip from "react-tooltip"
 import { truncate } from "../../../utility/functions"
 import { ObjectType } from "../../../utility/types"
 
+import ninjaIcon from "../../../style/images/extra_icons/icon_ninja_star.svg"
+
 import "./TxnDataBlock.css"
 import "../../../style/css/table-common.css"
 
@@ -19,10 +21,12 @@ export const TxnDataBlock = (props: Props) => {
   let icon = null
   if (props.data.chaincodename === "coin") {
     icon = (
-      <i
-        className="fas fa-coins font-hilite"
+      <img
+        src={ninjaIcon}
         data-tip={props.data.chaincodename}
-      ></i>
+        className="contract-icon-image"
+        alt=""
+      />
     )
   }
   return (
