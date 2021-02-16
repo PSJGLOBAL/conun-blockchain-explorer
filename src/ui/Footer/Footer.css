@@ -13,7 +13,9 @@ footer {
   justify-content: space-evenly;
 
   background-color: var(--lolite);
-  color: #fff;
+  color: rgba(255, 255, 255, 0.603);
+
+  font-size: 9pt;
 
   text-align: left;
 }
@@ -22,6 +24,7 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  color: white;
 }
 
 .footer-link-block {
@@ -32,5 +35,7 @@ footer {
 }
 
 .footer-title {
+  font-size: 10pt;
+  color: white;
   border-bottom: 1px solid white;
 }

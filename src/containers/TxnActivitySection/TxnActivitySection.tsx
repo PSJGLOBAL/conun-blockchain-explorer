@@ -37,7 +37,7 @@ export const TxnActivitySection = (props: Props) => {
       <>
         <div className="info-table recent-txn-header">
           <div className="table-header-cell"> </div>
-          <div className="table-header-cell">Contract</div>
+          <div className="table-header-cell">Service</div>
           <div className="table-header-cell">Hash</div>
           <div className="table-header-cell">Time</div>
         </div>
