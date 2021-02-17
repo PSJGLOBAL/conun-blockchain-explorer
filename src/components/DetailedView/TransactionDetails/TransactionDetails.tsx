@@ -17,6 +17,10 @@ export const TransactionDetails = (props: Props) => {
   let history = useHistory()
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  })
+
+  useEffect(() => {
     if (props.txnID) {
       axios
         .get(`/transaction/${activeChannelHash}/${props.txnID}`)

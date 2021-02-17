@@ -42,6 +42,18 @@ const blockReducer = (state = initialState, action: Action) => {
         return state
       }
       const updatedBlockData = [...action.payload.previousBlockData]
+
+      // Prevent duplicated with this function. Return list with no change if duplicate found.
+      for (let i = 0; i < updatedBlockData.length; i++) {
+        let old = updatedBlockData[i]
+        if (old.blocknum === action.payload.newBlockData.blocknum) {
+          return {
+            ...state,
+            blockActivityData: updatedBlockData,
+          }
+        }
+      }
+
       updatedBlockData.unshift(action.payload.newBlockData)
 
       return {

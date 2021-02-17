@@ -18,6 +18,10 @@ export const BlockDetails = (props: Props) => {
   let history = useHistory()
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  })
+
+  useEffect(() => {
     if (props.blocknum) {
       axios
         .get(`/block/transactions/${activeChannelHash}/${props.blocknum}`)
