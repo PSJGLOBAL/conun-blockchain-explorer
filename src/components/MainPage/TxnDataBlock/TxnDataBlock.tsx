@@ -58,15 +58,20 @@ export const TxnDataBlock = (props: Props) => {
             className="info-table-content-span"
             data-tip={props.data.txhash}
           >
-            <span data-tip={props.data.blockhash}>
-              {props.fullPage
-                ? props.data.txhash.toString()
-                : truncate(props.data.txhash.toString())}
-            </span>
+            <NavLink
+              className={"info-table-link font-clicky"}
+              to={`/txns/${props.data.txhash}`}
+            >
+              <span>
+                {props.fullPage
+                  ? props.data.txhash.toString()
+                  : truncate(props.data.txhash.toString())}
+              </span>
+            </NavLink>
           </span>
         </div>
         <div className="info-table-col">
-          <span className="font-hilite" data-tip={props.data.createdt}>
+          <span data-tip={props.data.createdt}>
             {formatDistanceToNowStrict(new Date(props.data.createdt))} ago
           </span>
         </div>

@@ -31,7 +31,12 @@ export const BlockDataBlock = (props: Props) => {
           </div>
         </div>
         <div className="info-table-col">
-          <span className="font-hilite">{props.data.blocknum}</span>
+          <NavLink
+            className={"info-table-link"}
+            to={`/blocks/${props.data.blocknum}`}
+          >
+            <span className="font-clicky">{props.data.blocknum}</span>
+          </NavLink>
         </div>
         <div className="info-table-col">
           <span data-tip={props.data.blockhash}>
@@ -41,7 +46,7 @@ export const BlockDataBlock = (props: Props) => {
           </span>
         </div>
         <div className="info-table-col">
-          <span className="font-hilite" data-tip={props.data.createdt}>
+          <span data-tip={props.data.createdt}>
             {formatDistanceToNowStrict(new Date(props.data.createdt))} ago
           </span>
         </div>

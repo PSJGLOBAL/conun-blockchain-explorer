@@ -164,6 +164,9 @@ main {
 .font-hilite {
   color: var(--hilite);
 }
+.font-clicky {
+  color: var(--higreen);
+}
 
 @media only screen and (max-width: 699px) {
   .splitcolumns {

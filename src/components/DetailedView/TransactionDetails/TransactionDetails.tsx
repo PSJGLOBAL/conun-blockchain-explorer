@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { NavLink } from "react-router-dom"
+import { NavLink, useHistory } from "react-router-dom"
 
 import axios from "../../../axios/axiosinst"
 import { ObjectType, State } from "../../../utility/types"
@@ -13,6 +13,8 @@ export const TransactionDetails = (props: Props) => {
   const [txnData, setTxnData] = useState<ObjectType>({})
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
   const activeChannelHash = activeChannel.channel_genesis_hash
+
+  let history = useHistory()
 
   useEffect(() => {
     if (props.txnID) {
@@ -73,10 +75,18 @@ export const TransactionDetails = (props: Props) => {
     <div className="details-table">
       <div className="details-table-header">
         <h2>Transaction Details</h2>
-        <div className="details-table-header-link">
-          <NavLink to="/">
-            <i className="fas fa-undo"></i>
-          </NavLink>
+        <div className="details-table-links-box">
+          <div
+            className="details-table-header-link"
+            onClick={() => history.goBack()}
+          >
+            <i className="fas fa-arrow-circle-left"></i>
+          </div>
+          <div className="details-table-header-link">
+            <NavLink to="/">
+              <i className="fas fa-home"></i>
+            </NavLink>
+          </div>
         </div>
       </div>
       {content}

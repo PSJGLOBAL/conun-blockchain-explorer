@@ -82,7 +82,7 @@
 
 .info-table-link {
   text-decoration: none;
-  color: var(--hihover);
+  color: var(--higreen);
 }
 
 @media only screen and (max-width: 1010px) and (min-width: 700px) {

@@ -15,11 +15,18 @@
   text-align: center;
   color: white;
 }
+.details-table-links-box {
+  width: 100px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .details-table-header-link i {
   color: white;
-  font-size: x-large;
+  font-size: 14pt;
   text-decoration: none;
   transform: rotateY(-90);
+  cursor: pointer;
 }
 
 .details-table-row {
