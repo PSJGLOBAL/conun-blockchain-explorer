@@ -22,4 +22,4 @@ In this file, you must add the following line:
 ```javascript
 export const BASEURL = ...
 ```
-...and assign the base URL or IP address and port for your backend application.
+...and enter the base URL or IP address and port for your backend application.
