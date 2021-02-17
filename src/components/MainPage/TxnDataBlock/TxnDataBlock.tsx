@@ -1,6 +1,9 @@
 import { NavLink } from "react-router-dom"
 
-import { formatDistanceToNowStrict } from "date-fns"
+import ReactTimeAgo from "react-time-ago"
+import TimeAgo from "javascript-time-ago"
+import en from "javascript-time-ago/locale/en"
+
 import Identicon from "react-identicons"
 import ReactTooltip from "react-tooltip"
 
@@ -16,6 +19,8 @@ interface Props {
   fullPage: boolean
   data: ObjectType
 }
+
+TimeAgo.addLocale(en)
 
 export const TxnDataBlock = (props: Props) => {
   let icon = null
@@ -72,7 +77,11 @@ export const TxnDataBlock = (props: Props) => {
         </div>
         <div className="info-table-col">
           <span data-tip={props.data.createdt}>
-            {formatDistanceToNowStrict(new Date(props.data.createdt))} ago
+            <ReactTimeAgo
+              date={new Date(props.data.createdt)}
+              locale="en-US"
+              tooltip={false}
+            />
           </span>
         </div>
       </div>
