@@ -9,15 +9,25 @@
 .graph-controls-tab {
   height: 110%;
   width: 100%;
-  padding: 1px;
-  /* margin: 2px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 1px; */
+  margin: 3px;
   text-align: center;
   font-weight: bold;
   user-select: none;
   border-radius: 0 0 var(--radius) var(--radius);
 }
 
+.graph-controls-tab:hover {
+  background-color: #f3faff;
+}
+
 .graph-controls-active {
-  background-color: var(--hilite);
+  background-color: var(--hiblue);
   color: white;
+}
+.graph-controls-active:hover {
+  background-color: var(--higreen);
 }

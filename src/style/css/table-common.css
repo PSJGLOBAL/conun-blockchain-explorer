@@ -38,6 +38,11 @@
   text-align: left;
 }
 
+.info-table-identicon-col {
+  display: flex;
+  justify-content: center;
+}
+
 .info-table-icon-col {
   cursor: pointer;
   padding: 5px;

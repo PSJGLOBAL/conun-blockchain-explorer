@@ -1,3 +1,4 @@
+import ReactTooltip from "react-tooltip"
 import "./Footer.css"
 
 export const Footer = () => {
@@ -9,25 +10,26 @@ export const Footer = () => {
       </div>
       <div className="footer-link-block">
         <div className="footer-title">Company</div>
-        <div>About Us</div>
-        <div>Contact Us</div>
-        <div>Terms of Service</div>
+        <div data-tip={"Not yet implemented"}>About Us</div>
+        <div data-tip={"Not yet implemented"}>Contact Us</div>
+        <div data-tip={"Not yet implemented"}>Terms of Service</div>
         <div></div>
       </div>
       <div className="footer-link-block">
         <div className="footer-title">Community</div>
-        <div>Developer Documentation</div>
-        <div>Main Site</div>
-        <div>Discord</div>
+        <div data-tip={"Not yet implemented"}>Developer Documentation</div>
+        <div data-tip={"Not yet implemented"}>Main Site</div>
+        <div data-tip={"Not yet implemented"}>Discord</div>
         <div></div>
       </div>
       <div className="footer-link-block">
         <div className="footer-title">Products</div>
-        <div>Explorer</div>
-        <div>Coin</div>
-        <div>Drive</div>
-        <div>Engine</div>
+        <div data-tip={"Not yet implemented"}>Explorer</div>
+        <div data-tip={"Not yet implemented"}>Coin</div>
+        <div data-tip={"Not yet implemented"}>Drive</div>
+        <div data-tip={"Not yet implemented"}>Engine</div>
       </div>
+      <ReactTooltip />
     </footer>
   )
 }

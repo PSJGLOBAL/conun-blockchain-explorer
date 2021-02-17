@@ -18,15 +18,17 @@ export const BlockDataBlock = (props: Props) => {
   return (
     <div className="info-table-row">
       <div className="info-table recent-block-table table-animate">
-        <div className="info-table-col info-table-icon-col">
-          <NavLink
-            className="info-table-link"
-            to={`/blocks/${props.data.blocknum}`}
-          >
-            <div className="info-table-icon-cell">
-              <Identicon size={15} string={props.data.blockhash.toString()} />
-            </div>
-          </NavLink>
+        <div className="info-table-identicon-col">
+          <div className="info-table-col info-table-icon-col">
+            <NavLink
+              className="info-table-link"
+              to={`/blocks/${props.data.blocknum}`}
+            >
+              <div className="info-table-icon-cell">
+                <Identicon size={15} string={props.data.blockhash.toString()} />
+              </div>
+            </NavLink>
+          </div>
         </div>
         <div className="info-table-col">
           <span className="font-hilite">{props.data.blocknum}</span>

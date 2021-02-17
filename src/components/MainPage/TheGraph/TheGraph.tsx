@@ -42,10 +42,10 @@ export const TheGraph = (props: Props) => {
       <Area
         type="monotone"
         dataKey="count"
-        fill="#ffa7ac"
-        stroke="#ee6259"
+        stroke="#495867"
+        fill="#74b3ce"
         baseLine={0}
-        dot={{ strokeWidth: 0, fill: "orange" }}
+        dot={{ strokeWidth: 0, fill: "#09bc8a" }}
       />
       <Tooltip />
     </AreaChart>
