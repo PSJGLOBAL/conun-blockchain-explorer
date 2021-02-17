@@ -1,4 +1,11 @@
-import { AreaChart, Area, XAxis, YAxis, Tooltip } from "recharts"
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts"
 import { ObjectType } from "../../../utility/types"
 import { format } from "date-fns"
 
@@ -17,37 +24,37 @@ export const TheGraph = (props: Props) => {
   })
 
   return (
-    <AreaChart
-      margin={{ top: 10, right: 0, bottom: 0, left: -10 }}
-      width={620}
-      height={260}
-      data={timeAgoData}
-    >
-      <XAxis
-        id="xaxis"
-        dataKey="datetime"
-        // interval="preserveStartEnd"
-        minTickGap={40}
-        axisLine={false}
-      />
-      <YAxis
-        id="yaxis"
-        type="number"
-        dataKey="count"
-        interval="preserveStartEnd"
-        axisLine={false}
-        allowDecimals={false}
-        // tickLine={false}
-      />
-      <Area
-        type="monotone"
-        dataKey="count"
-        stroke="#495867"
-        fill="#74b3ce"
-        baseLine={0}
-        dot={{ strokeWidth: 0, fill: "#09bc8a" }}
-      />
-      <Tooltip />
-    </AreaChart>
+    <ResponsiveContainer width={"99%"} height={260}>
+      <AreaChart
+        margin={{ top: 10, right: 0, bottom: 0, left: -10 }}
+        data={timeAgoData}
+      >
+        <XAxis
+          id="xaxis"
+          dataKey="datetime"
+          // interval="preserveStartEnd"
+          minTickGap={40}
+          axisLine={false}
+        />
+        <YAxis
+          id="yaxis"
+          type="number"
+          dataKey="count"
+          interval="preserveStartEnd"
+          axisLine={false}
+          allowDecimals={false}
+          // tickLine={false}
+        />
+        <Area
+          type="monotone"
+          dataKey="count"
+          stroke="#495867"
+          fill="#74b3ce"
+          baseLine={0}
+          dot={{ strokeWidth: 0, fill: "#09bc8a" }}
+        />
+        <Tooltip />
+      </AreaChart>
+    </ResponsiveContainer>
   )
 }
