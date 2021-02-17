@@ -32,6 +32,7 @@
   color: var(--hilite);
   margin: 5px;
   text-align: center;
+  cursor: pointer;
 }
 .search-error-icon:hover {
   color: var(--hihover);
