@@ -23,6 +23,7 @@
   width: auto;
   user-select: none;
   -webkit-user-drag: none;
+  cursor: pointer;
 }
 
 .nav-logo:hover {

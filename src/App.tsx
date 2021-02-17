@@ -1,6 +1,5 @@
 import HeadBlock from "./ui/HeadBlock/HeadBlock"
 import { InterfaceMain } from "./components/MainPage/InterfaceMain/InterfaceMain"
-import { ChannelProvider } from "./components/ChannelProvider/ChannelProvider"
 import WebSocketProvider from "./components/WebSocketProvider/WebSocketProvider"
 import { Disconnected } from "./components/Disconnected/Disconnected"
 import { DetailedViewSection } from "./components/DetailedView/DetailedViewSection/DetailedViewSection"
@@ -12,11 +11,10 @@ import { Route, Switch } from "react-router-dom"
 function App() {
   return (
     <div className="app-container">
+      <WebSocketProvider />
       <div className="app">
         <HeadBar />
         <HeadBlock />
-        <ChannelProvider />
-        <WebSocketProvider />
         <Switch>
           <Route path="/disconnected" component={Disconnected} />
           {/* DetailsContainer handles both blocks/txns routes */}
