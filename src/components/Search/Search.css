@@ -18,6 +18,9 @@
   width: 26px;
   height: auto;
   padding: 5px;
+
+  cursor: pointer;
+
   user-select: none;
   -webkit-user-drag: none;
 }

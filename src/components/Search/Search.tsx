@@ -67,7 +67,16 @@ export const Search = () => {
   return (
     <div className="search">
       <div className="search-box">
-        <img className="search-icon" src={searchIcon} alt="" />
+        <img
+          className="search-icon"
+          src={searchIcon}
+          alt=""
+          onClick={() => {
+            setSearchFail("")
+            doAPISearch()
+            setSearchTerms("")
+          }}
+        />
         <input
           ref={searchRef}
           className="search-input-field"

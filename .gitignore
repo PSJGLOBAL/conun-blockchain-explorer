@@ -25,3 +25,4 @@ yarn-error.log*
 .eslintcache
 
 ./src/utility/config.ts
+src/utility/config.ts
