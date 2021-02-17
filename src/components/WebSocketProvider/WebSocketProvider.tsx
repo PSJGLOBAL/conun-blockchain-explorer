@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { w3cwebsocket as W3CWebsocket } from "websocket"
 
+import { useHistory } from "react-router-dom"
+
 import { State } from "../../utility/types"
 import * as actions from "../../store/actions"
 
@@ -17,6 +19,8 @@ function WebSocketProvider() {
   const txnActivityData = useSelector(
     (state: State) => state.txn.txnActivityData
   )
+
+  let history = useHistory()
 
   useEffect(() => {
     if (socket === null && activeChannelHash !== "") {
@@ -40,8 +44,14 @@ function WebSocketProvider() {
       const { txdata, notify_type, ...socketBlocks } = socketData
       console.log("Websocket: ", txdata)
       const socketTxns = txdata
-      dispatch(actions.addNewBlock(blockActivityData, socketBlocks))
-      dispatch(actions.addNewTxns(txnActivityData, socketTxns))
+
+      if (history.location.pathname === "/") {
+        console.log("Websocket: Adding data")
+        dispatch(actions.addNewBlock(blockActivityData, socketBlocks))
+        dispatch(actions.addNewTxns(txnActivityData, socketTxns))
+      } else {
+        console.log("Websocket: Data received but not added")
+      }
     }
   }
 

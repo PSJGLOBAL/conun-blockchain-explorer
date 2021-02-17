@@ -81,6 +81,7 @@ export const TxnDataBlock = (props: Props) => {
               date={new Date(props.data.createdt)}
               locale="en-US"
               tooltip={false}
+              timeStyle="round"
             />
           </span>
         </div>

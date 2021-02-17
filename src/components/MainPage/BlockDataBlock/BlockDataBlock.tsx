@@ -4,7 +4,6 @@ import ReactTimeAgo from "react-time-ago"
 import TimeAgo from "javascript-time-ago"
 import en from "javascript-time-ago/locale/en"
 
-// import { formatDistanceToNowStrict } from "date-fns"
 import Identicon from "react-identicons"
 import ReactTooltip from "react-tooltip"
 
@@ -57,6 +56,7 @@ export const BlockDataBlock = (props: Props) => {
               date={new Date(props.data.createdt)}
               locale="en-US"
               tooltip={false}
+              timeStyle="round"
             />
           </span>
         </div>
