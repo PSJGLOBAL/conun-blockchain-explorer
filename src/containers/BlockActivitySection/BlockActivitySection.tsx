@@ -9,9 +9,9 @@ import "../../components/MainPage/InterfaceMain/InterfaceMain.css"
 
 import { State } from "../../utility/types"
 
-import { RouteComponentProps } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
-type Props = RouteComponentProps & {
+type Props = {
   mainpage?: true
 }
 
@@ -20,7 +20,8 @@ export const BlockActivitySection = (props: Props) => {
     (state: State) => state.block.blockActivityData
   )
 
-  const fullPage = props.match.path === "/blocks"
+  const history = useHistory()
+  const fullPage = history.location.pathname === "/blocks"
 
   return (
     <section
