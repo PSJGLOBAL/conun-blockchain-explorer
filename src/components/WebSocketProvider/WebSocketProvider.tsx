@@ -45,12 +45,17 @@ function WebSocketProvider() {
       console.log("Websocket: ", txdata)
       const socketTxns = txdata
 
+      // Mute the websocket if the user is not on the front page
       if (history.location.pathname === "/") {
         console.log("Websocket: Adding data")
         dispatch(actions.addNewBlock(blockActivityData, socketBlocks))
         dispatch(actions.addNewTxns(txnActivityData, socketTxns))
+        //If websocket message comes in, trigger channel stats to update
+        if (activeChannelHash && activeChannelHash !== "") {
+          dispatch(actions.setChannelStats(activeChannelHash.toString()))
+        }
       } else {
-        console.log("Websocket: Data received but not added")
+        console.log("Websocket: Data received, but websocket is muted")
       }
     }
   }

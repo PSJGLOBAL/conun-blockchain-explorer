@@ -11,13 +11,14 @@ import { Route, Switch } from "react-router-dom"
 function App() {
   return (
     <div className="app-container">
+      {/* The websocket goes here so it only loads once */}
       <WebSocketProvider />
       <div className="app">
         <HeadBar />
         <HeadBlock />
         <Switch>
           <Route path="/disconnected" component={Disconnected} />
-          {/* DetailsContainer handles both blocks/txns routes */}
+          {/* DetailedViewSection handles both blocks/txns routes */}
           <Route
             path={["/blocks/:detail_id", "/txns/:detail_id"]}
             component={DetailedViewSection}

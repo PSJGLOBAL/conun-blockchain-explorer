@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { setChannelInfo, setChannelStats } from "../../store/actions"
+import { setChannelInfo } from "../../store/actions"
 import { State } from "../../utility/types"
 
 export const ChannelProvider = () => {
@@ -13,7 +13,8 @@ export const ChannelProvider = () => {
   useEffect(() => {
     if (activeChannelHash && activeChannelHash !== "") {
       dispatch(setChannelInfo(activeChannel)) // Set Channel Info
-      dispatch(setChannelStats(activeChannelHash.toString()))
+      //Channel stats are handled in the channel stats component - improves reliability
+      // dispatch(setChannelStats(activeChannelHash.toString()))
     }
   }, [activeChannelHash, activeChannel, dispatch])
 

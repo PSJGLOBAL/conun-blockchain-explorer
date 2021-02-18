@@ -32,6 +32,8 @@ const store = createStore(rootReducer, applyMiddleware(thunk))
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
+      {/* Channel goes here so that loading the channel has higher priority than loading the app.*/}
+      {/* It has no prop children functionality but works anyway? :S */}
       <ChannelProvider>
         <App />
       </ChannelProvider>

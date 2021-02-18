@@ -29,13 +29,7 @@ export const TheGraph = (props: Props) => {
         margin={{ top: 10, right: 0, bottom: 0, left: -10 }}
         data={timeAgoData}
       >
-        <XAxis
-          id="xaxis"
-          dataKey="datetime"
-          // interval="preserveStartEnd"
-          minTickGap={40}
-          axisLine={false}
-        />
+        <XAxis id="xaxis" dataKey="datetime" minTickGap={40} axisLine={false} />
         <YAxis
           id="yaxis"
           type="number"
@@ -43,7 +37,6 @@ export const TheGraph = (props: Props) => {
           interval="preserveStartEnd"
           axisLine={false}
           allowDecimals={false}
-          // tickLine={false}
         />
         <Area
           type="monotone"
