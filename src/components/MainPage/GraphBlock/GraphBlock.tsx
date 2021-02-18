@@ -60,18 +60,12 @@ export const GraphBlock = () => {
     const graphTimer = setInterval(function () {
       console.log("GRAPH: Scheduled Graph Update")
       doGraphDataGet(graphMode)
-    }, 3000)
+    }, 30000)
 
     return () => {
       clearTimeout(graphTimer)
     }
   }, [doGraphDataGet, graphMode])
-
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     console.log("GRAPH: Test timer")
-  //   }, 1000)
-  // }, [])
 
   return (
     <div className="section-block">
