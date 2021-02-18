@@ -52,23 +52,31 @@ export const BlockDetails = (props: Props) => {
       <>
         <div className="details-table-row">
           <div className="info-col info-key">Block Number:</div>
-          <div className="info-col info-val">{blockData.blocknum}</div>
+          <div className="info-col info-val selectable">
+            {blockData.blocknum}
+          </div>
         </div>
         <div className="details-table-row">
-          <div className="info-col info-key">Block Number:</div>
+          <div className="info-col info-key">Block Size:</div>
           <div className="info-col info-val">{blockData.blksize}</div>
         </div>
         <div className="details-table-row">
           <div className="info-col info-key">Block Hash:</div>
-          <div className="info-col info-val">{blockData.blockhash}</div>
+          <div className="info-col info-val selectable">
+            {blockData.blockhash}
+          </div>
         </div>
         <div className="details-table-row">
           <div className="info-col info-key">Data Hash:</div>
-          <div className="info-col info-val">{blockData.datahash}</div>
+          <div className="info-col info-val selectable">
+            {blockData.datahash}
+          </div>
         </div>
         <div className="details-table-row">
           <div className="info-col info-key">Previous Hash:</div>
-          <div className="info-col info-val">{blockData.prehash}</div>
+          <div className="info-col info-val selectable">
+            {blockData.prehash}
+          </div>
         </div>
         <div className="details-table-row">
           <div className="info-col info-key">

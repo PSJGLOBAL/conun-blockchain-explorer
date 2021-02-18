@@ -36,6 +36,9 @@ body {
   color: var(--font);
 
   font-family: sans-serif;
+
+  user-select: none;
+  -webkit-user-drag: none;
 }
 main {
   margin: 0;
@@ -53,6 +56,10 @@ main {
 
 .textured-bkg {
   background-image: var(--bgkImg);
+}
+
+.selectable {
+  user-select: text;
 }
 
 .app-container {

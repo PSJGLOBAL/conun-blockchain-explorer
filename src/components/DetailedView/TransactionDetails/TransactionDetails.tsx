@@ -43,31 +43,39 @@ export const TransactionDetails = (props: Props) => {
       <>
         <div className="details-table-row">
           <div className="info-col info-key">Transaction Hash:</div>
-          <div className="info-col info-val">{txnData.txhash}</div>
+          <div className="info-col info-val selectable">{txnData.txhash}</div>
         </div>
         <div className="details-table-row">
           <div className="info-col info-key">Timestamp:</div>
-          <div className="info-col info-val">{txnData.createdt}</div>
+          <div className="info-col info-val selectable">{txnData.createdt}</div>
         </div>
         <div className="details-table-row">
           <div className="info-col info-key">Validity:</div>
-          <div className="info-col info-val">{txnData.validation_code}</div>
+          <div className="info-col info-val selectable">
+            {txnData.validation_code}
+          </div>
         </div>
         <div className="details-table-row">
           <div className="info-col info-key">Channel:</div>
-          <div className="info-col info-val">{txnData.channelname}</div>
+          <div className="info-col info-val selectable">
+            {txnData.channelname}
+          </div>
         </div>
         <div className="details-table-row">
           <div className="info-col info-key">Contract:</div>
-          <div className="info-col info-val">{txnData.chaincodename}</div>
+          <div className="info-col info-val selectable">
+            {txnData.chaincodename}
+          </div>
         </div>
         <div className="details-table-row">
           <div className="info-col info-key">Creator ID:</div>
-          <div className="info-col info-val">{txnData.creator_msp_id}</div>
+          <div className="info-col info-val selectable">
+            {txnData.creator_msp_id}
+          </div>
         </div>
         <div className="details-table-row">
           <div className="info-col info-key">Payload Proposal Hash:</div>
-          <div className="info-col info-val">
+          <div className="info-col info-val selectable">
             {txnData.payload_proposal_hash}
           </div>
         </div>

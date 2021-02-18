@@ -67,7 +67,7 @@ export const TxnDataBlock = (props: Props) => {
               className={"info-table-link font-clicky"}
               to={`/txns/${props.data.txhash}`}
             >
-              <span>
+              <span className={props.fullPage ? "selectable" : ""}>
                 {props.fullPage
                   ? props.data.txhash.toString()
                   : truncate(props.data.txhash.toString())}

@@ -41,3 +41,7 @@
 .details-table-row .info-val {
   padding-left: 10px;
 }
+
+.info-key {
+  color: var(--hiblue);
+}

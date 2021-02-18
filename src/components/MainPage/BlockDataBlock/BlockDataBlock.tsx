@@ -44,7 +44,10 @@ export const BlockDataBlock = (props: Props) => {
           </NavLink>
         </div>
         <div className="info-table-col">
-          <span data-tip={props.data.blockhash}>
+          <span
+            data-tip={props.data.blockhash}
+            className={props.fullPage ? "selectable" : ""}
+          >
             {props.fullPage
               ? props.data.blockhash.toString()
               : truncate(props.data.blockhash.toString())}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { useSelector } from "react-redux"
 
 import axios from "../../../axios/axiosinst"
@@ -15,32 +15,63 @@ export const GraphBlock = () => {
   const [graphMode, setGraphMode] = useState<string>("txn-min")
   const [graphData, setGraphData] = useState<Array<ObjectType>>([])
 
+  const doGraphDataGet = useCallback(
+    (graphMode: string) => {
+      switch (graphMode) {
+        case "txn-hour":
+          axios.get(`/txByHour/${activeChannelHash}/1`).then((response) => {
+            setGraphData(response.data.rows)
+          })
+          break
+        case "txn-min":
+          axios.get(`/txByMinute/${activeChannelHash}/1`).then((response) => {
+            setGraphData(response.data.rows)
+          })
+          break
+        case "block-hour":
+          axios.get(`blocksByHour/${activeChannelHash}/1`).then((response) => {
+            setGraphData(response.data.rows)
+          })
+          break
+        case "block-min":
+          axios
+            .get(`/blocksByMinute/${activeChannelHash}/1`)
+            .then((response) => {
+              setGraphData(response.data.rows)
+            })
+          break
+        default:
+          console.error("GRAPHMODE: Error")
+      }
+    },
+    [activeChannelHash]
+  )
+
+  // function graphInterval(){}
+
   useEffect(() => {
-    switch (graphMode) {
-      case "txn-hour":
-        axios.get(`/txByHour/${activeChannelHash}/1`).then((response) => {
-          setGraphData(response.data.rows)
-        })
-        break
-      case "txn-min":
-        axios.get(`/txByMinute/${activeChannelHash}/1`).then((response) => {
-          setGraphData(response.data.rows)
-        })
-        break
-      case "block-hour":
-        axios.get(`blocksByHour/${activeChannelHash}/1`).then((response) => {
-          setGraphData(response.data.rows)
-        })
-        break
-      case "block-min":
-        axios.get(`/blocksByMinute/${activeChannelHash}/1`).then((response) => {
-          setGraphData(response.data.rows)
-        })
-        break
-      default:
-        console.error("GRAPHMODE: Error")
+    doGraphDataGet(graphMode)
+    //eslint-disable-next-line
+  }, [graphMode, activeChannelHash])
+
+  // const modeRef = useRef(graphMode)
+
+  useEffect(() => {
+    const graphTimer = setInterval(function () {
+      console.log("GRAPH: Scheduled Graph Update")
+      doGraphDataGet(graphMode)
+    }, 3000)
+
+    return () => {
+      clearTimeout(graphTimer)
     }
-  }, [activeChannelHash, graphMode])
+  }, [doGraphDataGet, graphMode])
+
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     console.log("GRAPH: Test timer")
+  //   }, 1000)
+  // }, [])
 
   return (
     <div className="section-block">
