@@ -6,7 +6,10 @@ import { ObjectType } from "../../utility/types"
 type Action =
   | {
       type: typeof BLOCK_ACTIVITY_DATA
-      payload: { blockActivityData: Array<ObjectType> }
+      payload: {
+        blockActivityData: Array<ObjectType>
+        from?: number | string | null
+      }
     }
   | {
       type: typeof ADD_NEW_BLOCK
@@ -35,6 +38,7 @@ const blockReducer = (state = initialState, action: Action) => {
       return {
         ...state,
         blockActivityData: action.payload.blockActivityData,
+        from: action.payload.from || null,
       }
 
     case ADD_NEW_BLOCK:

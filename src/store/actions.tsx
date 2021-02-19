@@ -97,10 +97,19 @@ export const setChannelStats = (channelHash: string) => {
 }
 
 // Redux Action to get block activity data
-export const setBlockActivityData = (channelHash: string) => {
+export const setBlockActivityData = (
+  channelHash: string,
+  from: number | string | null = null
+) => {
   return (dispatch: any) => {
+    let axiosAddress = `/blockActivity/${channelHash}`
+    if (from) {
+      console.log("Block Activity: Using Blocknum: ", from)
+      axiosAddress += `?blocknum=${from}`
+    }
+
     axios
-      .get(`/blockActivity/${channelHash}`)
+      .get(axiosAddress)
       .then((response) => {
         console.log("Block Activity: ", response.status, response.statusText)
         dispatch(assembleBlockDataObj(response.data.row))
@@ -110,10 +119,19 @@ export const setBlockActivityData = (channelHash: string) => {
 }
 
 // Redux Action to get transaction activity data
-export const setTxnActivityData = (channelHash: string) => {
+export const setTxnActivityData = (
+  channelHash: string,
+  from: number | string | null = null
+) => {
   return (dispatch: any) => {
+    let axiosAddress = `/txActivity/${channelHash}`
+    if (from) {
+      console.log("Transaction Activity: Using TX ID: ", from)
+      axiosAddress += `?txId${from}`
+    }
+
     axios
-      .get(`/txActivity/${channelHash}`)
+      .get(axiosAddress)
       .then((response) => {
         console.log(
           "Transaction Activity: ",

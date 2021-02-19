@@ -20,6 +20,7 @@ footer {
 
   text-align: left;
 }
+
 .footer-misc-block {
   height: 100%;
   display: flex;
@@ -27,16 +28,33 @@ footer {
   justify-content: space-evenly;
   color: white;
 }
-
+.footer-world img {
+  height: 100px;
+}
 .footer-link-block {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+.footer-contact-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-contact-link-img {
+  /* width: 50px; */
+  height: 18px;
+}
 
 .footer-title {
   font-size: 10pt;
   color: white;
   border-bottom: 1px solid white;
+}
+
+.footer-logo {
+  width: 120px;
+  filter: grayscale(100%);
 }

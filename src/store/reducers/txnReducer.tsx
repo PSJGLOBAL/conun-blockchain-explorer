@@ -6,7 +6,10 @@ import { ObjectType } from "../../utility/types"
 type Action =
   | {
       type: "TXN_ACTIVITY_DATA"
-      payload: { txnActivityData: Array<ObjectType> }
+      payload: {
+        txnActivityData: Array<ObjectType>
+        from?: number | string | null
+      }
     }
   | {
       type: "ADD_NEW_TXNS"
@@ -35,6 +38,7 @@ const txnReducer = (state = initialState, action: Action) => {
       return {
         ...state,
         txnActivityData: action.payload.txnActivityData,
+        from: action.payload.from || null,
       }
 
     case ADD_NEW_TXNS:
@@ -42,11 +46,20 @@ const txnReducer = (state = initialState, action: Action) => {
         return state
       }
       const updatedTxnData = [...action.payload.previousTxnData]
-      updatedTxnData.unshift(...action.payload.newTxnsArray)
-
-      return {
-        ...state,
-        txnActivityData: updatedTxnData.slice(0, 10), //maintain only 10 blocks on this page
+      let txnsToAdd: Array<ObjectType>
+      if (action.payload.newTxnsArray.length > 10) {
+        txnsToAdd = action.payload.newTxnsArray.slice(0, 10)
+        return {
+          ...state,
+          txnActivityData: txnsToAdd, //maintain only 10 blocks on this page
+        }
+      } else {
+        txnsToAdd = action.payload.newTxnsArray
+        updatedTxnData.unshift(...txnsToAdd)
+        return {
+          ...state,
+          txnActivityData: updatedTxnData.slice(0, 10), //maintain only 10 blocks on this page
+        }
       }
 
     default:

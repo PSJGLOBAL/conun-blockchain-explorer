@@ -5,9 +5,9 @@ import "./ExplorerInfoBlock.css"
 
 import cubeCombIcon from "../../style/images/extra_icons/icon_cube_comb.svg"
 import ninjaIcon from "../../style/images/extra_icons/icon_ninja_star.svg"
-import chainDiaIcon from "../../style/images/extra_icons/icon_wibbly_chain_diamond.svg"
+// import chainDiaIcon from "../../style/images/extra_icons/icon_wibbly_chain_diamond.svg"
 // import printIcon from "../../style/images/extra_icons/icon_fingerprint_circle.svg"
-// import familiarIcon from "../../style/images/extra_icons/icon_i_know_this_one.svg"
+import familiarIcon from "../../style/images/extra_icons/icon_i_know_this_one.svg"
 // import linkyIcon from "../../style/images/extra_icons/icon_linky.svg"
 // import oldSquareIcon from "../../style/images/extra_icons/icon_ode_scool_square.svg"
 // import pointDiaIcon from "../../style/images/extra_icons/icon_pointy_diamond.svg"
@@ -47,7 +47,7 @@ export const ExplorerInfoBlock = () => {
         </div>
         <div className="app-service-row">
           <img
-            src={chainDiaIcon}
+            src={familiarIcon}
             className="app-service-icon-image"
             alt=""
             data-tip={"Drive"}

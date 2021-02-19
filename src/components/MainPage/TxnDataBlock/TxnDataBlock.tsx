@@ -35,7 +35,7 @@ export const TxnDataBlock = (props: Props) => {
     )
   }
   return (
-    <div className="info-table-row">
+    <div className="info-table-row monofont">
       <div className="info-table recent-txn-table table-animate">
         <div className="info-table-identicon-col">
           <div className="info-table-col info-table-icon-col">
