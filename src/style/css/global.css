@@ -40,6 +40,10 @@ body {
   user-select: none;
   -webkit-user-drag: none;
 }
+
+.monofont {
+  font-family: "Courier New", Courier, monospace;
+}
 main {
   margin: 0;
   padding: 0;

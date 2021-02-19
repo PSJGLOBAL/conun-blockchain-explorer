@@ -43,7 +43,7 @@ export const BlockDataBlock = (props: Props) => {
             <span className="font-clicky">{props.data.blocknum}</span>
           </NavLink>
         </div>
-        <div className="info-table-col">
+        <div className="info-table-col monofont">
           <span
             data-tip={props.data.blockhash}
             className={props.fullPage ? "selectable" : ""}

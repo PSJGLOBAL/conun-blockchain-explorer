@@ -64,7 +64,7 @@ export const TxnDataBlock = (props: Props) => {
             data-tip={props.data.txhash}
           >
             <NavLink
-              className={"info-table-link font-clicky"}
+              className={"info-table-link font-clicky monofont"}
               to={`/txns/${props.data.txhash}`}
             >
               <span className={props.fullPage ? "selectable" : ""}>
