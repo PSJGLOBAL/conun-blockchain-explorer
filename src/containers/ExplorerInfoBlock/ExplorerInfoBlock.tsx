@@ -5,16 +5,7 @@ import "./ExplorerInfoBlock.css"
 
 import cubeCombIcon from "../../style/images/extra_icons/icon_cube_comb.svg"
 import ninjaIcon from "../../style/images/extra_icons/icon_ninja_star.svg"
-// import chainDiaIcon from "../../style/images/extra_icons/icon_wibbly_chain_diamond.svg"
-// import printIcon from "../../style/images/extra_icons/icon_fingerprint_circle.svg"
 import familiarIcon from "../../style/images/extra_icons/icon_i_know_this_one.svg"
-// import linkyIcon from "../../style/images/extra_icons/icon_linky.svg"
-// import oldSquareIcon from "../../style/images/extra_icons/icon_ode_scool_square.svg"
-// import pointDiaIcon from "../../style/images/extra_icons/icon_pointy_diamond.svg"
-// import wCornerIcon from "../../style/images/extra_icons/icon_wave_corner.svg"
-// import wArrowsIcon from "../../style/images/extra_icons/icon_wibbly_arrows.svg"
-// import wDiamondIcon from "../../style/images/extra_icons/icon_wibbly_diamond.svg"
-// import tartanIcon from "../../style/images/extra_icons/icon_wibbly_tartan.svg"
 
 export const ExplorerInfoBlock = () => {
   return (

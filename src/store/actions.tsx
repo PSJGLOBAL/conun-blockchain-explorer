@@ -127,7 +127,7 @@ export const setTxnActivityData = (
     let axiosAddress = `/txActivity/${channelHash}`
     if (from) {
       console.log("Transaction Activity: Using TX ID: ", from)
-      axiosAddress += `?txId${from}`
+      axiosAddress += `?txId=${from}`
     }
 
     axios
