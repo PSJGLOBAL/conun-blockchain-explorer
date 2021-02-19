@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom"
-import { useHistory } from "react-router-dom"
+import { useState } from "react"
+import { NavLink, useHistory } from "react-router-dom"
 
 import { useSelector, useDispatch } from "react-redux"
 
@@ -17,8 +17,13 @@ type Props = {
 }
 
 export const BlockActivitySection = (props: Props) => {
+  const [currentPage, setCurrentPage] = useState<number>(1)
+
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
   const activeChannelHash = activeChannel.channel_genesis_hash
+
+  const channelStats = useSelector((state: State) => state.basic.channelStats)
+  const maxBlock = channelStats.latestBlock
 
   const blockActivityData = useSelector(
     (state: State) => state.block.blockActivityData
@@ -32,14 +37,21 @@ export const BlockActivitySection = (props: Props) => {
     switch (mode) {
       case "first":
         dispatch(setBlockActivityData(activeChannelHash))
+        setCurrentPage(1)
         break
       case "next":
         dispatch(setBlockActivityData(activeChannelHash, bottomBlock.blocknum))
+        setCurrentPage(currentPage + 1)
         break
       case "prev":
         let target = Number(bottomBlock.id)
         target += 20 // It's 20 because bottomBlock is already -10
         dispatch(setBlockActivityData(activeChannelHash, target))
+        if (currentPage > 1) {
+          setCurrentPage(currentPage - 1)
+        } else {
+          setCurrentPage(1)
+        }
         break
       default:
         console.log("Pagination action not possible")
@@ -57,7 +69,13 @@ export const BlockActivitySection = (props: Props) => {
     >
       <div className="section-title">
         <span>Recent Blocks</span>
-        {fullPage && <PaginationMenu doPseudoPaginate={doPseudoPaginate} />}
+        {fullPage && (
+          <PaginationMenu
+            currentPage={currentPage}
+            max={maxBlock}
+            doPseudoPaginate={doPseudoPaginate}
+          />
+        )}
       </div>
       <>
         <div className="info-table recent-block-header">

@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom"
-import { useHistory } from "react-router-dom"
+import { useState } from "react"
+import { NavLink, useHistory } from "react-router-dom"
 
 import { useSelector, useDispatch } from "react-redux"
 
@@ -17,11 +17,15 @@ type Props = {
 }
 
 export const TxnActivitySection = (props: Props) => {
+  const [currentPage, setCurrentPage] = useState<number>(1)
+
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
   const activeChannelHash = activeChannel.channel_genesis_hash
   const txnActivityData = useSelector(
     (state: State) => state.txn.txnActivityData
   )
+  const channelStats = useSelector((state: State) => state.basic.channelStats)
+  const maxTxn = channelStats.txCount
   const bottomTXN = txnActivityData[9]
   const dispatch = useDispatch()
 
@@ -32,14 +36,21 @@ export const TxnActivitySection = (props: Props) => {
     switch (mode) {
       case "first":
         dispatch(setTxnActivityData(activeChannelHash))
+        setCurrentPage(1)
         break
       case "next":
         dispatch(setTxnActivityData(activeChannelHash, bottomTXN.id))
+        setCurrentPage(currentPage + 1)
         break
       case "prev":
         let target = Number(bottomTXN.id)
         target += 20 // It's 20 because bottomTXN is already -10
         dispatch(setTxnActivityData(activeChannelHash, target))
+        if (currentPage > 1) {
+          setCurrentPage(currentPage - 1)
+        } else {
+          setCurrentPage(1)
+        }
         break
 
       default:
@@ -58,7 +69,13 @@ export const TxnActivitySection = (props: Props) => {
     >
       <div className="section-title">
         <span>Recent Transactions</span>
-        {fullPage && <PaginationMenu doPseudoPaginate={doPseudoPaginate} />}
+        {fullPage && (
+          <PaginationMenu
+            currentPage={currentPage}
+            max={maxTxn}
+            doPseudoPaginate={doPseudoPaginate}
+          />
+        )}
       </div>
       <>
         <div className="info-table recent-txn-header">

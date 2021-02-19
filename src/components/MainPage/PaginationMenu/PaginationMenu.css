@@ -19,6 +19,11 @@
 .pagination-button:hover {
   background-color: var(--hilite);
 }
+
+.pagination-indicator {
+  align-self: center;
+  margin-right: 15px;
+}
 .pagination-text-cell {
   width: 30px;
 }
