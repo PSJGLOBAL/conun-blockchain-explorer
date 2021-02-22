@@ -1,6 +1,6 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import axios from "../../axios/axiosinst"
-import { useHistory } from "react-router-dom"
+import { useHistory, useLocation } from "react-router-dom"
 
 // import { ObjectType } from "../../utility/types"
 
@@ -14,13 +14,7 @@ export const Search = () => {
   const searchRef = useRef<HTMLInputElement | null>(null)
 
   let history = useHistory()
-
-  // Need a clear search button,
-  // A search successful button,
-  // A button that will let you go to what the search returned
-  // Also if the user presses enter, then they can go to that page - if the search is successful
-
-  // -- There will be a search result state and only if this contains something, a URL or something, then pressing enter will push that url.
+  const location = useLocation()
 
   function handleSearchInput(str: string) {
     setSearchTerms(str)
@@ -30,6 +24,12 @@ export const Search = () => {
     setSearchTerms("")
     setSearchFail("")
   }
+
+  // Use the current location to trigger a search bar reset/rerender
+  useEffect(() => {
+    console.log("SEARCH: Path changed: ", location)
+    clearSearch()
+  }, [location])
 
   function doAPISearch() {
     if (searchTerms !== "") {
