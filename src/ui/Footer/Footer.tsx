@@ -43,25 +43,48 @@ export const Footer = () => {
 
       <div className="footer-link-block">
         <div className="footer-title">Company</div>
-        <div data-tip={"Not yet implemented"}>About Us</div>
-        <div data-tip={"Not yet implemented"}>Contact Us</div>
-        <div data-tip={"Not yet implemented"}>Terms of Service</div>
+        <div>
+          <a href="https://conun.io/#overview" className="footer-link">
+            About Us
+          </a>
+        </div>
+        <div>
+          <a href="https://conun.io/contactus" className="footer-link">
+            Contact Us
+          </a>
+        </div>
+        <div>
+          <a
+            href="https://conun.io/policy/termsandcondition"
+            className="footer-link"
+          >
+            Terms of Service
+          </a>
+        </div>
         <div></div>
       </div>
       <div className="footer-link-block">
         <div className="footer-title">Community</div>
-        <div data-tip={"Not yet implemented"}>Developer Documentation</div>
-        <div data-tip={"Not yet implemented"}>Main Site</div>
-        <div data-tip={"Not yet implemented"}>Discord</div>
+        {/* <div data-tip={"Not yet implemented"}>Developer Documentation</div> */}
+        <div>
+          <a className="footer-link" href="https://conun.io/">
+            Main Site
+          </a>
+        </div>
+        <div>
+          <a href="https://discord.gg/VvXvQfa3Za" className="footer-link">
+            Discord
+          </a>
+        </div>
         <div></div>
       </div>
-      <div className="footer-link-block">
+      {/* <div className="footer-link-block">
         <div className="footer-title">Products</div>
         <div data-tip={"Not yet implemented"}>Explorer</div>
         <div data-tip={"Not yet implemented"}>Coin</div>
         <div data-tip={"Not yet implemented"}>Drive</div>
         <div data-tip={"Not yet implemented"}>Engine</div>
-      </div>
+      </div> */}
       <ReactTooltip />
     </footer>
   )

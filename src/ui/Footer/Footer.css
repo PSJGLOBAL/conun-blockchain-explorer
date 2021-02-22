@@ -54,6 +54,18 @@ footer {
   border-bottom: 1px solid white;
 }
 
+.footer-link {
+  font-size: 10pt;
+  color: #ddd;
+  text-decoration: none;
+}
+.footer-link:hover {
+  color: #fff;
+}
+.footer-link:visited {
+  color: #bbb;
+}
+
 .footer-logo {
   width: 120px;
   filter: grayscale(100%);
