@@ -66,6 +66,7 @@ export const BlockActivitySection = (props: Props) => {
           ? "section section-block section-full"
           : "section section-block"
       }
+      id="blocks"
     >
       <div className="section-title">
         <span>Recent Blocks</span>

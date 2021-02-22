@@ -66,6 +66,7 @@ export const TxnActivitySection = (props: Props) => {
           ? "section section-block section-full"
           : "section section-block"
       }
+      id="txns"
     >
       <div className="section-title">
         <span>Recent Transactions</span>

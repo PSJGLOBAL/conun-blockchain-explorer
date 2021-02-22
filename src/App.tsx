@@ -7,6 +7,7 @@ import { HeadBar } from "./ui/HeadBar/HeadBar"
 import { Footer } from "./ui/Footer/Footer"
 
 import { Route, Switch } from "react-router-dom"
+import { SearchError } from "./components/SearchError/SearchError"
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             path={["/blocks/:detail_id", "/txns/:detail_id"]}
             component={DetailedViewSection}
           />
+          <Route path={"/error"} component={SearchError} />
           <Route path="/" component={InterfaceMain} />
         </Switch>
       </div>

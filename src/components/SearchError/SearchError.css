@@ -1,0 +1,28 @@
+.search-error-header {
+  background-color: var(--lolite);
+}
+
+.search-error-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 300px;
+}
+.search-error-title {
+  font-weight: bold;
+}
+
+.search-error-message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.search-error-message > div {
+  margin: 5px;
+}
+
+.search-error-highlight {
+  color: var(--hilite);
+}

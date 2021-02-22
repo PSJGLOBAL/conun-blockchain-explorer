@@ -55,6 +55,7 @@ export const Search = () => {
             }
           } else {
             setSearchFail("Invalid search terms.")
+            history.push(`/error?type=invalid_search&terms=${searchTerms}`)
           }
         })
         .catch((e) => {
@@ -65,7 +66,7 @@ export const Search = () => {
   }
 
   return (
-    <div className="search">
+    <div className="search" id="main">
       <div className="search-box">
         <img
           className="search-icon"
