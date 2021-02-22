@@ -1,4 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom"
+import cones from "../../style/images/cones.png"
 import "./SearchError.css"
 
 export const SearchError = () => {
@@ -10,8 +11,12 @@ export const SearchError = () => {
     errorTitle = "Invalid Search"
     content = (
       <div className="search-error-message">
-        <div className="search-error-title">Search terms:</div>
-        <div className="search-error-highlight">{query.get("terms")}</div>
+        <div className="search-error-message-title">404</div>
+        <div className="search-error-message-subtitle">
+          Search terms:{" "}
+          <span className="search-error-highlight">{query.get("terms")}</span>
+        </div>
+
         <div>Your search returned no results.</div>
       </div>
     )
@@ -32,7 +37,12 @@ export const SearchError = () => {
             </div>
           </div>
 
-          <div className="search-error-main">{content}</div>
+          <div className="search-error-main">
+            {content}
+            <div className="search-error-graphic">
+              <img src={cones} alt="cones" />
+            </div>
+          </div>
         </div>
       </section>
     </div>
