@@ -51,3 +51,12 @@
 .nav-link li a:hover {
   color: var(--higreen);
 }
+.nav-link li span {
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--hiblue);
+}
+.nav-link li span:hover {
+  color: var(--higreen);
+}

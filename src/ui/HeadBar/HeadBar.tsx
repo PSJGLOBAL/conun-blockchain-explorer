@@ -26,7 +26,22 @@ export const HeadBar = () => {
             onClick={goHome}
           />
         </div>
+        {/* Temporary links until the real ones are made */}
         <div className="nav-block">
+          <ul className="nav-link">
+            <li>
+              <span onClick={goHome}>Main</span>
+            </li>
+            <li>
+              <span onClick={goHome}>Smart Contracts</span>
+            </li>
+            <li>
+              <span onClick={goHome}>Docs</span>
+            </li>
+          </ul>
+        </div>
+        {/* This is the real block, but I need to use the goHome function while these pages don't exist */}
+        {/* <div className="nav-block">
           <ul className="nav-link">
             <li>
               <a href="/">Main</a>
@@ -38,7 +53,7 @@ export const HeadBar = () => {
               <a href="/">Docs</a>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </nav>
   )
