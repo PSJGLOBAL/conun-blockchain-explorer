@@ -17,9 +17,12 @@ In the project directory, you can run:
 ### Setting Up
 
 When you clone the project, you will need to create a file, config.ts or .js, inside the folder ./src/utility
-In this file, you must add the following line:
+In this file, you must add the following lines:
 
 ```javascript
 export const BASEURL = ...
+export const SOCKETURL = ...
+
 ```
 ...and enter the base URL or IP address and port for your backend application.
+Both lines should be strings.
