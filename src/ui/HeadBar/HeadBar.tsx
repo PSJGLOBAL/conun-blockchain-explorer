@@ -17,13 +17,28 @@ export const HeadBar = () => {
 
   return (
     <nav id="nav" className="textured-bkg">
-      <div id="nav-block">
-        <img
-          className="nav-logo"
-          src={logo}
-          alt="Conun Logo"
-          onClick={goHome}
-        />
+      <div className="nav-container">
+        <div className="nav-block">
+          <img
+            className="nav-logo"
+            src={logo}
+            alt="Conun Logo"
+            onClick={goHome}
+          />
+        </div>
+        <div className="nav-block">
+          <ul className="nav-link">
+            <li>
+              <a href="/">Main</a>
+            </li>
+            <li>
+              <a href="/">Smart Contracts</a>
+            </li>
+            <li>
+              <a href="/">Docs</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
   )
