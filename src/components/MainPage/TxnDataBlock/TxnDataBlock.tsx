@@ -11,6 +11,8 @@ import { truncate } from "../../../utility/functions"
 import { ObjectType } from "../../../utility/types"
 
 import ninjaIcon from "../../../style/images/extra_icons/icon_ninja_star.svg"
+import defaultIcon from "../../../style/images/extra_icons/icon_wibbly_arrows.svg"
+import familiarIcon from "../../../style/images/extra_icons/icon_i_know_this_one.svg"
 
 import "./TxnDataBlock.css"
 import "../../../style/css/table-common.css"
@@ -23,17 +25,44 @@ interface Props {
 TimeAgo.addLocale(en)
 
 export const TxnDataBlock = (props: Props) => {
-  let icon = null
-  if (props.data.chaincodename === "coin") {
-    icon = (
-      <img
-        src={ninjaIcon}
-        data-tip={props.data.chaincodename}
-        className="contract-icon-image"
-        alt=""
-      />
-    )
+  let contractIcon = null
+
+  switch (props.data.chaincodename) {
+    case "coin":
+      contractIcon = (
+        <img
+          src={ninjaIcon}
+          data-tip={"Coin"}
+          className="contract-icon-image"
+          alt=""
+        />
+      )
+      break
+
+    case "ConunDrive":
+      contractIcon = (
+        <img
+          src={familiarIcon}
+          data-tip={"Conun Drive"}
+          className="contract-icon-image"
+          alt=""
+        />
+      )
+      break
+    case "_lifecycle":
+      contractIcon = (
+        <img
+          src={defaultIcon}
+          data-tip={"Contract Deployment"}
+          className="contract-icon-image"
+          alt=""
+        />
+      )
+      break
+    default:
+      contractIcon = <span>{props.data.chaincodename}</span>
   }
+
   return (
     <div className="info-table-row monofont">
       <div className="info-table recent-txn-table table-animate">
@@ -48,15 +77,7 @@ export const TxnDataBlock = (props: Props) => {
         </div>
 
         <div className="info-table-col recent-txn-contract-icon-col">
-          {icon ? (
-            icon
-          ) : (
-            <>
-              <span data-tip={props.data.chaincodename}>
-                {props.data.chaincodename}
-              </span>
-            </>
-          )}
+          {contractIcon}
         </div>
         <div className="info-table-col">
           <span
