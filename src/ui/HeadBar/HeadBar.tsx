@@ -1,4 +1,5 @@
 import { useHistory } from "react-router-dom"
+import { BASEURL } from "../../utility/config.json"
 
 import "./HeadBar.css"
 import logo from "../../style/images/conun-logo.svg"
@@ -36,7 +37,7 @@ export const HeadBar = () => {
               <span onClick={goHome}>Smart Contracts</span>
             </li>
             <li>
-              <span onClick={goHome}>Docs</span>
+              <a href={`${BASEURL}-docs/`}>Docs</a>
             </li>
           </ul>
         </div>

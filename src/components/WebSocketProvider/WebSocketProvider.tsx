@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom"
 
 import { State } from "../../utility/types"
 import * as actions from "../../store/actions"
-import { SOCKETURL } from "../../utility/config"
+import { SOCKETURL } from "../../utility/config.json"
 
 function WebSocketProvider() {
   const [socket, setSocket] = useState<null | W3CWebsocket>(null)
@@ -27,7 +27,7 @@ function WebSocketProvider() {
     if (socket === null && activeChannelHash !== "") {
       // console.log("Websocket: Initialising...")
       const newSocket = new W3CWebsocket(
-        `${SOCKETURL}blockActivity/${activeChannelHash}`
+        `${SOCKETURL}/blockActivity/${activeChannelHash}`
       )
       setSocket(newSocket)
     }
@@ -35,7 +35,7 @@ function WebSocketProvider() {
 
   if (socket) {
     socket.onopen = () => {
-      // console.log("Websocket: Connected")
+      console.log("Websocket: Connected")
     }
     socket.onmessage = (msg) => {
       const socketData = JSON.parse(msg.data.toString())
