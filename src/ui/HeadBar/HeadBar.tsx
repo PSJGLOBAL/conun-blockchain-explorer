@@ -34,7 +34,9 @@ export const HeadBar = () => {
               <span onClick={goHome}>Main</span>
             </li>
             <li>
-              <span onClick={goHome}>Smart Contracts</span>
+              <a href="https://github.com/CONUN-Global/conun-blockchain-smartcontract">
+                Smart Contracts
+              </a>
             </li>
             <li>
               <a href={`${BASEURL}-docs/`}>Docs</a>
@@ -48,7 +50,7 @@ export const HeadBar = () => {
               <a href="/">Main</a>
             </li>
             <li>
-              <a href="/">Smart Contracts</a>
+              <a href="https://github.com/CONUN-Global/conun-blockchain-smartcontract">Smart Contracts</a>
             </li>
             <li>
               <a href="/">Docs</a>
