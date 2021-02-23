@@ -26,7 +26,7 @@ export const BlockDetails = (props: Props) => {
       axios
         .get(`/block/transactions/${activeChannelHash}/${props.blocknum}`)
         .then((response) => {
-          console.log("BLOCK MODAL: Data: ", response.data.data)
+          // console.log("BLOCK MODAL: Data: ", response.data.data)
           setBlockData(response.data.data)
         })
         .catch((e) => console.error(e))

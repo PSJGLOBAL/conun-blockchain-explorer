@@ -66,23 +66,3 @@ export const ExplorerInfoBlock = () => {
     </div>
   )
 }
-
-//   <div className="app-service-icons">
-//     <div className="app-service-icon-unit">
-
-//     <div className="app-service-icon-unit">
-//       <div className="app-service-title">Drive</div>
-
-//     </div>
-
-//     <div className="app-service-icon-unit">
-//       <div className="app-service-title">Engine</div>
-//       <img
-//         src={familiarIcon}
-//         className="app-service-icon-image"
-//         alt=""
-//         data-tip={"Drive"}
-//       />
-//     </div>
-//   </div>
-// </div>

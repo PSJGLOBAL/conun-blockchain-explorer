@@ -38,15 +38,16 @@ export const ChannelProvider = (props: Props) => {
     // Prevent code running unless this actually has results in it.
     if (availableChannels.length > 0) {
       dispatch(actions.setServerStatus(true))
-      console.log(availableChannels)
 
       if (cachedChannel !== null) {
         // If the user has a previously used channel, set it here
-        console.log("CHANNEL PROVIDER: Cached channel detected")
+        // console.log("CHANNEL PROVIDER: Cached channel detected")
         dispatch(actions.setActiveChannel(cachedChannel))
       } else {
         // Else, set the active channel to be the first channel in the list
-        console.log("CHANNEL PROVIDER: No cached channel found")
+        // console.log(
+        //   "CHANNEL PROVIDER: No cached channel, using default (it's OK :))"
+        // )
         dispatch(
           actions.setActiveChannel({
             id: availableChannels[0].id.toString(),

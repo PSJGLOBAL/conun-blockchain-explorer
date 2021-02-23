@@ -41,7 +41,7 @@ export const GraphBlock = () => {
             })
           break
         default:
-          console.error("GRAPHMODE: Error")
+          console.error("GRAPHMODE: Error - Impossible mode selected (HOW?!?)")
       }
     },
     [activeChannelHash]
@@ -58,7 +58,7 @@ export const GraphBlock = () => {
 
   useEffect(() => {
     const graphTimer = setInterval(function () {
-      console.log("GRAPH: Scheduled Graph Update")
+      // console.log("GRAPH: Scheduled Graph Update")
       doGraphDataGet(graphMode)
     }, 30000)
 

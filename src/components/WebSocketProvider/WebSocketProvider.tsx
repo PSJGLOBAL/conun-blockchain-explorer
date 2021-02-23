@@ -6,7 +6,6 @@ import { useHistory } from "react-router-dom"
 
 import { State } from "../../utility/types"
 import * as actions from "../../store/actions"
-
 import { SOCKETURL } from "../../utility/config"
 
 function WebSocketProvider() {
@@ -26,7 +25,7 @@ function WebSocketProvider() {
 
   useEffect(() => {
     if (socket === null && activeChannelHash !== "") {
-      console.log("Websocket: Initialising...")
+      // console.log("Websocket: Initialising...")
       const newSocket = new W3CWebsocket(
         `${SOCKETURL}blockActivity/${activeChannelHash}`
       )
@@ -36,28 +35,22 @@ function WebSocketProvider() {
 
   if (socket) {
     socket.onopen = () => {
-      console.log("Websocket: Connected")
+      // console.log("Websocket: Connected")
     }
     socket.onmessage = (msg) => {
-      console.warn(msg)
       const socketData = JSON.parse(msg.data.toString())
-      console.log("Websocket: Message received: ", socketData)
 
       const { txdata, notify_type, ...socketBlocks } = socketData
-      console.log("Websocket: ", txdata)
       const socketTxns = txdata
 
       // Mute the websocket if the user is not on the front page
       if (history.location.pathname === "/") {
-        console.log("Websocket: Adding data")
         dispatch(actions.addNewBlock(blockActivityData, socketBlocks))
         dispatch(actions.addNewTxns(txnActivityData, socketTxns))
         //If websocket message comes in, trigger channel stats to update
         if (activeChannelHash && activeChannelHash !== "") {
           dispatch(actions.setChannelStats(activeChannelHash.toString()))
         }
-      } else {
-        console.log("Websocket: Data received, but websocket is muted")
       }
     }
   }

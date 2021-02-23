@@ -13,8 +13,6 @@ export const DetailedViewSection = (props: Props) => {
   const route = props.match.path
   const params: Params = props.match.params
 
-  console.log(props.match)
-
   let internalComponent = null
 
   if (route.startsWith("/blocks/")) {

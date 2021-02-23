@@ -14,7 +14,7 @@ function SelectChannel() {
   )
 
   const setCachedChannel = (channel: ChannelObject) => {
-    console.log("SELECT CHANNEL: Setting Cached Channel: ", channel.channelname)
+    // console.log("SELECT CHANNEL: Setting Cached Channel: ", channel.channelname)
     localStorage.setItem(
       "Conun-BCE-Cached-Genesis-Hash",
       channel.channel_genesis_hash

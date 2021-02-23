@@ -27,7 +27,7 @@ export const Search = () => {
 
   // Use the current location to trigger a search bar reset/rerender
   useEffect(() => {
-    console.log("SEARCH: Path changed: ", location)
+    // console.log("SEARCH: Path changed: ", location)
     clearSearch()
   }, [location])
 

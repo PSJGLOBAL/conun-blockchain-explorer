@@ -46,7 +46,7 @@ const initialState = {
 }
 
 const basicReducer = (state = initialState, action: Action) => {
-  console.log(`Confirm Redux Action: `, action.type)
+  // console.log(`Confirm Redux Action: `, action.type)
   switch (action.type) {
     case GET_AVAILABLE_CHANNELS:
       if (!action.payload) {

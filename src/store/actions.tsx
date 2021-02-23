@@ -72,12 +72,12 @@ export const getAvailableChannels = () => {
     axios
       .get("/channels/info")
       .then((response) => {
-        console.log(
-          "Available Channels: ",
-          response.status,
-          response.statusText
-        )
-        console.log("Available Channels: ", response.data.channels)
+        // console.log(
+        //   "Available Channels: ",
+        //   response.status,
+        //   response.statusText
+        // )
+        // console.log("Available Channels: ", response.data.channels)
         dispatch(assembleAvailableChannels(response.data.channels))
       })
       .catch((e) => console.error(e))
@@ -89,7 +89,7 @@ export const setChannelStats = (channelHash: string) => {
     axios
       .get(`/status/${channelHash}`)
       .then((response) => {
-        console.log("Channel Info: ", response.status, response.statusText)
+        // console.log("Channel Info: ", response.status, response.statusText)
         dispatch(assembleChannelStats(response.data))
       })
       .catch((e) => console.error(e))
@@ -104,14 +104,14 @@ export const setBlockActivityData = (
   return (dispatch: any) => {
     let axiosAddress = `/blockActivity/${channelHash}`
     if (from) {
-      console.log("Block Activity: Using Blocknum: ", from)
+      // console.log("Block Activity: Using Blocknum: ", from)
       axiosAddress += `?blocknum=${from}`
     }
 
     axios
       .get(axiosAddress)
       .then((response) => {
-        console.log("Block Activity: ", response.status, response.statusText)
+        // console.log("Block Activity: ", response.status, response.statusText)
         dispatch(assembleBlockDataObj(response.data.row))
       })
       .catch((e) => console.error(e))
@@ -126,18 +126,18 @@ export const setTxnActivityData = (
   return (dispatch: any) => {
     let axiosAddress = `/txActivity/${channelHash}`
     if (from) {
-      console.log("Transaction Activity: Using TX ID: ", from)
+      // console.log("Transaction Activity: Using TX ID: ", from)
       axiosAddress += `?txId=${from}`
     }
 
     axios
       .get(axiosAddress)
       .then((response) => {
-        console.log(
-          "Transaction Activity: ",
-          response.status,
-          response.statusText
-        )
+        // console.log(
+        //   "Transaction Activity: ",
+        //   response.status,
+        //   response.statusText
+        // )
         dispatch(assembleTxnDataObj(response.data.row))
       })
       .catch((e) => console.error(e))

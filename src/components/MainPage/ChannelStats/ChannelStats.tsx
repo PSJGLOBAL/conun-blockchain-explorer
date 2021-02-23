@@ -22,7 +22,7 @@ export const ChannelStats = () => {
   }, [activeChannel, activeChannelHash, dispatch])
 
   const channelStats = useSelector((state: State) => state.basic.channelStats)
-  console.log("CHANNEL STATS: ", channelStats)
+  // console.log("CHANNEL STATS: ", channelStats)
   return (
     <div className="channel-stats-table">
       <div className="channel-stats-icon-col">
