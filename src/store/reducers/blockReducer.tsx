@@ -1,4 +1,4 @@
-import { BLOCK_ACTIVITY_DATA, ADD_NEW_BLOCK } from "../actionTypes"
+import { BLOCK_ACTIVITY_DATA, ADD_NEW_BLOCK } from "../actions/actionTypes"
 
 import { ObjectType } from "../../utility/types"
 
@@ -20,12 +20,7 @@ type Action =
     }
 
 const initialState = {
-  channelHash: "",
-  serverResponsive: true,
-  availableChannels: Array<ObjectType>(),
-  channelInfoData: {},
   blockActivityData: Array<ObjectType>(),
-  txnActivityData: Array<ObjectType>(),
 }
 
 const blockReducer = (state = initialState, action: Action) => {

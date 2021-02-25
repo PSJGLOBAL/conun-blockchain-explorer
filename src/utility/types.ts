@@ -25,4 +25,7 @@ export type State = {
   txn: {
     txnActivityData: Array<ObjectType>
   }
+  ctx: {
+    contractData: Array<ObjectType>
+  }
 }

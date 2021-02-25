@@ -1,4 +1,4 @@
-import { TXN_ACTIVITY_DATA, ADD_NEW_TXNS } from "../actionTypes"
+import { TXN_ACTIVITY_DATA, ADD_NEW_TXNS } from "../actions/actionTypes"
 
 import { ObjectType } from "../../utility/types"
 
@@ -20,11 +20,6 @@ type Action =
     }
 
 const initialState = {
-  channelHash: "",
-  serverResponsive: true,
-  availableChannels: Array<ObjectType>(),
-  channelInfoData: {},
-  blockActivityData: Array<ObjectType>(),
   txnActivityData: Array<ObjectType>(),
 }
 
