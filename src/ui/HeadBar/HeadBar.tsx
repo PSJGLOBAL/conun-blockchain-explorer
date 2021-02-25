@@ -34,29 +34,13 @@ export const HeadBar = () => {
               <span onClick={goHome}>Main</span>
             </li>
             <li>
-              <a href="https://github.com/CONUN-Global/conun-blockchain-smartcontract">
-                Smart Contracts
-              </a>
+              <a href="/contracts">Smart Contracts</a>
             </li>
             <li>
               <a href={`${BASEURL}-docs/`}>Docs</a>
             </li>
           </ul>
         </div>
-        {/* This is the real block, but I need to use the goHome function while these pages don't exist */}
-        {/* <div className="nav-block">
-          <ul className="nav-link">
-            <li>
-              <a href="/">Main</a>
-            </li>
-            <li>
-              <a href="https://github.com/CONUN-Global/conun-blockchain-smartcontract">Smart Contracts</a>
-            </li>
-            <li>
-              <a href="/">Docs</a>
-            </li>
-          </ul>
-        </div> */}
       </div>
     </nav>
   )
