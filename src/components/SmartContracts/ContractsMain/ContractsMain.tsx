@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux"
 import { getAllContracts } from "../../../store/actions"
 
-import ContractsDataBlock from "../ContractsDataBlock/ContractsDataBlock"
+import ContractSection from "../ContractSection/ContractSection"
 
 import { State } from "../../../utility/types"
 
@@ -15,7 +15,7 @@ const ContractsMain = () => {
 
   return (
     <main className="contracts-main">
-      <ContractsDataBlock />
+      <ContractSection />
     </main>
   )
 }

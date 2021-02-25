@@ -2,10 +2,10 @@ import axios from "../../axios/axiosinst"
 
 import { GET_ALL_CONTRACTS } from "./actionTypes"
 
-import { ObjectType } from "../../utility/types"
+import { ContractType } from "../../utility/types"
 
 //This function formats the action for the reducer to put into state
-const assembleAllContracts = (data: Array<ObjectType>) => {
+const assembleAllContracts = (data: Array<ContractType>) => {
   return { type: GET_ALL_CONTRACTS, payload: { contractData: data } }
 }
 

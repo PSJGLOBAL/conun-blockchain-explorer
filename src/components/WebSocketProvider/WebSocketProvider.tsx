@@ -24,7 +24,7 @@ function WebSocketProvider() {
   let history = useHistory()
 
   useEffect(() => {
-    if (socket === null && activeChannelHash !== "") {
+    if (socket === null && activeChannelHash && activeChannelHash !== "") {
       // console.log("Websocket: Initialising...")
       const newSocket = new W3CWebsocket(
         `${SOCKETURL}/blockActivity/${activeChannelHash}`

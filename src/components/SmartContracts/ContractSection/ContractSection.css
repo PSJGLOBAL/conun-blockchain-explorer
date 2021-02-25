@@ -1,0 +1,17 @@
+.contracts-header {
+  grid-template-columns: 1fr 1fr;
+  margin: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.contract-block {
+  grid-template-columns: 1fr 1fr;
+  margin: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.contract-block div {
+  text-align: center;
+  width: 100%;
+}

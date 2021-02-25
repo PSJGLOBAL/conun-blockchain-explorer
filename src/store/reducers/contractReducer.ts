@@ -1,17 +1,17 @@
 import { GET_ALL_CONTRACTS } from "../actions/actionTypes"
 
-import { ObjectType } from "../../utility/types"
+import { ContractType } from "../../utility/types"
 
 // In TS an action must be of a strict format. Set them here:
 type Action = {
   type: typeof GET_ALL_CONTRACTS
   payload: {
-    contractData: Array<ObjectType>
+    contractData: Array<ContractType>
   }
 }
 
 const initialState = {
-  contractData: Array<ObjectType>(),
+  contractData: Array<ContractType>(),
 }
 
 const contractReducer = (state = initialState, action: Action) => {
