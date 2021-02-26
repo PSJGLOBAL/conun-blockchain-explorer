@@ -71,3 +71,29 @@ footer {
   width: 120px;
   filter: grayscale(100%);
 }
+
+@media only screen and (max-width: 700px) {
+  footer {
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+  }
+
+  .footer-link-block {
+    margin: 10px 0px;
+  }
+  .footer-link {
+    margin: 10px 0px;
+  }
+
+  .footer-world {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .app {
+    width: 95vw;
+  }
+}

@@ -63,8 +63,8 @@ export const TxnActivitySection = (props: Props) => {
     <section
       className={
         fullPage
-          ? "section section-block section-full"
-          : "section section-block"
+          ? "interface-solo section-block"
+          : "interface-dual section-block"
       }
       id="txns"
     >

@@ -1,19 +1,25 @@
 .channel-stats-table {
-  display: grid;
-  grid-template-columns: 80px 1fr 80px 1fr;
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.channel-stats-icon-col {
+.channel-stats-column {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.channel-stats-icon-cell {
   width: 50px;
-  padding: 5px 0px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-
   font-size: 24pt;
 }
 
-.channel-stats-data-col {
+.channel-stats-data-cell {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -26,3 +32,22 @@
   user-select: none;
   -webkit-user-drag: none;
 }
+
+.channel-stats-datapoint-label {
+  margin-left: 5px;
+}
+
+@media only screen and (max-width: 700px) {
+  .channel-stats-column {
+    flex-direction: column;
+  }
+  .channel-stats-datapoint-label {
+    display: none;
+  }
+}
+
+/* @media only screen and (max-width: 1400px) {
+  .app {
+    width: 95vw;
+  }
+} */

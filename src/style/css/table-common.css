@@ -5,7 +5,6 @@
 }
 .info-table-row {
   border-top: 1px solid var(--bkg);
-  overflow: hidden;
 }
 
 .table-animate {

@@ -22,7 +22,7 @@ export const InterfaceMain = () => {
   return (
     <main>
       <Route path="/" exact component={StatsBlock} />
-      <div className="splitcolumns">
+      <div className="interface-container">
         <Route
           path={"/"}
           exact
