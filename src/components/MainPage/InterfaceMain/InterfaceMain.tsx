@@ -22,7 +22,7 @@ export const InterfaceMain = () => {
   return (
     <main>
       <Route path="/" exact component={StatsBlock} />
-      <div className="interface-container">
+      <div className="splitcolumns">
         <Route
           path={"/"}
           exact
@@ -33,7 +33,8 @@ export const InterfaceMain = () => {
             }
             return (
               <>
-                <BlockActivitySection />
+                {/* <BlockActivitySection /> */}
+                <TxnActivitySection />
                 <TxnActivitySection />
               </>
             )

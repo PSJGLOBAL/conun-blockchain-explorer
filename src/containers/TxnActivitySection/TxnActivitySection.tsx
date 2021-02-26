@@ -61,11 +61,7 @@ export const TxnActivitySection = (props: Props) => {
 
   return (
     <section
-      className={
-        fullPage
-          ? "interface-solo section-block"
-          : "interface-dual section-block"
-      }
+      className={fullPage ? "section-block section-full" : "section-block"}
       id="txns"
     >
       <div className="section-title">
@@ -78,29 +74,32 @@ export const TxnActivitySection = (props: Props) => {
           />
         )}
       </div>
-      <>
-        <div className="info-table recent-txn-header">
-          <div className="table-header-cell"> </div>
-          <div className="table-header-cell">Service</div>
-          <div className="table-header-cell">Hash</div>
-          <div className="table-header-cell">Time</div>
-        </div>
+      <div className="new-table-container">
+        {/* HEADER */}
+
+        <div className=""></div>
+        <div className="">Service</div>
+        <div className="">Hash</div>
+        <div className="">Time</div>
+
         {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
+
         {txnActivityData.map((i) => (
           <TxnDataBlock key={i.txhash} fullPage={fullPage} data={{ ...i }} />
         ))}
-        <div>
-          {fullPage ? (
-            <NavLink className="section-table-link" to={"/"}>
-              Back To Home
-            </NavLink>
-          ) : (
-            <NavLink className="section-table-link" to={"/txns"}>
-              View More Transactions
-            </NavLink>
-          )}
-        </div>
-      </>
+      </div>
+      {/* BUTTON */}
+      <div>
+        {fullPage ? (
+          <NavLink className="section-table-link" to={"/"}>
+            Back To Home
+          </NavLink>
+        ) : (
+          <NavLink className="section-table-link" to={"/txns"}>
+            View More Transactions
+          </NavLink>
+        )}
+      </div>
     </section>
   )
 }

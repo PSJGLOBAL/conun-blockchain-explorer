@@ -64,50 +64,47 @@ export const TxnDataBlock = (props: Props) => {
   }
 
   return (
-    <div className="info-table-row monofont">
-      <div className="info-table recent-txn-table table-animate">
-        <div className="info-table-identicon-col">
-          <div className="info-table-col info-table-icon-col">
-            <NavLink to={`/txns/${props.data.txhash}`}>
-              <div className="info-table-icon-cell">
-                <Identicon size={15} string={props.data.txhash.toString()} />
-              </div>
-            </NavLink>
+    <>
+      {/* IDENTICON */}
+      <div className="new-table-identicon-cell">
+        <NavLink to={`/txns/${props.data.txhash}`}>
+          <div className="">
+            <Identicon size={15} string={props.data.txhash.toString()} />
           </div>
-        </div>
-
-        <div className="info-table-col recent-txn-contract-icon-col">
-          {contractIcon}
-        </div>
-        <div className="info-table-col">
-          <span
-            className="info-table-content-span"
-            data-tip={props.data.txhash}
-          >
-            <NavLink
-              className={"info-table-link font-clicky monofont"}
-              to={`/txns/${props.data.txhash}`}
-            >
-              <span className={props.fullPage ? "selectable" : ""}>
-                {props.fullPage
-                  ? props.data.txhash.toString()
-                  : truncate(props.data.txhash.toString())}
-              </span>
-            </NavLink>
-          </span>
-        </div>
-        <div className="info-table-col">
-          <span data-tip={props.data.createdt}>
-            <ReactTimeAgo
-              date={new Date(props.data.createdt)}
-              locale="en-US"
-              tooltip={false}
-              timeStyle="round"
-            />
-          </span>
-        </div>
+        </NavLink>
       </div>
+
+      {/* CONTRACT ICON */}
+      <div className="">{contractIcon}</div>
+      {/* HASH CELL */}
+      <div className="">
+        <span className="info-table-content-span" data-tip={props.data.txhash}>
+          <NavLink
+            className={"info-table-link font-clicky monofont"}
+            to={`/txns/${props.data.txhash}`}
+          >
+            <span className={props.fullPage ? "selectable" : ""}>
+              {props.fullPage
+                ? props.data.txhash.toString()
+                : truncate(props.data.txhash.toString())}
+            </span>
+          </NavLink>
+        </span>
+      </div>
+
+      {/* TIMESTAMP */}
+      <div className="">
+        <span data-tip={props.data.createdt}>
+          <ReactTimeAgo
+            date={new Date(props.data.createdt)}
+            locale="en-US"
+            tooltip={false}
+            timeStyle="round"
+          />
+        </span>
+      </div>
+      <div className="new-table-border-cell"></div>
       <ReactTooltip backgroundColor="#e95654" />
-    </div>
+    </>
   )
 }

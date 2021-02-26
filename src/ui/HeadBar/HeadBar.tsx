@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { BASEURL } from "../../utility/config.json"
 
@@ -5,6 +6,7 @@ import "./HeadBar.css"
 import logo from "../../style/images/conun-logo.svg"
 
 export const HeadBar = () => {
+  const [show, setShow] = useState<boolean>(false)
   const history = useHistory()
 
   // This function prevents the user from going to the home page if they're already there
@@ -17,9 +19,11 @@ export const HeadBar = () => {
   }
 
   return (
-    <nav id="nav" className="textured-bkg">
-      <div className="nav-container">
-        <div className="nav-block">
+    <nav id="nav" className={show ? "nav-show" : "nav-hide"}>
+      <div
+        className={show ? "nav-container nav-show" : "nav-container nav-hide"}
+      >
+        <div className="nav-logo-block">
           <img
             className="nav-logo"
             src={logo}
@@ -27,36 +31,31 @@ export const HeadBar = () => {
             onClick={goHome}
           />
         </div>
-        {/* Temporary links until the real ones are made */}
-        <div className="nav-block">
-          <ul className="nav-link">
-            <li>
-              <span onClick={goHome}>Main</span>
-            </li>
-            <li>
-              <a href="https://github.com/CONUN-Global/conun-blockchain-smartcontract">
-                Smart Contracts
-              </a>
-            </li>
-            <li>
-              <a href={`${BASEURL}-docs/`}>Docs</a>
-            </li>
-          </ul>
+        <div className={show ? "nav-menu nav-show" : "nav-menu nav-hide"}>
+          <div className="nav-link">
+            <span onClick={goHome}>Main</span>
+          </div>
+          <div className="nav-link">
+            <a href="https://github.com/CONUN-Global/conun-blockchain-smartcontract">
+              Smart Contracts
+            </a>
+          </div>
+          <div className="nav-link">
+            <a href={`${BASEURL}-docs/`}>Docs</a>
+          </div>
         </div>
-        {/* This is the real block, but I need to use the goHome function while these pages don't exist */}
-        {/* <div className="nav-block">
-          <ul className="nav-link">
-            <li>
-              <a href="/">Main</a>
-            </li>
-            <li>
-              <a href="https://github.com/CONUN-Global/conun-blockchain-smartcontract">Smart Contracts</a>
-            </li>
-            <li>
-              <a href="/">Docs</a>
-            </li>
-          </ul>
-        </div> */}
+        <div
+          className="nav-toggler"
+          onClick={() => {
+            setShow(!show)
+          }}
+        >
+          {show ? (
+            <i className="fas fa-ellipsis-h"></i>
+          ) : (
+            <i className="fas fa-ellipsis-v"></i>
+          )}
+        </div>
       </div>
     </nav>
   )
