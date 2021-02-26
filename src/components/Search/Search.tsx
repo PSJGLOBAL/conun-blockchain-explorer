@@ -68,16 +68,6 @@ export const Search = () => {
   return (
     <div className="search" id="main">
       <div className="search-box">
-        <img
-          className="search-icon"
-          src={searchIcon}
-          alt=""
-          onClick={() => {
-            setSearchFail("")
-            doAPISearch()
-            setSearchTerms("")
-          }}
-        />
         <input
           ref={searchRef}
           className="search-input-field"
@@ -98,20 +88,16 @@ export const Search = () => {
             }
           }}
         />
-        <div className="search-error-icon" onClick={clearSearch}>
-          {searchFail ? (
-            <i className="fas fa-exclamation-circle" />
-          ) : searchTerms ? (
-            <i className="fas fa-times-circle"></i>
-          ) : null}
-          {/* {searchTerms ? (
-            searchFail ? (
-              <i className="fas fa-exclamation-circle" />
-            ) : (
-              <i className="fas fa-times-circle"></i>
-            )
-          ) : null} */}
-        </div>
+        <img
+          className="search-icon"
+          src={searchIcon}
+          alt=""
+          onClick={() => {
+            setSearchFail("")
+            doAPISearch()
+            setSearchTerms("")
+          }}
+        />
       </div>
     </div>
   )

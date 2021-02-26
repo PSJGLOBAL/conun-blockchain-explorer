@@ -47,14 +47,11 @@ export const GraphBlock = () => {
     [activeChannelHash]
   )
 
-  // function graphInterval(){}
-
   useEffect(() => {
-    doGraphDataGet(graphMode)
-    //eslint-disable-next-line
-  }, [graphMode, activeChannelHash])
-
-  // const modeRef = useRef(graphMode)
+    if (activeChannelHash && activeChannelHash !== "") {
+      doGraphDataGet(graphMode)
+    }
+  }, [graphMode, activeChannelHash, doGraphDataGet])
 
   useEffect(() => {
     const graphTimer = setInterval(function () {
