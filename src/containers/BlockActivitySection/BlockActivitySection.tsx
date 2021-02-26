@@ -61,11 +61,7 @@ export const BlockActivitySection = (props: Props) => {
 
   return (
     <section
-      className={
-        fullPage
-          ? "interface-solo section-block"
-          : "interface-dual section-block"
-      }
+      className={fullPage ? "section-block section-full" : "section-block"}
       id="blocks"
     >
       <div className="section-title">
@@ -78,14 +74,13 @@ export const BlockActivitySection = (props: Props) => {
           />
         )}
       </div>
-      <>
-        <div className="info-table recent-block-header">
-          <div className="table-header-cell"> </div>
-          <div className="table-header-cell">Num.</div>
-          <div className="table-header-cell">Hash</div>
-          <div className="table-header-cell">Time</div>
-          <div className="table-header-cell">Txns</div>
-        </div>
+      <div className="new-table-container new-block-table">
+        {/* HEADER */}
+        <div className="new-block-table hiding-cell"> </div>
+        <div>Num.</div>
+        <div>Hash</div>
+        <div>Time</div>
+        <div>Txns</div>
         {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
         {blockActivityData.map((i) => (
           <BlockDataBlock
@@ -94,18 +89,18 @@ export const BlockActivitySection = (props: Props) => {
             data={{ ...i }}
           />
         ))}
-        <div>
-          {fullPage ? (
-            <NavLink className="section-table-link hover-gradient" to={"/"}>
-              Back To Home
-            </NavLink>
-          ) : (
-            <NavLink className="section-table-link" to={"/blocks"}>
-              View More Blocks
-            </NavLink>
-          )}
-        </div>
-      </>
+      </div>
+      <div>
+        {fullPage ? (
+          <NavLink className="section-table-link hover-gradient" to={"/"}>
+            Back To Home
+          </NavLink>
+        ) : (
+          <NavLink className="section-table-link" to={"/blocks"}>
+            View More Blocks
+          </NavLink>
+        )}
+      </div>
     </section>
   )
 }

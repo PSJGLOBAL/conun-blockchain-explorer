@@ -51,3 +51,12 @@
   user-select: none;
   -webkit-user-drag: none;
 }
+
+@media only screen and (max-width: 530px) {
+  .app-service-description {
+    display: none;
+  }
+  .app-service-unit-description {
+    display: none;
+  }
+}

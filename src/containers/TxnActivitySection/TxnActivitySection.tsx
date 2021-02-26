@@ -74,7 +74,7 @@ export const TxnActivitySection = (props: Props) => {
           />
         )}
       </div>
-      <div className="new-table-container">
+      <div className="new-table-container new-txn-table">
         {/* HEADER */}
 
         <div className=""></div>
@@ -82,7 +82,7 @@ export const TxnActivitySection = (props: Props) => {
         <div className="">Hash</div>
         <div className="">Time</div>
 
-        {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
+        {/* TXN Activity - Table for each block made - shows hashes, created at, etc*/}
 
         {txnActivityData.map((i) => (
           <TxnDataBlock key={i.txhash} fullPage={fullPage} data={{ ...i }} />

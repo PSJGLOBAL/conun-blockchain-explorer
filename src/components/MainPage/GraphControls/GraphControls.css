@@ -31,3 +31,10 @@
 .graph-controls-active:hover {
   background-color: var(--higreen);
 }
+
+@media only screen and (max-width: 530px) {
+  .graph-controls-table {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}

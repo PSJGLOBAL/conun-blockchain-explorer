@@ -78,7 +78,7 @@ export const TxnDataBlock = (props: Props) => {
       <div className="">{contractIcon}</div>
       {/* HASH CELL */}
       <div className="">
-        <span className="info-table-content-span" data-tip={props.data.txhash}>
+        <span className="" data-tip={props.data.txhash}>
           <NavLink
             className={"info-table-link font-clicky monofont"}
             to={`/txns/${props.data.txhash}`}

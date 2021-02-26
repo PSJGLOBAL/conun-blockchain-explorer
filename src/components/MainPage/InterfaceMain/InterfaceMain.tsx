@@ -33,8 +33,7 @@ export const InterfaceMain = () => {
             }
             return (
               <>
-                {/* <BlockActivitySection /> */}
-                <TxnActivitySection />
+                <BlockActivitySection />
                 <TxnActivitySection />
               </>
             )
