@@ -187,6 +187,12 @@ main {
   color: var(--higreen);
 }
 
+@media only screen and (max-width: 1400px) {
+  .app {
+    width: 95vw;
+  }
+}
+
 @media only screen and (max-width: 800px) {
   .splitcolumns {
     display: flex;
@@ -194,13 +200,8 @@ main {
   }
 }
 
-@media only screen and (max-width: 1400px) {
-  .app {
-    width: 95vw;
+@media only screen and (max-width: 400px) {
+  .graph-block {
+    display: none;
   }
 }
-/* .__react_component_tooltip {
-  transform: translateZ(100%);
-  z-index: 10 !important;
-  background-color: var(--hilite) !important;
-} */

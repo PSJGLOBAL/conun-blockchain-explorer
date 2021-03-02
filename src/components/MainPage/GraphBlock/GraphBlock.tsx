@@ -65,7 +65,7 @@ export const GraphBlock = () => {
   }, [doGraphDataGet, graphMode])
 
   return (
-    <div className="section-block">
+    <div className="section-block graph-block">
       <TheGraph data={graphData} />
       <GraphControls clickHandler={setGraphMode} active={graphMode} />
     </div>
