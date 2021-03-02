@@ -40,8 +40,8 @@ export const TransactionDetails = (props: Props) => {
 
   if (txnData) {
     content = (
-      <>
-        <div className="details-table-row">
+      <div className="">
+        <div className="details-table-row scrolly">
           <div className="info-col info-key">Transaction Hash:</div>
           <div className="info-col info-val selectable monofont">
             {txnData.txhash}
@@ -77,13 +77,13 @@ export const TransactionDetails = (props: Props) => {
             {txnData.creator_msp_id}
           </div>
         </div>
-        <div className="details-table-row">
+        <div className="details-table-row scrolly">
           <div className="info-col info-key">Payload Proposal Hash:</div>
           <div className="info-col info-val selectable monofont">
             {txnData.payload_proposal_hash}
           </div>
         </div>
-      </>
+      </div>
     )
   }
 

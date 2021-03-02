@@ -42,14 +42,14 @@ export const BlockDetails = (props: Props) => {
 
   if (blockData) {
     const txContent = blockData.txhash.map((t: string) => (
-      <div>
+      <div key={t}>
         <NavLink className="info-table-link monofont" to={`/txns/${t}`}>
           {t}
         </NavLink>
       </div>
     ))
     content = (
-      <>
+      <div className="">
         <div className="details-table-row">
           <div className="info-col info-key">Block Number:</div>
           <div className="info-col info-val selectable monofont">
@@ -60,31 +60,31 @@ export const BlockDetails = (props: Props) => {
           <div className="info-col info-key">Block Size:</div>
           <div className="info-col info-val monofont">{blockData.blksize}</div>
         </div>
-        <div className="details-table-row">
+        <div className="details-table-row scrolly">
           <div className="info-col info-key">Block Hash:</div>
           <div className="info-col info-val selectable monofont">
             {blockData.blockhash}
           </div>
         </div>
-        <div className="details-table-row">
+        <div className="details-table-row scrolly">
           <div className="info-col info-key">Data Hash:</div>
           <div className="info-col info-val selectable monofont">
             {blockData.datahash}
           </div>
         </div>
-        <div className="details-table-row">
+        <div className="details-table-row scrolly">
           <div className="info-col info-key">Previous Hash:</div>
           <div className="info-col info-val selectable monofont">
             {blockData.prehash}
           </div>
         </div>
-        <div className="details-table-row">
+        <div className="details-table-row scrolly">
           <div className="info-col info-key">
             Transactions: {blockData.txcount}
           </div>
           <div className="info-col info-val">{txContent}</div>
         </div>
-      </>
+      </div>
     )
   }
 

@@ -116,6 +116,10 @@
   overflow-x: auto;
 }
 
+.scrolly {
+  overflow-x: auto;
+}
+
 .new-table-container {
   display: grid;
   grid-gap: 10px;
