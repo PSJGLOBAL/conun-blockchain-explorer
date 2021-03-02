@@ -126,7 +126,7 @@
   align-items: center;
   justify-items: center;
   margin: 10px;
-  min-width: 380px;
+  height: 80vh;
 }
 
 .new-txn-table {
@@ -151,6 +151,12 @@
   width: 100%;
 }
 .new-table-identicon-cell {
+  height: 20px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   cursor: pointer;
   padding: 5px;
   border: 2px solid;

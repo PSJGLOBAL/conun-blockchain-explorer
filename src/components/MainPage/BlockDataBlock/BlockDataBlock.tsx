@@ -23,7 +23,7 @@ export const BlockDataBlock = (props: Props) => {
   return (
     <>
       {/* IDENTICON */}
-      <div className="new-table-identicon-cell">
+      <div className="new-table-identicon-cell new-table-cell">
         <NavLink className="" to={`/blocks/${props.data.blocknum}`}>
           <div className="">
             <Identicon size={15} string={props.data.blockhash.toString()} />
@@ -32,7 +32,7 @@ export const BlockDataBlock = (props: Props) => {
       </div>
 
       {/* BLOCKNUM */}
-      <div className="">
+      <div className="new-table-cell">
         <NavLink
           className="info-table-link"
           to={`/blocks/${props.data.blocknum}`}
@@ -41,7 +41,7 @@ export const BlockDataBlock = (props: Props) => {
         </NavLink>
       </div>
       {/* HASH CELL */}
-      <div className="new-block-hash monofont">
+      <div className="new-table-cell new-block-hash monofont">
         <span
           data-tip={props.data.blockhash}
           className={props.fullPage ? "selectable" : ""}
@@ -52,19 +52,19 @@ export const BlockDataBlock = (props: Props) => {
         </span>
       </div>
       {/* TIMESTAMP */}
-      <div className="">
+      <div className="new-table-cell new-table-timestamp-cell">
         <span data-tip={props.data.createdt}>
           <ReactTimeAgo
             date={new Date(props.data.createdt)}
             locale="en-US"
             tooltip={false}
-            timeStyle="round"
+            timeStyle="mini"
           />
         </span>
       </div>
 
       {/* TXCOUNT */}
-      <div className="new-table-txn-count-cell">
+      <div className="new-table-cell new-table-txn-count-cell">
         <span className="font-hilite">{props.data.txcount}</span>
       </div>
 

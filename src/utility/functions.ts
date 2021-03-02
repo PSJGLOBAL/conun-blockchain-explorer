@@ -1,6 +1,6 @@
 export const truncate = (hashString: string, tight: boolean = false) => {
   if (hashString.length > 24) {
-    let limit = 5
+    let limit = 3
     if (tight) {
       limit = 3
     }

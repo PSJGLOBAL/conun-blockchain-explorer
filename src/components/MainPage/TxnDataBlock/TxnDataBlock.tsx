@@ -77,7 +77,7 @@ export const TxnDataBlock = (props: Props) => {
   return (
     <>
       {/* IDENTICON */}
-      <div className="new-table-identicon-cell">
+      <div className="new-table-cell new-table-identicon-cell">
         <NavLink to={`/txns/${props.data.txhash}`}>
           <div className="">
             <Identicon size={15} string={props.data.txhash.toString()} />
@@ -86,9 +86,9 @@ export const TxnDataBlock = (props: Props) => {
       </div>
 
       {/* CONTRACT ICON */}
-      <div className="">{contractIcon}</div>
+      <div className="new-table-cell">{contractIcon}</div>
       {/* HASH CELL */}
-      <div className="">
+      <div className="new-table-cell">
         <span className="" data-tip={props.data.txhash}>
           <NavLink
             className={"info-table-link font-clicky monofont"}
@@ -104,13 +104,13 @@ export const TxnDataBlock = (props: Props) => {
       </div>
 
       {/* TIMESTAMP */}
-      <div className="">
+      <div className="new-table-cell">
         <span data-tip={props.data.createdt}>
           <ReactTimeAgo
             date={new Date(props.data.createdt)}
             locale="en-US"
             tooltip={false}
-            timeStyle="round"
+            timeStyle="mini"
           />
         </span>
       </div>

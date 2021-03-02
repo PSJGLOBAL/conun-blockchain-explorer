@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { TxnDataBlock } from "../../components/MainPage/TxnDataBlock/TxnDataBlock"
 import { PaginationMenu } from "../../components/MainPage/PaginationMenu/PaginationMenu"
 
-import { setTxnActivityData } from "../../store/actions"
+import { setTxnActivityData, setChannelStats } from "../../store/actions"
 
 import "../../components/MainPage/InterfaceMain/InterfaceMain.css"
 
@@ -17,15 +17,16 @@ type Props = {
 }
 
 export const TxnActivitySection = (props: Props) => {
-  const [currentPage, setCurrentPage] = useState<number>(1)
-
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
   const activeChannelHash = activeChannel.channel_genesis_hash
   const txnActivityData = useSelector(
     (state: State) => state.txn.txnActivityData
   )
   const channelStats = useSelector((state: State) => state.basic.channelStats)
-  const maxTxn = channelStats.txCount
+
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [maxTxn, setMaxTxn] = useState<number | string>(channelStats.txCount)
+
   const bottomTXN = txnActivityData[9]
   const dispatch = useDispatch()
 
@@ -63,13 +64,21 @@ export const TxnActivitySection = (props: Props) => {
     window.scrollTo(0, 0)
   })
 
+  useEffect(() => {
+    if (maxTxn === undefined) {
+      dispatch(setChannelStats(activeChannelHash))
+      dispatch(setTxnActivityData(activeChannelHash))
+      setCurrentPage(1)
+    }
+  }, [activeChannelHash, maxTxn, dispatch])
+
+  useEffect(() => {
+    setMaxTxn(channelStats.txCount)
+  }, [channelStats.txCount])
+
   return (
     <section
-      className={
-        fullPage
-          ? "section-block table-block section-full"
-          : "table-block section-block"
-      }
+      className={fullPage ? "section-block section-full" : "section-block"}
       id="txns"
     >
       <div className="section-title">
@@ -82,7 +91,7 @@ export const TxnActivitySection = (props: Props) => {
           />
         )}
       </div>
-      <div className="new-table-container new-txn-table">
+      <div className="new-table-container new-txn-table table-block">
         {/* HEADER */}
 
         <div className=""></div>

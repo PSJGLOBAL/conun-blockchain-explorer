@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { BlockDataBlock } from "../../components/MainPage/BlockDataBlock/BlockDataBlock"
 import { PaginationMenu } from "../../components/MainPage/PaginationMenu/PaginationMenu"
 
-import { setBlockActivityData } from "../../store/actions"
+import { setBlockActivityData, setChannelStats } from "../../store/actions"
 
 import "../../components/MainPage/InterfaceMain/InterfaceMain.css"
 
@@ -23,12 +23,14 @@ export const BlockActivitySection = (props: Props) => {
   const activeChannelHash = activeChannel.channel_genesis_hash
 
   const channelStats = useSelector((state: State) => state.basic.channelStats)
-  const maxBlock = channelStats.latestBlock
 
   const blockActivityData = useSelector(
     (state: State) => state.block.blockActivityData
   )
   const bottomBlock = blockActivityData[9]
+  const [maxBlock, setMaxBlock] = useState<number | string>(
+    channelStats.latestBlock
+  )
   const dispatch = useDispatch()
   const history = useHistory()
   const fullPage = history.location.pathname === "/blocks"
@@ -62,13 +64,22 @@ export const BlockActivitySection = (props: Props) => {
   useEffect(() => {
     window.scrollTo(0, 0)
   })
+
+  useEffect(() => {
+    if (maxBlock === undefined) {
+      dispatch(setChannelStats(activeChannelHash))
+      dispatch(setBlockActivityData(activeChannelHash))
+      setCurrentPage(1)
+    }
+  }, [activeChannelHash, maxBlock, dispatch])
+
+  useEffect(() => {
+    setMaxBlock(channelStats.latestBlock)
+  }, [channelStats.latestBlock])
+
   return (
     <section
-      className={
-        fullPage
-          ? "section-block table-block section-full"
-          : "section-block table-block"
-      }
+      className={fullPage ? "section-block section-full" : "section-block"}
       id="blocks"
     >
       <div className="section-title">
@@ -81,13 +92,13 @@ export const BlockActivitySection = (props: Props) => {
           />
         )}
       </div>
-      <div className="new-table-container new-block-table">
+      <div className="new-table-container new-block-table table-block">
         {/* HEADER */}
-        <div className="new-block-table hiding-cell"> </div>
-        <div>Num.</div>
-        <div>Hash</div>
-        <div>Time</div>
-        <div>Txns</div>
+        <div className="new-block-table hiding-cell new-table-cell"> </div>
+        <div className="new-table-cell">Num.</div>
+        <div className="new-table-cell">Hash</div>
+        <div className="new-table-cell">Time</div>
+        <div className="new-table-cell">Txns</div>
         {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
         {blockActivityData.map((i) => (
           <BlockDataBlock
