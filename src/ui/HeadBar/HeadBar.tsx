@@ -28,24 +28,44 @@ export const HeadBar = () => {
             className="nav-logo"
             src={logo}
             alt="Conun Logo"
-            onClick={goHome}
+            onClick={() => {
+              setShow(false)
+              goHome()
+            }}
           />
         </div>
         <div className={show ? "nav-menu nav-show" : "nav-menu nav-hide"}>
           <div className="nav-link">
-            <span onClick={goHome}>Main</span>
+            <span
+              onClick={() => {
+                setShow(false)
+                goHome()
+              }}
+            >
+              Main
+            </span>
           </div>
           <div className="nav-link">
             <a
               href="https://github.com/CONUN-Global/conun-blockchain-smartcontract"
               target="_blank"
               rel="noreferrer"
+              onClick={() => {
+                setShow(false)
+              }}
             >
               Smart Contracts
             </a>
           </div>
           <div className="nav-link">
-            <a href={`${BASEURL}-docs/`} target="_blank" rel="noreferrer">
+            <a
+              href={`${BASEURL}-docs/`}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => {
+                setShow(false)
+              }}
+            >
               Docs
             </a>
           </div>
