@@ -36,12 +36,18 @@ export const HeadBar = () => {
             <span onClick={goHome}>Main</span>
           </div>
           <div className="nav-link">
-            <a href="https://github.com/CONUN-Global/conun-blockchain-smartcontract">
+            <a
+              href="https://github.com/CONUN-Global/conun-blockchain-smartcontract"
+              target="_blank"
+              rel="noreferrer"
+            >
               Smart Contracts
             </a>
           </div>
           <div className="nav-link">
-            <a href={`${BASEURL}-docs/`}>Docs</a>
+            <a href={`${BASEURL}-docs/`} target="_blank" rel="noreferrer">
+              Docs
+            </a>
           </div>
         </div>
         <div

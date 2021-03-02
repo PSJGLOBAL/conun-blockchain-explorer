@@ -13,6 +13,7 @@ import { ObjectType } from "../../../utility/types"
 import ninjaIcon from "../../../style/images/extra_icons/icon_ninja_star.svg"
 import defaultIcon from "../../../style/images/extra_icons/icon_wibbly_arrows.svg"
 import familiarIcon from "../../../style/images/extra_icons/icon_i_know_this_one.svg"
+import conunIcon from "../../../style/images/extra_icons/conun_icon.svg"
 
 import "./TxnDataBlock.css"
 import "../../../style/css/table-common.css"
@@ -53,6 +54,16 @@ export const TxnDataBlock = (props: Props) => {
       contractIcon = (
         <img
           src={defaultIcon}
+          data-tip={"Contract Deployment"}
+          className="contract-icon-image"
+          alt=""
+        />
+      )
+      break
+    case "conun":
+      contractIcon = (
+        <img
+          src={conunIcon}
           data-tip={"Contract Deployment"}
           className="contract-icon-image"
           alt=""

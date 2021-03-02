@@ -19,43 +19,75 @@ export const Footer = () => {
         <img className="footer-logo" src={logo} alt="Conun Logo" />
         <div>Powered by Conun</div>
         <div className="footer-contact-links">
-          <a href="https://t.me/conun_global">
+          <a href="https://t.me/conun_global" target="_blank" rel="noreferrer">
             <img className="footer-contact-link-img" src={tele} alt=""></img>
           </a>
-          <a href="https://www.facebook.com/conunglobal/">
+          <a
+            href="https://www.facebook.com/conunglobal/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img className="footer-contact-link-img" src={face} alt=""></img>
           </a>
-          <a href="https://twitter.com/conunglobal">
+          <a
+            href="https://twitter.com/conunglobal"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img className="footer-contact-link-img" src={twit} alt=""></img>
           </a>
-          <a href="https://open.kakao.com/o/gCsycmhb">
+          <a
+            href="https://open.kakao.com/o/gCsycmhb"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img className="footer-contact-link-img" src={kack} alt=""></img>
           </a>
-          <a href="https://github.com/CONUN-Global/CONUN">
+          <a
+            href="https://github.com/CONUN-Global/CONUN"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img className="footer-contact-link-img" src={git} alt=""></img>
           </a>
-          <a href="https://discord.gg/VvXvQfa3Za">
+          <a
+            href="https://discord.gg/VvXvQfa3Za"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img className="footer-contact-link-img" src={disc} alt=""></img>
           </a>
         </div>
-        <div>Conun is very good and you should too.</div>
+        <div>Conun is very good and you should, too.</div>
       </div>
 
       <div className="footer-link-block">
         <div className="footer-title">Company</div>
         <div>
-          <a href="https://conun.io/#overview" className="footer-link">
+          <a
+            href="https://conun.io/#overview"
+            target="_blank"
+            rel="noreferrer"
+            className="footer-link"
+          >
             About Us
           </a>
         </div>
         <div>
-          <a href="https://conun.io/contactus" className="footer-link">
+          <a
+            href="https://conun.io/contactus"
+            target="_blank"
+            rel="noreferrer"
+            className="footer-link"
+          >
             Contact Us
           </a>
         </div>
         <div>
           <a
             href="https://conun.io/policy/termsandcondition"
+            target="_blank"
+            rel="noreferrer"
             className="footer-link"
           >
             Terms of Service
@@ -67,12 +99,22 @@ export const Footer = () => {
         <div className="footer-title">Community</div>
         {/* <div data-tip={"Not yet implemented"}>Developer Documentation</div> */}
         <div>
-          <a className="footer-link" href="https://conun.io/">
+          <a
+            className="footer-link"
+            href="https://conun.io/"
+            target="_blank"
+            rel="noreferrer"
+          >
             Main Site
           </a>
         </div>
         <div>
-          <a href="https://discord.gg/VvXvQfa3Za" className="footer-link">
+          <a
+            href="https://discord.gg/VvXvQfa3Za"
+            target="_blank"
+            rel="noreferrer"
+            className="footer-link"
+          >
             Discord
           </a>
         </div>

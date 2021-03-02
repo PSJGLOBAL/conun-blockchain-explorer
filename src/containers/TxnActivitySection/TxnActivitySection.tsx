@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { NavLink, useHistory } from "react-router-dom"
 
 import { useSelector, useDispatch } from "react-redux"
@@ -58,6 +58,10 @@ export const TxnActivitySection = (props: Props) => {
         break
     }
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  })
 
   return (
     <section

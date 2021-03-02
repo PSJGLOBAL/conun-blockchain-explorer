@@ -113,7 +113,7 @@
 /* ----------------------------------- */
 
 .table-block {
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 .new-table-container {

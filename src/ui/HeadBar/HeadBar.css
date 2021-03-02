@@ -23,8 +23,9 @@
 }
 
 .nav-container {
-  width: 100%;
+  width: 1300px;
   display: flex;
+  transition: all 1s ease-in-out;
 }
 
 .nav-container.nav-hide {
