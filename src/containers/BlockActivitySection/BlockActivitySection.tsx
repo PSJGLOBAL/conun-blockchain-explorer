@@ -61,7 +61,11 @@ export const BlockActivitySection = (props: Props) => {
 
   return (
     <section
-      className={fullPage ? "section-block section-full" : "section-block"}
+      className={
+        fullPage
+          ? "section-block table-block section-full"
+          : "section-block table-block"
+      }
       id="blocks"
     >
       <div className="section-title">

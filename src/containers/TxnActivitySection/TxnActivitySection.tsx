@@ -61,7 +61,11 @@ export const TxnActivitySection = (props: Props) => {
 
   return (
     <section
-      className={fullPage ? "section-block section-full" : "section-block"}
+      className={
+        fullPage
+          ? "section-block table-block section-full"
+          : "table-block section-block"
+      }
       id="txns"
     >
       <div className="section-title">
