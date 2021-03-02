@@ -32,7 +32,12 @@ export const ChannelStats = () => {
         </div>
         <div className="channel-stats-data-cell">
           <span className="channel-stats-datapoint">
-            {channelStats.latestBlock || "Counting"}
+            {channelStats.latestBlock
+              ? parseInt(
+                  channelStats.latestBlock.toString(),
+                  10
+                ).toLocaleString()
+              : "Many"}
           </span>
           <span className="channel-stats-datapoint-label">Blocks</span>
         </div>
@@ -44,7 +49,9 @@ export const ChannelStats = () => {
         </div>
         <div className="channel-stats-data-cell">
           <span className="channel-stats-datapoint">
-            {channelStats.txCount || "Counting"}
+            {channelStats.txCount
+              ? parseInt(channelStats.txCount.toString(), 10).toLocaleString()
+              : "Many"}
           </span>
           <span className="channel-stats-datapoint-label">Txns</span>
         </div>
