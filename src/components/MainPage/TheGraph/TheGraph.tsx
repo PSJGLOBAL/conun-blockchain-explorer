@@ -39,6 +39,7 @@ export const TheGraph = (props: Props) => {
           allowDecimals={false}
         />
         <Area
+          isAnimationActive={false}
           type="monotone"
           dataKey="count"
           stroke="#495867"

@@ -1,5 +1,5 @@
 import ReactTooltip from "react-tooltip"
-import logo from "../../style/images/conun-logo-white.svg"
+import logo from "../../style/images/conun-logo-white.png"
 import tele from "../../style/images/telegramIcon.png"
 import face from "../../style/images/facebookIcon.png"
 import twit from "../../style/images/twitterIcon.png"

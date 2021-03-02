@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom"
 import { BASEURL } from "../../utility/config.json"
 
 import "./HeadBar.css"
-import logo from "../../style/images/conun-logo.svg"
+import logo from "../../style/images/conun-logo.png"
 
 export const HeadBar = () => {
   const [show, setShow] = useState<boolean>(false)
