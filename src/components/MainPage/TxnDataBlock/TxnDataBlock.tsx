@@ -36,8 +36,10 @@ export const TxnDataBlock = (props: Props) => {
 
   let truncateLimit = 0
 
-  if (winWidth < 800) {
-    truncateLimit = Math.floor(winWidth / 75)
+  if (winWidth < 1000) {
+    truncateLimit = Math.floor(winWidth / 50)
+  } else {
+    truncateLimit = -1
   }
 
   let contractIcon = null
