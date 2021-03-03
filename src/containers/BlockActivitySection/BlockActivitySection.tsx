@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { NavLink, useHistory } from "react-router-dom"
+import { NavLink, useHistory, useLocation } from "react-router-dom"
 
 import { useSelector, useDispatch } from "react-redux"
 
@@ -33,6 +33,7 @@ export const BlockActivitySection = (props: Props) => {
   )
   const dispatch = useDispatch()
   const history = useHistory()
+  const location = useLocation()
   const fullPage = history.location.pathname === "/blocks"
 
   const doPseudoPaginate = (mode: string) => {
@@ -63,7 +64,7 @@ export const BlockActivitySection = (props: Props) => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-  })
+  }, [location])
 
   useEffect(() => {
     if (maxBlock === undefined) {

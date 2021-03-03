@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { NavLink, useHistory } from "react-router-dom"
+import { NavLink, useHistory, useLocation } from "react-router-dom"
 
 import { useSelector, useDispatch } from "react-redux"
 
@@ -31,6 +31,7 @@ export const TxnActivitySection = (props: Props) => {
   const dispatch = useDispatch()
 
   const history = useHistory()
+  const location = useLocation()
   const fullPage = history.location.pathname === "/txns"
 
   const doPseudoPaginate = (mode: string) => {
@@ -62,7 +63,7 @@ export const TxnActivitySection = (props: Props) => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-  })
+  }, [location])
 
   useEffect(() => {
     if (maxTxn === undefined) {

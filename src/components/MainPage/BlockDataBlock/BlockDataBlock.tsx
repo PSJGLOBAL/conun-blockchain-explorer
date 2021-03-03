@@ -59,7 +59,7 @@ export const BlockDataBlock = (props: Props) => {
             locale="en-US"
             tooltip={false}
             timeStyle="mini"
-          />
+          />{" "}
         </span>
       </div>
 

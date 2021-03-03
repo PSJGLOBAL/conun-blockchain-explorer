@@ -145,6 +145,10 @@
   grid-column-end: 6;
 }
 
+.new-table-cell {
+  animation: appear 0.4s ease-in forwards;
+}
+
 .new-table-border-cell {
   height: 1px;
   border-bottom: 1px solid #ddd;
