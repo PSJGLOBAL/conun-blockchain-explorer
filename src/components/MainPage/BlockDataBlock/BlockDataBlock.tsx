@@ -22,53 +22,50 @@ TimeAgo.addLocale(en)
 export const BlockDataBlock = (props: Props) => {
   return (
     <>
-      {/* IDENTICON */}
-      <div className="new-table-identicon-cell new-table-cell">
-        <NavLink className="" to={`/blocks/${props.data.blocknum}`}>
-          <div className="">
-            <Identicon size={15} string={props.data.blockhash.toString()} />
-          </div>
-        </NavLink>
-      </div>
+      <article className="data-table-row scrolly">
+        {/* IDENTICON */}
+        <div className="identicon-cell">
+          <NavLink className="" to={`/blocks/${props.data.blocknum}`}>
+            <div className="">
+              <Identicon size={15} string={props.data.blockhash.toString()} />
+            </div>
+          </NavLink>
+        </div>
 
-      {/* BLOCKNUM */}
-      <div className="new-table-cell">
-        <NavLink
-          className="info-table-link"
-          to={`/blocks/${props.data.blocknum}`}
-        >
-          <span className="font-clicky">{props.data.blocknum}</span>
-        </NavLink>
-      </div>
-      {/* HASH CELL */}
-      <div className="new-table-cell new-block-hash monofont">
-        <span
-          data-tip={props.data.blockhash}
-          className={props.fullPage ? "selectable" : ""}
-        >
-          {props.fullPage
-            ? props.data.blockhash.toString()
-            : truncate(props.data.blockhash.toString())}
-        </span>
-      </div>
-      {/* TIMESTAMP */}
-      <div className="new-table-cell new-table-timestamp-cell">
-        <span data-tip={props.data.createdt}>
-          <ReactTimeAgo
-            date={new Date(props.data.createdt)}
-            locale="en-US"
-            tooltip={false}
-            timeStyle="mini"
-          />{" "}
-        </span>
-      </div>
+        {/* BLOCKNUM */}
+        <div className="blocknum-cell">
+          <NavLink className="" to={`/blocks/${props.data.blocknum}`}>
+            <span className="monofont font-clicky">{props.data.blocknum}</span>
+          </NavLink>
+        </div>
+        {/* HASH CELL */}
+        <div className="hash-cell hiding-cell">
+          <span
+            data-tip={props.data.blockhash}
+            className={props.fullPage ? "monofont selectable" : "monofont"}
+          >
+            {props.fullPage
+              ? props.data.blockhash.toString()
+              : truncate(props.data.blockhash.toString())}
+          </span>
+        </div>
+        {/* TIMESTAMP */}
+        <div className="time-cell">
+          <span data-tip={props.data.createdt} className="monofont">
+            <ReactTimeAgo
+              date={new Date(props.data.createdt)}
+              locale="en-US"
+              tooltip={false}
+              timeStyle="mini"
+            />{" "}
+          </span>
+        </div>
 
-      {/* TXCOUNT */}
-      <div className="new-table-cell new-table-txn-count-cell">
-        <span className="font-hilite">{props.data.txcount}</span>
-      </div>
-
-      <div className="new-table-border-cell"></div>
+        {/* TXCOUNT */}
+        <div className="txncount-cell">
+          <span className="font-hilite">{props.data.txcount}</span>
+        </div>
+      </article>
       <ReactTooltip backgroundColor="#e95654" />
     </>
   )

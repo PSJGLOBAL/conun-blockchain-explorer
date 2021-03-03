@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 import { NavLink } from "react-router-dom"
 
 import ReactTimeAgo from "react-time-ago"
@@ -26,6 +28,18 @@ interface Props {
 TimeAgo.addLocale(en)
 
 export const TxnDataBlock = (props: Props) => {
+  const [winWidth, setWinWidth] = useState<number>(window.innerWidth)
+
+  window.addEventListener("resize", () => {
+    setWinWidth(window.innerWidth)
+  })
+
+  let truncateLimit = 0
+
+  if (winWidth < 800) {
+    truncateLimit = Math.floor(winWidth / 75)
+  }
+
   let contractIcon = null
 
   switch (props.data.chaincodename) {
@@ -76,45 +90,46 @@ export const TxnDataBlock = (props: Props) => {
 
   return (
     <>
-      {/* IDENTICON */}
-      <div className="new-table-cell new-table-identicon-cell">
-        <NavLink to={`/txns/${props.data.txhash}`}>
-          <div className="">
-            <Identicon size={15} string={props.data.txhash.toString()} />
-          </div>
-        </NavLink>
-      </div>
-
-      {/* CONTRACT ICON */}
-      <div className="new-table-cell">{contractIcon}</div>
-      {/* HASH CELL */}
-      <div className="new-table-cell">
-        <span className="" data-tip={props.data.txhash}>
-          <NavLink
-            className={"info-table-link font-clicky monofont"}
-            to={`/txns/${props.data.txhash}`}
-          >
-            <span className={props.fullPage ? "selectable" : ""}>
-              {props.fullPage
-                ? props.data.txhash.toString()
-                : truncate(props.data.txhash.toString())}
-            </span>
+      <article className="data-table-row scrolly">
+        {/* IDENTICON */}
+        <div className="identicon-cell">
+          <NavLink to={`/txns/${props.data.txhash}`}>
+            <div className="">
+              <Identicon size={15} string={props.data.txhash.toString()} />
+            </div>
           </NavLink>
-        </span>
-      </div>
+        </div>
 
-      {/* TIMESTAMP */}
-      <div className="new-table-cell">
-        <span data-tip={props.data.createdt}>
-          <ReactTimeAgo
-            date={new Date(props.data.createdt)}
-            locale="en-US"
-            tooltip={false}
-            timeStyle="mini"
-          />
-        </span>
-      </div>
-      <div className="new-table-border-cell"></div>
+        {/* CONTRACT ICON */}
+        <div className="service-cell">{contractIcon}</div>
+        {/* HASH CELL */}
+        <div className="hash-cell">
+          <span className="" data-tip={props.data.txhash}>
+            <NavLink
+              className={"font-clicky monofont"}
+              to={`/txns/${props.data.txhash}`}
+            >
+              <span className={props.fullPage ? "selectable" : ""}>
+                {props.fullPage
+                  ? truncate(props.data.txhash.toString(), truncateLimit)
+                  : truncate(props.data.txhash.toString())}
+              </span>
+            </NavLink>
+          </span>
+        </div>
+
+        {/* TIMESTAMP */}
+        <div className="time-cell">
+          <span data-tip={props.data.createdt}>
+            <ReactTimeAgo
+              date={new Date(props.data.createdt)}
+              locale="en-US"
+              tooltip={false}
+              timeStyle="mini"
+            />
+          </span>
+        </div>
+      </article>
       <ReactTooltip backgroundColor="#e95654" />
     </>
   )

@@ -92,13 +92,14 @@ export const TxnActivitySection = (props: Props) => {
           />
         )}
       </div>
-      <div className="new-table-container new-txn-table table-block">
+      <div className="">
         {/* HEADER */}
-
-        <div className=""></div>
-        <div className="">Service</div>
-        <div className="">Hash</div>
-        <div className="">Time</div>
+        <div className="data-table-row data-table-header">
+          <div className="identicon-cell"></div>
+          <div className="service-cell">Service</div>
+          <div className="hash-cell">Hash</div>
+          <div className="time-cell">Time</div>
+        </div>
 
         {/* TXN Activity - Table for each block made - shows hashes, created at, etc*/}
 

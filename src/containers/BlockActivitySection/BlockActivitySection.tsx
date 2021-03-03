@@ -93,13 +93,15 @@ export const BlockActivitySection = (props: Props) => {
           />
         )}
       </div>
-      <div className="new-table-container new-block-table table-block">
+      <div className="">
         {/* HEADER */}
-        <div className="new-block-table hiding-cell new-table-cell"> </div>
-        <div className="new-table-cell">Num.</div>
-        <div className="new-table-cell">Hash</div>
-        <div className="new-table-cell">Time</div>
-        <div className="new-table-cell">Txns</div>
+        <div className="data-table-row data-table-header">
+          <div className="identicon-cell"> </div>
+          <div className="blocknum-cell">Num.</div>
+          <div className="hash-cell hiding-cell">Hash</div>
+          <div className="time-cell">Time</div>
+          <div className="txncount-cell">Txns</div>
+        </div>
         {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
         {blockActivityData.map((i) => (
           <BlockDataBlock
