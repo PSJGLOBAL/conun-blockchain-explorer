@@ -34,21 +34,6 @@ export const HeadBar = () => {
             }}
           />
         </div>
-<<<<<<< HEAD
-        {/* Temporary links until the real ones are made */}
-        <div className="nav-block">
-          <ul className="nav-link">
-            <li>
-              <span onClick={goHome}>Main</span>
-            </li>
-            <li>
-              <a href="/contracts">Smart Contracts</a>
-            </li>
-            <li>
-              <a href={`${BASEURL}-docs/`}>Docs</a>
-            </li>
-          </ul>
-=======
         <div className={show ? "nav-menu nav-show" : "nav-menu nav-hide"}>
           <div className="nav-link">
             <span
@@ -62,9 +47,7 @@ export const HeadBar = () => {
           </div>
           <div className="nav-link">
             <a
-              href="https://github.com/CONUN-Global/conun-blockchain-smartcontract"
-              target="_blank"
-              rel="noreferrer"
+              href="/contracts"
               onClick={() => {
                 setShow(false)
               }}
@@ -96,7 +79,6 @@ export const HeadBar = () => {
           ) : (
             <i className="fas fa-ellipsis-v"></i>
           )}
->>>>>>> v1_bugfix
         </div>
       </div>
     </nav>
