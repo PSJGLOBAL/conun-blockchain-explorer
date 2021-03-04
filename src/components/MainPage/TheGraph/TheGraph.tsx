@@ -8,6 +8,7 @@ import {
 } from "recharts"
 import { ObjectType } from "../../../utility/types"
 import { format } from "date-fns"
+import numeral from "numeral"
 
 type Props = {
   data: Array<ObjectType>
@@ -37,6 +38,7 @@ export const TheGraph = (props: Props) => {
           interval="preserveStartEnd"
           axisLine={false}
           allowDecimals={false}
+          tickFormatter={(n) => numeral(n).format("0a")}
         />
         <Area
           animationDuration={600}
