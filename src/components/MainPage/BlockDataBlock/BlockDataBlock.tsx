@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 import { NavLink } from "react-router-dom"
 
 import ReactTimeAgo from "react-time-ago"
@@ -20,6 +22,20 @@ type Props = {
 TimeAgo.addLocale(en)
 
 export const BlockDataBlock = (props: Props) => {
+  const [winWidth, setWinWidth] = useState<number>(window.innerWidth)
+
+  window.addEventListener("resize", () => {
+    setWinWidth(window.innerWidth)
+  })
+
+  let truncateLimit = 0
+
+  if (winWidth < 1000) {
+    truncateLimit = Math.floor(winWidth / 50)
+  } else {
+    truncateLimit = -1
+  }
+
   return (
     <>
       <article className="data-table-row scrolly">
@@ -45,7 +61,7 @@ export const BlockDataBlock = (props: Props) => {
             className={props.fullPage ? "monofont selectable" : "monofont"}
           >
             {props.fullPage
-              ? props.data.blockhash.toString()
+              ? truncate(props.data.blockhash.toString(), truncateLimit)
               : truncate(props.data.blockhash.toString())}
           </span>
         </div>

@@ -77,6 +77,25 @@ export const TxnActivitySection = (props: Props) => {
     setMaxTxn(channelStats.txCount)
   }, [channelStats.txCount])
 
+  // The hash cell size is flexible
+  // This function sets the header size to the same as the other cells' sizes.
+  function matchHashCellSize() {
+    const hashCells = document.getElementsByClassName("hash-cell")
+    if (hashCells.length > 1) {
+      const headerCell = hashCells[0] as HTMLElement
+      const topCell = hashCells[1]
+      headerCell.style.width = `${topCell.clientWidth}px`
+    }
+  }
+
+  useEffect(() => {
+    matchHashCellSize()
+  })
+
+  window.addEventListener("resize", () => {
+    matchHashCellSize()
+  })
+
   return (
     <section
       className={fullPage ? "section-block section-full" : "section-block"}
@@ -97,7 +116,9 @@ export const TxnActivitySection = (props: Props) => {
         <div className="data-table-row data-table-header">
           <div className="identicon-cell"></div>
           <div className="service-cell">Service</div>
-          <div className="hash-cell">Hash</div>
+          <div id="header-hash-cell" className="hash-cell">
+            Hash
+          </div>
           <div className="time-cell">Time</div>
         </div>
 

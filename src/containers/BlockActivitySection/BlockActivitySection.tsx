@@ -78,6 +78,25 @@ export const BlockActivitySection = (props: Props) => {
     setMaxBlock(channelStats.latestBlock)
   }, [channelStats.latestBlock])
 
+  // The hash cell size is flexible
+  // This function sets the header size to the same as the other cells' sizes.
+  function matchHashCellSize() {
+    const hashCells = document.getElementsByClassName("hash-cell")
+    if (hashCells.length > 1) {
+      const headerCell = hashCells[0] as HTMLElement
+      const topCell = hashCells[1]
+      headerCell.style.width = `${topCell.clientWidth}px`
+    }
+  }
+
+  useEffect(() => {
+    matchHashCellSize()
+  })
+
+  window.addEventListener("resize", () => {
+    matchHashCellSize()
+  })
+
   return (
     <section
       className={fullPage ? "section-block section-full" : "section-block"}
