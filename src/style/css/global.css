@@ -89,9 +89,9 @@ main {
 
 .splitcolumns {
   display: grid;
-  width: 100%;
   grid-template-columns: 1fr 1fr;
 }
+
 .section-full {
   grid-column: 1/3;
 }
@@ -161,6 +161,8 @@ main {
 }
 
 .section-block {
+  display: flex;
+  flex-direction: column;
   background-color: var(--fore);
   padding: 20px;
   margin: 10px;
@@ -189,19 +191,21 @@ main {
   color: var(--higreen);
 }
 
-@media only screen and (max-width: 699px) {
-  .splitcolumns {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media only screen and (max-width: 1400px) {
   .app {
     width: 95vw;
   }
 }
-.__react_component_tooltip {
-  transform: translateZ(100%);
-  z-index: 10 !important;
-  background-color: var(--hilite) !important;
+
+@media only screen and (max-width: 800px) {
+  .splitcolumns {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .graph-block {
+    display: none;
+  }
 }

@@ -35,7 +35,7 @@ function WebSocketProvider() {
 
   if (socket) {
     socket.onopen = () => {
-      console.log("Websocket: Connected")
+      // console.log("Websocket: Connected")
     }
     socket.onmessage = (msg) => {
       const socketData = JSON.parse(msg.data.toString())

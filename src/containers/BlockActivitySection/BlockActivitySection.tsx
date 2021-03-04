@@ -1,12 +1,12 @@
-import { useState } from "react"
-import { NavLink, useHistory } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { NavLink, useHistory, useLocation } from "react-router-dom"
 
 import { useSelector, useDispatch } from "react-redux"
 
 import { BlockDataBlock } from "../../components/MainPage/BlockDataBlock/BlockDataBlock"
 import { PaginationMenu } from "../../components/MainPage/PaginationMenu/PaginationMenu"
 
-import { setBlockActivityData } from "../../store/actions"
+import { setBlockActivityData, setChannelStats } from "../../store/actions"
 
 import "../../components/MainPage/InterfaceMain/InterfaceMain.css"
 
@@ -23,14 +23,17 @@ export const BlockActivitySection = (props: Props) => {
   const activeChannelHash = activeChannel.channel_genesis_hash
 
   const channelStats = useSelector((state: State) => state.basic.channelStats)
-  const maxBlock = channelStats.latestBlock
 
   const blockActivityData = useSelector(
     (state: State) => state.block.blockActivityData
   )
   const bottomBlock = blockActivityData[9]
+  const [maxBlock, setMaxBlock] = useState<number | string>(
+    channelStats.latestBlock
+  )
   const dispatch = useDispatch()
   const history = useHistory()
+  const location = useLocation()
   const fullPage = history.location.pathname === "/blocks"
 
   const doPseudoPaginate = (mode: string) => {
@@ -59,13 +62,44 @@ export const BlockActivitySection = (props: Props) => {
     }
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location])
+
+  useEffect(() => {
+    if (maxBlock === undefined) {
+      dispatch(setChannelStats(activeChannelHash))
+      dispatch(setBlockActivityData(activeChannelHash))
+      setCurrentPage(1)
+    }
+  }, [activeChannelHash, maxBlock, dispatch])
+
+  useEffect(() => {
+    setMaxBlock(channelStats.latestBlock)
+  }, [channelStats.latestBlock])
+
+  // The hash cell size is flexible
+  // This function sets the header size to the same as the other cells' sizes.
+  function matchHashCellSize() {
+    const hashCells = document.getElementsByClassName("hash-cell")
+    if (hashCells.length > 1) {
+      const headerCell = hashCells[0] as HTMLElement
+      const topCell = hashCells[1]
+      headerCell.style.width = `${topCell.clientWidth}px`
+    }
+  }
+
+  useEffect(() => {
+    matchHashCellSize()
+  })
+
+  window.addEventListener("resize", () => {
+    matchHashCellSize()
+  })
+
   return (
     <section
-      className={
-        fullPage
-          ? "section section-block section-full"
-          : "section section-block"
-      }
+      className={fullPage ? "section-block section-full" : "section-block"}
       id="blocks"
     >
       <div className="section-title">
@@ -78,13 +112,14 @@ export const BlockActivitySection = (props: Props) => {
           />
         )}
       </div>
-      <>
-        <div className="info-table recent-block-header">
-          <div className="table-header-cell"> </div>
-          <div className="table-header-cell">Num.</div>
-          <div className="table-header-cell">Hash</div>
-          <div className="table-header-cell">Time</div>
-          <div className="table-header-cell">Txns</div>
+      <div className="">
+        {/* HEADER */}
+        <div className="data-table-row data-table-header">
+          <div className="identicon-cell"> </div>
+          <div className="blocknum-cell">Num.</div>
+          <div className="hash-cell hiding-cell">Hash</div>
+          <div className="time-cell">Time</div>
+          <div className="txncount-cell">Txns</div>
         </div>
         {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
         {blockActivityData.map((i) => (
@@ -94,18 +129,18 @@ export const BlockActivitySection = (props: Props) => {
             data={{ ...i }}
           />
         ))}
-        <div>
-          {fullPage ? (
-            <NavLink className="section-table-link hover-gradient" to={"/"}>
-              Back To Home
-            </NavLink>
-          ) : (
-            <NavLink className="section-table-link" to={"/blocks"}>
-              View More Blocks
-            </NavLink>
-          )}
-        </div>
-      </>
+      </div>
+      <div>
+        {fullPage ? (
+          <NavLink className="section-table-link hover-gradient" to={"/"}>
+            Back To Home
+          </NavLink>
+        ) : (
+          <NavLink className="section-table-link" to={"/blocks"}>
+            View More Blocks
+          </NavLink>
+        )}
+      </div>
     </section>
   )
 }

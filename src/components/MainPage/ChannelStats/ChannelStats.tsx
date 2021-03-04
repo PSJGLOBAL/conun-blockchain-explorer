@@ -25,17 +25,36 @@ export const ChannelStats = () => {
   // console.log("CHANNEL STATS: ", channelStats)
   return (
     <div className="channel-stats-table">
-      <div className="channel-stats-icon-col">
-        <img src={blocksIcon} className="channel-stats-icon" alt="" />
+      {/* Blocks */}
+      <div className="channel-stats-column">
+        <div className="channel-stats-icon-cell">
+          <img src={blocksIcon} className="channel-stats-icon" alt="" />
+        </div>
+        <div className="channel-stats-data-cell">
+          <span className="channel-stats-datapoint">
+            {channelStats.latestBlock
+              ? parseInt(
+                  channelStats.latestBlock.toString(),
+                  10
+                ).toLocaleString()
+              : "Many"}
+          </span>
+          <span className="channel-stats-datapoint-label">Blocks</span>
+        </div>
       </div>
-      <div className="channel-stats-data-col">
-        {channelStats.latestBlock || "Counting"} Blocks
-      </div>
-      <div className="channel-stats-icon-col">
-        <img src={txnIcon} className="channel-stats-icon" alt="" />
-      </div>
-      <div className="channel-stats-data-col">
-        {channelStats.txCount || "Counting"} Txns
+      {/* TXNS */}
+      <div className="channel-stats-column">
+        <div className="channel-stats-icon-cell">
+          <img src={txnIcon} className="channel-stats-icon" alt="" />
+        </div>
+        <div className="channel-stats-data-cell">
+          <span className="channel-stats-datapoint">
+            {channelStats.txCount
+              ? parseInt(channelStats.txCount.toString(), 10).toLocaleString()
+              : "Many"}
+          </span>
+          <span className="channel-stats-datapoint-label">Txns</span>
+        </div>
       </div>
     </div>
   )
