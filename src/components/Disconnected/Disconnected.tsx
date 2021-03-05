@@ -7,13 +7,6 @@ import "./Disconnected.css"
 
 export const Disconnected = () => {
   const [loading, setLoading] = useState<boolean>(true)
-  const loadingIcon = <div className="loader">Loading...</div>
-  const disconnectedMessage = (
-    <div>
-      Oops! It looks like your server is disconnected. Contact your system
-      administrator!
-    </div>
-  )
 
   useEffect(() => {
     const t = setTimeout(() => {
@@ -31,7 +24,14 @@ export const Disconnected = () => {
       <div className="app">
         <HeadBlock />
         <main className="disconnected">
-          {loading ? loadingIcon : disconnectedMessage}
+          {loading ? (
+            <div className="loader">Loading...</div>
+          ) : (
+            <div>
+              Oops! It looks like your server is disconnected. Contact your
+              system administrator!
+            </div>
+          )}
         </main>
       </div>
     </>

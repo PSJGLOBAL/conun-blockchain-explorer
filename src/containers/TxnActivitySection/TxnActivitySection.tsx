@@ -126,11 +126,6 @@ export const TxnActivitySection = (props: Props) => {
         </div>
 
         {/* TXN Activity - Table for each block made - shows hashes, created at, etc*/}
-
-        {/* {txnActivityData.map((i) => (
-          <TxnDataBlock key={i.txhash} fullPage={fullPage} data={{ ...i }} />
-        ))} */}
-
         {txnActivityData.length > 0 ? (
           txnActivityData.map((i) => (
             <TxnDataBlock key={i.txhash} fullPage={fullPage} data={{ ...i }} />
