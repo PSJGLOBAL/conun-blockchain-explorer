@@ -7,6 +7,7 @@ import { GraphControls } from "../GraphControls/GraphControls"
 import { TheGraph } from "../TheGraph/TheGraph"
 
 import { State, ObjectType } from "../../../utility/types"
+import GraphSkeleton from "../../../ui/Skeletos/GraphSkeleton/GraphSkeleton"
 
 export const GraphBlock = () => {
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
@@ -66,8 +67,16 @@ export const GraphBlock = () => {
 
   return (
     <div className="section-block graph-block">
-      <TheGraph data={graphData} />
-      <GraphControls clickHandler={setGraphMode} active={graphMode} />
+      {graphData.length > 0 ? (
+        <>
+          <TheGraph data={graphData} />
+          <GraphControls clickHandler={setGraphMode} active={graphMode} />
+        </>
+      ) : (
+        <>
+          <GraphSkeleton />
+        </>
+      )}
     </div>
   )
 }

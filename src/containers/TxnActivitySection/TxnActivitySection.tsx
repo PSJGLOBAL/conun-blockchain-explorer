@@ -6,6 +6,9 @@ import { useSelector, useDispatch } from "react-redux"
 import { TxnDataBlock } from "../../components/MainPage/TxnDataBlock/TxnDataBlock"
 import { PaginationMenu } from "../../components/MainPage/PaginationMenu/PaginationMenu"
 
+import { TXNTableSkeleton } from "../../ui/Skeletos/MainTableSkeleton/MainTableSkeleton"
+import { DuplicateSkeleton } from "../../ui/Skeletos/DuplicateSkeleton/DuplicateSkeleton"
+
 import { setTxnActivityData, setChannelStats } from "../../store/actions"
 
 import "../../components/MainPage/InterfaceMain/InterfaceMain.css"
@@ -124,9 +127,19 @@ export const TxnActivitySection = (props: Props) => {
 
         {/* TXN Activity - Table for each block made - shows hashes, created at, etc*/}
 
-        {txnActivityData.map((i) => (
+        {/* {txnActivityData.map((i) => (
           <TxnDataBlock key={i.txhash} fullPage={fullPage} data={{ ...i }} />
-        ))}
+        ))} */}
+
+        {txnActivityData.length > 0 ? (
+          txnActivityData.map((i) => (
+            <TxnDataBlock key={i.txhash} fullPage={fullPage} data={{ ...i }} />
+          ))
+        ) : (
+          <DuplicateSkeleton howMany={10}>
+            <TXNTableSkeleton />
+          </DuplicateSkeleton>
+        )}
       </div>
       {/* BUTTON */}
       <div>
