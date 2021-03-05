@@ -1,6 +1,14 @@
 export interface ObjectType {
   [key: string]: string | number
 }
+export interface SuperObjectType {
+  [key: string]:
+    | string
+    | number
+    | Array<ObjectType>
+    | Array<SuperObjectType>
+    | SuperObjectType
+}
 
 export type ChannelObject = {
   channel_genesis_hash: string
@@ -8,6 +16,11 @@ export type ChannelObject = {
   channelname: string
   createdat: string
   id: string
+}
+
+export type ContractType = {
+  chaincodename: string
+  codes: Array<ObjectType>
 }
 
 export type State = {
@@ -24,5 +37,8 @@ export type State = {
   }
   txn: {
     txnActivityData: Array<ObjectType>
+  }
+  ctx: {
+    contractData: Array<ContractType>
   }
 }

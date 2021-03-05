@@ -1,0 +1,30 @@
+.contracts-header {
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.contract-block {
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 5px;
+  align-items: center;
+  justify-content: center;
+
+  border-bottom: 1px solid #ddd;
+}
+.contract-table-cell {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.contract-table-icon-cell {
+  text-align: center;
+}
+.contract-table-count-cell {
+  text-align: right;
+}
+
+.contract-table-cell span {
+  width: 120px;
+}

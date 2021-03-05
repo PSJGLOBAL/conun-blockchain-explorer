@@ -11,6 +11,7 @@ import { Provider } from "react-redux"
 import basicReducer from "./store/reducers/basicReducer"
 import blockReducer from "./store/reducers/blockReducer"
 import txnReducer from "./store/reducers/txnReducer"
+import contractReducer from "./store/reducers/contractReducer"
 
 import thunk from "redux-thunk"
 
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   basic: basicReducer,
   block: blockReducer,
   txn: txnReducer,
+  ctx: contractReducer,
 })
 
 const store = createStore(rootReducer, applyMiddleware(thunk))

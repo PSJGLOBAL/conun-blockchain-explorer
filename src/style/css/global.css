@@ -168,6 +168,10 @@ main {
   margin: 10px;
   border-radius: var(--radius);
 }
+.section-single {
+  width: 100%;
+}
+
 .with-flair {
   display: grid;
   grid-template-columns: 10px 1fr;

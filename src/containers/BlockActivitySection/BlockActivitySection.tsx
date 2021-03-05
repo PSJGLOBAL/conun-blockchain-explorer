@@ -6,6 +6,9 @@ import { useSelector, useDispatch } from "react-redux"
 import { BlockDataBlock } from "../../components/MainPage/BlockDataBlock/BlockDataBlock"
 import { PaginationMenu } from "../../components/MainPage/PaginationMenu/PaginationMenu"
 
+import { BlockTableSkeleton } from "../../ui/Skeletos/MainTableSkeleton/MainTableSkeleton"
+import { DuplicateSkeleton } from "../../ui/Skeletos/DuplicateSkeleton/DuplicateSkeleton"
+
 import { setBlockActivityData, setChannelStats } from "../../store/actions"
 
 import "../../components/MainPage/InterfaceMain/InterfaceMain.css"
@@ -122,13 +125,19 @@ export const BlockActivitySection = (props: Props) => {
           <div className="txncount-cell">Txns</div>
         </div>
         {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
-        {blockActivityData.map((i) => (
-          <BlockDataBlock
-            key={i.blockhash}
-            fullPage={fullPage}
-            data={{ ...i }}
-          />
-        ))}
+        {blockActivityData.length > 0 ? (
+          blockActivityData.map((i) => (
+            <BlockDataBlock
+              key={i.blockhash}
+              fullPage={fullPage}
+              data={{ ...i }}
+            />
+          ))
+        ) : (
+          <DuplicateSkeleton howMany={10}>
+            <BlockTableSkeleton />
+          </DuplicateSkeleton>
+        )}
       </div>
       <div>
         {fullPage ? (

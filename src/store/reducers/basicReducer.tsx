@@ -5,7 +5,7 @@ import {
   SET_CHANNEL_INFO,
   SET_ACTIVE_CHANNEL,
   SET_CHANNEL_STATS,
-} from "../actionTypes"
+} from "../actions/actionTypes"
 
 import { ObjectType, ChannelObject } from "../../utility/types"
 
