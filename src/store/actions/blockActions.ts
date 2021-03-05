@@ -29,14 +29,12 @@ export const setBlockActivityData = (
   return (dispatch: any) => {
     let axiosAddress = `/blockActivity/${channelHash}`
     if (from) {
-      // console.log("Block Activity: Using Blocknum: ", from)
       axiosAddress += `?blocknum=${from}`
     }
 
     axios
       .get(axiosAddress)
       .then((response) => {
-        // console.log("Block Activity: ", response.status, response.statusText)
         dispatch(assembleBlockDataObj(response.data.row))
       })
       .catch((e) => console.error(e))

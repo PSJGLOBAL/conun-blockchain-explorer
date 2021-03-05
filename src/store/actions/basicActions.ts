@@ -39,12 +39,6 @@ export const getAvailableChannels = () => {
     axios
       .get("/channels/info")
       .then((response) => {
-        // console.log(
-        //   "Available Channels: ",
-        //   response.status,
-        //   response.statusText
-        // )
-        // console.log("Available Channels: ", response.data.channels)
         dispatch(assembleAvailableChannels(response.data.channels))
       })
       .catch((e) => console.error(e))
@@ -56,7 +50,6 @@ export const setChannelStats = (channelHash: string) => {
     axios
       .get(`/status/${channelHash}`)
       .then((response) => {
-        // console.log("Channel Info: ", response.status, response.statusText)
         dispatch(assembleChannelStats(response.data))
       })
       .catch((e) => console.error(e))

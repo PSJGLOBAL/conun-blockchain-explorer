@@ -26,18 +26,12 @@ export const setTxnActivityData = (
   return (dispatch: any) => {
     let axiosAddress = `/txActivity/${channelHash}`
     if (from) {
-      // console.log("Transaction Activity: Using TX ID: ", from)
       axiosAddress += `?txId=${from}`
     }
 
     axios
       .get(axiosAddress)
       .then((response) => {
-        // console.log(
-        //   "Transaction Activity: ",
-        //   response.status,
-        //   response.statusText
-        // )
         dispatch(assembleTxnDataObj(response.data.row))
       })
       .catch((e) => console.error(e))
