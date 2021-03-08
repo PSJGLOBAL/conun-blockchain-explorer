@@ -1,6 +1,13 @@
 .pagination-container {
   display: flex;
+  flex-direction: row;
   user-select: none;
+}
+
+.pagination-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pagination-button {
@@ -21,7 +28,8 @@
 }
 
 .pagination-indicator {
-  align-self: center;
+  align-self: flex-end;
+  text-align: center;
   margin-right: 15px;
 }
 .pagination-text-cell {
@@ -35,4 +43,10 @@
 .pagination-icon {
   font-size: 16pt;
   color: white;
+}
+
+@media only screen and (max-width: 400px) {
+  .pagination-container {
+    flex-direction: column;
+  }
 }
