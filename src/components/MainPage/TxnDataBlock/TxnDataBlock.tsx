@@ -84,7 +84,7 @@ export const TxnDataBlock = (props: Props) => {
     <>
       <article className="data-table-row scrolly">
         {/* IDENTICON */}
-        <div className="identicon-cell">
+        <div className="identicon-cell hiding-cell">
           <NavLink to={`/txns/${props.data.txhash}`}>
             <div className="">
               <Identicon size={15} string={props.data.txhash.toString()} />

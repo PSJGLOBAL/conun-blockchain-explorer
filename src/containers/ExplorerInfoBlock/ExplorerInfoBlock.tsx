@@ -1,5 +1,3 @@
-import ReactTooltip from "react-tooltip"
-
 import { ChannelStats } from "../../components/MainPage/ChannelStats/ChannelStats"
 import "./ExplorerInfoBlock.css"
 
@@ -24,45 +22,76 @@ export const ExplorerInfoBlock = () => {
             These are the services Conun provides:
           </div>
         </div>
-        <div className="app-service-row">
-          <img
-            src={ninjaIcon}
-            className="app-service-icon-image"
-            alt=""
-            data-tip={"Coin"}
-          />
-          <div className="app-service-unit-title">Coin</div>
-          <div className="app-service-unit-description">
-            Coin token used for payment of services
+        {/* Full Size Cells */}
+        <div className="app-services-full-size">
+          <div className="app-service-row">
+            <img
+              src={ninjaIcon}
+              className="app-service-icon-image"
+              alt=""
+              data-tip={"Coin"}
+            />
+            <div className="app-service-unit-title">Coin</div>
+            <div className="app-service-unit-description">
+              Coin token used for payment of services
+            </div>
+          </div>
+          <div className="app-service-row">
+            <img
+              src={familiarIcon}
+              className="app-service-icon-image"
+              alt=""
+              data-tip={"Drive"}
+            />
+            <div className="app-service-unit-title">Drive</div>
+            <div className="app-service-unit-description">
+              Decentralised peer-to-peer file transfer service
+            </div>
+          </div>
+          <div className="app-service-row">
+            <img
+              src={cubeCombIcon}
+              className="app-service-icon-image"
+              alt=""
+              data-tip={"Engine"}
+            />
+            <div className="app-service-unit-title">Engine</div>
+            <div className="app-service-unit-description">
+              Distributed supercomputing service
+            </div>
           </div>
         </div>
-        <div className="app-service-row">
-          <img
-            src={familiarIcon}
-            className="app-service-icon-image"
-            alt=""
-            data-tip={"Drive"}
-          />
-          <div className="app-service-unit-title">Drive</div>
-          <div className="app-service-unit-description">
-            Decentralised peer-to-peer file transfer service
+        {/* Minimized Cells */}
+        <div className="app-services-small">
+          <div className="app-service-small-row">
+            <img
+              src={ninjaIcon}
+              className="app-service-icon-image"
+              alt=""
+              data-tip={"Payment of Services"}
+            />
+            <div className="app-service-unit-title">Coin</div>
           </div>
-        </div>
-        <div className="app-service-row">
-          <img
-            src={cubeCombIcon}
-            className="app-service-icon-image"
-            alt=""
-            data-tip={"Engine"}
-          />
-          <div className="app-service-unit-title">Engine</div>
-          <div className="app-service-unit-description">
-            Distributed supercomputing service
+          <div className="app-service-small-row">
+            <img
+              src={familiarIcon}
+              className="app-service-icon-image"
+              alt=""
+              data-tip={"Peer-to-peer file transfer"}
+            />
+            <div className="app-service-unit-title">Drive</div>
+          </div>
+          <div className="app-service-small-row">
+            <img
+              src={cubeCombIcon}
+              className="app-service-icon-image"
+              alt=""
+              data-tip={"Distributed Supercomputing"}
+            />
+            <div className="app-service-unit-title">Engine</div>
           </div>
         </div>
       </div>
-
-      <ReactTooltip backgroundColor="#e95654" />
     </div>
   )
 }
