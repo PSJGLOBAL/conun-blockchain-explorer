@@ -114,7 +114,7 @@ export const BlockActivitySection = () => {
       <div className="">
         {/* HEADER */}
         <div className="data-table-row data-table-header">
-          <div className="identicon-cell"> </div>
+          <div className="identicon-cell hiding-cell"> </div>
           <div className="blocknum-cell">Num.</div>
           <div className="hash-cell hiding-cell">Hash</div>
           <div className="time-cell">Time</div>

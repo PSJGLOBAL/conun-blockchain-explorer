@@ -204,7 +204,6 @@
 
 @media only screen and (max-width: 400px) {
   .hiding-cell {
-    background-color: tomato;
     display: none !important;
   }
 }

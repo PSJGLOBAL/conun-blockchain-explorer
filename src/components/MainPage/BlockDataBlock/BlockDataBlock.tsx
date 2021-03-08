@@ -40,7 +40,7 @@ export const BlockDataBlock = (props: Props) => {
     <>
       <article className="data-table-row scrolly">
         {/* IDENTICON */}
-        <div className="identicon-cell">
+        <div className="identicon-cell hiding-cell">
           <NavLink className="" to={`/blocks/${props.data.blocknum}`}>
             <div className="">
               <Identicon size={15} string={props.data.blockhash.toString()} />
