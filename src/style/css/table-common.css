@@ -184,7 +184,7 @@
 }
 
 .hash-cell {
-  min-width: 150px;
+  min-width: 120px;
 }
 
 .time-cell {
@@ -204,7 +204,6 @@
 
 @media only screen and (max-width: 400px) {
   .hiding-cell {
-    background-color: tomato;
     display: none !important;
   }
 }

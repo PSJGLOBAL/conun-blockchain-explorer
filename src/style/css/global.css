@@ -4,17 +4,9 @@ body {
 
   --hilite: #e95654;
   --hihover: #feb0af;
-  /* --font: #000000; */
-
   --lolite: #495867;
   --hiblue: #74b3ce;
   --higreen: #09bc8a;
-
-  /* --hilite: #375bd2;
-  --hihover: #6dc0d5;
-  --hibright: #8cdfd6;
-  --neutral: #b2cede;
-  --dark: #5a716a; */
 
   --font: #495867;
 
@@ -22,9 +14,6 @@ body {
   --worldImg: url("../images/world.svg");
 
   --radius: 10px;
-
-  --gradient-fill: linear-gradient(90deg, var(--hilite), var(--hibright));
-  --gradient-fill-pre: linear-gradient(90deg, var(--hilite), var(--hilite));
 
   box-sizing: border-box;
 
@@ -110,7 +99,6 @@ main {
   padding: 20px;
   margin: -20px -20px 10px -20px;
 
-  background-image: var(--gradient-fill);
   color: var(--font);
   border-radius: 5px 5px 0px 0px;
 }
@@ -134,8 +122,6 @@ main {
   align-items: center;
 
   border-radius: var(--radius);
-
-  /* border: 2px solid var(--hihover); */
 
   background-color: var(--hilite);
 
@@ -172,18 +158,6 @@ main {
   width: 100%;
 }
 
-.with-flair {
-  display: grid;
-  grid-template-columns: 10px 1fr;
-}
-.vert-flair {
-  background-image: linear-gradient(0, var(--hilite), var(--hibright));
-  border-radius: 5px;
-  content: " ";
-  width: 10px;
-  margin: -10px;
-}
-
 .font-hilite {
   color: var(--hilite);
 }
@@ -207,5 +181,9 @@ main {
 @media only screen and (max-width: 400px) {
   .graph-block {
     display: none;
+  }
+  .section-title {
+    flex-direction: column;
+    height: 100%;
   }
 }
