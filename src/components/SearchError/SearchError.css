@@ -9,11 +9,16 @@
   justify-content: center;
 
   min-height: 500px;
+
+  background-image: url("../../style/images/cones.png");
+  background-size: 600px;
+  background-repeat: no-repeat;
+  background-position: 70% 50%;
 }
 .search-error-message-title {
   font-size: 40pt;
   font-weight: bold;
-  color: var(--hilite);
+  color: var(--lolite);
 }
 .search-error-message-subtitle {
   font-weight: bold;
@@ -31,20 +36,20 @@
 }
 
 .search-error-highlight {
-  color: var(--hilite);
+  color: var(--hiblue);
 }
 
-.search-error-graphic {
+.search-error-grap {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
+/* 
 .search-error-graphic img {
   width: auto;
-  height: 400px;
+  max-height: 400px;
   margin-top: 20px;
+  overflow: auto;
 
   /* background-position: 100% 30%; */
-}

@@ -15,7 +15,6 @@ const initialState = {
 }
 
 const contractReducer = (state = initialState, action: Action) => {
-  console.log(`Confirm Redux Action: `, action.type)
   switch (action.type) {
     case GET_ALL_CONTRACTS:
       if (!action.payload) {

@@ -1,5 +1,4 @@
 import { NavLink, useLocation } from "react-router-dom"
-import cones from "../../style/images/cones.png"
 import "./SearchError.css"
 
 export const SearchError = () => {
@@ -37,12 +36,7 @@ export const SearchError = () => {
             </div>
           </div>
 
-          <div className="search-error-main">
-            {content}
-            <div className="search-error-graphic">
-              <img src={cones} alt="cones" />
-            </div>
-          </div>
+          <div className="search-error-main">{content}</div>
         </div>
       </section>
     </div>
