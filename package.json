@@ -32,7 +32,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy-loc": "npm run build && pm2 serve build 8888 --spa --name \"conscan-test\""
   },
   "eslintConfig": {
     "extends": [
