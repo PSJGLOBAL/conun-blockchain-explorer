@@ -69,7 +69,6 @@ export const TxnActivitySection = (props: Props) => {
   }, [location])
 
   useEffect(() => {
-    console.log("TXNACTIVITY: Load own data")
     if (activeChannelHash) {
       dispatch(setChannelStats(activeChannelHash))
       dispatch(setTxnActivityData(activeChannelHash))

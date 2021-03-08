@@ -66,7 +66,6 @@ export const BlockActivitySection = () => {
   }, [location])
 
   useEffect(() => {
-    console.log("BLOCKACTIVITY: Load own data")
     if (activeChannelHash) {
       dispatch(setChannelStats(activeChannelHash))
       dispatch(setBlockActivityData(activeChannelHash))
