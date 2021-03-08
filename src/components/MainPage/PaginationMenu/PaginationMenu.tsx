@@ -15,6 +15,7 @@ export const PaginationMenu = (props: Props) => {
       <div className="pagination-buttons">
         <div
           className="pagination-button pagination-text-cell"
+          id="pagination-first"
           onClick={() => {
             props.doPseudoPaginate("first")
           }}
@@ -24,6 +25,7 @@ export const PaginationMenu = (props: Props) => {
         </div>
         <div
           className="pagination-button pagination-icon-cell"
+          id="pagination-previous"
           onClick={() => {
             props.doPseudoPaginate("prev")
           }}
@@ -32,6 +34,7 @@ export const PaginationMenu = (props: Props) => {
         </div>
         <div
           className="pagination-button pagination-icon-cell"
+          id="pagination-next"
           onClick={() => {
             props.doPseudoPaginate("next")
           }}

@@ -31,7 +31,7 @@ export const ChannelStats = () => {
           <img src={blocksIcon} className="channel-stats-icon" alt="" />
         </div>
         <div className="channel-stats-data-cell">
-          <span className="channel-stats-datapoint">
+          <span className="channel-stats-datapoint" id="stats-total-blocks">
             {channelStats.latestBlock
               ? parseInt(
                   channelStats.latestBlock.toString(),
@@ -48,7 +48,7 @@ export const ChannelStats = () => {
           <img src={txnIcon} className="channel-stats-icon" alt="" />
         </div>
         <div className="channel-stats-data-cell">
-          <span className="channel-stats-datapoint">
+          <span className="channel-stats-datapoint" id="stats-total-txns">
             {channelStats.txCount
               ? parseInt(channelStats.txCount.toString(), 10).toLocaleString()
               : "Many"}

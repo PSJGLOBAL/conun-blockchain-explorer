@@ -102,7 +102,7 @@ export const TxnActivitySection = (props: Props) => {
   return (
     <section
       className={fullPage ? "section-block section-full" : "section-block"}
-      id="txns"
+      id="recent-txns-table"
     >
       <div className="section-title">
         <span>Recent Transactions</span>
@@ -139,11 +139,15 @@ export const TxnActivitySection = (props: Props) => {
       {/* BUTTON */}
       <div>
         {fullPage ? (
-          <NavLink className="section-table-link" to={"/"}>
+          <NavLink className="section-table-link" id="txn-table-home" to={"/"}>
             Back To Home
           </NavLink>
         ) : (
-          <NavLink className="section-table-link" to={"/txns"}>
+          <NavLink
+            className="section-table-link"
+            id="txn-table-more"
+            to={"/txns"}
+          >
             View More Transactions
           </NavLink>
         )}
