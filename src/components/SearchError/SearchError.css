@@ -11,7 +11,7 @@
   min-height: 500px;
 
   background-image: url("../../style/images/cones.png");
-  background-size: 600px;
+  background-size: 500px;
   background-repeat: no-repeat;
   background-position: 70% 50%;
 }
@@ -37,11 +37,4 @@
 
 .search-error-highlight {
   color: var(--hiblue);
-}
-
-.search-error-grap {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
