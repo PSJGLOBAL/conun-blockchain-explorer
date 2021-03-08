@@ -71,6 +71,7 @@ export const Search = () => {
         <input
           ref={searchRef}
           className="search-input-field"
+          id="search-input"
           placeholder={
             searchFail
               ? searchFail
@@ -90,6 +91,7 @@ export const Search = () => {
         />
         <img
           className="search-icon"
+          id="search-button"
           src={searchIcon}
           alt=""
           onClick={() => {
