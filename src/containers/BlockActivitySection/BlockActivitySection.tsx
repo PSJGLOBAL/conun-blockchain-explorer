@@ -15,11 +15,7 @@ import "../../components/MainPage/InterfaceMain/InterfaceMain.css"
 
 import { State } from "../../utility/types"
 
-type Props = {
-  mainpage?: true
-}
-
-export const BlockActivitySection = (props: Props) => {
+export const BlockActivitySection = () => {
   const [currentPage, setCurrentPage] = useState<number>(1)
 
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
@@ -70,12 +66,12 @@ export const BlockActivitySection = (props: Props) => {
   }, [location])
 
   useEffect(() => {
-    if (maxBlock === undefined) {
+    if (activeChannelHash && maxBlock === undefined) {
       dispatch(setChannelStats(activeChannelHash))
       dispatch(setBlockActivityData(activeChannelHash))
       setCurrentPage(1)
     }
-  }, [activeChannelHash, maxBlock, dispatch])
+  }, [activeChannelHash, fullPage, maxBlock, dispatch])
 
   useEffect(() => {
     setMaxBlock(channelStats.latestBlock)
@@ -127,11 +123,7 @@ export const BlockActivitySection = (props: Props) => {
         {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
         {blockActivityData.length > 0 ? (
           blockActivityData.map((i) => (
-            <BlockDataBlock
-              key={i.blockhash}
-              fullPage={fullPage}
-              data={{ ...i }}
-            />
+            <BlockDataBlock key={i.blockhash} fullPage={fullPage} data={i} />
           ))
         ) : (
           <DuplicateSkeleton howMany={10}>
