@@ -10,7 +10,7 @@ export const PaginationMenu = (props: Props) => {
   return (
     <div className="pagination-container">
       <div className="pagination-indicator">
-        {`${(props.currentPage * 10).toString()} of ${props.max}`}
+        {props.max && `${(props.currentPage * 10).toString()} of ${props.max}`}
       </div>
       <div className="pagination-buttons">
         <div

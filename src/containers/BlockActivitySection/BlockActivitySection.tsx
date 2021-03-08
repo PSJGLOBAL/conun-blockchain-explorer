@@ -66,12 +66,13 @@ export const BlockActivitySection = () => {
   }, [location])
 
   useEffect(() => {
-    if (activeChannelHash && maxBlock === undefined) {
+    console.log("BLOCKACTIVITY: Load own data")
+    if (activeChannelHash) {
       dispatch(setChannelStats(activeChannelHash))
       dispatch(setBlockActivityData(activeChannelHash))
       setCurrentPage(1)
     }
-  }, [activeChannelHash, fullPage, maxBlock, dispatch])
+  }, [activeChannelHash, dispatch])
 
   useEffect(() => {
     setMaxBlock(channelStats.latestBlock)
