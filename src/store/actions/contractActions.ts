@@ -14,7 +14,6 @@ const assembleAllContracts = (data: Array<ContractType>) => {
 export const getAllContracts = (channelHash: string) => {
   return (dispatch: any) => {
     axios.get(`/chaincode/${channelHash}`).then((response) => {
-      console.log("TEST CONTRACT GET: ", response.data.chaincode)
       const contracts = response.data.chaincode
       dispatch(assembleAllContracts(contracts))
     })

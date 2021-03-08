@@ -69,12 +69,12 @@ export const TxnActivitySection = (props: Props) => {
   }, [location])
 
   useEffect(() => {
-    if (maxTxn === undefined) {
+    if (activeChannelHash && maxTxn === undefined) {
       dispatch(setChannelStats(activeChannelHash))
       dispatch(setTxnActivityData(activeChannelHash))
       setCurrentPage(1)
     }
-  }, [activeChannelHash, maxTxn, dispatch])
+  }, [activeChannelHash, fullPage, maxTxn, dispatch])
 
   useEffect(() => {
     setMaxTxn(channelStats.txCount)

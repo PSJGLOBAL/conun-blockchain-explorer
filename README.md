@@ -1,6 +1,4 @@
-# Conun Blockchain Explorer V.0
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Conun Blockchain Explorer V.1.2
 
 ## Current Progress
 
@@ -22,8 +20,8 @@ In this file, you must add the following lines:
 ```javascript
 
 {
-  "BASEURL": ...,
-  "SOCKETURL":...
+  "BASEURL": http://...,
+  "SOCKETURL": ws://...
 }
 ```
 
