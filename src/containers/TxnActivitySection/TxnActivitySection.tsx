@@ -117,7 +117,7 @@ export const TxnActivitySection = (props: Props) => {
       <div className="">
         {/* HEADER */}
         <div className="data-table-row data-table-header">
-          <div className="identicon-cell"></div>
+          <div className="identicon-cell hiding-cell"></div>
           <div className="service-cell">Service</div>
           <div id="header-hash-cell" className="hash-cell">
             Hash
