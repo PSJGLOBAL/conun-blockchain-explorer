@@ -1,138 +1,20 @@
-.info-table {
-  display: grid;
-  margin: 5px;
-  padding: 5px;
+.scrolly {
+  overflow-x: auto;
 }
-.info-table-row {
-  border-top: 1px solid var(--bkg);
-}
-
-.table-animate {
-  animation: appear 0.4s ease-in forwards;
-  transform-style: preserve-3d;
-  transform-origin: 0 0;
-}
-
-@keyframes appear {
-  0% {
-    /* background-color: var(--hilite); */
-    transform: translateY(-100%);
-  }
-  60% {
-    transform: translateY(0);
-  }
-  80% {
-    transform: translateY(-5%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.info-table-col {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px;
-}
-.info-table-col span {
-  text-align: left;
-}
-
-.info-table-identicon-col {
-  display: flex;
-  justify-content: center;
-}
-
-.info-table-icon-col {
-  cursor: pointer;
-  padding: 5px;
-  border: 2px solid;
-  border-color: var(--bkg);
-  border-radius: var(--radius);
-  animation: icon-animate 0.7s ease-in;
-}
-.info-table-icon-col:hover {
-  border-color: var(--hihover);
-}
-
-@keyframes icon-animate {
-  0% {
-    border-color: var(--hilite);
-  }
-  100% {
-    border-color: var(--bkg);
-  }
-}
-.info-table-txcount-col {
-  background-color: var(--bkg);
-  padding: 5px;
-  border-radius: var(--radius);
-}
-.info-table-icon-cell {
-  padding: 5px 5px 1px 5px; /* The icon has its own padding underneath :S*/
-}
-
-.info-table-txcount-cell {
-  background-color: var(--bkg);
-}
-
-.info-table-content-span {
-  justify-self: start;
-}
-
-.info-table-link {
-  text-decoration: none;
-  color: var(--higreen);
-}
-
-@media only screen and (max-width: 1010px) and (min-width: 700px) {
-  .info-table-icon-col {
-    grid-area: 1/1/4/1;
-  }
-  .info-table-identicon-col {
-    grid-area: 1/1/4/1;
-    min-height: 120px;
-  }
-  .info-table-txcount-col {
-    grid-area: 1/3/4/4;
-  }
-}
-@media only screen and (max-width: 500px) {
-  .info-table-icon-col {
-    grid-area: 1/1/4/1;
-  }
-
-  .info-table-identicon-col {
-    grid-area: 1/1/4/1;
-    min-height: 120px;
-  }
-  .info-table-txcount-col {
-    grid-area: 1/3/4/4;
-  }
-}
-
-/* ----------------------------------- */
 
 .table-block {
   overflow-x: auto;
 }
 
-.scrolly {
-  overflow-x: auto;
-}
-
 .data-table-row {
+  height: 60px;
+
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-
-  height: 60px;
-
   z-index: 1;
 
   background-color: var(--fore);
-
   border-top: 1px solid var(--bkg);
   border-bottom: 1px solid var(--bkg);
 
@@ -148,10 +30,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* margin: 5px; */
 }
 .data-table-row a {
   text-decoration: none;
+}
+
+.data-table-header {
+  z-index: 5;
+  background-color: white;
+  border: none;
+  animation: none !important;
+}
+
+.data-table-header .identicon-cell {
+  border: none;
+}
+
+.data-table-header .txncount-cell {
+  background-color: transparent;
 }
 
 .identicon-cell {
@@ -162,20 +58,6 @@
   border-radius: var(--radius);
 
   animation: icon-animate 0.7s ease-in;
-}
-
-.data-table-header {
-  border: none;
-  background-color: white;
-  z-index: 5;
-  animation: none !important;
-}
-
-.data-table-header .identicon-cell {
-  border: none;
-}
-.data-table-header .txncount-cell {
-  background-color: transparent;
 }
 
 .blocknum-cell {
@@ -200,6 +82,35 @@
 
 .service-cell {
   width: 40px;
+}
+
+.info-table-link {
+  text-decoration: none;
+  color: var(--higreen);
+}
+
+@keyframes icon-animate {
+  0% {
+    border-color: var(--hilite);
+  }
+  100% {
+    border-color: var(--bkg);
+  }
+}
+
+@keyframes appear {
+  0% {
+    transform: translateY(-100%);
+  }
+  60% {
+    transform: translateY(0);
+  }
+  80% {
+    transform: translateY(-5%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 @media only screen and (max-width: 400px) {
