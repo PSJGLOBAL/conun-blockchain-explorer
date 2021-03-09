@@ -66,12 +66,12 @@ export const BlockActivitySection = () => {
   }, [location])
 
   useEffect(() => {
-    if (activeChannelHash && maxBlock === undefined) {
+    if (activeChannelHash) {
       dispatch(setChannelStats(activeChannelHash))
       dispatch(setBlockActivityData(activeChannelHash))
       setCurrentPage(1)
     }
-  }, [activeChannelHash, fullPage, maxBlock, dispatch])
+  }, [activeChannelHash, dispatch])
 
   useEffect(() => {
     setMaxBlock(channelStats.latestBlock)
@@ -99,7 +99,7 @@ export const BlockActivitySection = () => {
   return (
     <section
       className={fullPage ? "section-block section-full" : "section-block"}
-      id="blocks"
+      id="recent-blocks-table"
     >
       <div className="section-title">
         <span>Recent Blocks</span>
@@ -133,11 +133,19 @@ export const BlockActivitySection = () => {
       </div>
       <div>
         {fullPage ? (
-          <NavLink className="section-table-link hover-gradient" to={"/"}>
+          <NavLink
+            className="section-table-link hover-gradient"
+            id="block-table-home"
+            to={"/"}
+          >
             Back To Home
           </NavLink>
         ) : (
-          <NavLink className="section-table-link" to={"/blocks"}>
+          <NavLink
+            className="section-table-link"
+            id="block-table-more"
+            to={"/blocks"}
+          >
             View More Blocks
           </NavLink>
         )}

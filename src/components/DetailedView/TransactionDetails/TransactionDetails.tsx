@@ -88,18 +88,19 @@ export const TransactionDetails = (props: Props) => {
   }
 
   return (
-    <div className="details-table">
+    <div className="details-table" id="txn-details-table">
       <div className="details-table-header">
         <h2>Transaction Details</h2>
         <div className="details-table-links-box">
           <div
             className="details-table-header-link"
+            id="table-back-link"
             onClick={() => history.goBack()}
           >
             <i className="fas fa-arrow-circle-left"></i>
           </div>
           <div className="details-table-header-link">
-            <NavLink to="/">
+            <NavLink to="/" id="table-home-link">
               <i className="fas fa-home"></i>
             </NavLink>
           </div>

@@ -16,6 +16,7 @@ export const GraphControls = (props: Props) => {
             ? "graph-controls-tab graph-controls-active"
             : "graph-controls-tab"
         }
+        id="graph-mode-txn-min"
         onClick={() => clickHandler("txn-min")}
       >
         Tx/Min
@@ -26,6 +27,7 @@ export const GraphControls = (props: Props) => {
             ? "graph-controls-tab graph-controls-active"
             : "graph-controls-tab"
         }
+        id="graph-mode-txn-hour"
         onClick={() => clickHandler("txn-hour")}
       >
         Tx/Hour
@@ -36,6 +38,7 @@ export const GraphControls = (props: Props) => {
             ? "graph-controls-tab graph-controls-active"
             : "graph-controls-tab"
         }
+        id="graph-mode-block-min"
         onClick={() => clickHandler("block-min")}
       >
         Blocks/Min
@@ -46,6 +49,7 @@ export const GraphControls = (props: Props) => {
             ? "graph-controls-tab graph-controls-active"
             : "graph-controls-tab"
         }
+        id="graph-mode-block-hour"
         onClick={() => clickHandler("block-hour")}
       >
         Blocks/Hour
