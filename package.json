@@ -33,7 +33,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy-loc": "npm run build && pm2 serve build 8888 --spa --name \"conscan-test\""
+    "deploy-loc": "npm run build && pm2 serve build 8888 --spa --name \"conscan-test\"",
+    "cypress-open": "cypress open"
   },
   "eslintConfig": {
     "extends": [
