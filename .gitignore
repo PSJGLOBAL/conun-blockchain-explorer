@@ -26,3 +26,4 @@ yarn-error.log*
 
 src/utility/config.ts
 src/utility/config.json
+cypress/videos/

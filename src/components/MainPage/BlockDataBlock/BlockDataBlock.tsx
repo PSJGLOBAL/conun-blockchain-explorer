@@ -55,7 +55,7 @@ export const BlockDataBlock = (props: Props) => {
           </NavLink>
         </div>
         {/* HASH CELL */}
-        <div className="hash-cell hiding-cell">
+        <div className="hash-cell hiding-cell result-hash-cell">
           <span
             data-tip={props.data.blockhash}
             className={props.fullPage ? "monofont selectable" : "monofont"}
