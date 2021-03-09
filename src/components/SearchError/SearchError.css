@@ -3,17 +3,17 @@
 }
 
 .search-error-main {
+  min-height: 500px;
+
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 
-  min-height: 500px;
-
   background-image: url("../../style/images/cones.png");
   background-size: 500px;
-  background-repeat: no-repeat;
   background-position: 70% 50%;
+  background-repeat: no-repeat;
 }
 .search-error-message-title {
   font-size: 40pt;
@@ -28,6 +28,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+
   font-size: 16pt;
   text-align: right;
 }

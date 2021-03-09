@@ -101,7 +101,13 @@ export const TxnDataBlock = (props: Props) => {
               className={"font-clicky monofont"}
               to={`/txns/${props.data.txhash}`}
             >
-              <span className={props.fullPage ? "selectable" : ""}>
+              <span
+                className={
+                  props.fullPage
+                    ? "result-hash-cell selectable"
+                    : "result-hash-cell"
+                }
+              >
                 {props.fullPage
                   ? truncate(props.data.txhash.toString(), truncateLimit)
                   : truncate(props.data.txhash.toString())}

@@ -1,6 +1,6 @@
 main {
-  border-radius: var(--radius);
   box-sizing: border-box;
+  border-radius: var(--radius);
 }
 
 .block-scrollable {
@@ -9,8 +9,8 @@ main {
 }
 
 .loading-block {
-  text-align: center;
   padding-top: 20px;
+  text-align: center;
 }
 
 .table-header div {
