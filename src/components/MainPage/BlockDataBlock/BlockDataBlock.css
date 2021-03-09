@@ -1,11 +1,11 @@
 .recent-block-table {
-  grid-template-columns: 80px 1fr 2fr 200px 45px;
   margin: 5px;
+  grid-template-columns: 80px 1fr 2fr 200px 45px;
 }
 
 .recent-block-header {
-  grid-template-columns: 80px 1fr 2fr 200px 45px;
   margin: 5px;
+  grid-template-columns: 80px 1fr 2fr 200px 45px;
 }
 
 @media only screen and (max-width: 1010px) and (min-width: 700px) {

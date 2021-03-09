@@ -13,6 +13,7 @@
 .pagination-button {
   height: 10px;
   margin: 2px;
+  padding: 7px;
 
   display: flex;
   justify-content: center;
@@ -20,7 +21,6 @@
 
   background-color: var(--hihover);
   border-radius: 5px;
-  padding: 7px;
 }
 
 .pagination-button:hover {
@@ -28,9 +28,10 @@
 }
 
 .pagination-indicator {
+  margin-right: 15px;
+
   align-self: flex-end;
   text-align: center;
-  margin-right: 15px;
 }
 .pagination-text-cell {
   width: 30px;

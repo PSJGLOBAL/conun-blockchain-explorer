@@ -2,22 +2,24 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 
-  /* margin: 5px; */
   cursor: pointer;
 }
 
 .graph-controls-tab {
   height: 30px;
   width: 100%;
+  margin: 3px;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  /* padding: 1px; */
-  margin: 3px;
-  text-align: center;
+
   font-weight: bold;
-  user-select: none;
+  text-align: center;
+
   border-radius: 0 0 var(--radius) var(--radius);
+
+  user-select: none;
 }
 
 .graph-controls-tab:hover {
