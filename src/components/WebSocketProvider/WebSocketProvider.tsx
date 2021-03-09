@@ -5,13 +5,13 @@ import { w3cwebsocket as W3CWebsocket } from "websocket"
 import { useHistory } from "react-router-dom"
 
 import { State } from "../../utility/types"
+import { logger } from "../../utility/functions"
 import * as actions from "../../store/actions"
 import { SOCKETURL } from "../../utility/config.json"
 
 function WebSocketProvider() {
   const [socket, setSocket] = useState<null | W3CWebsocket>(null)
   const dispatch = useDispatch()
-  // const activeChannelHash = useSelector((state: State) => state.basic.activeChannelHash)
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
   const activeChannelHash = activeChannel.channel_genesis_hash
   const blockActivityData = useSelector(
@@ -25,7 +25,7 @@ function WebSocketProvider() {
 
   useEffect(() => {
     if (socket === null && activeChannelHash && activeChannelHash !== "") {
-      // console.log("Websocket: Initialising...")
+      logger("Websocket: Initialising...", "info")
       const newSocket = new W3CWebsocket(
         `${SOCKETURL}/blockActivity/${activeChannelHash}`
       )
@@ -35,7 +35,7 @@ function WebSocketProvider() {
 
   if (socket) {
     socket.onopen = () => {
-      // console.log("Websocket: Connected")
+      logger("Websocket: Connected", "success")
     }
     socket.onmessage = (msg) => {
       const socketData = JSON.parse(msg.data.toString())

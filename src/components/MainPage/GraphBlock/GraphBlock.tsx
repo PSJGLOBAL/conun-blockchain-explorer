@@ -7,6 +7,7 @@ import { GraphControls } from "../GraphControls/GraphControls"
 import { TheGraph } from "../TheGraph/TheGraph"
 
 import { State, ObjectType } from "../../../utility/types"
+import { logger } from "../../../utility/functions"
 import GraphSkeleton from "../../../ui/Skeletos/GraphSkeleton/GraphSkeleton"
 
 export const GraphBlock = () => {
@@ -18,31 +19,37 @@ export const GraphBlock = () => {
 
   const doGraphDataGet = useCallback(
     (graphMode: string) => {
+      let axiosUrlSegment: string | false = false
+      let badGraphMode = false
+
       switch (graphMode) {
         case "txn-hour":
-          axios.get(`/txByHour/${activeChannelHash}/1`).then((response) => {
-            setGraphData(response.data.rows)
-          })
+          axiosUrlSegment = "txByHour"
           break
         case "txn-min":
-          axios.get(`/txByMinute/${activeChannelHash}/1`).then((response) => {
-            setGraphData(response.data.rows)
-          })
+          axiosUrlSegment = "txByMinute"
           break
         case "block-hour":
-          axios.get(`blocksByHour/${activeChannelHash}/1`).then((response) => {
-            setGraphData(response.data.rows)
-          })
+          axiosUrlSegment = "blocksByHour"
           break
         case "block-min":
-          axios
-            .get(`/blocksByMinute/${activeChannelHash}/1`)
-            .then((response) => {
-              setGraphData(response.data.rows)
-            })
+          axiosUrlSegment = "blocksByMinute"
           break
         default:
-          console.error("GRAPHMODE: Error - Impossible mode selected (HOW?!?)")
+          badGraphMode = true
+          logger(
+            "GRAPH: Graph mode Error - Impossible mode selected (HOW?!?)",
+            "error"
+          )
+      }
+
+      if (!badGraphMode && axiosUrlSegment) {
+        axios
+          .get(`/${axiosUrlSegment}/${activeChannelHash}/1`)
+          .then((response) => {
+            logger("GRAPH: Response: ", "get", response)
+            setGraphData(response.data.rows)
+          })
       }
     },
     [activeChannelHash]
@@ -56,7 +63,7 @@ export const GraphBlock = () => {
 
   useEffect(() => {
     const graphTimer = setInterval(function () {
-      // console.log("GRAPH: Scheduled Graph Update")
+      logger("GRAPH: Scheduled Update", "info")
       doGraphDataGet(graphMode)
     }, 30000)
 
