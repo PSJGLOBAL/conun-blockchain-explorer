@@ -11,6 +11,9 @@ const ContractIcon = ({ serviceType }: Props) => {
 
   switch (serviceType) {
     case "coin":
+    case "token":
+    case "mycoin":
+    case "conToken":
     case "conun":
       contractIcon = (
         <img
@@ -23,6 +26,8 @@ const ContractIcon = ({ serviceType }: Props) => {
       break
 
     case "ConunDrive":
+    case "drive_1":
+    case "drive":
       contractIcon = (
         <img
           src={familiarIcon}
@@ -33,6 +38,7 @@ const ContractIcon = ({ serviceType }: Props) => {
       )
       break
     case "_lifecycle":
+    case "basic":
       contractIcon = (
         <img
           src={defaultIcon}
@@ -46,7 +52,17 @@ const ContractIcon = ({ serviceType }: Props) => {
       contractIcon = serviceType
   }
 
-  return <span>{contractIcon}</span>
+  return (
+    <span
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      {contractIcon}
+    </span>
+  )
 }
 
 export default ContractIcon

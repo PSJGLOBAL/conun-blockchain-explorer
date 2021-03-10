@@ -1,32 +1,32 @@
-.contracts-header {
-  margin: 5px;
-
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-  justify-content: center;
+.contract-table-name-cell {
+  width: 180px;
 }
-
-.contract-block {
-  margin: 5px;
-
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-  justify-content: center;
-
-  border-bottom: 1px solid #ddd;
-}
-.contract-table-cell {
+.contract-table-name-cell > span {
   width: 100%;
-  display: flex;
-  justify-content: center;
+  text-align: left;
 }
 .contract-table-icon-cell {
-  text-align: center;
-}
-.contract-table-count-cell {
-  text-align: right;
-}
+  width: 200px;
 
-.contract-table-cell span {
-  width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+.contract-table-ver-cell {
+  width: 200px;
+}
+.contracts-see-more {
+  height: 100%;
+  margin: 20px;
+}
+.contracts-see-more a {
+  text-decoration: none;
+  color: var(--hiblue);
+}
+.contracts-see-more a:hover {
+  color: var(--higreen);
+}
+.contracts-see-more a {
+  text-decoration: none;
 }
