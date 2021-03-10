@@ -1,5 +1,3 @@
-import config from "./config.json"
-
 export const truncate = (hashString: string, truncation: number = 0) => {
   if (hashString.length > 24) {
     let limit = 7
@@ -17,7 +15,11 @@ export const truncate = (hashString: string, truncation: number = 0) => {
   return hashString
 }
 
-const willLog = config.LOGGING
+let willLog = false
+if (process.env.NODE_ENV !== "production") {
+  willLog = true
+}
+
 export const logger = (message: string, level: string, ...data: any[]) => {
   if (willLog) {
     switch (level) {
