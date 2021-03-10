@@ -14,6 +14,7 @@ import txnReducer from "./store/reducers/txnReducer"
 import contractReducer from "./store/reducers/contractReducer"
 
 import thunk from "redux-thunk"
+import { composeWithDevTools } from "redux-devtools-extension"
 
 // Component Imports
 import App from "./App"
@@ -29,7 +30,11 @@ const rootReducer = combineReducers({
   ctx: contractReducer,
 })
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
+let store = createStore(rootReducer, applyMiddleware(thunk))
+
+if (process.env.NODE_ENV !== "production") {
+  store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
+}
 
 ReactDOM.render(
   <BrowserRouter>
