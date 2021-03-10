@@ -23,15 +23,14 @@ In this file, you must add the following lines:
 {
   "BASEURL": http://...,
   "SOCKETURL": ws://...,
-  "LOGGING":false
 }
 ```
 
 ...and enter the base URL or IP address and port for your backend application.
 Both lines should be strings. You should not include a trailing slash.
 
-Setting Logging:true will show errors, warnings and confirmation of responses in the console.
-Set this to false before building the app.
+The project includes a colour-coded logger. The logger will work in development only.
+Possible log levels include: log, info, success, get, warn, error, and special. The default level is log.
 
 ### Testing
 
