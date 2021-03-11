@@ -48,9 +48,7 @@ export const HeadBar = () => {
           <div className="nav-link">
             {/* This link will point to /contracts, target=same, when that page is finished */}
             <a
-              href="https://github.com/CONUN-Global/conun-blockchain-smartcontract"
-              target="_blank"
-              rel="noreferrer"
+              href="/contracts"
               onClick={() => {
                 setShow(false)
               }}
