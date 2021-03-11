@@ -19,6 +19,32 @@ export const SearchError = () => {
         <div>Your search returned no results.</div>
       </div>
     )
+  } else if (query.get("type") === "bad_block") {
+    errorTitle = "Bad Block"
+    content = (
+      <div className="search-error-message">
+        <div className="search-error-message-title">400</div>
+        <div className="search-error-message-subtitle">
+          Search terms:{" "}
+          <span className="search-error-highlight">{query.get("terms")}</span>
+        </div>
+
+        <div>There is no such block.</div>
+      </div>
+    )
+  } else if (query.get("type") === "no_response") {
+    errorTitle = "No Response"
+    content = (
+      <div className="search-error-message">
+        <div className="search-error-message-title">400</div>
+        <div className="search-error-message-subtitle">
+          No response from:
+          <span className="search-error-highlight">{query.get("terms")}</span>
+        </div>
+
+        <div>The server did not respond.</div>
+      </div>
+    )
   }
 
   return (

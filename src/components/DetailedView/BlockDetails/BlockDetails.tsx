@@ -2,9 +2,14 @@ import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { NavLink, useHistory } from "react-router-dom"
 
+import BlockDetailsTable from "../BlockDetailsTable/BlockDetailsTable"
+import DetailsSkeleton from "../../../ui/Skeletos/DetailsSkeleton/DetailsSkeleton"
+import { DuplicateSkeleton } from "../../../ui/Skeletos/DuplicateSkeleton/DuplicateSkeleton"
+
 import axios from "../../../axios/axiosinst"
 
 import { State } from "../../../utility/types"
+import { logger } from "../../../utility/functions"
 
 interface Props {
   blocknum?: string | null
@@ -17,75 +22,30 @@ export const BlockDetails = (props: Props) => {
 
   let history = useHistory()
 
+  // Force window to scroll up on load
   useEffect(() => {
     window.scrollTo(0, 0)
   })
 
+  // Do GET if provided a blocknum
   useEffect(() => {
     if (props.blocknum) {
       axios
         .get(`/block/transactions/${activeChannelHash}/${props.blocknum}`)
         .then((response) => {
-          setBlockData(response.data.data)
+          if (response.data.status === 400 || response.data.status === "400") {
+            logger("BLOCK DETAILS: Bad Request: ", "error")
+            history.push(`/error?type=bad_block&terms=${props.blocknum}`)
+          } else {
+            setBlockData(response.data.data)
+          }
         })
-        .catch((e) => console.error(e))
+        .catch((e) => {
+          console.error(e)
+          history.push(`/error?type=no_response&terms=search`)
+        })
     }
-  }, [activeChannelHash, props.blocknum])
-
-  let content = (
-    <div className="details-table-row">
-      <div className="info-col info-key">Error:</div>
-      <div className="info-col info-val">No data was found</div>
-    </div>
-  )
-
-  if (blockData) {
-    const txContent = blockData.txhash.map((t: string) => (
-      <div key={t}>
-        <NavLink className="info-table-link monofont" to={`/txns/${t}`}>
-          {t}
-        </NavLink>
-      </div>
-    ))
-    content = (
-      <div className="">
-        <div className="details-table-row">
-          <div className="info-col info-key">Block Number:</div>
-          <div className="info-col info-val selectable monofont">
-            {blockData.blocknum}
-          </div>
-        </div>
-        <div className="details-table-row">
-          <div className="info-col info-key">Block Size:</div>
-          <div className="info-col info-val monofont">{blockData.blksize}</div>
-        </div>
-        <div className="details-table-row scrolly">
-          <div className="info-col info-key">Block Hash:</div>
-          <div className="info-col info-val selectable monofont">
-            {blockData.blockhash}
-          </div>
-        </div>
-        <div className="details-table-row scrolly">
-          <div className="info-col info-key">Data Hash:</div>
-          <div className="info-col info-val selectable monofont">
-            {blockData.datahash}
-          </div>
-        </div>
-        <div className="details-table-row scrolly">
-          <div className="info-col info-key">Previous Hash:</div>
-          <div className="info-col info-val selectable monofont">
-            {blockData.prehash}
-          </div>
-        </div>
-        <div className="details-table-row scrolly">
-          <div className="info-col info-key">
-            Transactions: {blockData.txcount}
-          </div>
-          <div className="info-col info-val">{txContent}</div>
-        </div>
-      </div>
-    )
-  }
+  }, [activeChannelHash, props.blocknum, history])
 
   return (
     <div className="details-table" id="block-details-table">
@@ -106,7 +66,21 @@ export const BlockDetails = (props: Props) => {
           </div>
         </div>
       </div>
-      {content}
+      {blockData ? (
+        <BlockDetailsTable
+          blocknum={blockData.blocknum}
+          blksize={blockData.blksize}
+          blockhash={blockData.blockhash}
+          datahash={blockData.datahash}
+          prehash={blockData.prehash}
+          txcount={blockData.txcount}
+          txhash={blockData.txhash}
+        />
+      ) : (
+        <DuplicateSkeleton howMany={6}>
+          <DetailsSkeleton />
+        </DuplicateSkeleton>
+      )}
     </div>
   )
 }
