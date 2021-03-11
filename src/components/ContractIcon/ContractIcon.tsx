@@ -7,7 +7,11 @@ type Props = {
 }
 
 const ContractIcon = ({ serviceType }: Props) => {
-  let contractIcon
+  const spanStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  }
 
   switch (serviceType) {
     case "coin":
@@ -15,54 +19,47 @@ const ContractIcon = ({ serviceType }: Props) => {
     case "mycoin":
     case "conToken":
     case "conun":
-      contractIcon = (
-        <img
-          src={ninjaIcon}
-          data-tip={"Coin"}
-          className="contract-icon-image"
-          alt=""
-        />
+      return (
+        <span style={spanStyle}>
+          <img
+            src={ninjaIcon}
+            data-tip={"Coin"}
+            className="contract-icon-image"
+            alt=""
+          />
+        </span>
       )
-      break
 
     case "ConunDrive":
     case "drive_1":
     case "drive":
-      contractIcon = (
-        <img
-          src={familiarIcon}
-          data-tip={"Conun Drive"}
-          className="contract-icon-image"
-          alt=""
-        />
+      return (
+        <span style={spanStyle}>
+          <img
+            src={familiarIcon}
+            data-tip={"Conun Drive"}
+            className="contract-icon-image"
+            alt=""
+          />
+        </span>
       )
-      break
+
     case "_lifecycle":
     case "basic":
-      contractIcon = (
-        <img
-          src={defaultIcon}
-          data-tip={"Contract Deployment"}
-          className="contract-icon-image"
-          alt=""
-        />
+      return (
+        <span style={spanStyle}>
+          <img
+            src={defaultIcon}
+            data-tip={"Contract Deployment"}
+            className="contract-icon-image"
+            alt=""
+          />
+        </span>
       )
-      break
-    default:
-      contractIcon = serviceType
-  }
 
-  return (
-    <span
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      {contractIcon}
-    </span>
-  )
+    default:
+      return <span style={spanStyle}>{serviceType}</span>
+  }
 }
 
 export default ContractIcon
