@@ -1,4 +1,3 @@
-// import "./DetailedViewSection.css"
 import "../../../components/DetailedView/DetailedViewSection/DetailedViewSection.css"
 
 const DetailsSkeleton = () => {
