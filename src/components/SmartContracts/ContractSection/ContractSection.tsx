@@ -11,7 +11,9 @@ const ContractSection = () => {
 
   return (
     <section className="section-block section-single">
-      <div className="section-title">Smart Contracts</div>
+      <div className="section-title">
+        <span>Smart Contracts</span>
+      </div>
       <div className="data-table-row data-table-header contracts-header">
         <div className="contract-table-name-cell">Name</div>
         <div className="contract-table-icon-cell">Icon</div>
