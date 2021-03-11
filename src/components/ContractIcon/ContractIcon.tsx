@@ -7,7 +7,7 @@ type Props = {
 }
 
 const ContractIcon = ({ serviceType }: Props) => {
-  let contractIcon = null
+  let contractIcon
 
   switch (serviceType) {
     case "coin":
