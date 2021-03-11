@@ -27,6 +27,3 @@
 .contracts-see-more a:hover {
   color: var(--higreen);
 }
-.contracts-see-more a {
-  text-decoration: none;
-}
