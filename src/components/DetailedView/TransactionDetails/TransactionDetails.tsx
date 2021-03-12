@@ -2,90 +2,50 @@ import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { NavLink, useHistory } from "react-router-dom"
 
+import TxnDetailsTable from "../TxnDetailsTable/TxnDetailsTable"
+import DetailsSkeleton from "../../../ui/Skeletos/DetailsSkeleton/DetailsSkeleton"
+import { DuplicateSkeleton } from "../../../ui/Skeletos/DuplicateSkeleton/DuplicateSkeleton"
+
 import axios from "../../../axios/axiosinst"
-import { ObjectType, State } from "../../../utility/types"
+import { State } from "../../../utility/types"
+import { logger } from "../../../utility/functions"
 
 interface Props {
   txnID?: string | null
 }
 
 export const TransactionDetails = (props: Props) => {
-  const [txnData, setTxnData] = useState<ObjectType>({})
+  const [txnData, setTxnData] = useState<any>(null)
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
   const activeChannelHash = activeChannel.channel_genesis_hash
 
   let history = useHistory()
 
+  // Force window to scroll up on load
   useEffect(() => {
     window.scrollTo(0, 0)
   })
 
+  // Do GET if provided a blocknum
   useEffect(() => {
     if (props.txnID) {
       axios
         .get(`/transaction/${activeChannelHash}/${props.txnID}`)
         .then((response) => {
-          setTxnData(response.data.row)
+          logger("TXN DETAILS: ", "response", response)
+          if (response.data.status === 400 || response.data.status === "400") {
+            logger("TXN DETAILS: Bad Request: ", "error")
+            history.push(`/error?type=bad_transaction&terms=${props.txnID}`)
+          } else {
+            setTxnData(response.data.row)
+          }
         })
-        .catch((e) => console.error(e))
+        .catch((e) => {
+          console.error(e)
+          history.push(`/error?type=no_response&terms=search`)
+        })
     }
-  }, [activeChannelHash, props.txnID])
-
-  let content = (
-    <div className="details-table-row">
-      <div className="info-col info-key">Error:</div>
-      <div className="info-col info-val">No data was found</div>
-    </div>
-  )
-
-  if (txnData) {
-    content = (
-      <div className="">
-        <div className="details-table-row scrolly">
-          <div className="info-col info-key">Transaction Hash:</div>
-          <div className="info-col info-val selectable monofont">
-            {txnData.txhash}
-          </div>
-        </div>
-        <div className="details-table-row">
-          <div className="info-col info-key">Timestamp:</div>
-          <div className="info-col info-val selectable monofont">
-            {txnData.createdt}
-          </div>
-        </div>
-        <div className="details-table-row">
-          <div className="info-col info-key">Validity:</div>
-          <div className="info-col info-val selectable monofont">
-            {txnData.validation_code}
-          </div>
-        </div>
-        <div className="details-table-row">
-          <div className="info-col info-key">Channel:</div>
-          <div className="info-col info-val selectable monofont">
-            {txnData.channelname}
-          </div>
-        </div>
-        <div className="details-table-row">
-          <div className="info-col info-key">Contract:</div>
-          <div className="info-col info-val selectable monofont">
-            {txnData.chaincodename}
-          </div>
-        </div>
-        <div className="details-table-row">
-          <div className="info-col info-key">Creator ID:</div>
-          <div className="info-col info-val selectable monofont">
-            {txnData.creator_msp_id}
-          </div>
-        </div>
-        <div className="details-table-row scrolly">
-          <div className="info-col info-key">Payload Proposal Hash:</div>
-          <div className="info-col info-val selectable monofont">
-            {txnData.payload_proposal_hash}
-          </div>
-        </div>
-      </div>
-    )
-  }
+  }, [activeChannelHash, props.txnID, history])
 
   return (
     <div className="details-table" id="txn-details-table">
@@ -106,7 +66,21 @@ export const TransactionDetails = (props: Props) => {
           </div>
         </div>
       </div>
-      {content}
+      {txnData ? (
+        <TxnDetailsTable
+          txhash={txnData.txhash}
+          createdt={txnData.createdt}
+          validation_code={txnData.validation_code}
+          channelname={txnData.channelname}
+          chaincodename={txnData.chaincodename}
+          creator_msp_id={txnData.creator_msp_id}
+          payload_proposal_hash={txnData.payload_proposal_hash}
+        />
+      ) : (
+        <DuplicateSkeleton howMany={7}>
+          <DetailsSkeleton />
+        </DuplicateSkeleton>
+      )}
     </div>
   )
 }
