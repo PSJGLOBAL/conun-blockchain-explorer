@@ -59,6 +59,7 @@ export const Footer = () => {
           </a>
         </div>
         <div>Conun is very good and you should, too.</div>
+        <div>Conun Blockchain Explorer V.1.5.2</div>
       </div>
 
       <div className="footer-link-block">

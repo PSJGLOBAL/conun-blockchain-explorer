@@ -12,7 +12,7 @@ import { DetailedViewSection } from "./components/DetailedView/DetailedViewSecti
 import { Disconnected } from "./components/Disconnected/Disconnected"
 import Loading from "./components/Loading/Loading"
 
-import { SearchError } from "./components/SearchError/SearchError"
+import { ErrorBlock } from "./components/ErrorPage/ErrorBlock/ErrorBlock"
 
 const ContractsMain = lazy(
   () => import("./components/SmartContracts/ContractsMain/ContractsMain") // Only works with default exports?
@@ -32,7 +32,7 @@ function App() {
             path={["/blocks/:detail_id", "/txns/:detail_id"]}
             component={DetailedViewSection}
           />
-          <Route path={"/error"} component={SearchError} />
+          <Route path={"/error"} component={ErrorBlock} />
           <Route
             path="/contracts"
             render={() => {

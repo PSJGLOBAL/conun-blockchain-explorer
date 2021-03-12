@@ -1,6 +1,9 @@
 .scrolly {
   overflow-x: auto;
 }
+.no-animate {
+  animation: none;
+}
 
 .table-block {
   overflow-x: auto;

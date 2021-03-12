@@ -14,7 +14,6 @@ export const ChannelProvider = () => {
     if (activeChannelHash && activeChannelHash !== "") {
       dispatch(setChannelInfo(activeChannel)) // Set Channel Info
       //Channel stats are handled in the channel stats component - improves reliability
-      // dispatch(setChannelStats(activeChannelHash.toString()))
     }
   }, [activeChannelHash, activeChannel, dispatch])
 
