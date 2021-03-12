@@ -7,7 +7,6 @@ import TimeAgo from "javascript-time-ago"
 import en from "javascript-time-ago/locale/en"
 
 import Identicon from "react-identicons"
-import ReactTooltip from "react-tooltip"
 
 import ContractIcon from "../../ContractIcon/ContractIcon"
 
@@ -53,7 +52,9 @@ export const TxnDataBlock = (props: Props) => {
 
         {/* CONTRACT ICON */}
         <div className="service-cell">
-          <ContractIcon serviceType={props.data.chaincodename} />
+          <NavLink to={`/contracts/${props.data.chaincodename}`}>
+            <ContractIcon serviceType={props.data.chaincodename} />
+          </NavLink>
         </div>
         {/* HASH CELL */}
         <div className="hash-cell">
@@ -89,7 +90,6 @@ export const TxnDataBlock = (props: Props) => {
           </span>
         </div>
       </article>
-      <ReactTooltip backgroundColor="#e95654" />
     </>
   )
 }

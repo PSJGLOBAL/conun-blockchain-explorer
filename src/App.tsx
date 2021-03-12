@@ -13,6 +13,7 @@ import { Disconnected } from "./components/Disconnected/Disconnected"
 import Loading from "./components/Loading/Loading"
 
 import { ErrorBlock } from "./components/ErrorPage/ErrorBlock/ErrorBlock"
+import ReactTooltip from "react-tooltip"
 
 const ContractsMain = lazy(
   () => import("./components/SmartContracts/ContractsMain/ContractsMain") // Only works with default exports?
@@ -46,6 +47,7 @@ function App() {
           <Route path="/disconnected" component={Disconnected} />
           <Route path="/" component={InterfaceMain} />
         </Switch>
+        <ReactTooltip backgroundColor="#e95654" />
       </div>
       <Footer />
     </div>
