@@ -1,10 +1,11 @@
 .contract-table-name-cell {
   width: 180px;
 }
-.contract-table-name-cell > span {
+.contract-table-name-cell :is(span, a) {
   width: 100%;
   text-align: left;
 }
+
 .contract-table-icon-cell {
   width: 200px;
 
@@ -17,6 +18,7 @@
   width: 200px;
 }
 .contracts-see-more {
+  align-self: flex-end;
   height: 100%;
   margin: 20px;
 }
