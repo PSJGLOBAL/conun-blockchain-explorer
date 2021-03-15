@@ -8,7 +8,7 @@ import { DuplicateSkeleton } from "../../ui/Skeletos/DuplicateSkeleton/Duplicate
 import { State } from "../../utility/types"
 
 type Props = {
-  txnData: State["txn"]["txnActivityData"]
+  txnData: State["txn"]["txnActivityData"] | null
   fullPage: boolean
 }
 
