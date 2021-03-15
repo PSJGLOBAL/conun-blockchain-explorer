@@ -1,9 +1,10 @@
-import { useParams } from "react-router-dom"
-
 import ContractIcon from "../../../ContractIcon/ContractIcon"
 
-const ContractDetailTable = () => {
-  const { contractName } = useParams<Record<string, string | undefined>>()
+type Props = {
+  contractName: string | undefined
+}
+
+const ContractDetailTable = ({ contractName }: Props) => {
   return (
     <section className="contract-detail-table">
       <div className="cell">

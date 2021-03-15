@@ -46,7 +46,7 @@ export const TransactionTable = ({ txnData, fullPage }: Props) => {
         </div>
 
         {/* TXN Activity - Table for each block made - shows hashes, created at, etc*/}
-        {txnData.length > 0 ? (
+        {txnData && txnData.length > 0 ? (
           txnData.map((i) => (
             <TxnDataBlock key={i.txhash} fullPage={fullPage} data={{ ...i }} />
           ))

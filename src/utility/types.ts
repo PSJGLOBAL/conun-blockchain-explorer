@@ -40,5 +40,6 @@ export type State = {
   }
   ctx: {
     contractData: Array<ContractType>
+    contractTxns: Array<ObjectType>
   }
 }

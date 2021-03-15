@@ -1,6 +1,6 @@
 export { addNewBlock, setBlockActivityData } from "./blockActions"
 export { addNewTxns, setTxnActivityData } from "./txnActions"
-export { getAllContracts } from "./contractActions"
+export { getAllContracts, getContractTxns } from "./contractActions"
 export {
   setChannelStats,
   getAvailableChannels,

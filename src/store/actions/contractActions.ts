@@ -25,7 +25,7 @@ export const getAllContracts = (channelHash: string) => {
 export const getContractTxns = (channelHash: string, contractName: string) => {
   return (dispatch: any) => {
     axios
-      .get(`/chaincode/${channelHash}?chaincode=${contractName}`)
+      .get(`/txActivity/${channelHash}?chaincode=${contractName}`)
       .then((response) => {
         const contractTxns = response.data.row
         dispatch(assembleContractTxns(contractTxns))
