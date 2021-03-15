@@ -9,6 +9,7 @@
   height: 30px;
   border: 2px solid #eee;
   border-radius: 5px 0px 0px 5px;
+  padding-left: 10px;
 }
 
 .search-icon {
