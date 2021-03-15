@@ -3,11 +3,8 @@ import { NavLink, useHistory, useLocation } from "react-router-dom"
 
 import { useSelector, useDispatch } from "react-redux"
 
-import { TxnDataBlock } from "../../components/MainPage/TxnDataBlock/TxnDataBlock"
+import { TransactionTable } from "../../components/TransactionTable/TransactionTable"
 import { PaginationMenu } from "../../components/MainPage/PaginationMenu/PaginationMenu"
-
-import { TXNTableSkeleton } from "../../ui/Skeletos/MainTableSkeleton/MainTableSkeleton"
-import { DuplicateSkeleton } from "../../ui/Skeletos/DuplicateSkeleton/DuplicateSkeleton"
 
 import { setTxnActivityData, setChannelStats } from "../../store/actions"
 
@@ -15,11 +12,7 @@ import "../../components/MainPage/InterfaceMain/InterfaceMain.css"
 
 import { State } from "../../utility/types"
 
-type Props = {
-  mainpage?: true
-}
-
-export const TxnActivitySection = (props: Props) => {
+export const TxnActivitySection = () => {
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
   const activeChannelHash = activeChannel.channel_genesis_hash
   const txnActivityData = useSelector(
@@ -80,25 +73,6 @@ export const TxnActivitySection = (props: Props) => {
     setMaxTxn(channelStats.txCount)
   }, [channelStats.txCount])
 
-  // The hash cell size is flexible
-  // This function sets the header size to the same as the other cells' sizes.
-  function matchHashCellSize() {
-    const hashCells = document.getElementsByClassName("hash-cell")
-    if (hashCells.length > 1) {
-      const headerCell = hashCells[0] as HTMLElement
-      const topCell = hashCells[1]
-      headerCell.style.width = `${topCell.clientWidth}px`
-    }
-  }
-
-  useEffect(() => {
-    matchHashCellSize()
-  })
-
-  window.addEventListener("resize", () => {
-    matchHashCellSize()
-  })
-
   return (
     <section
       className={fullPage ? "section-block section-full" : "section-block"}
@@ -114,28 +88,7 @@ export const TxnActivitySection = (props: Props) => {
           />
         )}
       </div>
-      <div className="">
-        {/* HEADER */}
-        <div className="data-table-row data-table-header">
-          <div className="identicon-cell hiding-cell"></div>
-          <div className="service-cell">Service</div>
-          <div id="header-hash-cell" className="hash-cell">
-            Hash
-          </div>
-          <div className="time-cell">Time</div>
-        </div>
-
-        {/* TXN Activity - Table for each block made - shows hashes, created at, etc*/}
-        {txnActivityData.length > 0 ? (
-          txnActivityData.map((i) => (
-            <TxnDataBlock key={i.txhash} fullPage={fullPage} data={{ ...i }} />
-          ))
-        ) : (
-          <DuplicateSkeleton howMany={10}>
-            <TXNTableSkeleton />
-          </DuplicateSkeleton>
-        )}
-      </div>
+      <TransactionTable txnData={txnActivityData} fullPage={fullPage} />
       {/* BUTTON */}
       <div>
         {fullPage ? (

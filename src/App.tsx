@@ -47,9 +47,9 @@ function App() {
           <Route path="/disconnected" component={Disconnected} />
           <Route path="/" component={InterfaceMain} />
         </Switch>
-        <ReactTooltip backgroundColor="#e95654" />
       </div>
       <Footer />
+      <ReactTooltip backgroundColor="#e95654" />
     </div>
   )
 }

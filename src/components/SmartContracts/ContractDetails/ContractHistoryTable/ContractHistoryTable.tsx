@@ -1,9 +1,8 @@
+import { TxnDataBlock } from "../../../MainPage/TxnDataBlock/TxnDataBlock"
+
 const ContractHistoryTable = () => {
-  return (
-    <section className="contract-history-table">
-      TXN HISTORY FOR THIS CONTRACT
-    </section>
-  )
+  // return <TxnDataBlock fullPage={true} data={{}} />
+  return null
 }
 
 export default ContractHistoryTable
