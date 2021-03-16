@@ -1,3 +1,5 @@
+import { getContractType } from "../../utility/functions"
+
 import ninjaIcon from "../../style/images/extra_icons/icon_ninja_star.svg"
 import defaultIcon from "../../style/images/extra_icons/icon_wibbly_arrows.svg"
 import familiarIcon from "../../style/images/extra_icons/icon_i_know_this_one.svg"
@@ -13,12 +15,10 @@ const ContractIcon = ({ serviceType }: Props) => {
     alignItems: "center",
   }
 
-  switch (serviceType) {
+  const contractType = getContractType(serviceType.toString())
+
+  switch (contractType) {
     case "coin":
-    case "token":
-    case "mycoin":
-    case "conToken":
-    case "conun":
       return (
         <span style={spanStyle}>
           <img
@@ -29,9 +29,6 @@ const ContractIcon = ({ serviceType }: Props) => {
           />
         </span>
       )
-
-    case "ConunDrive":
-    case "drive_1":
     case "drive":
       return (
         <span style={spanStyle}>
@@ -43,8 +40,6 @@ const ContractIcon = ({ serviceType }: Props) => {
           />
         </span>
       )
-
-    case "_lifecycle":
     case "basic":
       return (
         <span style={spanStyle}>
@@ -56,7 +51,6 @@ const ContractIcon = ({ serviceType }: Props) => {
           />
         </span>
       )
-
     default:
       return <span style={spanStyle}>{serviceType}</span>
   }

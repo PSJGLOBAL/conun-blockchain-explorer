@@ -1,0 +1,5 @@
+{
+  "coin": "The coin-type contract is used to transfer tokens between users, as trade, or as a reward for using one of the other services.",
+  "drive": "The drive-type contract is used when users share files using the Drive service.",
+  "basic": "The basic-type contract is used for internal operations in the blockchain network, such as creating new contracts."
+}

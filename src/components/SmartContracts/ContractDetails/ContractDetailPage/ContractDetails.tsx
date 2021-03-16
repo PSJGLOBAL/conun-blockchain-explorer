@@ -4,17 +4,21 @@ import ContractDetailTable from "../ContractDetailTable/ContractDetailTable"
 import ContractHistoryTable from "../ContractHistoryTable/ContractHistoryTable"
 import ContractTextBlock from "../ContractTextBlock/ContractTextBlock"
 
+import { getContractType } from "../../../../utility/functions"
+
 import "./ContractDetails.css"
 
 const ContractDetails = () => {
   const { contractName } = useParams<Record<string, string | undefined>>()
+
+  const contractType = getContractType(contractName)
 
   let history = useHistory()
 
   return (
     <div className="section-block section-single">
       <ContractDetailTable contractName={contractName} />
-      <ContractTextBlock />
+      <ContractTextBlock contractType={contractType} />
       <ContractHistoryTable contractName={contractName} />
       <div className="contract-link-box">
         <NavLink

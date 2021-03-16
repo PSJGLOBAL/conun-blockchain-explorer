@@ -45,11 +45,11 @@
 }
 
 .contract-description-tab {
-  min-height: 200px;
+  height: 60px;
   padding: 10px;
 
   border: 1px solid var(--bkg);
-  border-radius: 0 var(--radius) var(--radius) var(--radius);
+  border-radius: var(--radius);
 }
 
 .contract-history-table {
