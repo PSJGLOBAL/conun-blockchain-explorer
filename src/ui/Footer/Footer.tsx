@@ -1,4 +1,3 @@
-import ReactTooltip from "react-tooltip"
 import logo from "../../style/images/conun-logo-white.png"
 import tele from "../../style/images/telegramIcon.png"
 import face from "../../style/images/facebookIcon.png"
@@ -59,7 +58,7 @@ export const Footer = () => {
           </a>
         </div>
         <div>Conun is very good and you should, too.</div>
-        <div>Conun Blockchain Explorer V.1.5.2</div>
+        <div>Conun Blockchain Explorer V.2.0.0</div>
       </div>
 
       <div className="footer-link-block">
@@ -128,7 +127,6 @@ export const Footer = () => {
         <div data-tip={"Not yet implemented"}>Drive</div>
         <div data-tip={"Not yet implemented"}>Engine</div>
       </div> */}
-      <ReactTooltip />
     </footer>
   )
 }

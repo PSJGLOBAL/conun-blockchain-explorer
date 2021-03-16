@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux"
+import { Link } from "react-router-dom"
 
 import ContractIcon from "../../ContractIcon/ContractIcon"
 
@@ -24,7 +25,12 @@ const ContractSection = () => {
           <div className="data-table-row no-animate" key={ct.chaincodename}>
             {/* Contract Name */}
             <div className="contract-table-name-cell">
-              <span>{ct.chaincodename}</span>
+              <Link
+                className="info-table-link"
+                to={`/contracts/${ct.chaincodename}`}
+              >
+                {ct.chaincodename}
+              </Link>
             </div>
             {/* Contract Icon */}
             <div className="contract-table-icon-cell">

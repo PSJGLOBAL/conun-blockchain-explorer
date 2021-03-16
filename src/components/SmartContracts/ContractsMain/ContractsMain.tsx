@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom"
 import { getAllContracts } from "../../../store/actions"
 
 import ContractSection from "../ContractSection/ContractSection"
-import ContractDetails from "../ContractDetails/ContractDetails"
+import ContractDetails from "../ContractDetails/ContractDetailPage/ContractDetails"
 
 import { State } from "../../../utility/types"
 

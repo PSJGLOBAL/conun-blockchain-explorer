@@ -5,14 +5,14 @@ import { ObjectType } from "../../utility/types"
 // In TS an action must be of a strict format. Set them here:
 type Action =
   | {
-      type: "TXN_ACTIVITY_DATA"
+      type: typeof TXN_ACTIVITY_DATA
       payload: {
         txnActivityData: Array<ObjectType>
         from?: number | string | null
       }
     }
   | {
-      type: "ADD_NEW_TXNS"
+      type: typeof ADD_NEW_TXNS
       payload: {
         previousTxnData: Array<ObjectType>
         newTxnsArray: Array<ObjectType>
