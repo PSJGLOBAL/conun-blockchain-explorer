@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import ContractHistoryTable from "../ContractHistoryTable/ContractHistoryTable"
 import ContractCodeTab from "../ContractCodeTab/ContractCodeTab"
@@ -10,6 +10,10 @@ type Props = {
 
 const ContractTabbedSection = ({ contractName }: Props) => {
   const [activeTab, setActiveTab] = useState<string>("Transactions")
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  })
 
   let displayedTab
 

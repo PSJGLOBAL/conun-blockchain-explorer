@@ -56,13 +56,14 @@
   box-sizing: border-box;
 }
 .contract-code {
-  min-height: 300px;
+  min-height: 250px;
 }
 
 .contract-tabbed-block {
   padding: 10px;
+  padding-bottom: 30px;
   box-sizing: border-box;
-  border: 1px solid var(--bkg);
+  border-top: 1px solid var(--bkg);
   border-radius: 0 var(--radius) var(--radius) var(--radius);
 }
 
