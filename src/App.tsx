@@ -1,19 +1,18 @@
 import { Suspense, lazy } from "react"
 import { Route, Switch } from "react-router-dom"
+import ReactTooltip from "react-tooltip"
+
+import WebSocketProvider from "./components/WebSocketProvider/WebSocketProvider"
 
 import HeadBlock from "./ui/HeadBlock/HeadBlock"
 import { HeadBar } from "./ui/HeadBar/HeadBar"
 import { Footer } from "./ui/Footer/Footer"
-
-import WebSocketProvider from "./components/WebSocketProvider/WebSocketProvider"
+import Loading from "./components/Loading/Loading"
 
 import { InterfaceMain } from "./components/MainPage/InterfaceMain/InterfaceMain"
 import { DetailedViewSection } from "./components/DetailedView/DetailedViewSection/DetailedViewSection"
 import { Disconnected } from "./components/Disconnected/Disconnected"
-import Loading from "./components/Loading/Loading"
-
 import { ErrorBlock } from "./components/ErrorPage/ErrorBlock/ErrorBlock"
-import ReactTooltip from "react-tooltip"
 
 const ContractsMain = lazy(
   () => import("./components/SmartContracts/ContractsMain/ContractsMain") // Only works with default exports?

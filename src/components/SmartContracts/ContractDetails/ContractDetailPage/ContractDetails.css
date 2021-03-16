@@ -15,9 +15,11 @@
 
   border-left: 1px solid var(--bkg);
 }
+
 .cell:first-of-type {
   border-left: none;
 }
+
 .cell-title {
   max-width: 80px;
 
@@ -56,9 +58,18 @@
   box-sizing: border-box;
 }
 
+.contract-link-box {
+  display: flex;
+}
+
+.contract-link-box .section-table-link {
+  margin: 10px;
+}
+
 .contract-tab-menu {
   display: flex;
 }
+
 .contract-tab-menu .tab {
   width: 100px;
   height: 30px;

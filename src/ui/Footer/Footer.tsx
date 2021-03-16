@@ -127,7 +127,6 @@ export const Footer = () => {
         <div data-tip={"Not yet implemented"}>Drive</div>
         <div data-tip={"Not yet implemented"}>Engine</div>
       </div> */}
-      {/* <ReactTooltip /> */}
     </footer>
   )
 }

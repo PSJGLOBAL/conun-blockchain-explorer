@@ -40,7 +40,7 @@ const ContractHistoryTable = ({ contractName }: Props) => {
         })
     }
   }, [activeChannelHash, contractName, dispatch])
-  return <TransactionTable txnData={contractTxnData} fullPage={true} />
+  return <TransactionTable txnData={contractTxnData} fullPage />
 }
 
 export default ContractHistoryTable

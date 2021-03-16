@@ -25,11 +25,10 @@ export const TransactionTable = ({ txnData, fullPage }: Props) => {
   }
 
   useEffect(() => {
-    matchHashCellSize()
-  })
-
-  window.addEventListener("resize", () => {
-    matchHashCellSize()
+    window.addEventListener("resize", () => matchHashCellSize())
+    return () => {
+      window.removeEventListener("resize", () => matchHashCellSize())
+    }
   })
 
   return (
@@ -48,7 +47,7 @@ export const TransactionTable = ({ txnData, fullPage }: Props) => {
         {/* TXN Activity - Table for each block made - shows hashes, created at, etc*/}
         {txnData && txnData.length > 0 ? (
           txnData.map((i) => (
-            <TxnDataBlock key={i.txhash} fullPage={fullPage} data={{ ...i }} />
+            <TxnDataBlock key={i.txhash} fullPage={fullPage} data={i} />
           ))
         ) : (
           <DuplicateSkeleton howMany={10}>

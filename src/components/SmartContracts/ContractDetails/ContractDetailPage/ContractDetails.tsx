@@ -1,4 +1,4 @@
-import { useParams, NavLink } from "react-router-dom"
+import { useParams, useHistory, NavLink } from "react-router-dom"
 
 import ContractDetailTable from "../ContractDetailTable/ContractDetailTable"
 import ContractHistoryTable from "../ContractHistoryTable/ContractHistoryTable"
@@ -8,19 +8,29 @@ import "./ContractDetails.css"
 
 const ContractDetails = () => {
   const { contractName } = useParams<Record<string, string | undefined>>()
+
+  let history = useHistory()
+
   return (
     <div className="section-block section-single">
       <ContractDetailTable contractName={contractName} />
       <ContractTextBlock />
       <ContractHistoryTable contractName={contractName} />
-      <div>
+      <div className="contract-link-box">
         <NavLink
           className="section-table-link"
           id="contracts-home"
-          to={"/contracts"}
+          to="/contracts"
         >
           Back to Smart Contracts
         </NavLink>
+        <div
+          className="section-table-link"
+          id="contracts-home"
+          onClick={() => history.goBack()}
+        >
+          Back to Last Page
+        </div>
       </div>
     </div>
   )
