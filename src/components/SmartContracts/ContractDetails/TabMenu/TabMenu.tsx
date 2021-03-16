@@ -1,27 +1,24 @@
 type Props = {
+  tabs: Array<string>
   activeTab: string
   doChangeTab: (x: string) => void
 }
 
-const TabMenu = ({ activeTab, doChangeTab }: Props) => {
+const TabMenu = ({ tabs, activeTab, doChangeTab }: Props) => {
   return (
     <div className="contract-tab-menu">
-      <div
-        className={activeTab === "description" ? "tab active-tab" : "tab"}
-        onClick={() => {
-          doChangeTab("description")
-        }}
-      >
-        Description
-      </div>
-      <div
-        className={activeTab === "code" ? "tab active-tab" : "tab"}
-        onClick={() => {
-          doChangeTab("code")
-        }}
-      >
-        Code
-      </div>
+      {tabs.map((t) => {
+        return (
+          <div
+            className={activeTab === t ? "tab active-tab" : "tab"}
+            onClick={() => {
+              doChangeTab(t)
+            }}
+          >
+            {t}
+          </div>
+        )
+      })}
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import { useParams, useHistory, NavLink } from "react-router-dom"
 
 import ContractDetailTable from "../ContractDetailTable/ContractDetailTable"
-import ContractHistoryTable from "../ContractHistoryTable/ContractHistoryTable"
+import ContractTabbedSection from "../ContractTabbedSection/ContractTabbedSection"
 import ContractTextBlock from "../ContractTextBlock/ContractTextBlock"
 
 import { getContractType } from "../../../../utility/functions"
@@ -19,7 +19,7 @@ const ContractDetails = () => {
     <div className="section-block section-single">
       <ContractDetailTable contractName={contractName} />
       <ContractTextBlock contractType={contractType} />
-      <ContractHistoryTable contractName={contractName} />
+      <ContractTabbedSection contractName={contractName} />
       <div className="contract-link-box">
         <NavLink
           className="section-table-link"

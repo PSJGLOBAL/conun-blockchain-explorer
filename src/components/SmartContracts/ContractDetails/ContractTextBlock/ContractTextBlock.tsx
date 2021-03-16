@@ -11,7 +11,7 @@ const ContractTextBlock = ({ contractType }: { contractType: string }) => {
 
   return (
     <section className="contract-description-container">
-      <div className="contract-description-tab">{content}</div>
+      <div className="contract-description">{content}</div>
     </section>
   )
 }

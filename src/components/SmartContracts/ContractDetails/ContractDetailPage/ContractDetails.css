@@ -39,15 +39,13 @@
   width: 100%;
   min-height: 100px;
   box-sizing: border-box;
-
-  margin: 10px;
-  padding: 10px;
 }
 
-.contract-description-tab {
+.contract-description {
   height: 60px;
   padding: 10px;
 
+  box-sizing: border-box;
   border: 1px solid var(--bkg);
   border-radius: var(--radius);
 }
@@ -56,6 +54,16 @@
   width: 100%;
   margin: 10px;
   box-sizing: border-box;
+}
+.contract-code {
+  min-height: 300px;
+}
+
+.contract-tabbed-block {
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid var(--bkg);
+  border-radius: 0 var(--radius) var(--radius) var(--radius);
 }
 
 .contract-link-box {
@@ -71,8 +79,10 @@
 }
 
 .contract-tab-menu .tab {
-  width: 100px;
+  min-width: 100px;
   height: 30px;
+
+  padding: 5px;
 
   display: flex;
   justify-content: center;
