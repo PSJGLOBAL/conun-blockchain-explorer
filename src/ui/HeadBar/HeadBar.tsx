@@ -25,6 +25,7 @@ export const HeadBar = () => {
       >
         <div className="nav-logo-block">
           <img
+            id="logo-home-link"
             className="nav-logo"
             src={logo}
             alt="Conun Logo"
@@ -37,6 +38,7 @@ export const HeadBar = () => {
         <div className={show ? "nav-menu nav-show" : "nav-menu nav-hide"}>
           <div className="nav-link">
             <span
+              id="headbar-link-main"
               onClick={() => {
                 setShow(false)
                 goHome()
@@ -48,6 +50,7 @@ export const HeadBar = () => {
           <div className="nav-link">
             {/* This link will point to /contracts, target=same, when that page is finished */}
             <a
+              id="headbar-link-contracts"
               href="/contracts"
               onClick={() => {
                 setShow(false)
@@ -58,6 +61,7 @@ export const HeadBar = () => {
           </div>
           <div className="nav-link">
             <a
+              id="headbar-link-docs"
               href={`${BASEURL}-docs/`}
               target="_blank"
               rel="noreferrer"

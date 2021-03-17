@@ -40,7 +40,7 @@ export const TxnDataBlock = (props: Props) => {
 
   return (
     <>
-      <article className="data-table-row scrolly">
+      <article className="data-table-row scrolly transaction-data-row">
         {/* IDENTICON */}
         <div className="identicon-cell hiding-cell">
           <NavLink to={`/txns/${props.data.txhash}`}>

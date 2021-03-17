@@ -10,6 +10,7 @@ const TabMenu = ({ tabs, activeTab, doChangeTab }: Props) => {
       {tabs.map((t) => {
         return (
           <div
+            key={t}
             className={activeTab === t ? "tab active-tab" : "tab"}
             onClick={() => {
               doChangeTab(t)
