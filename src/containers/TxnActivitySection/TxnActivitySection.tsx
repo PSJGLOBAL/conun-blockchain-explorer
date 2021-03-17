@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react"
-import { NavLink, useHistory, useLocation } from "react-router-dom"
+import { useHistory, useLocation } from "react-router-dom"
 
 import { useSelector, useDispatch } from "react-redux"
 
 import { TransactionTable } from "../../components/TransactionTable/TransactionTable"
 import { PaginationMenu } from "../../components/MainPage/PaginationMenu/PaginationMenu"
+
+import TableButton from "../../components/utilityComponents/TableButton/TableButton"
 
 import { setTxnActivityData, setChannelStats } from "../../store/actions"
 
@@ -14,7 +16,6 @@ import { State } from "../../utility/types"
 
 export const TxnActivitySection = () => {
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
-  const activeChannelHash = activeChannel.channel_genesis_hash
   const txnActivityData = useSelector(
     (state: State) => state.txn.txnActivityData
   )
@@ -23,9 +24,10 @@ export const TxnActivitySection = () => {
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [maxTxn, setMaxTxn] = useState<number | string>(channelStats.txCount)
 
+  const activeChannelHash = activeChannel.channel_genesis_hash
   const bottomTXN = txnActivityData[9]
-  const dispatch = useDispatch()
 
+  const dispatch = useDispatch()
   const history = useHistory()
   const location = useLocation()
   const fullPage = history.location.pathname === "/txns"
@@ -91,19 +93,12 @@ export const TxnActivitySection = () => {
       <TransactionTable txnData={txnActivityData} fullPage={fullPage} />
       {/* BUTTON */}
       <div>
-        {fullPage ? (
-          <NavLink className="section-table-link" id="txn-table-home" to={"/"}>
-            Back To Home
-          </NavLink>
-        ) : (
-          <NavLink
-            className="section-table-link"
-            id="txn-table-more"
-            to={"/txns"}
-          >
-            View More Transactions
-          </NavLink>
-        )}
+        <TableButton
+          fullPage={fullPage}
+          destination="/txns"
+          htmlID="txn-table"
+          altLabel="View More Transactions"
+        />
       </div>
     </section>
   )

@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 
-import ContractIcon from "../../ContractIcon/ContractIcon"
+import ContractIcon from "../../../ui/ContractIcon/ContractIcon"
 
 import { State, ContractType } from "../../../utility/types"
 
