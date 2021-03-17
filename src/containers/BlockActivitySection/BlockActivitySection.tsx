@@ -135,7 +135,7 @@ export const BlockActivitySection = () => {
       <TableButton
         fullPage={fullPage}
         destination="/blocks"
-        htmlID="blocks-table"
+        htmlID="block-table"
         altLabel="View More Blocks"
       />
     </section>
