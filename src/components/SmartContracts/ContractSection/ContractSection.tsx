@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 
-import ContractIcon from "../../ContractIcon/ContractIcon"
+import ContractIcon from "../../../ui/ContractIcon/ContractIcon"
 
 import { State, ContractType } from "../../../utility/types"
 
@@ -22,7 +22,10 @@ const ContractSection = () => {
       </div>
       {contracts.length > 0 &&
         contracts.map((ct: ContractType) => (
-          <div className="data-table-row no-animate" key={ct.chaincodename}>
+          <div
+            className="data-table-row no-animate smart-contract-row"
+            key={ct.chaincodename}
+          >
             {/* Contract Name */}
             <div className="contract-table-name-cell">
               <Link
@@ -38,7 +41,7 @@ const ContractSection = () => {
             </div>
             {/* Versions */}
             <div className="contract-table-ver-cell">
-              <span className="">{ct.codes.length}</span>
+              <span className="contract-version-count">{ct.codes.length}</span>
             </div>
           </div>
         ))}

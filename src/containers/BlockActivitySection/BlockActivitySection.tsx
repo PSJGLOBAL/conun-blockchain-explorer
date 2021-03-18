@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react"
-import { NavLink, useHistory, useLocation } from "react-router-dom"
+import { useHistory, useLocation } from "react-router-dom"
 
 import { useSelector, useDispatch } from "react-redux"
 
 import { BlockDataBlock } from "../../components/MainPage/BlockDataBlock/BlockDataBlock"
 import { PaginationMenu } from "../../components/MainPage/PaginationMenu/PaginationMenu"
+
+import TableButton from "../../components/utilityComponents/TableButton/TableButton"
 
 import { BlockTableSkeleton } from "../../ui/Skeletos/MainTableSkeleton/MainTableSkeleton"
 import { DuplicateSkeleton } from "../../ui/Skeletos/DuplicateSkeleton/DuplicateSkeleton"
@@ -16,20 +18,19 @@ import "../../components/MainPage/InterfaceMain/InterfaceMain.css"
 import { State } from "../../utility/types"
 
 export const BlockActivitySection = () => {
-  const [currentPage, setCurrentPage] = useState<number>(1)
-
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
-  const activeChannelHash = activeChannel.channel_genesis_hash
-
   const channelStats = useSelector((state: State) => state.basic.channelStats)
-
   const blockActivityData = useSelector(
     (state: State) => state.block.blockActivityData
   )
-  const bottomBlock = blockActivityData[9]
+
+  const [currentPage, setCurrentPage] = useState<number>(1)
   const [maxBlock, setMaxBlock] = useState<number | string>(
     channelStats.latestBlock
   )
+
+  const bottomBlock = blockActivityData[9]
+  const activeChannelHash = activeChannel.channel_genesis_hash
   const dispatch = useDispatch()
   const history = useHistory()
   const location = useLocation()
@@ -131,25 +132,12 @@ export const BlockActivitySection = () => {
           </DuplicateSkeleton>
         )}
       </div>
-      <div>
-        {fullPage ? (
-          <NavLink
-            className="section-table-link hover-gradient"
-            id="block-table-home"
-            to={"/"}
-          >
-            Back To Home
-          </NavLink>
-        ) : (
-          <NavLink
-            className="section-table-link"
-            id="block-table-more"
-            to={"/blocks"}
-          >
-            View More Blocks
-          </NavLink>
-        )}
-      </div>
+      <TableButton
+        fullPage={fullPage}
+        destination="/blocks"
+        htmlID="block-table"
+        altLabel="View More Blocks"
+      />
     </section>
   )
 }

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { NavLink, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
+import DetailsTableHeader from "../DetailsTableHeader/DetailsTableHeader"
 import BlockDetailsTable from "../BlockDetailsTable/BlockDetailsTable"
 import DetailsSkeleton from "../../../ui/Skeletos/DetailsSkeleton/DetailsSkeleton"
 import { DuplicateSkeleton } from "../../../ui/Skeletos/DuplicateSkeleton/DuplicateSkeleton"
@@ -49,23 +50,7 @@ export const BlockDetails = (props: Props) => {
 
   return (
     <div className="details-table" id="block-details-table">
-      <div className="details-table-header">
-        <h2>Block Details</h2>
-        <div className="details-table-links-box">
-          <div
-            className="details-table-header-link"
-            id="table-back-link"
-            onClick={() => history.goBack()}
-          >
-            <i className="fas fa-arrow-circle-left"></i>
-          </div>
-          <div className="details-table-header-link">
-            <NavLink to="/" id="table-home-link">
-              <i className="fas fa-home"></i>
-            </NavLink>
-          </div>
-        </div>
-      </div>
+      <DetailsTableHeader title={"Block Details"} />
       {blockData ? (
         <BlockDetailsTable
           blocknum={blockData.blocknum}

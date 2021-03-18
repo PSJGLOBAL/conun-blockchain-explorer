@@ -54,3 +54,22 @@ export const logger = (message: string, level: string, ...data: any[]) => {
     }
   }
 }
+
+export const getContractType = (serviceType: string | undefined) => {
+  switch (serviceType) {
+    case "coin":
+    case "token":
+    case "mycoin":
+    case "conToken":
+    case "conun":
+      return "coin"
+
+    case "ConunDrive":
+    case "drive_1":
+    case "drive":
+      return "drive"
+
+    default:
+      return "basic"
+  }
+}

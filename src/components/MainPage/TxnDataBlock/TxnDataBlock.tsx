@@ -1,27 +1,20 @@
 import { useState } from "react"
-
 import { NavLink } from "react-router-dom"
+import ReactTooltip from "react-tooltip"
 
-import ReactTimeAgo from "react-time-ago"
-import TimeAgo from "javascript-time-ago"
-import en from "javascript-time-ago/locale/en"
+import TimeStampCell from "../../utilityComponents/TimeStampCell/TimeStampCell"
+import IdenticonLink from "../../utilityComponents/IdenticonLink/IdenticonLink"
+import FlexHashCell from "../../utilityComponents/FlexHashCell/FlexHashCell"
+import ContractIcon from "../../../ui/ContractIcon/ContractIcon"
 
-import Identicon from "react-identicons"
-
-import ContractIcon from "../../ContractIcon/ContractIcon"
-
-import { truncate } from "../../../utility/functions"
 import { ObjectType } from "../../../utility/types"
 
 import "./TxnDataBlock.css"
 import "../../../style/css/table-common.css"
-
 interface Props {
   fullPage: boolean
   data: ObjectType
 }
-
-TimeAgo.addLocale(en)
 
 export const TxnDataBlock = (props: Props) => {
   const [winWidth, setWinWidth] = useState<number>(window.innerWidth)
@@ -40,16 +33,9 @@ export const TxnDataBlock = (props: Props) => {
 
   return (
     <>
-      <article className="data-table-row scrolly">
+      <article className="data-table-row scrolly transaction-data-row">
         {/* IDENTICON */}
-        <div className="identicon-cell hiding-cell">
-          <NavLink to={`/txns/${props.data.txhash}`}>
-            <div className="">
-              <Identicon size={15} string={props.data.txhash.toString()} />
-            </div>
-          </NavLink>
-        </div>
-
+        <IdenticonLink destination={`/txns/${props.data.txhash}`} />
         {/* CONTRACT ICON */}
         <div className="service-cell">
           <NavLink to={`/contracts/${props.data.chaincodename}`}>
@@ -63,33 +49,19 @@ export const TxnDataBlock = (props: Props) => {
               className={"font-clicky monofont"}
               to={`/txns/${props.data.txhash}`}
             >
-              <span
-                className={
-                  props.fullPage
-                    ? "result-hash-cell selectable"
-                    : "result-hash-cell"
-                }
-              >
-                {props.fullPage
-                  ? truncate(props.data.txhash.toString(), truncateLimit)
-                  : truncate(props.data.txhash.toString())}
-              </span>
+              <FlexHashCell
+                fullPage={props.fullPage}
+                limit={truncateLimit}
+                hash={props.data.txhash.toString()}
+              />
             </NavLink>
           </span>
         </div>
 
         {/* TIMESTAMP */}
-        <div className="time-cell">
-          <span data-tip={props.data.createdt}>
-            <ReactTimeAgo
-              date={new Date(props.data.createdt)}
-              locale="en-US"
-              tooltip={false}
-              timeStyle="mini"
-            />
-          </span>
-        </div>
+        <TimeStampCell time={props.data.createdt} />
       </article>
+      <ReactTooltip backgroundColor="#e95654" />
     </>
   )
 }

@@ -23,6 +23,10 @@ export const TransactionTable = ({ txnData, fullPage }: Props) => {
       headerCell.style.width = `${topCell.clientWidth}px`
     }
   }
+  // It doesn't work without this!
+  useEffect(() => {
+    matchHashCellSize()
+  })
 
   useEffect(() => {
     window.addEventListener("resize", () => matchHashCellSize())

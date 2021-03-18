@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { NavLink, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
+import DetailsTableHeader from "../DetailsTableHeader/DetailsTableHeader"
 import TxnDetailsTable from "../TxnDetailsTable/TxnDetailsTable"
 import DetailsSkeleton from "../../../ui/Skeletos/DetailsSkeleton/DetailsSkeleton"
 import { DuplicateSkeleton } from "../../../ui/Skeletos/DuplicateSkeleton/DuplicateSkeleton"
@@ -26,7 +27,7 @@ export const TransactionDetails = (props: Props) => {
     window.scrollTo(0, 0)
   })
 
-  // Do GET if provided a blocknum
+  // Do GET if provided a txnID
   useEffect(() => {
     if (props.txnID) {
       axios
@@ -49,23 +50,7 @@ export const TransactionDetails = (props: Props) => {
 
   return (
     <div className="details-table" id="txn-details-table">
-      <div className="details-table-header">
-        <h2>Transaction Details</h2>
-        <div className="details-table-links-box">
-          <div
-            className="details-table-header-link"
-            id="table-back-link"
-            onClick={() => history.goBack()}
-          >
-            <i className="fas fa-arrow-circle-left"></i>
-          </div>
-          <div className="details-table-header-link">
-            <NavLink to="/" id="table-home-link">
-              <i className="fas fa-home"></i>
-            </NavLink>
-          </div>
-        </div>
-      </div>
+      <DetailsTableHeader title={"Transaction Details"} />
       {txnData ? (
         <TxnDetailsTable
           txhash={txnData.txhash}

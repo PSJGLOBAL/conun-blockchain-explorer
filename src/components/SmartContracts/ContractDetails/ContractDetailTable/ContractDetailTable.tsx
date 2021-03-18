@@ -1,4 +1,4 @@
-import ContractIcon from "../../../ContractIcon/ContractIcon"
+import ContractIcon from "../../../../ui/ContractIcon/ContractIcon"
 
 type Props = {
   contractName: string | undefined

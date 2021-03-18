@@ -1,24 +1,19 @@
-import { RouteComponentProps } from "react-router-dom"
+import { useParams, useLocation } from "react-router-dom"
 import { BlockDetails } from "../BlockDetails/BlockDetails"
 import { TransactionDetails } from "../TransactionDetails/TransactionDetails"
 
 import "./DetailedViewSection.css"
 
-type Props = RouteComponentProps
-interface Params {
-  detail_id?: string
-}
-
-export const DetailedViewSection = (props: Props) => {
-  const route = props.match.path
-  const params: Params = props.match.params
+export const DetailedViewSection = () => {
+  const { pathname } = useLocation()
+  const { detail_id } = useParams<Record<string, string | undefined>>()
 
   let internalComponent = null
 
-  if (route.startsWith("/blocks/")) {
-    internalComponent = <BlockDetails blocknum={params.detail_id} />
-  } else if (route.startsWith("/txns/")) {
-    internalComponent = <TransactionDetails txnID={params.detail_id} />
+  if (pathname.startsWith("/blocks/")) {
+    internalComponent = <BlockDetails blocknum={detail_id} />
+  } else if (pathname.startsWith("/txns/")) {
+    internalComponent = <TransactionDetails txnID={detail_id} />
   }
 
   return (
