@@ -57,7 +57,6 @@ export const Footer = () => {
             <img className="footer-contact-link-img" src={disc} alt=""></img>
           </a>
         </div>
-        <div>Conun is very good and you should, too.</div>
         <div>Conun Blockchain Explorer V.2.0.0</div>
       </div>
 
