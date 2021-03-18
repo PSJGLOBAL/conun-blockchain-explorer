@@ -27,10 +27,11 @@ const ContractTabbedSection = ({ contractName }: Props) => {
       break
   }
 
+  // I will remove "Code" from TabMenu while code is not implemented
   return (
     <>
       <TabMenu
-        tabs={["Transactions", "Code"]}
+        tabs={["Transactions"]}
         activeTab={activeTab}
         doChangeTab={setActiveTab}
       />

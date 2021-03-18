@@ -12,9 +12,7 @@ const TabMenu = ({ tabs, activeTab, doChangeTab }: Props) => {
           <div
             key={t}
             className={activeTab === t ? "tab active-tab" : "tab"}
-            onClick={() => {
-              doChangeTab(t)
-            }}
+            onClick={() => doChangeTab(t)}
           >
             {t}
           </div>
