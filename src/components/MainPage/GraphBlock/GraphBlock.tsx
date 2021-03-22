@@ -3,14 +3,14 @@ import { useSelector } from "react-redux"
 
 import axios from "../../../axios/axiosinst"
 
-import { GraphControls } from "../GraphControls/GraphControls"
-import { TheGraph } from "../TheGraph/TheGraph"
+import GraphControls from "../GraphControls/GraphControls"
+import TheGraph from "../TheGraph/TheGraph"
 
 import { State, ObjectType } from "../../../utility/types"
 import { logger } from "../../../utility/functions"
 import GraphSkeleton from "../../../ui/Skeletos/GraphSkeleton/GraphSkeleton"
 
-export const GraphBlock = () => {
+const GraphBlock = () => {
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
   const activeChannelHash = activeChannel.channel_genesis_hash
 
@@ -87,3 +87,5 @@ export const GraphBlock = () => {
     </div>
   )
 }
+
+export default GraphBlock

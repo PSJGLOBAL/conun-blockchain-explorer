@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import ContractIcon from "../../../ui/ContractIcon/ContractIcon"
-import TimeStampCell from "../../utilityComponents/TimeStampCell/TimeStampCell"
+import TimeStampCell from "../../../components/utilityComponents/TimeStampCell/TimeStampCell"
 
 type Props = {
   txhash: string | number

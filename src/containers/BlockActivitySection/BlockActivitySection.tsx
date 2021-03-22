@@ -3,21 +3,21 @@ import { useHistory, useLocation } from "react-router-dom"
 
 import { useSelector, useDispatch } from "react-redux"
 
-import { BlockDataBlock } from "../../components/MainPage/BlockDataBlock/BlockDataBlock"
-import { PaginationMenu } from "../../components/MainPage/PaginationMenu/PaginationMenu"
+import BlockDataBlock from "../../components/MainPage/BlockDataBlock/BlockDataBlock"
+import PaginationMenu from "../../components/MainPage/PaginationMenu/PaginationMenu"
 
 import TableButton from "../../components/utilityComponents/TableButton/TableButton"
 
 import { BlockTableSkeleton } from "../../ui/Skeletos/MainTableSkeleton/MainTableSkeleton"
-import { DuplicateSkeleton } from "../../ui/Skeletos/DuplicateSkeleton/DuplicateSkeleton"
+import DuplicateSkeleton from "../../ui/Skeletos/DuplicateSkeleton/DuplicateSkeleton"
 
 import { setBlockActivityData, setChannelStats } from "../../store/actions"
 
-import "../../components/MainPage/InterfaceMain/InterfaceMain.css"
+import "../../pages/MainPage/MainPage.css"
 
 import { State } from "../../utility/types"
 
-export const BlockActivitySection = () => {
+const BlockActivitySection = () => {
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
   const channelStats = useSelector((state: State) => state.basic.channelStats)
   const blockActivityData = useSelector(
@@ -141,3 +141,5 @@ export const BlockActivitySection = () => {
     </section>
   )
 }
+
+export default BlockActivitySection

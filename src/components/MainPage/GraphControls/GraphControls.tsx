@@ -5,7 +5,7 @@ type Props = {
   active: string
 }
 
-export const GraphControls = (props: Props) => {
+const GraphControls = (props: Props) => {
   const { clickHandler, active } = props
 
   return (
@@ -57,3 +57,5 @@ export const GraphControls = (props: Props) => {
     </div>
   )
 }
+
+export default GraphControls

@@ -7,7 +7,7 @@ import axios from "../../../../axios/axiosinst"
 import { logger } from "../../../../utility/functions"
 import { State, ObjectType } from "../../../../utility/types"
 
-import { TransactionTable } from "../../../../components/TransactionTable/TransactionTable"
+import TransactionTable from "../../../../components/TransactionTable/TransactionTable"
 
 type Props = {
   contractName: string | undefined

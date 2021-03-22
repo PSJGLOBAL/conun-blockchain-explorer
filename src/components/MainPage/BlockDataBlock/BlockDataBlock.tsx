@@ -13,7 +13,7 @@ type Props = {
   fullPage: boolean
   data: ObjectType
 }
-export const BlockDataBlock = (props: Props) => {
+const BlockDataBlock = (props: Props) => {
   const [winWidth, setWinWidth] = useState<number>(window.innerWidth)
 
   window.addEventListener("resize", () => {
@@ -57,3 +57,5 @@ export const BlockDataBlock = (props: Props) => {
     </>
   )
 }
+
+export default BlockDataBlock

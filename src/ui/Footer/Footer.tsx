@@ -8,7 +8,7 @@ import disc from "../../style/images/discordIcon.png"
 import worled from "../../style/images/world.svg"
 import "./Footer.css"
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <footer className="textured-bkg">
       <div className="footer-world">
@@ -129,3 +129,5 @@ export const Footer = () => {
     </footer>
   )
 }
+
+export default Footer

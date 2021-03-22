@@ -5,7 +5,7 @@ import { BASEURL } from "../../utility/config.json"
 import "./HeadBar.css"
 import logo from "../../style/images/conun-logo.png"
 
-export const HeadBar = () => {
+const HeadBar = () => {
   const [show, setShow] = useState<boolean>(false)
   const history = useHistory()
 
@@ -89,3 +89,5 @@ export const HeadBar = () => {
     </nav>
   )
 }
+
+export default HeadBar

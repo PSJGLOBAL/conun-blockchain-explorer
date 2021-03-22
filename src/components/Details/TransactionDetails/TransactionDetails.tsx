@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom"
 import DetailsTableHeader from "../DetailsTableHeader/DetailsTableHeader"
 import TxnDetailsTable from "../TxnDetailsTable/TxnDetailsTable"
 import DetailsSkeleton from "../../../ui/Skeletos/DetailsSkeleton/DetailsSkeleton"
-import { DuplicateSkeleton } from "../../../ui/Skeletos/DuplicateSkeleton/DuplicateSkeleton"
+import DuplicateSkeleton from "../../../ui/Skeletos/DuplicateSkeleton/DuplicateSkeleton"
 
 import axios from "../../../axios/axiosinst"
 import { State } from "../../../utility/types"
@@ -15,7 +15,7 @@ interface Props {
   txnID?: string | null
 }
 
-export const TransactionDetails = (props: Props) => {
+const TransactionDetails = (props: Props) => {
   const [txnData, setTxnData] = useState<any>(null)
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
   const activeChannelHash = activeChannel.channel_genesis_hash
@@ -69,3 +69,5 @@ export const TransactionDetails = (props: Props) => {
     </div>
   )
 }
+
+export default TransactionDetails

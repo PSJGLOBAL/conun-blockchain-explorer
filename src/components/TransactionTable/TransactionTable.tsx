@@ -1,9 +1,9 @@
 import { useEffect } from "react"
 
-import { TxnDataBlock } from "../../components/MainPage/TxnDataBlock/TxnDataBlock"
+import TxnDataBlock from "../../components/MainPage/TxnDataBlock/TxnDataBlock"
 
 import { TXNTableSkeleton } from "../../ui/Skeletos/MainTableSkeleton/MainTableSkeleton"
-import { DuplicateSkeleton } from "../../ui/Skeletos/DuplicateSkeleton/DuplicateSkeleton"
+import DuplicateSkeleton from "../../ui/Skeletos/DuplicateSkeleton/DuplicateSkeleton"
 
 import { State } from "../../utility/types"
 
@@ -12,7 +12,7 @@ type Props = {
   fullPage: boolean
 }
 
-export const TransactionTable = ({ txnData, fullPage }: Props) => {
+const TransactionTable = ({ txnData, fullPage }: Props) => {
   // The hash cell size is flexible
   // This function sets the header size to the same as the other cells' sizes.
   function matchHashCellSize() {
@@ -62,3 +62,5 @@ export const TransactionTable = ({ txnData, fullPage }: Props) => {
     </>
   )
 }
+
+export default TransactionTable

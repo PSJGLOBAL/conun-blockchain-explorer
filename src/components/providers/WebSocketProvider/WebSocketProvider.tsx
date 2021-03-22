@@ -4,10 +4,10 @@ import { w3cwebsocket as W3CWebsocket } from "websocket"
 
 import { useHistory } from "react-router-dom"
 
-import { State } from "../../utility/types"
-import { logger } from "../../utility/functions"
-import * as actions from "../../store/actions"
-import { SOCKETURL } from "../../utility/config.json"
+import { State } from "../../../utility/types"
+import { logger } from "../../../utility/functions"
+import * as actions from "../../../store/actions"
+import { SOCKETURL } from "../../../utility/config.json"
 
 function WebSocketProvider() {
   const [socket, setSocket] = useState<null | W3CWebsocket>(null)
