@@ -9,7 +9,7 @@ type Props = {
 const FlexHashCell = ({ fullPage, hash, limit }: Props) => {
   return (
     <span
-      className={fullPage ? "result-hash-cell selectable" : "result-hash-cell"}
+      className={`result-hash-cell monofont ${fullPage ? "selectable" : ""}`}
     >
       {fullPage ? truncate(hash, limit) : truncate(hash)}
     </span>

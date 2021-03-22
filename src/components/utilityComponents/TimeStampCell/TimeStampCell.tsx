@@ -4,15 +4,20 @@ import en from "javascript-time-ago/locale/en"
 
 TimeAgo.addLocale(en)
 
-const TimeStampCell = ({ time }: { time: string | number }) => {
+type Props = {
+  time: string | number
+  timeStyle: string
+}
+
+const TimeStampCell = ({ time, timeStyle }: Props) => {
   return (
-    <div className="time-cell">
+    <div className={timeStyle === "mini" ? "time-cell" : "large-time-cell"}>
       <span data-tip={time}>
         <ReactTimeAgo
           date={new Date(time)}
           locale="en-US"
           tooltip={false}
-          timeStyle="mini"
+          timeStyle={timeStyle}
         />
       </span>
     </div>

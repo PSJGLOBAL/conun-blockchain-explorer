@@ -1,6 +1,6 @@
 export const truncate = (hashString: string, truncation: number = 0) => {
   if (hashString.length > 24) {
-    let limit = 7
+    let limit = 5
 
     if (truncation < 0) {
       return hashString
@@ -10,7 +10,11 @@ export const truncate = (hashString: string, truncation: number = 0) => {
       limit = truncation
     }
 
-    return hashString.substring(0, limit) + "..."
+    return (
+      hashString.substring(0, limit) +
+      "..." +
+      hashString.substring(hashString.length - 5)
+    )
   }
   return hashString
 }

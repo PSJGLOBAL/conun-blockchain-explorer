@@ -39,15 +39,15 @@
 .app-service-unit-title {
   font-weight: bold;
 }
-
+.app-service-unit-description {
+  font-size: 10pt;
+  padding-left: 10px;
+}
 .app-service-icon-unit {
   display: flex;
   flex-direction: column;
   align-items: space-between;
   justify-content: center;
-
-  font-size: 8pt;
-  text-align: center;
 }
 
 .app-service-icons {
@@ -69,6 +69,9 @@
 }
 
 @media only screen and (max-width: 530px) {
+  .app-service-table {
+    height: 100px !important;
+  }
   .app-service-description {
     display: none;
   }

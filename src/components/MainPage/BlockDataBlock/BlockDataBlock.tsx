@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { NavLink } from "react-router-dom"
-import ReactTooltip from "react-tooltip"
 
 import IdenticonLink from "../../utilityComponents/IdenticonLink/IdenticonLink"
 import FlexHashCell from "../../utilityComponents/FlexHashCell/FlexHashCell"
@@ -49,13 +48,12 @@ export const BlockDataBlock = (props: Props) => {
           />
         </div>
         {/* TIMESTAMP */}
-        <TimeStampCell time={props.data.createdt} />
+        <TimeStampCell time={props.data.createdt} timeStyle="mini" />
         {/* TXCOUNT */}
         <div className="txncount-cell">
           <span className="font-hilite">{props.data.txcount}</span>
         </div>
       </article>
-      <ReactTooltip backgroundColor="#e95654" />
     </>
   )
 }

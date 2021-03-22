@@ -43,7 +43,7 @@ main {
 }
 .monofont {
   font-family: monospace, "Courier New", Courier;
-  font-size: 11pt;
+  font-size: 9pt;
 }
 .selectable {
   user-select: text;
