@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 
-import { HeadBar } from "../../ui/HeadBar/HeadBar"
+import HeadBar from "../../ui/HeadBar/HeadBar"
 import HeadBlock from "../../ui/HeadBlock/HeadBlock"
 
 import "./Disconnected.css"
 
-export const Disconnected = () => {
+const Disconnected = () => {
   const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
@@ -37,3 +37,5 @@ export const Disconnected = () => {
     </>
   )
 }
+
+export default Disconnected

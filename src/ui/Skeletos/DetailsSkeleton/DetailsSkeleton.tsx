@@ -1,4 +1,4 @@
-import "../../../components/DetailedView/DetailedViewSection/DetailedViewSection.css"
+import "../../../pages/Details/Details.css"
 
 const DetailsSkeleton = () => {
   return (

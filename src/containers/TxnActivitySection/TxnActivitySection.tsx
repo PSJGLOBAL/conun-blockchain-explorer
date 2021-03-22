@@ -3,18 +3,18 @@ import { useHistory, useLocation } from "react-router-dom"
 
 import { useSelector, useDispatch } from "react-redux"
 
-import { TransactionTable } from "../../components/TransactionTable/TransactionTable"
-import { PaginationMenu } from "../../components/MainPage/PaginationMenu/PaginationMenu"
+import TransactionTable from "../../components/TransactionTable/TransactionTable"
+import PaginationMenu from "../../components/MainPage/PaginationMenu/PaginationMenu"
 
 import TableButton from "../../components/utilityComponents/TableButton/TableButton"
 
 import { setTxnActivityData, setChannelStats } from "../../store/actions"
 
-import "../../components/MainPage/InterfaceMain/InterfaceMain.css"
+import "../../pages/MainPage/MainPage.css"
 
 import { State } from "../../utility/types"
 
-export const TxnActivitySection = () => {
+const TxnActivitySection = () => {
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
   const txnActivityData = useSelector(
     (state: State) => state.txn.txnActivityData
@@ -103,3 +103,5 @@ export const TxnActivitySection = () => {
     </section>
   )
 }
+
+export default TxnActivitySection

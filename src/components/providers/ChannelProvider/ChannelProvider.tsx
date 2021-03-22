@@ -3,13 +3,13 @@ import { useSelector, useDispatch } from "react-redux"
 import { State } from "../../../utility/types"
 import * as actions from "../../../store/actions"
 // import { Redirect } from "react-router-dom"
-import { Disconnected } from "../../Disconnected/Disconnected"
+import Disconnected from "../../Disconnected/Disconnected"
 
 type Props = {
   children: React.ReactNode
 }
 
-export const ChannelProvider = (props: Props) => {
+const ChannelProvider = (props: Props) => {
   const dispatch = useDispatch()
   const availableChannels = useSelector(
     (state: State) => state.basic.availableChannels
@@ -65,3 +65,5 @@ export const ChannelProvider = (props: Props) => {
   }, [availableChannels, dispatch])
   return <>{availableChannels.length > 0 ? props.children : <Disconnected />}</>
 }
+
+export default ChannelProvider

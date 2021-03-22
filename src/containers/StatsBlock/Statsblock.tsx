@@ -1,7 +1,7 @@
-import { ExplorerInfoBlock } from "../ExplorerInfoBlock/ExplorerInfoBlock"
-import { GraphBlock } from "../../components/MainPage/GraphBlock/GraphBlock"
+import ExplorerInfoBlock from "../ExplorerInfoBlock/ExplorerInfoBlock"
+import GraphBlock from "../../components/MainPage/GraphBlock/GraphBlock"
 
-export const StatsBlock = () => {
+const StatsBlock = () => {
   return (
     <section className="splitcolumns">
       <ExplorerInfoBlock />
@@ -9,3 +9,4 @@ export const StatsBlock = () => {
     </section>
   )
 }
+export default StatsBlock

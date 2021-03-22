@@ -1,20 +1,20 @@
 import { Suspense, lazy } from "react"
 import { Route, Switch } from "react-router-dom"
 
-import WebSocketProvider from "./components/WebSocketProvider/WebSocketProvider"
+import WebSocketProvider from "./components/providers/WebSocketProvider/WebSocketProvider"
 
 import HeadBlock from "./ui/HeadBlock/HeadBlock"
-import { HeadBar } from "./ui/HeadBar/HeadBar"
-import { Footer } from "./ui/Footer/Footer"
+import HeadBar from "./ui/HeadBar/HeadBar"
+import Footer from "./ui/Footer/Footer"
 import Loading from "./components/Loading/Loading"
 
-import { InterfaceMain } from "./components/MainPage/InterfaceMain/InterfaceMain"
-import { DetailedViewSection } from "./components/DetailedView/DetailedViewSection/DetailedViewSection"
-import { Disconnected } from "./components/Disconnected/Disconnected"
-import { ErrorBlock } from "./components/ErrorPage/ErrorBlock/ErrorBlock"
+import MainPage from "./pages/MainPage/MainPage"
+import { DetailedViewSection } from "./pages/Details/Details"
+import Disconnected from "./components/Disconnected/Disconnected"
+import ErrorBlock from "./components/ErrorPage/ErrorBlock/ErrorBlock"
 
 const ContractsMain = lazy(
-  () => import("./components/SmartContracts/ContractsMain/ContractsMain") // Only works with default exports?
+  () => import("./pages/Contracts/Contracts") // Only works with default exports?
 )
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
             }}
           />
           <Route path="/disconnected" component={Disconnected} />
-          <Route path="/" component={InterfaceMain} />
+          <Route path="/" component={MainPage} />
         </Switch>
       </div>
       <Footer />

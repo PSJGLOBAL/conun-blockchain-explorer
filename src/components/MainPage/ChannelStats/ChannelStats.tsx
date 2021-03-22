@@ -8,7 +8,7 @@ import "./ChannelStats.css"
 import blocksIcon from "../../../style/images/blocks-icon.svg"
 import txnIcon from "../../../style/images/txn-icon.svg"
 
-export const ChannelStats = () => {
+const ChannelStats = () => {
   const dispatch = useDispatch()
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
   const activeChannelHash = activeChannel.channel_genesis_hash
@@ -59,3 +59,5 @@ export const ChannelStats = () => {
     </div>
   )
 }
+
+export default ChannelStats

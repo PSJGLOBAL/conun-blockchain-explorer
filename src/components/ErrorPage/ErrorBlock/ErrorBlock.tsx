@@ -4,7 +4,7 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 import "./ErrorBlock.css"
 
-export const ErrorBlock = () => {
+const ErrorBlock = () => {
   const query = new URLSearchParams(useLocation().search)
   switch (query.get("type")) {
     case "invalid_search":
@@ -59,3 +59,5 @@ export const ErrorBlock = () => {
       )
   }
 }
+
+export default ErrorBlock

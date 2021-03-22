@@ -6,7 +6,7 @@ type Props = {
   max: number | string
 }
 
-export const PaginationMenu = (props: Props) => {
+const PaginationMenu = (props: Props) => {
   return (
     <div className="pagination-container">
       <div className="pagination-indicator">
@@ -45,3 +45,5 @@ export const PaginationMenu = (props: Props) => {
     </div>
   )
 }
+
+export default PaginationMenu

@@ -5,10 +5,12 @@ type Props = {
   children: ReactElement
 }
 
-export const DuplicateSkeleton = (props: Props) => {
+const DuplicateSkeleton = (props: Props) => {
   const payload = []
   for (let i = 0; i < props.howMany; i++) {
     payload.push(props.children)
   }
   return <>{payload}</>
 }
+
+export default DuplicateSkeleton

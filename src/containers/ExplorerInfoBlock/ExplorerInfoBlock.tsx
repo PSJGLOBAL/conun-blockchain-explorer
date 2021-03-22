@@ -1,11 +1,11 @@
-import { ChannelStats } from "../../components/MainPage/ChannelStats/ChannelStats"
+import ChannelStats from "../../components/MainPage/ChannelStats/ChannelStats"
 import "./ExplorerInfoBlock.css"
 
 import cubeCombIcon from "../../style/images/extra_icons/icon_cube_comb.svg"
 import ninjaIcon from "../../style/images/extra_icons/icon_ninja_star.svg"
 import familiarIcon from "../../style/images/extra_icons/icon_i_know_this_one.svg"
 
-export const ExplorerInfoBlock = () => {
+const ExplorerInfoBlock = () => {
   return (
     <div className="channel-stats-block">
       {/* Network Stats */}
@@ -95,3 +95,5 @@ export const ExplorerInfoBlock = () => {
     </div>
   )
 }
+
+export default ExplorerInfoBlock

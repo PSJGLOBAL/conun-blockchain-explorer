@@ -1,12 +1,12 @@
 import { Route } from "react-router-dom"
 
-import { StatsBlock } from "../../../containers/StatsBlock/Statsblock"
-import { BlockActivitySection } from "../../../containers/BlockActivitySection/BlockActivitySection"
-import { TxnActivitySection } from "../../../containers/TxnActivitySection/TxnActivitySection"
+import StatsBlock from "../../containers/StatsBlock/Statsblock"
+import BlockActivitySection from "../../containers/BlockActivitySection/BlockActivitySection"
+import TxnActivitySection from "../../containers/TxnActivitySection/TxnActivitySection"
 
-import "./InterfaceMain.css"
+import "./MainPage.css"
 
-export const InterfaceMain = () => {
+const MainPage = () => {
   return (
     <main>
       <Route path="/" exact component={StatsBlock} />
@@ -21,3 +21,5 @@ export const InterfaceMain = () => {
     </main>
   )
 }
+
+export default MainPage

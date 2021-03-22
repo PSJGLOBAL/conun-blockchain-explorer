@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 
 import ContractHistoryTable from "../ContractHistoryTable/ContractHistoryTable"
 import ContractCodeTab from "../ContractCodeTab/ContractCodeTab"
-import TabMenu from "../TabMenu/TabMenu"
+import TabMenu from "../../../TabMenu/TabMenu"
 
 type Props = {
   contractName: string | undefined

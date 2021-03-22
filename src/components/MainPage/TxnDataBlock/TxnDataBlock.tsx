@@ -15,7 +15,7 @@ interface Props {
   data: ObjectType
 }
 
-export const TxnDataBlock = (props: Props) => {
+const TxnDataBlock = (props: Props) => {
   const [winWidth, setWinWidth] = useState<number>(window.innerWidth)
 
   window.addEventListener("resize", () => {
@@ -63,3 +63,5 @@ export const TxnDataBlock = (props: Props) => {
     </>
   )
 }
+
+export default TxnDataBlock

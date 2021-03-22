@@ -7,7 +7,7 @@ import { useHistory, useLocation } from "react-router-dom"
 import searchIcon from "../../style/images/search-icon.svg"
 import "./Search.css"
 
-export const Search = () => {
+const Search = () => {
   const [searchTerms, setSearchTerms] = useState<string>("")
   const [searchFail, setSearchFail] = useState<string>("")
 
@@ -104,3 +104,5 @@ export const Search = () => {
     </div>
   )
 }
+
+export default Search

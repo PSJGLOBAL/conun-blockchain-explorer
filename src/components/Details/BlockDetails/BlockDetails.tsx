@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom"
 import DetailsTableHeader from "../DetailsTableHeader/DetailsTableHeader"
 import BlockDetailsTable from "../BlockDetailsTable/BlockDetailsTable"
 import DetailsSkeleton from "../../../ui/Skeletos/DetailsSkeleton/DetailsSkeleton"
-import { DuplicateSkeleton } from "../../../ui/Skeletos/DuplicateSkeleton/DuplicateSkeleton"
+import DuplicateSkeleton from "../../../ui/Skeletos/DuplicateSkeleton/DuplicateSkeleton"
 
 import axios from "../../../axios/axiosinst"
 
@@ -16,7 +16,7 @@ interface Props {
   blocknum?: string | null
 }
 
-export const BlockDetails = (props: Props) => {
+const BlockDetails = (props: Props) => {
   const [blockData, setBlockData] = useState<any>(null)
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
   const activeChannelHash = activeChannel.channel_genesis_hash
@@ -69,3 +69,5 @@ export const BlockDetails = (props: Props) => {
     </div>
   )
 }
+
+export default BlockDetails
