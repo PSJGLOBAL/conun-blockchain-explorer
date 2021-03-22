@@ -33,10 +33,15 @@
 }
 
 .details-table-row {
-  margin: 10px;
+  padding: 5px;
+
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 5fr;
+  justify-items: start;
+  align-items: center;
+
   border-bottom: 1px solid var(--bkg);
+  box-sizing: border-box;
 }
 .details-table-row div {
   margin: 5px;
@@ -45,6 +50,33 @@
   padding-left: 10px;
 }
 
+.info-col {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .info-key {
   color: var(--hiblue);
+}
+
+.validity-icon {
+  width: 100px;
+  height: 30px;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  border-radius: 5px;
+}
+
+.validity-icon.invalid {
+  background-color: rgb(255, 228, 232);
+  color: rgb(235, 135, 135);
+}
+
+.validity-icon.valid {
+  background-color: rgb(235, 255, 235);
+  color: rgb(1, 179, 1);
 }

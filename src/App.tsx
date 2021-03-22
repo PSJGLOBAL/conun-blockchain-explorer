@@ -1,6 +1,5 @@
 import { Suspense, lazy } from "react"
 import { Route, Switch } from "react-router-dom"
-import ReactTooltip from "react-tooltip"
 
 import WebSocketProvider from "./components/WebSocketProvider/WebSocketProvider"
 
@@ -48,7 +47,6 @@ function App() {
         </Switch>
       </div>
       <Footer />
-      <ReactTooltip backgroundColor="#e95654" />
     </div>
   )
 }

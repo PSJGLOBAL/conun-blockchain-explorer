@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { NavLink } from "react-router-dom"
-import ReactTooltip from "react-tooltip"
 
 import TimeStampCell from "../../utilityComponents/TimeStampCell/TimeStampCell"
 import IdenticonLink from "../../utilityComponents/IdenticonLink/IdenticonLink"
@@ -59,9 +58,8 @@ export const TxnDataBlock = (props: Props) => {
         </div>
 
         {/* TIMESTAMP */}
-        <TimeStampCell time={props.data.createdt} />
+        <TimeStampCell time={props.data.createdt} timeStyle="mini" />
       </article>
-      <ReactTooltip backgroundColor="#e95654" />
     </>
   )
 }
