@@ -1,4 +1,5 @@
 import description from "../../../../utility/contractDescriptions.json"
+import style from "./ContractTextBlock.module.css"
 
 const ContractTextBlock = ({ contractType }: { contractType: string }) => {
   let content = description.basic
@@ -10,8 +11,8 @@ const ContractTextBlock = ({ contractType }: { contractType: string }) => {
   }
 
   return (
-    <section className="contract-description-container">
-      <div className="contract-description">{content}</div>
+    <section className={style.container}>
+      <div className={style.description}>{content}</div>
     </section>
   )
 }

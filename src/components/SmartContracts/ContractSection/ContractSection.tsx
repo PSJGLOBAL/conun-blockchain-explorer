@@ -5,7 +5,7 @@ import ContractIcon from "../../../ui/ContractIcon/ContractIcon"
 
 import { State, ContractType } from "../../../utility/types"
 
-import "./ContractSection.css"
+import style from "./ContractSection.module.css"
 
 const ContractSection = () => {
   const contracts = useSelector((state: State) => state.ctx.contractData)
@@ -16,9 +16,9 @@ const ContractSection = () => {
         <span>Smart Contracts</span>
       </div>
       <div className="data-table-row data-table-header contracts-header">
-        <div className="contract-table-name-cell">Name</div>
-        <div className="contract-table-icon-cell">Icon</div>
-        <div className="contract-table-ver-cell">Versions</div>
+        <div className={style.name}>Name</div>
+        <div className={style.icon}>Icon</div>
+        <div className={style.version}>Versions</div>
       </div>
       {contracts.length > 0 &&
         contracts.map((ct: ContractType) => (
@@ -27,7 +27,7 @@ const ContractSection = () => {
             key={ct.chaincodename}
           >
             {/* Contract Name */}
-            <div className="contract-table-name-cell">
+            <div className={style.name}>
               <Link
                 className="info-table-link"
                 to={`/contracts/${ct.chaincodename}`}
@@ -36,16 +36,16 @@ const ContractSection = () => {
               </Link>
             </div>
             {/* Contract Icon */}
-            <div className="contract-table-icon-cell">
+            <div className={style.icon}>
               <ContractIcon serviceType={ct.chaincodename} />
             </div>
             {/* Versions */}
-            <div className="contract-table-ver-cell">
+            <div className={style.version}>
               <span className="contract-version-count">{ct.codes.length}</span>
             </div>
           </div>
         ))}
-      <div className="contracts-see-more">
+      <div className={style.seeMore}>
         <a
           href="https://github.com/CONUN-Global/conun-blockchain-smartcontract"
           target="_blank"

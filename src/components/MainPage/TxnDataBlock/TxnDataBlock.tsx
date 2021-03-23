@@ -8,8 +8,8 @@ import ContractIcon from "../../../ui/ContractIcon/ContractIcon"
 
 import { ObjectType } from "../../../utility/types"
 
-import "./TxnDataBlock.css"
-import "../../../style/css/table-common.css"
+import tableStyle from "../../../style/css/table.module.css"
+
 interface Props {
   fullPage: boolean
   data: ObjectType
@@ -32,20 +32,22 @@ const TxnDataBlock = (props: Props) => {
 
   return (
     <>
-      <article className="data-table-row scrolly transaction-data-row">
+      <article
+        className={`${tableStyle.row} ${tableStyle.scrolly} transaction-data-row`}
+      >
         {/* IDENTICON */}
         <IdenticonLink destination={`/txns/${props.data.txhash}`} />
         {/* CONTRACT ICON */}
-        <div className="service-cell">
+        <div className={tableStyle.service}>
           <NavLink to={`/contracts/${props.data.chaincodename}`}>
             <ContractIcon serviceType={props.data.chaincodename} />
           </NavLink>
         </div>
         {/* HASH CELL */}
-        <div className="hash-cell">
+        <div className={tableStyle.hash}>
           <span className="" data-tip={props.data.txhash}>
             <NavLink
-              className={"font-clicky monofont"}
+              className="font-clicky monofont"
               to={`/txns/${props.data.txhash}`}
             >
               <FlexHashCell

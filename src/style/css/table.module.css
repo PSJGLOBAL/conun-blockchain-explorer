@@ -1,15 +1,22 @@
-/* .scrolly {
+.scrolly {
   overflow-x: auto;
 }
 .no-animate {
   animation: none;
 }
 
-.table-block {
+.tableBlock {
   overflow-x: auto;
 }
 
-.data-table-row {
+.header {
+  /* z-index: 5; */
+  background-color: white;
+  border: none;
+  animation: none !important;
+}
+
+.row {
   height: 60px;
 
   display: flex;
@@ -25,35 +32,28 @@
   transform-style: preserve-3d;
 }
 
-.data-table-row:first {
+.row:first {
   border-top: 0px;
 }
 
-.data-table-row div {
+.row div {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.data-table-row a {
+.row a {
   text-decoration: none;
 }
 
-.data-table-header {
-  z-index: 5;
-  background-color: white;
-  border: none;
-  animation: none !important;
-}
-
-.data-table-header .identicon-cell {
+.header .identicon {
   border: none;
 }
 
-.data-table-header .txncount-cell {
+.header .txncount {
   background-color: transparent;
 }
 
-.identicon-cell {
+.identicon {
   width: 30px;
   height: 30px;
 
@@ -63,30 +63,30 @@
   animation: icon-animate 0.7s ease-in;
 }
 
-.blocknum-cell {
+.blocknum {
   min-width: 80px;
   max-width: 160px;
 }
 
-.hash-cell {
+.hash {
   min-width: 120px;
 }
 
-.time-cell {
+.time {
   width: 60px;
 }
-.large-time-cell {
+.largeTime {
   max-width: 200px;
 }
 
-.txncount-cell {
+.txncount {
   width: 30px;
   height: 30px;
   background-color: var(--bkg);
   border-radius: var(--radius);
 }
 
-.service-cell {
+.service {
   width: 40px;
 }
 
@@ -120,7 +120,7 @@
 }
 
 @media only screen and (max-width: 400px) {
-  .hiding-cell {
+  .hiding {
     display: none !important;
   }
-} */
+}

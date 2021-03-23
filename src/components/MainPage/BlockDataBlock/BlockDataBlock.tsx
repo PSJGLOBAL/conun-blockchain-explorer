@@ -6,8 +6,11 @@ import FlexHashCell from "../../utilityComponents/FlexHashCell/FlexHashCell"
 import TimeStampCell from "../../utilityComponents/TimeStampCell/TimeStampCell"
 
 import { ObjectType } from "../../../utility/types"
-import "./BlockDataBlock.css"
-import "../../../style/css/table-common.css"
+
+import tableStyle from "../../../style/css/table.module.css"
+
+// import "./BlockDataBlock.css"
+// import "../../../style/css/table-common.css"
 
 type Props = {
   fullPage: boolean
@@ -30,17 +33,21 @@ const BlockDataBlock = (props: Props) => {
 
   return (
     <>
-      <article className="data-table-row scrolly">
+      <article
+        className={`${tableStyle.row} ${tableStyle.scrolly} block-data-row`}
+      >
         {/* IDENTICON */}
         <IdenticonLink destination={`/blocks/${props.data.blocknum}`} />
         {/* BLOCKNUM */}
-        <div className="blocknum-cell">
+        <div className={tableStyle.blocknum}>
           <NavLink className="" to={`/blocks/${props.data.blocknum}`}>
             <span className="monofont font-clicky">{props.data.blocknum}</span>
           </NavLink>
         </div>
         {/* HASH CELL */}
-        <div className="hash-cell hiding-cell result-hash-cell">
+        <div
+          className={`${tableStyle.hash} ${tableStyle.hiding} result-hash-cell`}
+        >
           <FlexHashCell
             fullPage={props.fullPage}
             limit={truncateLimit}
@@ -50,7 +57,7 @@ const BlockDataBlock = (props: Props) => {
         {/* TIMESTAMP */}
         <TimeStampCell time={props.data.createdt} timeStyle="mini" />
         {/* TXCOUNT */}
-        <div className="txncount-cell">
+        <div className={tableStyle.txncount}>
           <span className="font-hilite">{props.data.txcount}</span>
         </div>
       </article>

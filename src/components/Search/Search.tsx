@@ -5,7 +5,7 @@ import { useHistory, useLocation } from "react-router-dom"
 // import { ObjectType } from "../../utility/types"
 
 import searchIcon from "../../style/images/search-icon.svg"
-import "./Search.css"
+import style from "./Search.module.css"
 
 const Search = () => {
   const [searchTerms, setSearchTerms] = useState<string>("")
@@ -66,11 +66,10 @@ const Search = () => {
   }
 
   return (
-    <div className="search" id="main">
-      <div className="search-box">
+    <div className={style.searchContainer} id="main">
+      <div className={style.search}>
         <input
           ref={searchRef}
-          className="search-input-field"
           id="search-input"
           placeholder={
             searchFail
@@ -90,7 +89,7 @@ const Search = () => {
           }}
         />
         <img
-          className="search-icon"
+          className={style.icon}
           id="search-button"
           src={searchIcon}
           alt=""

@@ -4,6 +4,8 @@ import ContractHistoryTable from "../ContractHistoryTable/ContractHistoryTable"
 import ContractCodeTab from "../ContractCodeTab/ContractCodeTab"
 import TabMenu from "../../../TabMenu/TabMenu"
 
+import style from "./ContractTabbedSection.module.css"
+
 type Props = {
   contractName: string | undefined
 }
@@ -35,7 +37,7 @@ const ContractTabbedSection = ({ contractName }: Props) => {
         activeTab={activeTab}
         doChangeTab={setActiveTab}
       />
-      <section className="contract-tabbed-block">{displayedTab}</section>
+      <section className={style.tabBlock}>{displayedTab}</section>
     </>
   )
 }

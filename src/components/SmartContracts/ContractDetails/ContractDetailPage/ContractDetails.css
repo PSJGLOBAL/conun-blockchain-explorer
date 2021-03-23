@@ -1,55 +1,3 @@
-.contract-detail-table {
-  width: 100%;
-  margin: 10px;
-
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-
-  text-align: center;
-}
-
-.cell {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-
-  border-left: 1px solid var(--bkg);
-}
-
-.cell:first-of-type {
-  border-left: none;
-}
-
-.cell-title {
-  max-width: 80px;
-
-  padding: 10px;
-  box-sizing: border-box;
-
-  color: var(--hiblue);
-  text-align: left;
-}
-.cell-content {
-  max-width: 200px;
-  display: flex;
-  align-items: center;
-}
-
-.contract-description-container {
-  width: 100%;
-  min-height: 100px;
-  box-sizing: border-box;
-}
-
-.contract-description {
-  height: 60px;
-  padding: 10px;
-
-  box-sizing: border-box;
-  border: 1px solid var(--bkg);
-  border-radius: var(--radius);
-}
-
 .contract-history-table {
   width: 100%;
   margin: 10px;
@@ -59,58 +7,10 @@
   min-height: 250px;
 }
 
-.contract-tabbed-block {
-  padding: 10px;
-  padding-bottom: 30px;
-  box-sizing: border-box;
-  border-top: 1px solid var(--bkg);
-  border-radius: 0 var(--radius) var(--radius) var(--radius);
-}
-
 .contract-link-box {
   display: flex;
 }
 
 .contract-link-box .section-table-link {
   margin: 10px;
-}
-
-.contract-tab-menu {
-  display: flex;
-}
-
-.contract-tab-menu .tab {
-  min-width: 100px;
-  height: 30px;
-
-  padding: 5px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: var(--radius) var(--radius) 0 0;
-
-  font-weight: bold;
-  color: var(--font);
-
-  cursor: pointer;
-}
-.active-tab {
-  background-color: var(--hiblue);
-  color: white !important;
-}
-
-@media only screen and (max-width: 800px) {
-  .contract-detail-table {
-    grid-template-columns: 1fr 1fr;
-  }
-  .cell:first-of-type {
-    border-left: 1px solid var(--bkg);
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .contract-detail-table {
-    grid-template-columns: 1fr;
-  }
 }

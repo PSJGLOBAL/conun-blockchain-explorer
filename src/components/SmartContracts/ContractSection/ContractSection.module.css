@@ -1,12 +1,12 @@
-.contract-table-name-cell {
+.name {
   width: 180px;
 }
-.contract-table-name-cell :is(span, a) {
+.name :is(span, a) {
   width: 100%;
   text-align: left;
 }
 
-.contract-table-icon-cell {
+.icon {
   width: 200px;
 
   display: flex;
@@ -14,18 +14,18 @@
   align-items: center;
   text-align: left;
 }
-.contract-table-ver-cell {
+.version {
   width: 200px;
 }
-.contracts-see-more {
+.seeMore {
   align-self: flex-end;
   height: 100%;
   margin: 20px;
 }
-.contracts-see-more a {
+.seeMore a {
   text-decoration: none;
   color: var(--hiblue);
 }
-.contracts-see-more a:hover {
+.seeMore a:hover {
   color: var(--higreen);
 }

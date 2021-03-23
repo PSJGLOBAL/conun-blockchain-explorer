@@ -13,6 +13,8 @@ import DuplicateSkeleton from "../../ui/Skeletos/DuplicateSkeleton/DuplicateSkel
 
 import { setBlockActivityData, setChannelStats } from "../../store/actions"
 
+import tableStyle from "../../style/css/table.module.css"
+
 import "../../pages/MainPage/MainPage.css"
 
 import { State } from "../../utility/types"
@@ -81,7 +83,7 @@ const BlockActivitySection = () => {
   // The hash cell size is flexible
   // This function sets the header size to the same as the other cells' sizes.
   function matchHashCellSize() {
-    const hashCells = document.getElementsByClassName("hash-cell")
+    const hashCells = document.getElementsByClassName(`${tableStyle.hash}`)
     if (hashCells.length > 1) {
       const headerCell = hashCells[0] as HTMLElement
       const topCell = hashCells[1]
@@ -112,14 +114,16 @@ const BlockActivitySection = () => {
           />
         )}
       </div>
-      <div className="">
+      <div>
         {/* HEADER */}
-        <div className="data-table-row data-table-header">
-          <div className="identicon-cell hiding-cell"> </div>
-          <div className="blocknum-cell">Num.</div>
-          <div className="hash-cell hiding-cell">Hash</div>
-          <div className="time-cell">Time</div>
-          <div className="txncount-cell">Txns</div>
+        <div className={`${tableStyle.row} ${tableStyle.header}`}>
+          <div className={`${tableStyle.identicon} ${tableStyle.hiding}`}>
+            {" "}
+          </div>
+          <div className={tableStyle.blocknum}>Num.</div>
+          <div className={`${tableStyle.hash} ${tableStyle.hiding}`}>Hash</div>
+          <div className={tableStyle.time}>Time</div>
+          <div className={tableStyle.txncount}>Txns</div>
         </div>
         {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
         {blockActivityData.length > 0 ? (

@@ -6,7 +6,7 @@ import ContractTextBlock from "../ContractTextBlock/ContractTextBlock"
 
 import { getContractType } from "../../../../utility/functions"
 
-import "./ContractDetails.css"
+// import "./ContractDetails.css"
 
 const ContractDetails = () => {
   const { contractName } = useParams<Record<string, string | undefined>>()

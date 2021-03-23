@@ -7,6 +7,8 @@ import DuplicateSkeleton from "../../ui/Skeletos/DuplicateSkeleton/DuplicateSkel
 
 import { State } from "../../utility/types"
 
+import tableStyle from "../../style/css/table.module.css"
+
 type Props = {
   txnData: State["txn"]["txnActivityData"] | null
   fullPage: boolean
@@ -16,7 +18,7 @@ const TransactionTable = ({ txnData, fullPage }: Props) => {
   // The hash cell size is flexible
   // This function sets the header size to the same as the other cells' sizes.
   function matchHashCellSize() {
-    const hashCells = document.getElementsByClassName("hash-cell")
+    const hashCells = document.getElementsByClassName(`${tableStyle.hash}`)
     if (hashCells.length > 1) {
       const headerCell = hashCells[0] as HTMLElement
       const topCell = hashCells[1]
@@ -39,13 +41,13 @@ const TransactionTable = ({ txnData, fullPage }: Props) => {
     <>
       <div className="">
         {/* HEADER */}
-        <div className="data-table-row data-table-header">
-          <div className="identicon-cell hiding-cell"></div>
-          <div className="service-cell">Service</div>
-          <div id="header-hash-cell" className="hash-cell">
+        <div className={`${tableStyle.row} ${tableStyle.header}`}>
+          <div className={`${tableStyle.identicon} ${tableStyle.hiding}`}></div>
+          <div className={tableStyle.service}>Service</div>
+          <div id="header-hash-cell" className={`${tableStyle.hash}`}>
             Hash
           </div>
-          <div className="time-cell">Time</div>
+          <div className={tableStyle.time}>Time</div>
         </div>
 
         {/* TXN Activity - Table for each block made - shows hashes, created at, etc*/}

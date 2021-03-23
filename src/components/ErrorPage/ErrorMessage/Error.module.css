@@ -1,8 +1,8 @@
-.search-error-header {
+.header {
   background-color: var(--lolite);
 }
 
-.search-error-main {
+.errorContainer {
   min-height: 500px;
 
   display: flex;
@@ -15,16 +15,16 @@
   background-position: 70% 50%;
   background-repeat: no-repeat;
 }
-.search-error-message-title {
+.title {
   font-size: 40pt;
   font-weight: bold;
   color: var(--lolite);
 }
-.search-error-message-subtitle {
+.subtitle {
   font-weight: bold;
 }
 
-.search-error-message {
+.message {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -32,10 +32,10 @@
   font-size: 16pt;
   text-align: right;
 }
-.search-error-message > div {
+.message > div {
   margin: 5px;
 }
 
-.search-error-highlight {
+.highlight {
   color: var(--hiblue);
 }

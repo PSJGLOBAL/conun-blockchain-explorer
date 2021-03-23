@@ -1,3 +1,5 @@
+import style from "./TabMenu.module.css"
+
 type Props = {
   tabs: Array<string>
   activeTab: string
@@ -6,12 +8,12 @@ type Props = {
 
 const TabMenu = ({ tabs, activeTab, doChangeTab }: Props) => {
   return (
-    <div className="contract-tab-menu">
+    <div className={style.tabMenu}>
       {tabs.map((t) => {
         return (
           <div
             key={t}
-            className={activeTab === t ? "tab active-tab" : "tab"}
+            className={activeTab === t ? style.activeTab : style.tab}
             onClick={() => doChangeTab(t)}
           >
             {t}
