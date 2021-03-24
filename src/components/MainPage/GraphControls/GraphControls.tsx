@@ -1,4 +1,4 @@
-import "./GraphControls.css"
+import style from "./GraphControls.module.css"
 
 type Props = {
   clickHandler: (x: string) => void
@@ -9,12 +9,12 @@ const GraphControls = (props: Props) => {
   const { clickHandler, active } = props
 
   return (
-    <div className="graph-controls-table">
+    <div className={style.table}>
       <div
         className={
           active === "txn-min"
-            ? "graph-controls-tab graph-controls-active"
-            : "graph-controls-tab"
+            ? `${style.tab} ${style.active}`
+            : `${style.tab}`
         }
         id="graph-mode-txn-min"
         onClick={() => clickHandler("txn-min")}
@@ -24,8 +24,8 @@ const GraphControls = (props: Props) => {
       <div
         className={
           active === "txn-hour"
-            ? "graph-controls-tab graph-controls-active"
-            : "graph-controls-tab"
+          ? `${style.tab} ${style.active}`
+          : `${style.tab}`
         }
         id="graph-mode-txn-hour"
         onClick={() => clickHandler("txn-hour")}
@@ -35,8 +35,8 @@ const GraphControls = (props: Props) => {
       <div
         className={
           active === "block-min"
-            ? "graph-controls-tab graph-controls-active"
-            : "graph-controls-tab"
+          ? `${style.tab} ${style.active}`
+          : `${style.tab}`
         }
         id="graph-mode-block-min"
         onClick={() => clickHandler("block-min")}
@@ -46,8 +46,8 @@ const GraphControls = (props: Props) => {
       <div
         className={
           active === "block-hour"
-            ? "graph-controls-tab graph-controls-active"
-            : "graph-controls-tab"
+          ? `${style.tab} ${style.active}`
+          : `${style.tab}`
         }
         id="graph-mode-block-hour"
         onClick={() => clickHandler("block-hour")}

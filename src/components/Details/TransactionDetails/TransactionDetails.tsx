@@ -11,6 +11,9 @@ import axios from "../../../axios/axiosinst"
 import { State } from "../../../utility/types"
 import { logger } from "../../../utility/functions"
 
+import style from "../Details.module.css"
+
+
 interface Props {
   txnID?: string | null
 }
@@ -49,7 +52,7 @@ const TransactionDetails = (props: Props) => {
   }, [activeChannelHash, props.txnID, history])
 
   return (
-    <div className="details-table" id="txn-details-table">
+    <div className={style.table} id="txn-details-table">
       <DetailsTableHeader title={"Transaction Details"} />
       {txnData ? (
         <TxnDetailsTable

@@ -1,11 +1,11 @@
-.graph-controls-table {
+.table {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 
   cursor: pointer;
 }
 
-.graph-controls-tab {
+.tab {
   height: 30px;
   width: 100%;
   margin: 3px;
@@ -22,20 +22,20 @@
   user-select: none;
 }
 
-.graph-controls-tab:hover {
+.tab:hover {
   background-color: #f3faff;
 }
 
-.graph-controls-active {
+.active {
   background-color: var(--hiblue);
   color: white;
 }
-.graph-controls-active:hover {
+.active:hover {
   background-color: var(--higreen);
 }
 
 @media only screen and (max-width: 600px) {
-  .graph-controls-table {
+  .table {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
   }

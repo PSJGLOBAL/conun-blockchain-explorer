@@ -8,8 +8,6 @@ import ContractDetails from "../../components/SmartContracts/ContractDetails/Con
 
 import { State } from "../../utility/types"
 
-import "./Contracts.css"
-
 const ContractsMain = () => {
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
   const activeChannelHash = activeChannel.channel_genesis_hash

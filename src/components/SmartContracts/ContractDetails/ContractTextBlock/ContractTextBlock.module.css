@@ -1,0 +1,14 @@
+.container {
+  width: 100%;
+  min-height: 100px;
+  box-sizing: border-box;
+}
+
+.description {
+  height: 60px;
+  padding: 10px;
+
+  box-sizing: border-box;
+  border: 1px solid var(--bkg);
+  border-radius: var(--radius);
+}

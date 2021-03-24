@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { setChannelStats } from "../../../store/actions"
 
 import { State } from "../../../utility/types"
-import "./ChannelStats.css"
+import style from "./ChannelStats.module.css"
 import blocksIcon from "../../../style/images/blocks-icon.svg"
 import txnIcon from "../../../style/images/txn-icon.svg"
 
@@ -24,14 +24,14 @@ const ChannelStats = () => {
   const channelStats = useSelector((state: State) => state.basic.channelStats)
   // console.log("CHANNEL STATS: ", channelStats)
   return (
-    <div className="channel-stats-table">
+    <div className={style.table}>
       {/* Blocks */}
-      <div className="channel-stats-column">
-        <div className="channel-stats-icon-cell">
-          <img src={blocksIcon} className="channel-stats-icon" alt="" />
+      <div className={style.column}>
+        <div className={style.icon}>
+          <img src={blocksIcon} alt="blocks" />
         </div>
-        <div className="channel-stats-data-cell">
-          <span className="channel-stats-datapoint" id="stats-total-blocks">
+        <div className={style.data}>
+          <span id="stats-total-blocks">
             {channelStats.latestBlock
               ? parseInt(
                   channelStats.latestBlock.toString(),
@@ -39,21 +39,21 @@ const ChannelStats = () => {
                 ).toLocaleString()
               : "Many"}
           </span>
-          <span className="channel-stats-datapoint-label">Blocks</span>
+          <span className={style.label}>Blocks</span>
         </div>
       </div>
       {/* TXNS */}
-      <div className="channel-stats-column">
-        <div className="channel-stats-icon-cell">
-          <img src={txnIcon} className="channel-stats-icon" alt="" />
+      <div className={style.column}>
+        <div className={style.icon}>
+          <img src={txnIcon} alt="transactions" />
         </div>
-        <div className="channel-stats-data-cell">
-          <span className="channel-stats-datapoint" id="stats-total-txns">
+        <div className={style.data}>
+          <span id="stats-total-txns">
             {channelStats.txCount
               ? parseInt(channelStats.txCount.toString(), 10).toLocaleString()
               : "Many"}
           </span>
-          <span className="channel-stats-datapoint-label">Txns</span>
+          <span className={style.label}>Txns</span>
         </div>
       </div>
     </div>

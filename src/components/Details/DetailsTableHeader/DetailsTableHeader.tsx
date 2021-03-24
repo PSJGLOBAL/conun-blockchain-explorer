@@ -1,4 +1,5 @@
 import { NavLink, useHistory } from "react-router-dom"
+import style from "./DetailsTableHeader.module.css"
 
 type Props = {
   title: string
@@ -8,17 +9,17 @@ const DetailsTableHeader = ({ title }: Props) => {
   const history = useHistory()
 
   return (
-    <div className="details-table-header">
+    <div className={style.header}>
       <h2>{title}</h2>
-      <div className="details-table-links-box">
+      <div className={style.linkBox}>
         <div
-          className="details-table-header-link"
+          className={style.link}
           id="table-back-link"
           onClick={() => history.goBack()}
         >
           <i className="fas fa-arrow-circle-left"></i>
         </div>
-        <div className="details-table-header-link">
+        <div className={style.link}>
           <NavLink to="/" id="table-home-link">
             <i className="fas fa-home"></i>
           </NavLink>

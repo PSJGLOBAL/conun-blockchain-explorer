@@ -7,6 +7,8 @@ import BlockDetailsTable from "../BlockDetailsTable/BlockDetailsTable"
 import DetailsSkeleton from "../../../ui/Skeletos/DetailsSkeleton/DetailsSkeleton"
 import DuplicateSkeleton from "../../../ui/Skeletos/DuplicateSkeleton/DuplicateSkeleton"
 
+import style from "../Details.module.css"
+
 import axios from "../../../axios/axiosinst"
 
 import { State } from "../../../utility/types"
@@ -49,7 +51,7 @@ const BlockDetails = (props: Props) => {
   }, [activeChannelHash, props.blocknum, history])
 
   return (
-    <div className="details-table" id="block-details-table">
+    <div className={style.table} id="block-details-table">
       <DetailsTableHeader title={"Block Details"} />
       {blockData ? (
         <BlockDetailsTable

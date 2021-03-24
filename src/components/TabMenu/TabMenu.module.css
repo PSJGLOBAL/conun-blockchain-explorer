@@ -1,0 +1,40 @@
+.tabMenu {
+  display: flex;
+}
+
+.tab {
+  min-width: 100px;
+  height: 30px;
+
+  padding: 5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius) var(--radius) 0 0;
+
+  font-weight: bold;
+  color: var(--font);
+
+  cursor: pointer;
+}
+
+.activeTab {
+  min-width: 100px;
+  height: 30px;
+
+  padding: 5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius) var(--radius) 0 0;
+
+  font-weight: bold;
+  color: var(--font);
+
+  cursor: pointer;
+
+  background-color: var(--hiblue);
+  color: white !important;
+}

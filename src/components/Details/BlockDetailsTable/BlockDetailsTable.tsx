@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom"
 
+import style from "../Details.module.css"
+
 type Props = {
   blocknum: string
   blksize: string
@@ -21,32 +23,32 @@ const BlockDetailsTable = ({
 }: Props) => {
   return (
     <div>
-      <div className="details-table-row">
-        <div className="info-col info-key">Block Number:</div>
-        <div className="info-col info-val selectable monofont">{blocknum}</div>
+      <div className={style.row}>
+        <div className={style.key}>Block Number:</div>
+        <div className={style.selectVal}>{blocknum}</div>
       </div>
-      <div className="details-table-row">
-        <div className="info-col info-key">Block Size:</div>
-        <div className="info-col info-val monofont">{blksize}</div>
+      <div className={style.row}>
+        <div className={style.key}>Block Size:</div>
+        <div className={`${style.val}`}>{blksize}</div>
       </div>
-      <div className="details-table-row scrolly">
-        <div className="info-col info-key">Block Hash:</div>
-        <div className="info-col info-val selectable monofont">{blockhash}</div>
+      <div className={`${style.row} ${style.scrolly}`}>
+        <div className={style.key}>Block Hash:</div>
+        <div className={style.selectVal}>{blockhash}</div>
       </div>
-      <div className="details-table-row scrolly">
-        <div className="info-col info-key">Data Hash:</div>
-        <div className="info-col info-val selectable monofont">{datahash}</div>
+      <div className={`${style.row} ${style.scrolly}`}>
+        <div className={style.key}>Data Hash:</div>
+        <div className={style.selectVal}>{datahash}</div>
       </div>
-      <div className="details-table-row scrolly">
-        <div className="info-col info-key">Previous Hash:</div>
-        <div className="info-col info-val selectable monofont">{prehash}</div>
+      <div className={`${style.row} ${style.scrolly}`}>
+        <div className={style.key}>Previous Hash:</div>
+        <div className={style.selectVal}>{prehash}</div>
       </div>
-      <div className="details-table-row scrolly">
-        <div className="info-col info-key">Transactions: {txcount}</div>
-        <div className="info-col info-val">
+      <div className={`${style.row} ${style.scrolly}`}>
+        <div className={style.key}>Transactions: {txcount}</div>
+        <div className={style.val}>
           {txhash.map((t: string) => (
             <div key={t}>
-              <NavLink className="info-table-link monofont" to={`/txns/${t}`}>
+              <NavLink className={style.link} to={`/txns/${t}`}>
                 {t}
               </NavLink>
             </div>

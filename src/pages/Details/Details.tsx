@@ -2,8 +2,6 @@ import { useParams, useLocation } from "react-router-dom"
 import BlockDetails from "../../components/Details/BlockDetails/BlockDetails"
 import TransactionDetails from "../../components/Details/TransactionDetails/TransactionDetails"
 
-import "./Details.css"
-
 export const DetailedViewSection = () => {
   const { pathname } = useLocation()
   const { detail_id } = useParams<Record<string, string | undefined>>()

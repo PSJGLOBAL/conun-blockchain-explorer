@@ -1,22 +1,23 @@
-import "./GraphSkeleton.css"
-import "../../../components/MainPage/GraphControls/GraphControls.css"
+import style from "../../../components/MainPage/GraphControls/GraphControls.module.css"
+import skeleton from "./GraphSkeleton.module.css"
 
 const GraphSkeleton = () => {
   return (
     <>
-      <div className="skeleton skeleton-graph">
-        <span className="skeleton-graph-lines">&nbsp;</span>
-        <span className="skeleton-graph-lines">&nbsp;</span>
-        <span className="skeleton-graph-lines">&nbsp;</span>
-        <span className="skeleton-graph-lines">&nbsp;</span>
-        <span className="skeleton-graph-lines">&nbsp;</span>
-        <span className="skeleton-graph-lines">&nbsp;</span>
-        <span className="skeleton-graph-lines">&nbsp;</span>
-        <span className="skeleton-graph-lines">&nbsp;</span>
-        <span className="skeleton-graph-lines">&nbsp;</span>
-        <span className="skeleton-graph-lines">&nbsp;</span>
+      <div className={skeleton.graph}>
+        <span className={skeleton.line}>&nbsp;</span>
+        <span className={skeleton.line}>&nbsp;</span>
+        <span className={skeleton.line}>&nbsp;</span>
+        <span className={skeleton.line}>&nbsp;</span>
+        <span className={skeleton.line}>&nbsp;</span>
+        <span className={skeleton.line}>&nbsp;</span>
+        <span className={skeleton.line}>&nbsp;</span>
+        <span className={skeleton.line}>&nbsp;</span>
+        <span className={skeleton.line}>&nbsp;</span>
+        <span className={skeleton.line}>&nbsp;</span>
+        <span className={skeleton.line}>&nbsp;</span>
       </div>
-      <div className="graph-controls-table"></div>
+      <div className={style.table}></div>
     </>
   )
 }

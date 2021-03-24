@@ -1,18 +1,18 @@
-.skeleton-table {
+.table {
   background-color: #f8fafd;
   border: 1px solid var(--fore);
   border-radius: 10px;
   animation: skeleflash 1s infinite alternate;
 }
 
-.skeleton-table div {
+.table div {
   background-color: var(--bkg);
 }
 
-.skeleton-table .identicon-cell {
+.table .identicon {
   animation: none;
 }
-.skeleton-table .service-cell {
+.table .service {
   width: 25px;
   height: 25px;
   border-radius: var(--radius);

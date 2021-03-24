@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom"
 
+import style from "./Error.module.css"
+
 type Props = {
   code: string | number
   title: string
@@ -13,7 +15,7 @@ const ErrorMessage = ({ code, title, subtitle, terms, message }: Props) => {
     <div className="section-block section-full">
       <section className="section-centered">
         <div className="details-table">
-          <div className="details-table-header search-error-header">
+          <div className={`details-table-header ${style.header}`}>
             <h2>Error: {title}</h2>
             <div className="details-table-links-box">
               <div className="details-table-header-link">
@@ -24,12 +26,11 @@ const ErrorMessage = ({ code, title, subtitle, terms, message }: Props) => {
             </div>
           </div>
 
-          <div className="search-error-main">
-            <div className="search-error-message">
-              <div className="search-error-message-title">{code}</div>
-              <div className="search-error-message-subtitle">
-                {subtitle}{" "}
-                <span className="search-error-highlight">{terms}</span>
+          <div className={style.errorContainer}>
+            <div className={style.message}>
+              <div className={style.title}>{code}</div>
+              <div className={style.subtitle}>
+                {subtitle} <span className={style.highlight}>{terms}</span>
               </div>
 
               <div>{message}</div>

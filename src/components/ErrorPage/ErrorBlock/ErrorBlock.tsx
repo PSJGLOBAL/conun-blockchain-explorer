@@ -2,8 +2,6 @@ import { useLocation } from "react-router-dom"
 
 import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
-import "./ErrorBlock.css"
-
 const ErrorBlock = () => {
   const query = new URLSearchParams(useLocation().search)
   switch (query.get("type")) {

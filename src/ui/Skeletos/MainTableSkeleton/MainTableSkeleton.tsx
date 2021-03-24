@@ -1,24 +1,24 @@
-import "../../../style/css/table-common.css"
-import "./MainTableSkeleton.css"
+import tableStyle from "../../../style/css/table.module.css"
+import skeleton from "./MainTableSkeleton.module.css"
 
 export const BlockTableSkeleton = () => {
   return (
-    <div className="data-table-row skeleton-table">
-      <div className="identicon-cell">&nbsp;</div>
-      <div className="blocknum-cell">&nbsp;</div>
-      <div className="hash-cell">&nbsp;</div>
-      <div className="time-cell">&nbsp;</div>
-      <div className="txncount-cell">&nbsp;</div>
+    <div className={`${tableStyle.row} ${skeleton.table}`}>
+      <div className={tableStyle.identicon}>&nbsp;</div>
+      <div className={tableStyle.blocknum}>&nbsp;</div>
+      <div className={tableStyle.hash}>&nbsp;</div>
+      <div className={tableStyle.time}>&nbsp;</div>
+      <div className={tableStyle.txncount}>&nbsp;</div>
     </div>
   )
 }
 export const TXNTableSkeleton = () => {
   return (
-    <div className="data-table-row skeleton-table">
-      <div className="identicon-cell">&nbsp;</div>
-      <div className="service-cell">&nbsp;</div>
-      <div className="hash-cell">&nbsp;</div>
-      <div className="time-cell">&nbsp;</div>
+    <div className={`${tableStyle.row} ${skeleton.table}`}>
+      <div className={tableStyle.identicon}>&nbsp;</div>
+      <div className={tableStyle.service}>&nbsp;</div>
+      <div className={tableStyle.hash}>&nbsp;</div>
+      <div className={tableStyle.time}>&nbsp;</div>
     </div>
   )
 }

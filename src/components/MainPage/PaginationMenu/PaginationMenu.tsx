@@ -1,4 +1,4 @@
-import "./PaginationMenu.css"
+import style from "./PaginationMenu.module.css"
 
 type Props = {
   doPseudoPaginate: (mode: string) => void
@@ -8,38 +8,38 @@ type Props = {
 
 const PaginationMenu = (props: Props) => {
   return (
-    <div className="pagination-container">
-      <div className="pagination-indicator">
+    <div className={style.pagination}>
+      <div className={style.indicator}>
         {props.max && `${(props.currentPage * 10).toString()} of ${props.max}`}
       </div>
-      <div className="pagination-buttons">
+      <div className={style.buttonBox}>
         <div
-          className="pagination-button pagination-text-cell"
+          className={style.label}
           id="pagination-first"
           onClick={() => {
             props.doPseudoPaginate("first")
           }}
         >
-          <i className="fas fa-caret-left pagination-icon"></i>
-          <i className="fas fa-caret-left pagination-icon"></i>
+          <i className="fas fa-caret-left"></i>
+          <i className="fas fa-caret-left"></i>
         </div>
         <div
-          className="pagination-button pagination-icon-cell"
+          className={style.label}
           id="pagination-previous"
           onClick={() => {
             props.doPseudoPaginate("prev")
           }}
         >
-          <i className="fas fa-caret-left pagination-icon"></i>
+          <i className="fas fa-caret-left"></i>
         </div>
         <div
-          className="pagination-button pagination-icon-cell"
+          className={style.label}
           id="pagination-next"
           onClick={() => {
             props.doPseudoPaginate("next")
           }}
         >
-          <i className="fas fa-caret-right pagination-icon"></i>
+          <i className="fas fa-caret-right"></i>
         </div>
       </div>
     </div>
