@@ -9,9 +9,6 @@ import { ObjectType } from "../../../utility/types"
 
 import tableStyle from "../../../style/css/table.module.css"
 
-// import "./BlockDataBlock.css"
-// import "../../../style/css/table-common.css"
-
 type Props = {
   fullPage: boolean
   data: ObjectType

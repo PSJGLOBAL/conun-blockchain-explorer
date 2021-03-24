@@ -25,21 +25,21 @@ const ExplorerInfoBlock = () => {
         {/* Full Size Cells */}
         <div className={style.largeLayout}>
           <div className={style.row}>
-            <img src={ninjaIcon} alt="" data-tip={"Coin"} />
+            <img src={ninjaIcon} alt="coin" data-tip={"Coin"} />
             <div className={style.title}>Coin</div>
             <div className={style.description}>
               Coin token used for payment of services
             </div>
           </div>
           <div className={style.row}>
-            <img src={familiarIcon} alt="" data-tip={"Drive"} />
+            <img src={familiarIcon} alt="drive" data-tip={"Drive"} />
             <div className={style.title}>Drive</div>
             <div className={style.description}>
               Decentralised peer-to-peer file transfer service
             </div>
           </div>
           <div className={style.row}>
-            <img src={cubeCombIcon} alt="" data-tip={"Engine"} />
+            <img src={cubeCombIcon} alt="engine" data-tip={"Engine"} />
             <div className={style.title}>Engine</div>
             <div className={style.description}>
               Distributed supercomputing service
@@ -49,13 +49,13 @@ const ExplorerInfoBlock = () => {
         {/* Minimized Cells */}
         <div className={style.smallLayout}>
           <div className={style.row}>
-            <img src={ninjaIcon} alt="" data-tip={"Payment of Services"} />
+            <img src={ninjaIcon} alt="coin" data-tip={"Payment of Services"} />
             <div className={style.title}>Coin</div>
           </div>
           <div className={style.row}>
             <img
               src={familiarIcon}
-              alt=""
+              alt="drive"
               data-tip={"Peer-to-peer file transfer"}
             />
             <div className={style.title}>Drive</div>
@@ -63,7 +63,7 @@ const ExplorerInfoBlock = () => {
           <div className={style.row}>
             <img
               src={cubeCombIcon}
-              alt=""
+              alt="engine"
               data-tip={"Distributed Supercomputing"}
             />
             <div className={style.title}>Engine</div>

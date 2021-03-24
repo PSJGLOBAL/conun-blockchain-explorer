@@ -92,7 +92,7 @@ const Search = () => {
           className={style.icon}
           id="search-button"
           src={searchIcon}
-          alt=""
+          alt="search"
           onClick={() => {
             setSearchFail("")
             doAPISearch()

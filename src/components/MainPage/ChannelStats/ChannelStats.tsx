@@ -28,7 +28,7 @@ const ChannelStats = () => {
       {/* Blocks */}
       <div className={style.column}>
         <div className={style.icon}>
-          <img src={blocksIcon} alt="" />
+          <img src={blocksIcon} alt="blocks" />
         </div>
         <div className={style.data}>
           <span id="stats-total-blocks">
@@ -45,7 +45,7 @@ const ChannelStats = () => {
       {/* TXNS */}
       <div className={style.column}>
         <div className={style.icon}>
-          <img src={txnIcon} alt="" />
+          <img src={txnIcon} alt="transactions" />
         </div>
         <div className={style.data}>
           <span id="stats-total-txns">

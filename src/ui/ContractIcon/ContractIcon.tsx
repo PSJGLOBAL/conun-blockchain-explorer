@@ -27,7 +27,7 @@ const ContractIcon = ({ serviceType }: Props) => {
             src={ninjaIcon}
             data-tip={"Coin"}
             className={style.iconImg}
-            alt=""
+            alt="coin"
           />
         </span>
       )
@@ -38,7 +38,7 @@ const ContractIcon = ({ serviceType }: Props) => {
             src={familiarIcon}
             data-tip={"Conun Drive"}
             className={style.iconImg}
-            alt=""
+            alt="drive"
           />
         </span>
       )
@@ -49,7 +49,7 @@ const ContractIcon = ({ serviceType }: Props) => {
             src={defaultIcon}
             data-tip={"Contract Deployment"}
             className={style.iconImg}
-            alt=""
+            alt="icon"
           />
         </span>
       )

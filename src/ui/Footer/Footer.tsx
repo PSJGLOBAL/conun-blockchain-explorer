@@ -19,42 +19,42 @@ const Footer = () => {
         <div>Powered by Conun</div>
         <div className={style.contactLinks}>
           <a href="https://t.me/conun_global" target="_blank" rel="noreferrer">
-            <img src={tele} alt=""></img>
+            <img src={tele} alt="telegram"></img>
           </a>
           <a
             href="https://www.facebook.com/conunglobal/"
             target="_blank"
             rel="noreferrer"
           >
-            <img src={face} alt=""></img>
+            <img src={face} alt="facebook"></img>
           </a>
           <a
             href="https://twitter.com/conunglobal"
             target="_blank"
             rel="noreferrer"
           >
-            <img src={twit} alt=""></img>
+            <img src={twit} alt="twitter"></img>
           </a>
           <a
             href="https://open.kakao.com/o/gCsycmhb"
             target="_blank"
             rel="noreferrer"
           >
-            <img src={kack} alt=""></img>
+            <img src={kack} alt="kakao"></img>
           </a>
           <a
             href="https://github.com/CONUN-Global/CONUN"
             target="_blank"
             rel="noreferrer"
           >
-            <img src={git} alt=""></img>
+            <img src={git} alt="github"></img>
           </a>
           <a
             href="https://discord.gg/VvXvQfa3Za"
             target="_blank"
             rel="noreferrer"
           >
-            <img src={disc} alt=""></img>
+            <img src={disc} alt="disco"></img>
           </a>
         </div>
         <div>Conun Blockchain Explorer V.2.0.0</div>
