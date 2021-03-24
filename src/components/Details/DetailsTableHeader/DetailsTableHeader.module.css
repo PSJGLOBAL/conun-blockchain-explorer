@@ -1,0 +1,28 @@
+.header {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--hilite);
+  border-radius: var(--radius) var(--radius) 0 0;
+
+  text-align: center;
+  color: white;
+}
+
+.linkBox {
+  width: 100px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.link i {
+  color: white;
+  font-size: 14pt;
+  text-decoration: none;
+  transform: rotateY(-90);
+  cursor: pointer;
+}

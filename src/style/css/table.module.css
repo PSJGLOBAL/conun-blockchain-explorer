@@ -10,10 +10,12 @@
 }
 
 .header {
-  /* z-index: 5; */
-  background-color: white;
-  border: none;
+  border: none !important;
   animation: none !important;
+}
+
+.still {
+  animation: none;
 }
 
 .row {
@@ -90,7 +92,7 @@
   width: 40px;
 }
 
-.info-table-link {
+.link {
   text-decoration: none;
   color: var(--higreen);
 }

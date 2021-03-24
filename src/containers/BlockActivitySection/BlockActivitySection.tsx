@@ -15,8 +15,6 @@ import { setBlockActivityData, setChannelStats } from "../../store/actions"
 
 import tableStyle from "../../style/css/table.module.css"
 
-import "../../pages/MainPage/MainPage.css"
-
 import { State } from "../../utility/types"
 
 const BlockActivitySection = () => {

@@ -6,6 +6,7 @@ import ContractIcon from "../../../ui/ContractIcon/ContractIcon"
 import { State, ContractType } from "../../../utility/types"
 
 import style from "./ContractSection.module.css"
+import tableStyle from "../../../style/css/table.module.css"
 
 const ContractSection = () => {
   const contracts = useSelector((state: State) => state.ctx.contractData)
@@ -15,7 +16,7 @@ const ContractSection = () => {
       <div className="section-title">
         <span>Smart Contracts</span>
       </div>
-      <div className="data-table-row data-table-header contracts-header">
+      <div className={`${tableStyle.row} ${tableStyle.header}`}>
         <div className={style.name}>Name</div>
         <div className={style.icon}>Icon</div>
         <div className={style.version}>Versions</div>
@@ -23,13 +24,13 @@ const ContractSection = () => {
       {contracts.length > 0 &&
         contracts.map((ct: ContractType) => (
           <div
-            className="data-table-row no-animate smart-contract-row"
+            className={`${tableStyle.row} ${tableStyle.still}`}
             key={ct.chaincodename}
           >
             {/* Contract Name */}
             <div className={style.name}>
               <Link
-                className="info-table-link"
+                className={tableStyle.link}
                 to={`/contracts/${ct.chaincodename}`}
               >
                 {ct.chaincodename}

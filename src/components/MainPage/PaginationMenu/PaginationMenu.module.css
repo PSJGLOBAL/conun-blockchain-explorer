@@ -1,16 +1,16 @@
-.pagination-container {
+.pagination {
   display: flex;
   flex-direction: row;
   user-select: none;
 }
 
-.pagination-buttons {
+.buttonBox {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.pagination-button {
+.buttonBox div {
   height: 10px;
   margin: 2px;
   padding: 7px;
@@ -23,31 +23,27 @@
   border-radius: 5px;
 }
 
-.pagination-button:hover {
+.buttonBox div:hover {
   background-color: var(--hilite);
 }
 
-.pagination-indicator {
+.indicator {
   margin-right: 15px;
 
   align-self: flex-end;
   text-align: center;
 }
-.pagination-text-cell {
+.label {
   width: 30px;
 }
 
-.pagination-icon-cell {
-  width: 20px;
-}
-
-.pagination-icon {
+.label i {
   font-size: 16pt;
   color: white;
 }
 
 @media only screen and (max-width: 400px) {
-  .pagination-container {
+  .pagination {
     flex-direction: column;
   }
 }

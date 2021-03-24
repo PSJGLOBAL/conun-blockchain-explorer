@@ -6,68 +6,68 @@ import kack from "../../style/images/kakaoIcon.png"
 import git from "../../style/images/githubIcon.png"
 import disc from "../../style/images/discordIcon.png"
 import worled from "../../style/images/world.svg"
-import "./Footer.css"
+import style from "./Footer.module.css"
 
 const Footer = () => {
   return (
     <footer className="textured-bkg">
-      <div className="footer-world">
+      <div className={style.world}>
         <img src={worled} alt="The whole world as a pitcher" />
       </div>
-      <div className="footer-misc-block world-bkg">
-        <img className="footer-logo" src={logo} alt="Conun Logo" />
+      <div className={style.general}>
+        <img className={style.logo} src={logo} alt="Conun Logo" />
         <div>Powered by Conun</div>
-        <div className="footer-contact-links">
+        <div className={style.contactLinks}>
           <a href="https://t.me/conun_global" target="_blank" rel="noreferrer">
-            <img className="footer-contact-link-img" src={tele} alt=""></img>
+            <img src={tele} alt=""></img>
           </a>
           <a
             href="https://www.facebook.com/conunglobal/"
             target="_blank"
             rel="noreferrer"
           >
-            <img className="footer-contact-link-img" src={face} alt=""></img>
+            <img src={face} alt=""></img>
           </a>
           <a
             href="https://twitter.com/conunglobal"
             target="_blank"
             rel="noreferrer"
           >
-            <img className="footer-contact-link-img" src={twit} alt=""></img>
+            <img src={twit} alt=""></img>
           </a>
           <a
             href="https://open.kakao.com/o/gCsycmhb"
             target="_blank"
             rel="noreferrer"
           >
-            <img className="footer-contact-link-img" src={kack} alt=""></img>
+            <img src={kack} alt=""></img>
           </a>
           <a
             href="https://github.com/CONUN-Global/CONUN"
             target="_blank"
             rel="noreferrer"
           >
-            <img className="footer-contact-link-img" src={git} alt=""></img>
+            <img src={git} alt=""></img>
           </a>
           <a
             href="https://discord.gg/VvXvQfa3Za"
             target="_blank"
             rel="noreferrer"
           >
-            <img className="footer-contact-link-img" src={disc} alt=""></img>
+            <img src={disc} alt=""></img>
           </a>
         </div>
         <div>Conun Blockchain Explorer V.2.0.0</div>
       </div>
 
-      <div className="footer-link-block">
-        <div className="footer-title">Company</div>
+      <div className={style.internalLinks}>
+        <div className={style.title}>Company</div>
         <div>
           <a
             href="https://conun.io/#overview"
             target="_blank"
             rel="noreferrer"
-            className="footer-link"
+            className={style.link}
           >
             About Us
           </a>
@@ -77,7 +77,7 @@ const Footer = () => {
             href="https://conun.io/contactus"
             target="_blank"
             rel="noreferrer"
-            className="footer-link"
+            className={style.link}
           >
             Contact Us
           </a>
@@ -87,19 +87,19 @@ const Footer = () => {
             href="https://conun.io/policy/termsandcondition"
             target="_blank"
             rel="noreferrer"
-            className="footer-link"
+            className={style.link}
           >
             Terms of Service
           </a>
         </div>
         <div></div>
       </div>
-      <div className="footer-link-block">
-        <div className="footer-title">Community</div>
+      <div className={style.internalLinks}>
+        <div className={style.title}>Community</div>
         {/* <div data-tip={"Not yet implemented"}>Developer Documentation</div> */}
         <div>
           <a
-            className="footer-link"
+            className={style.link}
             href="https://conun.io/"
             target="_blank"
             rel="noreferrer"
@@ -112,14 +112,14 @@ const Footer = () => {
             href="https://discord.gg/VvXvQfa3Za"
             target="_blank"
             rel="noreferrer"
-            className="footer-link"
+            className={style.link}
           >
             Discord
           </a>
         </div>
         <div></div>
       </div>
-      {/* <div className="footer-link-block">
+      {/* <div className={style.internalLinks}>
         <div className="footer-title">Products</div>
         <div data-tip={"Not yet implemented"}>Explorer</div>
         <div data-tip={"Not yet implemented"}>Coin</div>

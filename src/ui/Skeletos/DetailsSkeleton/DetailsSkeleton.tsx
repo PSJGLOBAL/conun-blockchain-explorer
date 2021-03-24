@@ -1,10 +1,10 @@
-import "../../../pages/Details/Details.css"
-
+import style from "../../../components/Details/Details.module.css"
+import skeleton from "../MainTableSkeleton/MainTableSkeleton.module.css"
 const DetailsSkeleton = () => {
   return (
-    <div className="details-table-row skeleton-table">
-      <div className="info-col ">&nbsp;</div>
-      <div className="info-col">&nbsp;</div>
+    <div className={`${style.row} ${skeleton.table}`}>
+      <div className={style.col}>&nbsp;</div>
+      <div className={style.col}>&nbsp;</div>
     </div>
   )
 }

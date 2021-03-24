@@ -10,8 +10,6 @@ import TableButton from "../../components/utilityComponents/TableButton/TableBut
 
 import { setTxnActivityData, setChannelStats } from "../../store/actions"
 
-import "../../pages/MainPage/MainPage.css"
-
 import { State } from "../../utility/types"
 
 const TxnActivitySection = () => {

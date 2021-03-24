@@ -4,8 +4,6 @@ import StatsBlock from "../../containers/StatsBlock/Statsblock"
 import BlockActivitySection from "../../containers/BlockActivitySection/BlockActivitySection"
 import TxnActivitySection from "../../containers/TxnActivitySection/TxnActivitySection"
 
-import "./MainPage.css"
-
 const MainPage = () => {
   return (
     <main>
