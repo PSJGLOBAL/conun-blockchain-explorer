@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useHistory } from "react-router-dom"
+import { useHistory, NavLink } from "react-router-dom"
 import { BASEURL } from "../../utility/config.json"
 
 import style from "./HeadBar.module.css"
@@ -46,27 +46,26 @@ const HeadBar = () => {
           }
         >
           <div className={style.link}>
-            <span
-              id="headbar-link-main"
+            <NavLink
+              to="/"
               onClick={() => {
                 setShow(false)
-                goHome()
               }}
             >
               Main
-            </span>
+            </NavLink>
           </div>
           <div className={style.link}>
             {/* This link will point to /contracts, target=same, when that page is finished */}
-            <a
+            <NavLink
               id="headbar-link-contracts"
-              href="/contracts"
+              to="/contracts"
               onClick={() => {
                 setShow(false)
               }}
             >
               Smart Contracts
-            </a>
+            </NavLink>
           </div>
           <div className={style.link}>
             <a
