@@ -60,19 +60,23 @@ const TxnDetailsTable = ({
       <div className={style.row}>
         <div className={style.key}>Contract:</div>
         <div className={style.selectVal}>
-          <Link to={`/contracts/${chaincodename}`}>
+          {chaincodename ? (
+            <Link to={`/contracts/${chaincodename}`}>
+              <span>
+                <ContractIcon serviceType={chaincodename} />
+              </span>
+            </Link>
+          ) : (
             <span>
               <ContractIcon serviceType={chaincodename} />
             </span>
-          </Link>
+          )}
           <span>{chaincodename}</span>
         </div>
       </div>
       <div className={`${style.row} ${style.scrolly}`}>
         <div className={style.key}>Payload Proposal Hash:</div>
-        <div className={style.selectVal}>
-          {payload_proposal_hash}
-        </div>
+        <div className={style.selectVal}>{payload_proposal_hash}</div>
       </div>
     </div>
   )

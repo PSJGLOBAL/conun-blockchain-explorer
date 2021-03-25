@@ -1,5 +1,16 @@
 .header {
+  width: 100%;
+
   background-color: var(--lolite);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.header h2 {
+  width: 90%;
+  color: white;
 }
 
 .errorContainer {
@@ -34,6 +45,15 @@
 }
 .message > div {
   margin: 5px;
+}
+
+.linkBox {
+  display: flex;
+  justify-self: flex-end;
+}
+
+.link i {
+  color: white;
 }
 
 .highlight {
