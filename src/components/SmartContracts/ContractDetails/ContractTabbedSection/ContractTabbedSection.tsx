@@ -33,7 +33,7 @@ const ContractTabbedSection = ({ contractName }: Props) => {
   return (
     <>
       <TabMenu
-        tabs={["Transactions"]}
+        tabs={["Transactions", "Code"]}
         activeTab={activeTab}
         doChangeTab={setActiveTab}
       />
