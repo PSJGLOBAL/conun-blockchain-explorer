@@ -13,7 +13,6 @@ import { logger } from "../../../utility/functions"
 
 import style from "../Details.module.css"
 
-
 interface Props {
   txnID?: string | null
 }
@@ -56,13 +55,15 @@ const TransactionDetails = (props: Props) => {
       <DetailsTableHeader title={"Transaction Details"} />
       {txnData ? (
         <TxnDetailsTable
-          txhash={txnData.txhash}
-          createdt={txnData.createdt}
-          validation_code={txnData.validation_code}
-          channelname={txnData.channelname}
           chaincodename={txnData.chaincodename}
-          creator_msp_id={txnData.creator_msp_id}
+          createdt={txnData.createdt}
           payload_proposal_hash={txnData.payload_proposal_hash}
+          tx_action={txnData.tx_action}
+          tx_value={txnData.tx_value}
+          tx_to={txnData.tx_to}
+          tx_from={txnData.tx_from}
+          txhash={txnData.txhash}
+          validation_code={txnData.validation_code}
         />
       ) : (
         <DuplicateSkeleton howMany={7}>

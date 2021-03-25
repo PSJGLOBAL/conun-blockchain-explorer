@@ -5,13 +5,15 @@ import TimeStampCell from "../../../components/utilityComponents/TimeStampCell/T
 import style from "../Details.module.css"
 
 type Props = {
-  txhash: string | number
-  createdt: string | number
-  validation_code: string
-  channelname: string | number
   chaincodename: string | number
-  creator_msp_id: string | number
+  createdt: string | number
   payload_proposal_hash: string | number
+  tx_action: string
+  tx_value: string
+  tx_to: string
+  tx_from: string
+  txhash: string | number
+  validation_code: string
 }
 
 const ValidityIcon = ({ validity }: { validity: string }) => {
@@ -37,6 +39,10 @@ const TxnDetailsTable = ({
   validation_code,
   chaincodename,
   payload_proposal_hash,
+  tx_to,
+  tx_from,
+  tx_action,
+  tx_value
 }: Props) => {
   return (
     <div>
@@ -73,6 +79,22 @@ const TxnDetailsTable = ({
           )}
           <span>{chaincodename}</span>
         </div>
+      </div>
+      <div className={style.row}>
+        <div className={style.key}>To:</div>
+        <div className={style.selectVal}>{tx_to}</div>
+      </div>
+      <div className={style.row}>
+        <div className={style.key}>From:</div>
+        <div className={style.selectVal}>{tx_from}</div>
+      </div>
+      <div className={style.row}>
+        <div className={style.key}>Action:</div>
+        <div className={style.val}>{tx_action}</div>
+      </div>
+      <div className={style.row}>
+        <div className={style.key}>Value:</div>
+        <div className={style.val}>{tx_value}</div>
       </div>
       <div className={`${style.row} ${style.scrolly}`}>
         <div className={style.key}>Payload Proposal Hash:</div>
