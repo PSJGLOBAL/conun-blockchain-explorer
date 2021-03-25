@@ -1,84 +1,67 @@
 import { useState } from "react"
-import { useHistory } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { BASEURL } from "../../utility/config.json"
 
-import "./HeadBar.css"
+import style from "./HeadBar.module.css"
+
 import logo from "../../style/images/conun-logo.png"
 
 const HeadBar = () => {
   const [show, setShow] = useState<boolean>(false)
-  const history = useHistory()
-
-  // This function prevents the user from going to the home page if they're already there
-  // This is important because otherwise repeatedly clicking home messes up the websocket
-  function goHome() {
-    const location = history.location.pathname
-    if (location !== "/") {
-      history.push("/")
-    }
-  }
 
   return (
-    <nav id="nav" className={show ? "nav-show" : "nav-hide"}>
+    <nav id={style.nav} className={show ? style.show : style.hide}>
       <div
-        className={show ? "nav-container nav-show" : "nav-container nav-hide"}
+        className={
+          show
+            ? `${style.container} ${style.show}`
+            : `${style.container} ${style.hide}`
+        }
       >
-        <div className="nav-logo-block">
-          <img
-            id="logo-home-link"
-            className="nav-logo"
-            src={logo}
-            alt="Conun Logo"
-            onClick={() => {
-              setShow(false)
-              goHome()
-            }}
-          />
+        <div>
+          <NavLink to="/" onClick={() => setShow(false)}>
+            <img
+              id="logo-home-link"
+              className={style.logo}
+              src={logo}
+              alt="Conun Logo"
+            />
+          </NavLink>
         </div>
-        <div className={show ? "nav-menu nav-show" : "nav-menu nav-hide"}>
-          <div className="nav-link">
-            <span
-              id="headbar-link-main"
-              onClick={() => {
-                setShow(false)
-                goHome()
-              }}
-            >
+        <div
+          className={
+            show ? `${style.menu} ${style.show}` : `${style.menu} ${style.hide}`
+          }
+        >
+          <div className={style.link}>
+            <NavLink to="/" onClick={() => setShow(false)}>
               Main
-            </span>
+            </NavLink>
           </div>
-          <div className="nav-link">
+          <div className={style.link}>
             {/* This link will point to /contracts, target=same, when that page is finished */}
-            <a
+            <NavLink
               id="headbar-link-contracts"
-              href="/contracts"
-              onClick={() => {
-                setShow(false)
-              }}
+              to="/contracts"
+              onClick={() => setShow(false)}
             >
               Smart Contracts
-            </a>
+            </NavLink>
           </div>
-          <div className="nav-link">
+          <div className={style.link}>
+            {/* Use NavLink when this becomes internal */}
             <a
               id="headbar-link-docs"
               href={`${BASEURL}-docs/`}
               target="_blank"
               rel="noreferrer"
-              onClick={() => {
-                setShow(false)
-              }}
+              onClick={() => setShow(false)}
             >
               Docs
             </a>
           </div>
         </div>
-        <div
-          className="nav-toggler"
-          onClick={() => {
-            setShow(!show)
-          }}
-        >
+        <div className={style.toggler} onClick={() => setShow(!show)}>
           {show ? (
             <i className="fas fa-ellipsis-h"></i>
           ) : (
