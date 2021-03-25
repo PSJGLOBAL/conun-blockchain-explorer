@@ -69,7 +69,7 @@ main {
 
 .app {
   width: 1400px;
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - 160px);
 }
 
 .splitcolumns {
