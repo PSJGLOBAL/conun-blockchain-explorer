@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useHistory, NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { BASEURL } from "../../utility/config.json"
 
 import style from "./HeadBar.module.css"
@@ -8,16 +8,6 @@ import logo from "../../style/images/conun-logo.png"
 
 const HeadBar = () => {
   const [show, setShow] = useState<boolean>(false)
-  const history = useHistory()
-
-  // This function prevents the user from going to the home page if they're already there
-  // This is important because otherwise repeatedly clicking home messes up the websocket
-  function goHome() {
-    const location = history.location.pathname
-    if (location !== "/") {
-      history.push("/")
-    }
-  }
 
   return (
     <nav id={style.nav} className={show ? style.show : style.hide}>
@@ -29,16 +19,19 @@ const HeadBar = () => {
         }
       >
         <div>
-          <img
-            id="logo-home-link"
-            className={style.logo}
-            src={logo}
-            alt="Conun Logo"
+          <NavLink
+            to="/"
             onClick={() => {
               setShow(false)
-              goHome()
             }}
-          />
+          >
+            <img
+              id="logo-home-link"
+              className={style.logo}
+              src={logo}
+              alt="Conun Logo"
+            />
+          </NavLink>
         </div>
         <div
           className={
