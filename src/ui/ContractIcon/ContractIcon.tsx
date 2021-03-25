@@ -1,4 +1,4 @@
-import { getContractType, logger } from "../../utility/functions"
+import { getContractType } from "../../utility/functions"
 
 import ninjaIcon from "../../style/images/extra_icons/icon_ninja_star.svg"
 import defaultIcon from "../../style/images/extra_icons/icon_wibbly_arrows.svg"
@@ -17,15 +17,11 @@ const ContractIcon = ({ serviceType }: Props) => {
     alignItems: "center",
     color: "black",
   }
-  logger("CONTRACT ICON: ", "normal", serviceType)
 
-  let contractType
+  let contractType = "contract missing"
   if (serviceType) {
     contractType = getContractType(serviceType.toString())
-  } else {
-    contractType = "contract missing"
   }
-
   switch (contractType) {
     case "coin":
       return (
