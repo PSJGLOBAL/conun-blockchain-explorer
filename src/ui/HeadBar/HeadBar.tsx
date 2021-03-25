@@ -2,7 +2,10 @@ import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { BASEURL } from "../../utility/config.json"
 
-import "./HeadBar.css"
+// import "./HeadBar.css"
+
+import style from "./HeadBar.module.css"
+
 import logo from "../../style/images/conun-logo.png"
 
 const HeadBar = () => {
@@ -19,14 +22,18 @@ const HeadBar = () => {
   }
 
   return (
-    <nav id="nav" className={show ? "nav-show" : "nav-hide"}>
+    <nav id={style.nav} className={show ? style.show : style.hide}>
       <div
-        className={show ? "nav-container nav-show" : "nav-container nav-hide"}
+        className={
+          show
+            ? `${style.container} ${style.show}`
+            : `${style.container} ${style.hide}`
+        }
       >
-        <div className="nav-logo-block">
+        <div>
           <img
             id="logo-home-link"
-            className="nav-logo"
+            className={style.logo}
             src={logo}
             alt="Conun Logo"
             onClick={() => {
@@ -35,8 +42,12 @@ const HeadBar = () => {
             }}
           />
         </div>
-        <div className={show ? "nav-menu nav-show" : "nav-menu nav-hide"}>
-          <div className="nav-link">
+        <div
+          className={
+            show ? `${style.menu} ${style.show}` : `${style.menu} ${style.hide}`
+          }
+        >
+          <div className={style.link}>
             <span
               id="headbar-link-main"
               onClick={() => {
@@ -47,7 +58,7 @@ const HeadBar = () => {
               Main
             </span>
           </div>
-          <div className="nav-link">
+          <div className={style.link}>
             {/* This link will point to /contracts, target=same, when that page is finished */}
             <a
               id="headbar-link-contracts"
@@ -59,7 +70,7 @@ const HeadBar = () => {
               Smart Contracts
             </a>
           </div>
-          <div className="nav-link">
+          <div className={style.link}>
             <a
               id="headbar-link-docs"
               href={`${BASEURL}-docs/`}
@@ -74,7 +85,7 @@ const HeadBar = () => {
           </div>
         </div>
         <div
-          className="nav-toggler"
+          className={style.toggler}
           onClick={() => {
             setShow(!show)
           }}
