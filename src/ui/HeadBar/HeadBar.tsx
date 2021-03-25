@@ -2,8 +2,6 @@ import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { BASEURL } from "../../utility/config.json"
 
-// import "./HeadBar.css"
-
 import style from "./HeadBar.module.css"
 
 import logo from "../../style/images/conun-logo.png"
