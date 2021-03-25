@@ -19,12 +19,7 @@ const HeadBar = () => {
         }
       >
         <div>
-          <NavLink
-            to="/"
-            onClick={() => {
-              setShow(false)
-            }}
-          >
+          <NavLink to="/" onClick={() => setShow(false)}>
             <img
               id="logo-home-link"
               className={style.logo}
@@ -39,12 +34,7 @@ const HeadBar = () => {
           }
         >
           <div className={style.link}>
-            <NavLink
-              to="/"
-              onClick={() => {
-                setShow(false)
-              }}
-            >
+            <NavLink to="/" onClick={() => setShow(false)}>
               Main
             </NavLink>
           </div>
@@ -53,33 +43,25 @@ const HeadBar = () => {
             <NavLink
               id="headbar-link-contracts"
               to="/contracts"
-              onClick={() => {
-                setShow(false)
-              }}
+              onClick={() => setShow(false)}
             >
               Smart Contracts
             </NavLink>
           </div>
           <div className={style.link}>
+            {/* Use NavLink when this becomes internal */}
             <a
               id="headbar-link-docs"
               href={`${BASEURL}-docs/`}
               target="_blank"
               rel="noreferrer"
-              onClick={() => {
-                setShow(false)
-              }}
+              onClick={() => setShow(false)}
             >
               Docs
             </a>
           </div>
         </div>
-        <div
-          className={style.toggler}
-          onClick={() => {
-            setShow(!show)
-          }}
-        >
+        <div className={style.toggler} onClick={() => setShow(!show)}>
           {show ? (
             <i className="fas fa-ellipsis-h"></i>
           ) : (
