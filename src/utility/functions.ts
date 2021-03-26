@@ -73,6 +73,7 @@ export const getContractType = (serviceType: string | undefined) => {
     case "drive":
       return "drive"
 
+    case undefined:
     default:
       return "basic"
   }

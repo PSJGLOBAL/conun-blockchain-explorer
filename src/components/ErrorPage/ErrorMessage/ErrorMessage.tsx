@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom"
 
 import style from "./Error.module.css"
+import detailStyle from "../../Details/Details.module.css"
 
 type Props = {
   code: string | number
@@ -14,11 +15,11 @@ const ErrorMessage = ({ code, title, subtitle, terms, message }: Props) => {
   return (
     <div className="section-block section-full">
       <section className="section-centered">
-        <div className="details-table">
-          <div className={`details-table-header ${style.header}`}>
+        <div className={detailStyle.table}>
+          <div className={`${style.header}`}>
             <h2>Error: {title}</h2>
-            <div className="details-table-links-box">
-              <div className="details-table-header-link">
+            <div className={style.linkBox}>
+              <div className={style.link}>
                 <NavLink to="/">
                   <i className="fas fa-home"></i>
                 </NavLink>

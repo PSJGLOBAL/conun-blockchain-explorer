@@ -8,8 +8,8 @@
 
   display: grid;
   grid-template-columns: 1fr 5fr;
-  justify-items: start;
-  align-items: center;
+  justify-items: flex-start;
+  align-content: center;
 
   border-bottom: 1px solid var(--bkg);
   box-sizing: border-box;
@@ -22,8 +22,9 @@
 .row div {
   margin: 5px;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 .val {
   padding-left: 10px;
@@ -37,12 +38,19 @@
 
 .key {
   color: var(--hiblue);
+  align-self: center;
+  justify-self: flex-end;
 }
 
 .link {
   color: var(--higreen);
   font-family: monospace;
   text-decoration: none;
+}
+
+.contract {
+  display: flex;
+  align-items: center;
 }
 
 .validIcon {
@@ -73,4 +81,11 @@
   /* Invalid */
   background-color: rgb(255, 228, 232);
   color: rgb(235, 135, 135);
+}
+
+.txLink {
+  color: var(--higreen);
+  font-family: monospace;
+  text-decoration: none;
+  margin: 5px 0;
 }

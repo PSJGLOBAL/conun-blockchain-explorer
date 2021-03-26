@@ -7,7 +7,7 @@ import familiarIcon from "../../style/images/extra_icons/icon_i_know_this_one.sv
 import style from "./ContractIcon.module.css"
 
 type Props = {
-  serviceType: string | number
+  serviceType: string | number | undefined
 }
 
 const ContractIcon = ({ serviceType }: Props) => {
@@ -15,10 +15,13 @@ const ContractIcon = ({ serviceType }: Props) => {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    color: "black",
   }
 
-  const contractType = getContractType(serviceType.toString())
-
+  let contractType = "contract missing"
+  if (serviceType) {
+    contractType = getContractType(serviceType.toString())
+  }
   switch (contractType) {
     case "coin":
       return (
@@ -54,7 +57,7 @@ const ContractIcon = ({ serviceType }: Props) => {
         </span>
       )
     default:
-      return <span style={spanStyle}>{serviceType}</span>
+      return <span style={spanStyle}>{contractType}</span>
   }
 }
 
