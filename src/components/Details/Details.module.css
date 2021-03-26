@@ -22,8 +22,9 @@
 .row div {
   margin: 5px;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 .val {
   padding-left: 10px;
@@ -37,6 +38,7 @@
 
 .key {
   color: var(--hiblue);
+  align-self: flex-start;
 }
 
 .link {
@@ -73,4 +75,11 @@
   /* Invalid */
   background-color: rgb(255, 228, 232);
   color: rgb(235, 135, 135);
+}
+
+.txLink {
+  color: var(--higreen);
+  font-family: monospace;
+  text-decoration: none;
+  margin: 5px 0;
 }

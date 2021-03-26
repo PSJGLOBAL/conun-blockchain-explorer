@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom"
+
+import DetailsTableRow from "../DetailsTableRow/DetailsTableRow"
 import ContractIcon from "../../../ui/ContractIcon/ContractIcon"
 import TimeStampCell from "../../../components/utilityComponents/TimeStampCell/TimeStampCell"
 
@@ -42,64 +44,41 @@ const TxnDetailsTable = ({
   tx_to,
   tx_from,
   tx_action,
-  tx_value
+  tx_value,
 }: Props) => {
   return (
     <div>
-      <div className={`${style.row} ${style.scrolly}`}>
-        <div className={style.key}>Transaction Hash:</div>
-        <div className={style.selectVal}>{txhash}</div>
-      </div>
-      <div className={style.row}>
-        <div className={style.key}>Timestamp:</div>
-        <div className={style.selectVal}>
-          <TimeStampCell time={createdt} timeStyle="round" />
-          <span>({new Date(createdt).toUTCString()})</span>
-        </div>
-      </div>
-      <div className={style.row}>
-        <div className={style.key}>Validity:</div>
-        <div className={style.val}>
-          <ValidityIcon validity={validation_code} />
-        </div>
-      </div>
-      <div className={style.row}>
-        <div className={style.key}>Contract:</div>
-        <div className={style.selectVal}>
-          {chaincodename ? (
-            <Link to={`/contracts/${chaincodename}`}>
-              <span>
-                <ContractIcon serviceType={chaincodename} />
-              </span>
-            </Link>
-          ) : (
+      <DetailsTableRow keyCell="Transaction Hash" value={txhash} select />
+      <DetailsTableRow keyCell="Timestamp">
+        <TimeStampCell time={createdt} timeStyle="round" />
+        <span>({new Date(createdt).toUTCString()})</span>
+      </DetailsTableRow>
+      <DetailsTableRow keyCell="Validity">
+        <ValidityIcon validity={validation_code} />
+      </DetailsTableRow>
+      <DetailsTableRow keyCell="Contract" select>
+        {chaincodename ? (
+          <Link to={`/contracts/${chaincodename}`}>
             <span>
               <ContractIcon serviceType={chaincodename} />
             </span>
-          )}
-          <span>{chaincodename}</span>
-        </div>
-      </div>
-      <div className={style.row}>
-        <div className={style.key}>To:</div>
-        <div className={style.selectVal}>{tx_to}</div>
-      </div>
-      <div className={style.row}>
-        <div className={style.key}>From:</div>
-        <div className={style.selectVal}>{tx_from}</div>
-      </div>
-      <div className={style.row}>
-        <div className={style.key}>Action:</div>
-        <div className={style.val}>{tx_action}</div>
-      </div>
-      <div className={style.row}>
-        <div className={style.key}>Value:</div>
-        <div className={style.val}>{tx_value}</div>
-      </div>
-      <div className={`${style.row} ${style.scrolly}`}>
-        <div className={style.key}>Payload Proposal Hash:</div>
-        <div className={style.selectVal}>{payload_proposal_hash}</div>
-      </div>
+          </Link>
+        ) : (
+          <span>
+            <ContractIcon serviceType={chaincodename} />
+          </span>
+        )}
+        <span>{chaincodename}</span>
+      </DetailsTableRow>
+      <DetailsTableRow keyCell="To" value={tx_to} select scroll />
+      <DetailsTableRow keyCell="From" value={tx_from} select scroll />
+      <DetailsTableRow keyCell="Action" value={tx_action} />
+      <DetailsTableRow keyCell="Value" value={tx_value} />
+      <DetailsTableRow
+        keyCell="Payload Proposal Hash"
+        value={payload_proposal_hash}
+        scroll
+      />
     </div>
   )
 }
