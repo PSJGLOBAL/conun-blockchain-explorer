@@ -61,8 +61,7 @@ const TxnDetailsTable = ({
     <div>
       <DetailsTableRow keyCell="Transaction Hash" value={txhash} select />
       <DetailsTableRow keyCell="Timestamp">
-        <TimeStampCell time={createdt} timeStyle="round" />
-        <span>({new Date(createdt).toUTCString()})</span>
+        <TimeStampCell time={createdt} timeStyle="round" elaborate />
       </DetailsTableRow>
       <DetailsTableRow keyCell="Validity">
         <ValidityIcon validity={validation_code} />

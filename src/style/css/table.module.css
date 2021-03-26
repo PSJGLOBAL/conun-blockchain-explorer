@@ -78,7 +78,10 @@
   width: 60px;
 }
 .largeTime {
-  max-width: 200px;
+  width: 360px;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
 }
 
 .txncount {
