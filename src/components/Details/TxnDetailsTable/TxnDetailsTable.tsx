@@ -83,10 +83,14 @@ const TxnDetailsTable = ({
           <span>{chaincodename}</span>
         </span>
       </DetailsTableRow>
-      <DetailsTableRow keyCell="To" value={tx_to} select scroll />
-      <DetailsTableRow keyCell="From" value={tx_from} select scroll />
-      <DetailsTableRow keyCell="Action" value={tx_action} />
-      <DetailsTableRow keyCell="Value" value={value(tx_value, tx_action)} />
+      {tx_to && <DetailsTableRow keyCell="To" value={tx_to} select scroll />}
+      {tx_from && (
+        <DetailsTableRow keyCell="From" value={tx_from} select scroll />
+      )}
+      {tx_action && <DetailsTableRow keyCell="Action" value={tx_action} />}
+      {tx_value && (
+        <DetailsTableRow keyCell="Value" value={value(tx_value, tx_action)} />
+      )}
       <DetailsTableRow
         keyCell="Payload Proposal Hash"
         value={payload_proposal_hash}
