@@ -1,6 +1,7 @@
 import { BLOCK_ACTIVITY_DATA, ADD_NEW_BLOCK } from "../actions/actionTypes"
 
 import { ObjectType } from "../../utility/types"
+import { logger } from "../../utility/functions"
 
 // In TS an action must be of a strict format. Set them here:
 type Action =
@@ -46,6 +47,7 @@ const blockReducer = (state = initialState, action: Action) => {
       for (let i = 0; i < updatedBlockData.length; i++) {
         let old = updatedBlockData[i]
         if (old.blocknum === action.payload.newBlockData.blocknum) {
+          logger("BLOCK REDUCER: Duplicates found", "warn")
           return {
             ...state,
             blockActivityData: updatedBlockData,
