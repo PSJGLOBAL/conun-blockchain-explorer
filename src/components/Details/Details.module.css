@@ -39,12 +39,18 @@
 .key {
   color: var(--hiblue);
   align-self: flex-start;
+  justify-self: flex-end;
 }
 
 .link {
   color: var(--higreen);
   font-family: monospace;
   text-decoration: none;
+}
+
+.contract {
+  display: flex;
+  align-items: center;
 }
 
 .validIcon {

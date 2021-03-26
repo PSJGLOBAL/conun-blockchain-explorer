@@ -35,6 +35,17 @@ const ValidityIcon = ({ validity }: { validity: string }) => {
   )
 }
 
+const value = (value: string, action: string) => {
+  switch (action) {
+    case "Transfer":
+    case "Mint":
+      return `${value} CON`
+
+    default:
+      return value
+  }
+}
+
 const TxnDetailsTable = ({
   txhash,
   createdt,
@@ -57,23 +68,25 @@ const TxnDetailsTable = ({
         <ValidityIcon validity={validation_code} />
       </DetailsTableRow>
       <DetailsTableRow keyCell="Contract" select>
-        {chaincodename ? (
-          <Link to={`/contracts/${chaincodename}`}>
+        <span className={style.contract}>
+          {chaincodename ? (
+            <Link to={`/contracts/${chaincodename}`}>
+              <span>
+                <ContractIcon serviceType={chaincodename} />
+              </span>
+            </Link>
+          ) : (
             <span>
               <ContractIcon serviceType={chaincodename} />
             </span>
-          </Link>
-        ) : (
-          <span>
-            <ContractIcon serviceType={chaincodename} />
-          </span>
-        )}
-        <span>{chaincodename}</span>
+          )}
+          <span>{chaincodename}</span>
+        </span>
       </DetailsTableRow>
       <DetailsTableRow keyCell="To" value={tx_to} select scroll />
       <DetailsTableRow keyCell="From" value={tx_from} select scroll />
       <DetailsTableRow keyCell="Action" value={tx_action} />
-      <DetailsTableRow keyCell="Value" value={tx_value} />
+      <DetailsTableRow keyCell="Value" value={value(tx_value, tx_action)} />
       <DetailsTableRow
         keyCell="Payload Proposal Hash"
         value={payload_proposal_hash}
