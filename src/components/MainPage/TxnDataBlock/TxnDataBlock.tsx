@@ -7,62 +7,41 @@ import FlexHashCell from "../../utilityComponents/FlexHashCell/FlexHashCell"
 import ContractIcon from "../../../ui/ContractIcon/ContractIcon"
 
 import { ObjectType } from "../../../utility/types"
+import { truncate } from "../../../utility/functions"
 
-import tableStyle from "../../../style/css/table.module.css"
+import style from "./TxnDataBlock.module.css"
 
 interface Props {
   fullPage: boolean
   data: ObjectType
 }
 
-const TxnDataBlock = (props: Props) => {
-  const [winWidth, setWinWidth] = useState<number>(window.innerWidth)
+const HashCell = ({ hash }: { hash: string }) => {
+  return <div className={style.hash}>{hash}</div>
+}
 
-  window.addEventListener("resize", () => {
-    setWinWidth(window.innerWidth)
-  })
-
-  let truncateLimit = 0
-
-  if (winWidth < 1000) {
-    truncateLimit = Math.floor(winWidth / 50)
-  } else {
-    truncateLimit = -1
-  }
-
+const TxnDataBlock = ({ fullPage, data }: Props) => {
   return (
-    <>
-      <article
-        className={`${tableStyle.row} ${tableStyle.scrolly} transaction-data-row`}
-      >
-        {/* IDENTICON */}
-        <IdenticonLink destination={`/txns/${props.data.txhash}`} />
-        {/* CONTRACT ICON */}
-        <div className={tableStyle.service}>
-          <NavLink to={`/contracts/${props.data.chaincodename}`}>
-            <ContractIcon serviceType={props.data.chaincodename} />
-          </NavLink>
-        </div>
-        {/* HASH CELL */}
-        <div className={tableStyle.hash}>
-          <span className="" data-tip={props.data.txhash}>
-            <NavLink
-              className="font-clicky monofont"
-              to={`/txns/${props.data.txhash}`}
-            >
-              <FlexHashCell
-                fullPage={props.fullPage}
-                limit={truncateLimit}
-                hash={props.data.txhash.toString()}
-              />
-            </NavLink>
-          </span>
-        </div>
-
-        {/* TIMESTAMP */}
-        <TimeStampCell time={props.data.createdt} timeStyle="mini" />
-      </article>
-    </>
+    <tr>
+      <td>
+        <IdenticonLink destination={`/txns/${data.txhash}`} />
+      </td>
+      <td>
+        <HashCell hash={truncate(data.txhash, 6)} />
+        <TimeStampCell time={data.createdt} timeStyle="round" />
+      </td>
+      <td>
+        <ContractIcon serviceType={data.chaincodename} />
+      </td>
+      <td>
+        <HashCell hash={truncate(data.tx_from, 6)} />
+        <HashCell hash={truncate(data.tx_to, 6)} />
+      </td>
+      <td>
+        <span>{data.tx_action}</span>
+        <span>{data.tx_value}</span>
+      </td>
+    </tr>
   )
 }
 

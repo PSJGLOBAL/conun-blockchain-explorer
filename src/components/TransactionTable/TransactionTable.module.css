@@ -1,0 +1,19 @@
+.cont {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+
+.table {
+  display: block;
+  width: 600px;
+}
+
+.table tr {
+  font-family: monospace;
+}
+
+th {
+  font-weight: 100;
+}

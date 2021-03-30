@@ -78,7 +78,7 @@
   width: 60px;
 }
 .largeTime {
-  width: 360px;
+  
   display: flex !important;
   flex-direction: row !important;
   justify-content: space-between !important;

@@ -1,0 +1,13 @@
+.center {
+  width: 30px;
+  height: 30px;
+
+  border: 2px solid var(--bkg);
+  border-radius: var(--radius);
+
+  animation: icon-animate 0.7s ease-in;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
