@@ -22,26 +22,26 @@ const HashCell = ({ hash }: { hash: string }) => {
 
 const TxnDataBlock = ({ fullPage, data }: Props) => {
   return (
-    <tr>
-      <td>
+    <div>
+      <div>
         <IdenticonLink destination={`/txns/${data.txhash}`} />
-      </td>
-      <td>
+      </div>
+      <div>
         <HashCell hash={truncate(data.txhash, 6)} />
         <TimeStampCell time={data.createdt} timeStyle="round" />
-      </td>
-      <td>
+      </div>
+      <div>
         <ContractIcon serviceType={data.chaincodename} />
-      </td>
-      <td>
+      </div>
+      <div>
         <HashCell hash={truncate(data.tx_from, 6)} />
         <HashCell hash={truncate(data.tx_to, 6)} />
-      </td>
-      <td>
+      </div>
+      <div>
         <span>{data.tx_action}</span>
         <span>{data.tx_value}</span>
-      </td>
-    </tr>
+      </div>
+    </div>
   )
 }
 

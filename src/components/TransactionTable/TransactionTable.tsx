@@ -15,15 +15,15 @@ type Props = {
 const TransactionTable = ({ txnData, fullPage }: Props) => {
   return (
     <div className={style.cont}>
-      <table className={style.table}>
+      <div className={style.table}>
         {/* HEADER */}
-        <thead>
-          <th>Icon</th>
-          <th>Hash/Time</th>
-          <th>Service</th>
-          <th>To/From</th>
-          <th>Action</th>
-        </thead>
+        <div>
+          <div>Icon</div>
+          <div>Hash/Time</div>
+          <div>Service</div>
+          <div>To/From</div>
+          <div>Action</div>
+        </div>
 
         {/* TXN Activity - Table for each block made - shows hashes, created at, etc*/}
         <tbody>
@@ -37,7 +37,7 @@ const TransactionTable = ({ txnData, fullPage }: Props) => {
             </DuplicateSkeleton>
           )}
         </tbody>
-      </table>
+      </div>
     </div>
   )
 }
