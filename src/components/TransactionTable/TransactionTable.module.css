@@ -34,6 +34,10 @@
   background-color: transparent;
 }
 .container::-webkit-scrollbar-thumb {
-  background-color: var(--hiblue);
+  background-color: var(--fore);
   border-radius: 3px;
+}
+
+.container:hover.container::-webkit-scrollbar-thumb {
+  background-color: var(--hiblue);
 }

@@ -1,12 +1,12 @@
+:root {
+  --rowHeight: 70px;
+}
+
 .center {
   background-color: blueviolet;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-:root {
-  --rowHeight: 70px;
 }
 
 .row {
@@ -86,6 +86,10 @@
   font-size: 7pt;
   /* font-weight: 500; */
   margin-right: 5px;
+}
+
+i {
+  color: var(--hiblue);
 }
 
 @keyframes appear {

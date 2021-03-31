@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { getContractType } from "../../utility/functions"
 
 import ninjaIcon from "../../style/images/extra_icons/icon_ninja_star.svg"
@@ -8,9 +9,10 @@ import style from "./ContractIcon.module.css"
 
 type Props = {
   serviceType: string | number | undefined
+  link?: string
 }
 
-const ContractIcon = ({ serviceType }: Props) => {
+const ContractIcon = ({ serviceType, link }: Props) => {
   const spanStyle = {
     display: "flex",
     justifyContent: "center",
@@ -22,9 +24,11 @@ const ContractIcon = ({ serviceType }: Props) => {
   if (serviceType) {
     contractType = getContractType(serviceType.toString())
   }
+
+  let content
   switch (contractType) {
     case "coin":
-      return (
+      content = (
         <span style={spanStyle}>
           <img
             src={ninjaIcon}
@@ -34,8 +38,9 @@ const ContractIcon = ({ serviceType }: Props) => {
           />
         </span>
       )
+      break
     case "drive":
-      return (
+      content = (
         <span style={spanStyle}>
           <img
             src={familiarIcon}
@@ -45,8 +50,9 @@ const ContractIcon = ({ serviceType }: Props) => {
           />
         </span>
       )
+      break
     case "basic":
-      return (
+      content = (
         <span style={spanStyle}>
           <img
             src={defaultIcon}
@@ -56,9 +62,16 @@ const ContractIcon = ({ serviceType }: Props) => {
           />
         </span>
       )
+      break
     default:
-      return <span style={spanStyle}>{contractType}</span>
+      content = <span style={spanStyle}>{contractType}</span>
+      break
   }
+
+  if (link) {
+    return <Link to={link}>{content}</Link>
+  }
+  return <>{content}</>
 }
 
 export default ContractIcon

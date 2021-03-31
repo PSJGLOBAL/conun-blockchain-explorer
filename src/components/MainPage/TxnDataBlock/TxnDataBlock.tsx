@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { NavLink } from "react-router-dom"
 
 import TimeStampCell from "../../utilityComponents/TimeStampCell/TimeStampCell"
@@ -76,7 +75,10 @@ const TxnDataBlock = ({ fullPage, data }: Props) => {
         <TimeStampCell time={data.createdt} timeStyle="round" />
       </div>
       <div className={style.iconCell}>
-        <ContractIcon serviceType={data.chaincodename} />
+        <ContractIcon
+          serviceType={data.chaincodename}
+          link={`/contracts/${data.chaincodename}`}
+        />
       </div>
       <div className={style.hashCell}>
         {data.tx_from && (
