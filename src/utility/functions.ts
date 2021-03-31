@@ -82,8 +82,13 @@ export const getContractType = (serviceType: string | undefined) => {
     case "drive":
       return "drive"
 
-    case undefined:
     default:
       return "basic"
   }
+}
+
+export const multiclass = (...args: Array<string>) => {
+  const out = args.join(" ")
+
+  return out
 }

@@ -10,4 +10,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: icon-animate 0.7s ease-in;
+}
+
+@keyframes icon-animate {
+  0% {
+    border-color: var(--hilite);
+  }
+  100% {
+    border-color: var(--bkg);
+  }
 }
