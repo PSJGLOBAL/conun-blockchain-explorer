@@ -1,5 +1,4 @@
-import { NavLink } from "react-router-dom"
-
+import HashCell from "../../utilityComponents/HashCell/HashCell"
 import TimeStampCell from "../../utilityComponents/TimeStampCell/TimeStampCell"
 import IdenticonLink from "../../utilityComponents/IdenticonLink/IdenticonLink"
 import ContractIcon from "../../../ui/ContractIcon/ContractIcon"
@@ -7,22 +6,11 @@ import ContractIcon from "../../../ui/ContractIcon/ContractIcon"
 import { ObjectType } from "../../../utility/types"
 import { truncate } from "../../../utility/functions"
 
-import style from "./TxnDataBlock.module.css"
+import style from "../../../style/css/maintables.module.css"
 
 interface Props {
   fullPage: boolean
   data: ObjectType
-}
-
-const HashCell = ({ hash, link }: { hash: string; link?: string | number }) => {
-  if (link) {
-    return (
-      <div className={style.hash}>
-        <NavLink to={link.toString()}>{hash}</NavLink>
-      </div>
-    )
-  }
-  return <div className={style.hash}>{hash}</div>
 }
 
 const ActionValueCell = ({
@@ -32,33 +20,17 @@ const ActionValueCell = ({
   action: string | number
   value: string | number
 }) => {
-  let icon
-  let valueString
   if (action) {
     switch (action) {
       case "Transfer":
-        icon = <i className="fas fa-exchange-alt"></i>
-        valueString = `${value} CON`
-        break
       case "Mint":
-        icon = <i className="fas fa-plus-circle"></i>
-        valueString = `${value} CON`
-        break
+        return <span className={style.value}>{`${value} CONX`}</span>
       default:
-        icon = action.toString().substring(0, 2)
-        break
+        return <span className={style.value}>{`0 CONX`}</span>
     }
   } else {
-    icon = "Ac"
-    valueString = "Value"
+    return <span>&nbsp;</span>
   }
-
-  return (
-    <>
-      <span className={style.action}>{icon}</span>
-      <span className={style.value}>{valueString}</span>
-    </>
-  )
 }
 
 const TxnDataBlock = ({ fullPage, data }: Props) => {

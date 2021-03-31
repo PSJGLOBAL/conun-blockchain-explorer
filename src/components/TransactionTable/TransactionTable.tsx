@@ -4,10 +4,8 @@ import { TXNTableSkeleton } from "../../ui/Skeletos/MainTableSkeleton/MainTableS
 import DuplicateSkeleton from "../../ui/Skeletos/DuplicateSkeleton/DuplicateSkeleton"
 
 import { State } from "../../utility/types"
-import { multiclass } from "../../utility/functions"
 
-import style from "./TransactionTable.module.css"
-import cellStyle from "../../components/MainPage/TxnDataBlock/TxnDataBlock.module.css"
+import style from "../../style/css/maintables.module.css"
 
 type Props = {
   txnData: State["txn"]["txnActivityData"] | null
@@ -18,15 +16,6 @@ const TransactionTable = ({ txnData, fullPage }: Props) => {
   return (
     <div className={style.container}>
       <div className={style.table}>
-        {/* HEADER */}
-        {/* <div className={style.header}>
-          <div className={cellStyle.iconCell}>&nbsp;</div>
-          <div className={cellStyle.hashCell}>Hash/Time</div>
-          <div className={cellStyle.iconCell}>Service</div>
-          <div className={cellStyle.hashCell}>To/From</div>
-          <div className={cellStyle.actionCell}>Action</div>
-        </div> */}
-
         {/* TXN Activity - Table for each block made - shows hashes, created at, etc*/}
         <>
           {txnData && txnData.length > 0 ? (
