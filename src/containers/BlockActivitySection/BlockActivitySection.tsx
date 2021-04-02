@@ -16,6 +16,7 @@ import { setBlockActivityData, setChannelStats } from "../../store/actions"
 import style from "../../style/css/maintables.module.css"
 
 import { State } from "../../utility/types"
+import { multiclass } from "../../utility/functions"
 
 const BlockActivitySection = () => {
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
@@ -66,7 +67,6 @@ const BlockActivitySection = () => {
     window.scrollTo(0, 0)
   }, [location])
 
-
   useEffect(() => {
     if (activeChannelHash) {
       dispatch(setChannelStats(activeChannelHash))
@@ -79,6 +79,9 @@ const BlockActivitySection = () => {
     setMaxBlock(channelStats.latestBlock)
   }, [channelStats.latestBlock])
 
+  const containerStyle = fullPage
+    ? multiclass(style.fullpage, style.container)
+    : multiclass(style.mainpage, style.container)
 
   return (
     <section
@@ -95,18 +98,18 @@ const BlockActivitySection = () => {
           />
         )}
       </div>
-      <div className={style.container}>
+      <div className={containerStyle}>
         <div className={style.table}>
-        {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
-        {blockActivityData.length > 0 ? (
-          blockActivityData.map((i) => (
-            <BlockDataBlock key={i.blockhash} fullPage={fullPage} data={i} />
-          ))
-        ) : (
-          <DuplicateSkeleton howMany={10}>
-            <BlockTableSkeleton />
-          </DuplicateSkeleton>
-        )}
+          {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
+          {blockActivityData.length > 0 ? (
+            blockActivityData.map((i) => (
+              <BlockDataBlock key={i.blockhash} fullPage={fullPage} data={i} />
+            ))
+          ) : (
+            <DuplicateSkeleton howMany={10}>
+              <BlockTableSkeleton />
+            </DuplicateSkeleton>
+          )}
         </div>
       </div>
       <TableButton
