@@ -17,6 +17,7 @@ import style from "../../style/css/maintables.module.css"
 
 import { State } from "../../utility/types"
 import { multiclass } from "../../utility/functions"
+import { logger } from "../../utility/functions"
 
 const BlockActivitySection = () => {
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
@@ -48,10 +49,11 @@ const BlockActivitySection = () => {
         setCurrentPage(currentPage + 1)
         break
       case "prev":
-        let target = Number(bottomBlock.id)
-        target += 20 // It's 20 because bottomBlock is already -10
-        dispatch(setBlockActivityData(activeChannelHash, target))
         if (currentPage > 1) {
+          let target = Number(bottomBlock.blocknum)
+          target += 20 // It's 20 because bottomBlock is already -10
+          logger("PAGINATE: Target block no.: ", "info", target)
+          dispatch(setBlockActivityData(activeChannelHash, target))
           setCurrentPage(currentPage - 1)
         } else {
           setCurrentPage(1)
