@@ -40,6 +40,7 @@
   color: var(--hiblue);
   align-self: center;
   justify-self: flex-end;
+  text-align: right;
 }
 
 .link {
