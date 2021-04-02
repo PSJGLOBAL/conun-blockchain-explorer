@@ -6,7 +6,7 @@ import ContractIcon from "../../../ui/ContractIcon/ContractIcon"
 import { State, ContractType } from "../../../utility/types"
 
 import style from "./ContractSection.module.css"
-import tableStyle from "../../../style/css/table.module.css"
+import tableStyle from "../../../style/css/othertables.module.css"
 
 const ContractSection = () => {
   const contracts = useSelector((state: State) => state.ctx.contractData)

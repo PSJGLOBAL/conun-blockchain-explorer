@@ -1,4 +1,12 @@
-export const truncate = (hashString: string, truncation: number = 0) => {
+export const truncate = (
+  input: string | number | null,
+  truncation: number = 0
+) => {
+  if (!input) {
+    return ""
+  }
+  const hashString = input.toString()
+
   if (hashString.length > 24) {
     let limit = 5
 
@@ -66,6 +74,7 @@ export const getContractType = (serviceType: string | undefined) => {
     case "mycoin":
     case "conToken":
     case "conun":
+    case "conos":
       return "coin"
 
     case "ConunDrive":
@@ -73,8 +82,11 @@ export const getContractType = (serviceType: string | undefined) => {
     case "drive":
       return "drive"
 
-    case undefined:
     default:
       return "basic"
   }
+}
+
+export const multiclass = (...args: Array<string>) => {
+  return args.join(" ")
 }

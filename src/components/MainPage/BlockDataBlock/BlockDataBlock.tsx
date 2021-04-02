@@ -1,64 +1,45 @@
-import { useState } from "react"
-import { NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 import IdenticonLink from "../../utilityComponents/IdenticonLink/IdenticonLink"
-import FlexHashCell from "../../utilityComponents/FlexHashCell/FlexHashCell"
+import HashCell from "../../utilityComponents/HashCell/HashCell"
 import TimeStampCell from "../../utilityComponents/TimeStampCell/TimeStampCell"
 
 import { ObjectType } from "../../../utility/types"
+import { truncate } from "../../../utility/functions"
 
-import tableStyle from "../../../style/css/table.module.css"
+import style from "../../../style/css/maintables.module.css"
 
 type Props = {
   fullPage: boolean
   data: ObjectType
 }
-const BlockDataBlock = (props: Props) => {
-  const [winWidth, setWinWidth] = useState<number>(window.innerWidth)
 
-  window.addEventListener("resize", () => {
-    setWinWidth(window.innerWidth)
-  })
+const BlockNumCell = ({num}:{num:string|number}) => {
+  return <span className={style.blockNum}><Link to={`/blocks/${num}`}>{num}</Link></span>
+}
 
-  let truncateLimit = 0
-
-  if (winWidth < 1000) {
-    truncateLimit = Math.floor(winWidth / 50)
-  } else {
-    truncateLimit = -1
-  }
-
+const BlockDataBlock = ({fullPage, data}: Props) => {
   return (
-    <>
-      <article
-        className={`${tableStyle.row} ${tableStyle.scrolly} block-data-row`}
-      >
-        {/* IDENTICON */}
-        <IdenticonLink destination={`/blocks/${props.data.blocknum}`} />
-        {/* BLOCKNUM */}
-        <div className={tableStyle.blocknum}>
-          <NavLink className="" to={`/blocks/${props.data.blocknum}`}>
-            <span className="monofont font-clicky">{props.data.blocknum}</span>
-          </NavLink>
-        </div>
-        {/* HASH CELL */}
-        <div
-          className={`${tableStyle.hash} ${tableStyle.hiding} result-hash-cell`}
-        >
-          <FlexHashCell
-            fullPage={props.fullPage}
-            limit={truncateLimit}
-            hash={props.data.blockhash.toString()}
-          />
-        </div>
-        {/* TIMESTAMP */}
-        <TimeStampCell time={props.data.createdt} timeStyle="mini" />
-        {/* TXCOUNT */}
-        <div className={tableStyle.txncount}>
-          <span className="font-hilite">{props.data.txcount}</span>
-        </div>
-      </article>
-    </>
+
+    <div className={style.row}>
+      <div className={style.iconCell}>
+        <IdenticonLink destination={`/blocks/${data.blocknum}`} />
+      </div>
+      <div className={style.blockNumCell}>
+        <BlockNumCell num={data.blocknum}/>
+      </div>
+      <div className={style.iconCell}>
+        <span className={style.txnCount}>{data.txcount}</span>
+      </div>
+      <div className={style.hashCell}>
+        <HashCell hash={truncate(data.blockhash, 6)}/>
+      </div>
+      <div className={style.actionCell}>
+        <TimeStampCell time={data.createdt} timeStyle="round" />
+      </div>
+ 
+    </div>
+
   )
 }
 
