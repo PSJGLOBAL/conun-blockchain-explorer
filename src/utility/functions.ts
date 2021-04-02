@@ -88,7 +88,5 @@ export const getContractType = (serviceType: string | undefined) => {
 }
 
 export const multiclass = (...args: Array<string>) => {
-  const out = args.join(" ")
-
-  return out
+  return args.join(" ")
 }
