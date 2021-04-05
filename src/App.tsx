@@ -16,6 +16,9 @@ import ErrorBlock from "./components/ErrorPage/ErrorBlock/ErrorBlock"
 const ContractsMain = lazy(
   () => import("./pages/Contracts/Contracts") // Only works with default exports?
 )
+const WalletsMain = lazy(
+  () => import("./pages/Wallets/Wallets") // Only works with default exports?
+)
 
 function App() {
   return (
@@ -38,6 +41,16 @@ function App() {
               return (
                 <Suspense fallback={<Loading />}>
                   <ContractsMain />
+                </Suspense>
+              )
+            }}
+          />
+          <Route
+            path="/wallets"
+            render={() => {
+              return (
+                <Suspense fallback={<Loading />}>
+                  <WalletsMain />
                 </Suspense>
               )
             }}
