@@ -8,8 +8,13 @@ import { State, ContractType } from "../../../utility/types"
 import style from "./ContractSection.module.css"
 import tableStyle from "../../../style/css/othertables.module.css"
 
+import { logger } from "../../../utility/functions"
+import TimeStampCell from "../../utilityComponents/TimeStampCell/TimeStampCell"
+
 const ContractSection = () => {
   const contracts = useSelector((state: State) => state.ctx.contractData)
+
+  logger("CONTRACTS TABLE: ", "response", contracts)
 
   return (
     <section className="section-block section-single">
@@ -20,6 +25,7 @@ const ContractSection = () => {
         <div className={style.name}>Name</div>
         <div className={style.icon}>Icon</div>
         <div className={style.version}>Versions</div>
+        <div className={style.date}>Last Updated</div>
       </div>
       {contracts.length > 0 &&
         contracts.map((ct: ContractType) => (
@@ -43,6 +49,13 @@ const ContractSection = () => {
             {/* Versions */}
             <div className={style.version}>
               <span className="contract-version-count">{ct.codes.length}</span>
+            </div>
+            {/* Dates */}
+            <div className={style.date}>
+              <span className="contract-date-updated">
+                <TimeStampCell time={ct.codes[0].createdt} timeStyle="round" />
+                {/* {new Date(ct.codes[0].createdt).toLocaleString()} */}
+              </span>
             </div>
           </div>
         ))}

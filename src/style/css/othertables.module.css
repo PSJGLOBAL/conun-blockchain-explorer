@@ -37,10 +37,13 @@
   width: 60px;
 }
 .largeTime {
-  
+  max-width: 380px;
   display: flex !important;
   flex-direction: row !important;
   justify-content: space-between !important;
+}
+.largeTime span {
+  margin: 3px;
 }
 
 .link {
