@@ -1,9 +1,12 @@
 .table {
   width: 100%;
-  margin: 10px;
 
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr) 2fr;
+
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
 
   text-align: center;
 }
