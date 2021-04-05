@@ -221,3 +221,8 @@ header h1 {
     flex-direction: column;
   }
 }
+
+.gist-file {
+  border: none !important;
+  user-select: text;
+}
