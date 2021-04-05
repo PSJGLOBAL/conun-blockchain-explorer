@@ -1,0 +1,23 @@
+.center {
+  width: 30px;
+  height: 30px;
+
+  border: 2px solid var(--bkg);
+  border-radius: var(--radius);
+
+  animation: icon-animate 0.7s ease-in;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: icon-animate 0.7s ease-in;
+}
+
+@keyframes icon-animate {
+  0% {
+    border-color: var(--hilite);
+  }
+  100% {
+    border-color: var(--bkg);
+  }
+}

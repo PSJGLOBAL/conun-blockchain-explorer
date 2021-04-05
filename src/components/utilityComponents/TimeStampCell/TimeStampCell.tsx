@@ -2,7 +2,7 @@ import ReactTimeAgo from "react-time-ago"
 import TimeAgo from "javascript-time-ago"
 import en from "javascript-time-ago/locale/en"
 
-import tableStyle from "../../../style/css/table.module.css"
+import tableStyle from "../../../style/css/othertables.module.css"
 
 TimeAgo.addLocale(en)
 

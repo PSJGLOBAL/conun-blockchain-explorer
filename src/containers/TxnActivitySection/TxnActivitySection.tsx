@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useHistory, useLocation } from "react-router-dom"
+import { useLocation } from "react-router-dom"
 
 import { useSelector, useDispatch } from "react-redux"
 
@@ -26,9 +26,8 @@ const TxnActivitySection = () => {
   const bottomTXN = txnActivityData[9]
 
   const dispatch = useDispatch()
-  const history = useHistory()
   const location = useLocation()
-  const fullPage = history.location.pathname === "/txns"
+  const fullPage = location.pathname === "/txns"
 
   const doPseudoPaginate = (mode: string) => {
     switch (mode) {
