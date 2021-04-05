@@ -226,3 +226,11 @@ header h1 {
   border: none !important;
   user-select: text;
 }
+
+.gist-data {
+  border: none;
+}
+
+.gist-meta {
+  display: none;
+}
