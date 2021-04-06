@@ -10,6 +10,8 @@ import ContractDetailTable from "../ContractDetailTable/ContractDetailTable"
 import ContractTabbedSection from "../ContractTabbedSection/ContractTabbedSection"
 import ContractTextBlock from "../ContractTextBlock/ContractTextBlock"
 
+import style from "./ContractDetails.module.css"
+
 import { State, ContractType } from "../../../../utility/types"
 import { logger } from "../../../../utility/functions"
 
@@ -35,11 +37,17 @@ const ContractDetails = () => {
 
   return (
     <div className="section-block section-single">
-      {thisData ? (
-        <>
-          <ContractDetailTable contractData={thisData} />
-          <ContractTextBlock contractType={contractType} />
-        </>
+      {thisData !== null ? ( // Null means still loading
+        thisData === undefined ? ( // Undefined means result returned empty
+          <div className={style.noData}>
+            No data associated with this contract
+          </div>
+        ) : (
+          <>
+            <ContractDetailTable contractData={thisData} />
+            <ContractTextBlock contractType={contractType} />
+          </>
+        )
       ) : (
         <>
           <ContractDetailTableSkeleton />
