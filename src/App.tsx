@@ -16,6 +16,9 @@ import ErrorBlock from "./components/ErrorPage/ErrorBlock/ErrorBlock"
 const ContractsMain = lazy(
   () => import("./pages/Contracts/Contracts") // Only works with default exports?
 )
+const WalletsMain = lazy(
+  () => import("./pages/Wallets/Wallets") // Only works with default exports?
+)
 
 function App() {
   return (
@@ -32,16 +35,17 @@ function App() {
             component={DetailedViewSection}
           />
           <Route path={"/error"} component={ErrorBlock} />
-          <Route
-            path="/contracts"
-            render={() => {
-              return (
-                <Suspense fallback={<Loading />}>
-                  <ContractsMain />
-                </Suspense>
-              )
-            }}
-          />
+          <Route path="/contracts">
+            <Suspense fallback={<Loading />}>
+              <ContractsMain />
+            </Suspense>
+          </Route>
+          <Route path="/wallets">
+            <Suspense fallback={<Loading />}>
+              <WalletsMain />
+            </Suspense>
+          </Route>
+
           <Route path="/disconnected" component={Disconnected} />
           <Route path="/" component={MainPage} />
         </Switch>

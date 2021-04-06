@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-import ContractHistoryTable from "../ContractHistoryTable/ContractHistoryTable"
+import TXNHistoryTable from "../../../TXNHistoryTable/TXNHistoryTable"
 import ContractCodeTab from "../ContractCodeTab/ContractCodeTab"
 import TabMenu from "../../../TabMenu/TabMenu"
 
@@ -25,7 +25,7 @@ const ContractTabbedSection = ({ contractName }: Props) => {
       break
     case "Transactions":
     default:
-      displayedTab = <ContractHistoryTable contractName={contractName} />
+      displayedTab = <TXNHistoryTable param={contractName} dataRole="contract" />
       break
   }
 
