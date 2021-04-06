@@ -35,26 +35,17 @@ function App() {
             component={DetailedViewSection}
           />
           <Route path={"/error"} component={ErrorBlock} />
-          <Route
-            path="/contracts"
-            render={() => {
-              return (
-                <Suspense fallback={<Loading />}>
-                  <ContractsMain />
-                </Suspense>
-              )
-            }}
-          />
-          <Route
-            path="/wallets"
-            render={() => {
-              return (
-                <Suspense fallback={<Loading />}>
-                  <WalletsMain />
-                </Suspense>
-              )
-            }}
-          />
+          <Route path="/contracts">
+            <Suspense fallback={<Loading />}>
+              <ContractsMain />
+            </Suspense>
+          </Route>
+          <Route path="/wallets">
+            <Suspense fallback={<Loading />}>
+              <WalletsMain />
+            </Suspense>
+          </Route>
+
           <Route path="/disconnected" component={Disconnected} />
           <Route path="/" component={MainPage} />
         </Switch>
