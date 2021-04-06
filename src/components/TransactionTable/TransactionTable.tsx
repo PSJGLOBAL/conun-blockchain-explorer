@@ -23,11 +23,19 @@ const TransactionTable = ({ txnData, fullPage }: Props) => {
       <div className={style.table}>
         {/* TXN Activity - Table for each block made - shows hashes, created at, etc*/}
         <>
-          {txnData && txnData.length > 0 ? (
-            txnData.map((i) => (
-              <TxnDataBlock key={i.txhash} fullPage={fullPage} data={i} />
-            ))
+          {/* Nested ternery operators WARNING lol */}
+          {txnData ? ( // If TXN data is not null, a response was received
+            txnData.length > 0 ? ( // If the length is 0, then there were no transactions
+              txnData.map((i) => (
+                <TxnDataBlock key={i.txhash} fullPage={fullPage} data={i} />
+              ))
+            ) : (
+              <div className={style.noHistory}>
+                No transaction history found.
+              </div>
+            )
           ) : (
+            // Show the skeleton when there was no response received
             <DuplicateSkeleton howMany={10}>
               <TXNTableSkeleton />
             </DuplicateSkeleton>
