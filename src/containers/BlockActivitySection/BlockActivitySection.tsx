@@ -4,7 +4,7 @@ import { useHistory, useLocation } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 
 import BlockDataBlock from "../../components/MainPage/BlockDataBlock/BlockDataBlock"
-import PaginationMenu from "../../components/MainPage/PaginationMenu/PaginationMenu"
+import PaginationMenu from "../../components/PaginationMenu/PaginationMenu"
 
 import TableButton from "../../components/utilityComponents/TableButton/TableButton"
 

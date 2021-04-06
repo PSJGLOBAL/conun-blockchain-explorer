@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 
 import TransactionTable from "../../components/TransactionTable/TransactionTable"
-import PaginationMenu from "../../components/MainPage/PaginationMenu/PaginationMenu"
+import PaginationMenu from "../../components/PaginationMenu/PaginationMenu"
 
 import TableButton from "../../components/utilityComponents/TableButton/TableButton"
 
