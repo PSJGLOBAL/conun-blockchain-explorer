@@ -17,6 +17,7 @@ const TxnActivitySection = () => {
   const txnActivityData = useSelector(
     (state: State) => state.txn.txnActivityData
   )
+
   const channelStats = useSelector((state: State) => state.basic.channelStats)
 
   const [currentPage, setCurrentPage] = useState<number>(1)

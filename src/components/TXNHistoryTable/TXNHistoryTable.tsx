@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux"
 import { setChannelStats } from "../../store/actions"
 import axios from "../../axios/axiosinst"
 
-import { logger } from "../../utility/functions"
 import { State, ObjectType } from "../../utility/types"
 
 import TransactionTable from "../../components/TransactionTable/TransactionTable"
@@ -29,8 +28,6 @@ const TXNHistoryTable = ({ param, dataRole }: Props) => {
   const [bottomTXN, setBottomTXN] = useState<number | string | null>(null)
 
   const dispatch = useDispatch()
-
-  logger("CONTRACT DETAILS: ", "get", txnData)
 
   const getTxnData = (url: string, txFrom: string | number | null = null) => {
     if (txFrom) {
