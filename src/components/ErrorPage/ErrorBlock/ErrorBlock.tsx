@@ -45,6 +45,16 @@ const ErrorBlock = () => {
           message="The server did not respond."
         />
       )
+    case "no_wallet_hash":
+      return (
+        <ErrorMessage
+          code="404"
+          title="Page Doesn't Exist"
+          subtitle="Invalid wallet address:"
+          terms=""
+          message="No wallet address found."
+        />
+      )
     default:
       return (
         <ErrorMessage

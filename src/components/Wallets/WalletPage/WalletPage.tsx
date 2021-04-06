@@ -13,6 +13,7 @@ const WalletPage = () => {
   const { walletHash } = useParams<Record<string, string | undefined>>()
   const [walletData, setWalletData] = useState<ObjectType | null>(null)
 
+  console.log(walletHash)
   return (
     <div className="section-block section-single">
       {walletHash ? (

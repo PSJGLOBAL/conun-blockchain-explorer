@@ -1,6 +1,4 @@
-import { Route, Switch } from "react-router-dom"
-
-import ContractSection from "../../components/SmartContracts/ContractSection/ContractSection"
+import { Route, Switch, Redirect } from "react-router-dom"
 import WalletPage from "../../components/Wallets/WalletPage/WalletPage"
 
 const WalletsMain = () => {
@@ -11,8 +9,7 @@ const WalletsMain = () => {
           <WalletPage />
         </Route>
         <Route path="/wallets" exact>
-          {/* Some sort of placeholder? */}
-          <ContractSection />
+          <Redirect to="/error?type=no_wallet_hash" />
         </Route>
       </Switch>
     </main>
