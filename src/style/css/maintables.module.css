@@ -175,6 +175,10 @@ i {
   border-radius: var(--radius) 0;
   background-color: var(--bkg);
 }
+.value i {
+  font-size: 10pt;
+  color: var(--font);
+}
 
 .noHistory {
   width: 100%;
@@ -183,6 +187,8 @@ i {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  color: #999;
 }
 
 @keyframes appear {
