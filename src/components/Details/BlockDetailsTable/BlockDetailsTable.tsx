@@ -2,6 +2,8 @@ import { NavLink } from "react-router-dom"
 
 import DetailsTableRow from "../DetailsTableRow/DetailsTableRow"
 
+import { multiclass } from "../../../utility/functions"
+
 import style from "../Details.module.css"
 
 type Props = {
@@ -32,7 +34,10 @@ const BlockDetailsTable = ({
       <DetailsTableRow keyCell="Previous Hash" value={prehash} />
       <DetailsTableRow keyCell={`Transactions (${txcount})`}>
         {txhash.map((t: string) => (
-          <NavLink className={style.txLink} to={`/txns/${t}`}>
+          <NavLink
+            className={multiclass(style.txLink, "block-txn-link")}
+            to={`/txns/${t}`}
+          >
             {t}
           </NavLink>
         ))}
