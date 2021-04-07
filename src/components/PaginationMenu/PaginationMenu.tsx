@@ -3,7 +3,8 @@ import style from "./PaginationMenu.module.css"
 type Props = {
   doPseudoPaginate: (mode: string) => void
   currentPage: number
-  max: number | string
+  max?: number | string | null
+  noPrev?: boolean
 }
 
 const PaginationMenu = (props: Props) => {
@@ -23,15 +24,18 @@ const PaginationMenu = (props: Props) => {
           <i className="fas fa-caret-left"></i>
           <i className="fas fa-caret-left"></i>
         </div>
-        <div
-          className={style.label}
-          id="pagination-previous"
-          onClick={() => {
-            props.doPseudoPaginate("prev")
-          }}
-        >
-          <i className="fas fa-caret-left"></i>
-        </div>
+        {!props.noPrev && (
+          <div
+            className={style.label}
+            id="pagination-previous"
+            onClick={() => {
+              props.doPseudoPaginate("prev")
+            }}
+          >
+            <i className="fas fa-caret-left"></i>
+          </div>
+        )}
+
         <div
           className={style.label}
           id="pagination-next"

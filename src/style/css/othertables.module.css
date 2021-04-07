@@ -38,12 +38,16 @@
 }
 .largeTime {
   max-width: 380px;
+}
+.superTime {
+  min-width: 380px;
+  max-width: 500px;
   display: flex !important;
   flex-direction: row !important;
   justify-content: space-between !important;
 }
-.largeTime span {
-  margin: 3px;
+.superTime span {
+  margin-right: 10px;
 }
 
 .link {
