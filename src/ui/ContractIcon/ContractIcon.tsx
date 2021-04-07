@@ -69,7 +69,11 @@ const ContractIcon = ({ serviceType, link }: Props) => {
   }
 
   if (link) {
-    return <Link to={link}>{content}</Link>
+    return (
+      <Link to={link} className={"contract-icon-link"}>
+        {content}
+      </Link>
+    )
   }
   return <>{content}</>
 }

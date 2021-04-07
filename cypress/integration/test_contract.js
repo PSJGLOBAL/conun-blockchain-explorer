@@ -9,7 +9,7 @@ describe("Test Contracts Page Loads Contracts", function () {
   
     cy.get("#headbar-link-contracts").click()
     
-    cy.get(".smart-contract-row").its("length").should("be.gt", 0)
+    cy.get(".smart-contract").its("length").should("be.gt", 0)
   })
 })
 
@@ -20,9 +20,9 @@ describe("Test Contract Detail Loads Contracts", function () {
 
     cy.wait(500)
 
-    cy.get(".transaction-data-row").should("exist")
+    cy.get(".hash-cell").should("exist")
   
-    cy.get(".transaction-data-row").its("length").should("be.gt", 0)
+    cy.get(".hash-cell").its("length").should("be.gt", 0)
   })
 })
 
@@ -33,7 +33,7 @@ describe("Test Reach Contract Detail from Main Page", function () {
 
     cy.wait(500)
 
-    cy.get(".contract-icon-image").first().click()
+    cy.get(".contract-icon-link").first().click()
 
     cy.wait(500)
 

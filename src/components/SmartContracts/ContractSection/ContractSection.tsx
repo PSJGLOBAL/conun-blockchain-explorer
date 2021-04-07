@@ -8,7 +8,7 @@ import { State, ContractType } from "../../../utility/types"
 import style from "./ContractSection.module.css"
 import tableStyle from "../../../style/css/othertables.module.css"
 
-import { logger } from "../../../utility/functions"
+import { logger, multiclass } from "../../../utility/functions"
 import TimeStampCell from "../../utilityComponents/TimeStampCell/TimeStampCell"
 
 const ContractSection = () => {
@@ -30,7 +30,7 @@ const ContractSection = () => {
       {contracts.length > 0 &&
         contracts.map((ct: ContractType) => (
           <div
-            className={`${tableStyle.row} ${tableStyle.still}`}
+            className={multiclass(tableStyle.row, "smart-contract")}
             key={ct.chaincodename}
           >
             {/* Contract Name */}
