@@ -110,7 +110,7 @@
 /* Block Cells */
 
 .blockNumCell {
-  width: 200px;
+  width: 100px;
   height: var(--rowHeight);
 
   display: flex;
