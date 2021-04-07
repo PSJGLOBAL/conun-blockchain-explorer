@@ -6,7 +6,7 @@ import IdenticonLink from "../../utilityComponents/IdenticonLink/IdenticonLink"
 import ContractIcon from "../../../ui/ContractIcon/ContractIcon"
 
 import { ObjectType } from "../../../utility/types"
-import { truncate } from "../../../utility/functions"
+import { truncate, multiclass } from "../../../utility/functions"
 
 import style from "../../../style/css/maintables.module.css"
 
@@ -86,7 +86,7 @@ const TxnDataBlock = ({ fullPage, data }: Props) => {
       <div className={style.iconCell}>
         <IdenticonLink destination={`/txns/${data.txhash}`} />
       </div>
-      <div className={style.hashCell}>
+      <div className={multiclass(style.hashCell, "hash-cell")}>
         <HashCell
           link={`/txns/${data.txhash}`}
           hash={truncate(data.txhash, 6)}
