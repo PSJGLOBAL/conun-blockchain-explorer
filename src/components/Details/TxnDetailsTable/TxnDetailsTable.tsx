@@ -83,14 +83,14 @@ const TxnDetailsTable = ({
           <span>{chaincodename}</span>
         </span>
       </DetailsTableRow>
-      {tx_to && (
-        <DetailsTableRow keyCell="To" select scroll>
-          <ToFromLink dest={tx_to} inner={tx_to} />
-        </DetailsTableRow>
-      )}
       {tx_from && (
         <DetailsTableRow keyCell="From" select scroll>
           <ToFromLink dest={tx_from} inner={tx_to} />
+        </DetailsTableRow>
+      )}
+      {tx_to && (
+        <DetailsTableRow keyCell="To" select scroll>
+          <ToFromLink dest={tx_to} inner={tx_from} />
         </DetailsTableRow>
       )}
       {tx_action && <DetailsTableRow keyCell="Action" value={tx_action} />}
