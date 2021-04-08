@@ -71,3 +71,33 @@ describe("Extract TXN from Block hash, Search", function () {
         })
         })
   })
+
+
+describe("Test search for wallet hash", function () {
+    it("Get wallet hash from txn, search for it", function () {
+
+        cy.visit("http://localhost:3000/blocks/21342")
+
+        cy.wait(1000)
+
+        cy.contains("Transactions")
+
+        cy.get(".block-txn-link").first().as('txnHash')
+        cy.get("@txnHash").click()
+
+        cy.wait(100)
+
+        cy.get(".to-from-cell").should("exist")
+
+        cy.get(".to-from-cell").first().as("walletHash")
+
+        cy.get("@walletHash").then(($walletHash)=> {
+          const walletHashString = $walletHash.text()
+
+          cy.get("#search-input").type(walletHashString).type("{enter}")
+          cy.contains(walletHashString)
+
+        })
+
+        })
+  })
