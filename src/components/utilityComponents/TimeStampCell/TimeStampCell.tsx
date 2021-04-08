@@ -15,10 +15,17 @@ type Props = {
 const TimeStampCell = ({ time, timeStyle, elaborate }: Props) => {
   const dateObj = new Date(time)
 
+  let timecellSize
+  if (elaborate) {
+    timecellSize = tableStyle.superTime
+  } else if (timeStyle === "mini") {
+    timecellSize = tableStyle.time
+  } else {
+    timecellSize = tableStyle.largeTime
+  }
+
   return (
-    <div
-      className={timeStyle === "mini" ? tableStyle.time : tableStyle.largeTime}
-    >
+    <div className={timecellSize}>
       <span data-tip={time}>
         <ReactTimeAgo
           date={dateObj}

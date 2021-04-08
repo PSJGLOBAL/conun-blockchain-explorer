@@ -1,12 +1,11 @@
-import { Link } from "react-router-dom"
-
 import HashCell from "../../utilityComponents/HashCell/HashCell"
 import TimeStampCell from "../../utilityComponents/TimeStampCell/TimeStampCell"
 import IdenticonLink from "../../utilityComponents/IdenticonLink/IdenticonLink"
 import ContractIcon from "../../../ui/ContractIcon/ContractIcon"
+import ToFromLink from "../../utilityComponents/ToFromLink/ToFromLink"
 
 import { ObjectType } from "../../../utility/types"
-import { truncate } from "../../../utility/functions"
+import { truncate, multiclass } from "../../../utility/functions"
 
 import style from "../../../style/css/maintables.module.css"
 
@@ -63,25 +62,16 @@ const ToFromCells = ({
       {from && (
         <div className={style.tofrom}>
           <i className="fas fa-chevron-left" />
-          <Link to={`/wallets/${from}`}>
-            <HashCell hash={truncate(from, 6)} />
-          </Link>
+
+          <ToFromLink dest={from.toString()} inner={truncate(from, 6)} />
         </div>
       )}
-      {to &&
-        (to === "CONUN" ? (
-          <div className={style.tofrom}>
-            <i className="fas fa-chevron-right" />
-            <HashCell hash={truncate(to, 6)} />
-          </div>
-        ) : (
-          <div className={style.tofrom}>
-            <i className="fas fa-chevron-right" />
-            <Link to={`/wallets/${to}`}>
-              <HashCell hash={truncate(to, 6)} />
-            </Link>
-          </div>
-        ))}
+      {to && (
+        <div className={style.tofrom}>
+          <i className="fas fa-chevron-right" />
+          <ToFromLink dest={to.toString()} inner={truncate(to, 6)} />
+        </div>
+      )}
     </>
   )
 }
@@ -92,7 +82,7 @@ const TxnDataBlock = ({ fullPage, data }: Props) => {
       <div className={style.iconCell}>
         <IdenticonLink destination={`/txns/${data.txhash}`} />
       </div>
-      <div className={style.hashCell}>
+      <div className={multiclass(style.hashCell, "hash-cell")}>
         <HashCell
           link={`/txns/${data.txhash}`}
           hash={truncate(data.txhash, 6)}

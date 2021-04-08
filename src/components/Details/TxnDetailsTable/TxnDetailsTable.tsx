@@ -59,7 +59,7 @@ const TxnDetailsTable = ({
   tx_value,
 }: Props) => {
   return (
-    <div>
+    <div className={style.container}>
       <DetailsTableRow keyCell="Transaction Hash" value={txhash} select />
       <DetailsTableRow keyCell="Timestamp">
         <TimeStampCell time={createdt} timeStyle="round" elaborate />
@@ -83,9 +83,15 @@ const TxnDetailsTable = ({
           <span>{chaincodename}</span>
         </span>
       </DetailsTableRow>
-      {tx_to && <DetailsTableRow keyCell="To" select scroll ><ToFromLink dest={tx_to}/></DetailsTableRow>}
+      {tx_to && (
+        <DetailsTableRow keyCell="To" select scroll>
+          <ToFromLink dest={tx_to} inner={tx_to} />
+        </DetailsTableRow>
+      )}
       {tx_from && (
-        <DetailsTableRow keyCell="From" select scroll ><ToFromLink dest={tx_from}/></DetailsTableRow>
+        <DetailsTableRow keyCell="From" select scroll>
+          <ToFromLink dest={tx_from} inner={tx_to} />
+        </DetailsTableRow>
       )}
       {tx_action && <DetailsTableRow keyCell="Action" value={tx_action} />}
       {tx_value && (
@@ -94,7 +100,7 @@ const TxnDetailsTable = ({
       <DetailsTableRow
         keyCell="Payload Proposal Hash"
         value={payload_proposal_hash}
-        scroll
+        select
       />
     </div>
   )

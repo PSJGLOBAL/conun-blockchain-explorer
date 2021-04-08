@@ -1,15 +1,18 @@
+.container {
+  overflow-x: auto;
+}
+
 .table {
   width: 100%;
   background-color: var(--fore);
   border-radius: var(--radius);
+  font-size: 12pt;
 }
 .row {
+  width: 100%;
   padding: 5px;
 
-  display: grid;
-  grid-template-columns: 1fr 5fr;
-  justify-items: flex-start;
-  align-content: center;
+  display: flex;
 
   border-bottom: 1px solid var(--bkg);
   box-sizing: border-box;
@@ -23,8 +26,9 @@
   margin: 5px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 11pt;
 }
 .val {
   padding-left: 10px;
@@ -37,6 +41,9 @@
 }
 
 .key {
+  /* Well, this is stupid but it works */
+  min-width: 110px;
+  max-width: 110px;
   color: var(--hiblue);
   align-self: center;
   justify-self: flex-end;

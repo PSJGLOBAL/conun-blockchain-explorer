@@ -1,12 +1,17 @@
+/*eslint-disable*/
+
 describe("Test Block Table", function () {
   it("Click on Block Table view more button", function () {
     cy.visit("http://localhost:3000/")
+
+    cy.contains("Recent Blocks")
+    cy.contains("Recent Transactions")
 
     cy.wait(200)
 
     cy.get("#block-table-more").click()
 
-    cy.get(".data-table-header").should("not.contain", "Service")
+    cy.get(".section-title").should('not.contain', "Recent Transactions")
   })
 })
 
@@ -14,11 +19,14 @@ describe("Test Txn Table", function () {
   it("Click on Txn Table view more button", function () {
     cy.visit("http://localhost:3000/")
 
+    cy.contains("Recent Blocks")
+    cy.contains("Recent Transactions")
+
     cy.wait(200)
 
     cy.get("#txn-table-more").click()
 
-    cy.get(".data-table-header").should("not.contain", "Num.")
+    cy.get(".section-title").should('not.contain', "Recent Blocks")
   })
 })
 
@@ -32,7 +40,7 @@ describe("Test Block Table Pagination", function () {
 
     //   Get top hash
 
-    cy.get(".result-hash-cell").first().as("firstBlockHash")
+    cy.get(".block-number").first().as("firstBlockHash")
 
     cy.wait(100)
 
@@ -80,7 +88,7 @@ describe("Test Txn Table Pagination", function () {
 
     cy.get("#txn-table-more").click()
 
-    cy.get(".result-hash-cell").first().as("firstTxnHash")
+    cy.get(".hash-cell").first().as("firstTxnHash")
 
     cy.wait(100)
 

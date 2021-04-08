@@ -3,6 +3,7 @@ import axios from "../../axios/axiosinst"
 import { useHistory, useLocation } from "react-router-dom"
 
 // import { ObjectType } from "../../utility/types"
+import { logger } from "../../utility/functions"
 
 import searchIcon from "../../style/images/search-icon.svg"
 import style from "./Search.module.css"
@@ -36,18 +37,18 @@ const Search = () => {
       axios
         .get(`/search/hash/${searchTerms}`)
         .then((response) => {
-          // setResult(response.data)
-          const data = response.data
+          logger("Search Response: ", "get", response)
 
-          if (data.status === 200) {
-            const responseType = data.data.data_type
-
-            switch (responseType) {
-              case 1:
-                history.push(`/blocks/${data.data.id}`)
+          if (response.data.found) {
+            switch (response.data.data) {
+              case "block":
+                history.push(`/blocks/${searchTerms}`)
                 break
-              case 2:
-                history.push(`/txns/${data.data.id}`)
+              case "transaction":
+                history.push(`/txns/${searchTerms}`)
+                break
+              case "wallet":
+                history.push(`/wallets/${searchTerms}`)
                 break
               default:
                 setSearchFail("Response was an invalid type!")
