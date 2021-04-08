@@ -26,7 +26,7 @@ const ExplorerInfoBlock = () => {
         <div className={style.largeLayout}>
           <div className={style.row}>
             <img src={ninjaIcon} alt="coin" data-tip={"Coin"} />
-            <div className={style.title}>Coin</div>
+            <div className={style.title}>CONX</div>
             <div className={style.description}>
               Coin token used for payment of services
             </div>
