@@ -27,14 +27,8 @@ const ActionValueCell = ({
       case "Transfer":
       case "Mint":
         return <span className={style.value}>{`${value} CONX`}</span>
-      case "Like":
-        return (
-          <span className={style.value}>
-            <i className="fas fa-thumbs-up"></i>
-          </span>
-        )
       default:
-        return <span className={style.value}>{`0 CONX`}</span>
+        return <span className={style.value}>{action}</span>
     }
   } else {
     return <span>&nbsp;</span>
