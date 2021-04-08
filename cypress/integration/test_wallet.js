@@ -33,14 +33,6 @@ describe("Test Wallet URL", function () {
 
         cy.contains(walletHash)
 
-
         })
-
-      // cy.get("@walletHash").then(($walletHash)=> {
-      //   const walletHashString = $walletHash.href()
-
-
-      // })
-
       })
 })
