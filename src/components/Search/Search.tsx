@@ -64,14 +64,14 @@ const Search = () => {
       axios.get(`/search/wallet/${str}`).then((response) => {
         logger("Autocomplete: ", "get", response)
         if (response.data.status === 200 && response.data.found) {
-          // Test Purposes only:
-          const dupeWallets = [...response.data.data]
-          dupeWallets.push("0xeeeeeeeeeeeee")
-          dupeWallets.push("0x348348348348348348")
-          setAutoResults(dupeWallets)
-          // End test
+          // // Test Purposes only:
+          // const dupeWallets = [...response.data.data]
+          // dupeWallets.push("0xeeeeeeeeeeeee")
+          // dupeWallets.push("0x348348348348348348")
+          // setAutoResults(dupeWallets)
+          // // End test
 
-          // setAutoResults(response.data.data)
+          setAutoResults(response.data.data)
         } else {
           setAutoResults(null)
         }
@@ -112,14 +112,14 @@ const Search = () => {
   }, [location])
 
   // When autocomplete box appears, set top element to be selected
-  useEffect(() => {
-    logger("Autocomplete: State: ", "info", autoResults)
-    if (!autoSelection) {
-      if (autoResults && autoResults.length > 0) {
-        setAutoSelection(autoResults[0])
-      }
-    }
-  }, [autoResults, autoSelection])
+  // useEffect(() => {
+  //   logger("Autocomplete: State: ", "info", autoResults)
+  //   if (!autoSelection) {
+  //     if (autoResults && autoResults.length > 0) {
+  //       setAutoSelection(autoResults[0])
+  //     }
+  //   }
+  // }, [autoResults, autoSelection])
 
   // If something is selected, set that to be the search terms
   useEffect(() => {
@@ -159,6 +159,29 @@ const Search = () => {
           console.error(e)
           setSearchFail("Oops! There was no response.")
         })
+      setAutoSelection("")
+      setAutoResults(null)
+    }
+  }
+
+  function doKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === "Enter") {
+      setSearchFail("")
+      doAPISearch()
+      setSearchTerms("")
+    } else if (e.key === "ArrowUp") {
+      autoCompleteKeySelection(autoSelection, "up")
+    } else if (e.key === "ArrowDown") {
+      autoCompleteKeySelection(autoSelection, "down")
+    } else if (e.key === "ArrowRight") {
+      if (autoSelection) {
+        setSearchTerms(autoSelection)
+      } else {
+        if (autoResults) {
+          setAutoSelection(autoResults[0])
+          setSearchTerms(autoResults[0])
+        }
+      }
     }
   }
 
@@ -175,24 +198,12 @@ const Search = () => {
                 : "Search by block number or transaction hash"
             }
             value={searchTerms}
+            spellCheck="false"
             onChange={(e) => {
               handleSearchInput(e.target.value)
               doAutoComplete(e.target.value)
             }}
-            onKeyDown={(e) => {
-              console.log(e.key)
-              if (e.key === "Enter") {
-                setSearchFail("")
-                doAPISearch()
-                setSearchTerms("")
-              } else if (e.key === "ArrowUp") {
-                autoCompleteKeySelection(autoSelection, "up")
-              } else if (e.key === "ArrowDown") {
-                autoCompleteKeySelection(autoSelection, "down")
-              } else if (e.key === "ArrowRight") {
-                setSearchTerms(autoSelection)
-              }
-            }}
+            onKeyDown={(e) => doKeyDown(e)}
           />
           <img
             className={style.icon}
