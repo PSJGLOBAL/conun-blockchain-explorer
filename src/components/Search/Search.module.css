@@ -1,5 +1,9 @@
-.searchContainer {
+.searchBlock {
   width: 80%;
+}
+.searchContainer {
+  width: 100%;
+  position: relative;
 }
 .search {
   display: flex;
@@ -33,4 +37,26 @@
 
 .icon:hover {
   background-color: var(--hihover);
+}
+
+.autocomplete {
+  width: calc(100% - 35px);
+
+  box-sizing: border-box;
+  /* padding: 5px; */
+
+  position: absolute;
+  left: inherit;
+
+  background-color: var(--fore);
+  border: 1px solid var(--bkg);
+
+  font-family: monospace;
+}
+.item {
+  padding: 5px;
+}
+
+.selected {
+  background-color: #eee;
 }

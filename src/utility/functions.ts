@@ -32,7 +32,16 @@ if (process.env.NODE_ENV !== "production") {
   willLog = true
 }
 
-export const logger = (message: string, level: string, ...data: any[]) => {
+type logType =
+  | "info"
+  | "success"
+  | "get"
+  | "warn"
+  | "error"
+  | "special"
+  | "log"
+  | string
+export const logger = (message: string, level: logType, ...data: any[]) => {
   if (willLog) {
     switch (level) {
       case "info":
