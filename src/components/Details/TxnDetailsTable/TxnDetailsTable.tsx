@@ -85,12 +85,12 @@ const TxnDetailsTable = ({
       </DetailsTableRow>
       {tx_from && (
         <DetailsTableRow keyCell="From" select scroll>
-          <ToFromLink dest={tx_from} inner={tx_to} />
+          <ToFromLink dest={tx_from} inner={tx_from} />
         </DetailsTableRow>
       )}
       {tx_to && (
         <DetailsTableRow keyCell="To" select scroll>
-          <ToFromLink dest={tx_to} inner={tx_from} />
+          <ToFromLink dest={tx_to} inner={tx_to} />
         </DetailsTableRow>
       )}
       {tx_action && <DetailsTableRow keyCell="Action" value={tx_action} />}
