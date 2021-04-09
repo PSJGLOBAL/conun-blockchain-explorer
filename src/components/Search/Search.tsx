@@ -9,32 +9,21 @@ import style from "./Search.module.css"
 
 const AutoComplete = ({
   results,
-  doSelect,
+  selected,
+  setSelected,
   doSearch,
 }: {
   results: Array<string>
-  doSelect: (s: string) => void
+  selected: string
+  setSelected: (s: string) => void
   doSearch: () => void
 }) => {
-  const [selected, setSelected] = useState<string>(results[0])
-  const [selectedIndex, setSelectedIndex] = useState<number>(0)
-
-  useEffect(() => {
-    setSelected(results[selectedIndex])
-  }, [selectedIndex, results])
-
-  function handleKeyPress(event: React.KeyboardEvent<HTMLDivElement>) {
-    logger("Autocomplete: Keypress: ", "special", event)
-  }
-
   function selection(r: string) {
     setSelected(r)
-    setSelectedIndex(results.indexOf(r))
-    doSelect(r)
   }
 
   return (
-    <div className={style.autocomplete}>
+    <div className={style.autocomplete} onKeyPress={(e) => console.log(e)}>
       {results.map((r) => {
         return (
           <div
@@ -61,7 +50,9 @@ const AutoComplete = ({
 const Search = () => {
   const [searchTerms, setSearchTerms] = useState<string>("")
   const [searchFail, setSearchFail] = useState<string>("")
+
   const [autoResults, setAutoResults] = useState<Array<string> | null>(null)
+  const [autoSelection, setAutoSelection] = useState<string>("")
 
   const searchRef = useRef<HTMLInputElement | null>(null)
 
@@ -90,6 +81,21 @@ const Search = () => {
     }
   }
 
+  function autoCompleteKeySelection(current: string, direction: "up" | "down") {
+    if (autoResults) {
+      const currentIndex: number = autoResults?.indexOf(current) || 0
+
+      if (direction === "up") {
+        if (currentIndex > 0) {
+          setAutoSelection(autoResults[currentIndex - 1])
+        }
+      } else if (direction === "down") {
+        if (currentIndex < autoResults.length - 1)
+          setAutoSelection(autoResults[currentIndex + 1])
+      }
+    }
+  }
+
   function handleSearchInput(str: string) {
     setSearchTerms(str)
   }
@@ -105,9 +111,22 @@ const Search = () => {
     clearSearch()
   }, [location])
 
+  // When autocomplete box appears, set top element to be selected
   useEffect(() => {
     logger("Autocomplete: State: ", "info", autoResults)
-  }, [autoResults])
+    if (!autoSelection) {
+      if (autoResults && autoResults.length > 0) {
+        setAutoSelection(autoResults[0])
+      }
+    }
+  }, [autoResults, autoSelection])
+
+  // If something is selected, set that to be the search terms
+  useEffect(() => {
+    if (autoSelection) {
+      setSearchTerms(autoSelection)
+    }
+  }, [autoSelection])
 
   function doAPISearch() {
     if (searchTerms !== "") {
@@ -160,11 +179,18 @@ const Search = () => {
               handleSearchInput(e.target.value)
               doAutoComplete(e.target.value)
             }}
-            onKeyPress={(e) => {
+            onKeyDown={(e) => {
+              console.log(e.key)
               if (e.key === "Enter") {
                 setSearchFail("")
                 doAPISearch()
                 setSearchTerms("")
+              } else if (e.key === "ArrowUp") {
+                autoCompleteKeySelection(autoSelection, "up")
+              } else if (e.key === "ArrowDown") {
+                autoCompleteKeySelection(autoSelection, "down")
+              } else if (e.key === "ArrowRight") {
+                setSearchTerms(autoSelection)
               }
             }}
           />
@@ -183,7 +209,8 @@ const Search = () => {
         {autoResults && (
           <AutoComplete
             results={autoResults}
-            doSelect={setSearchTerms}
+            selected={autoSelection}
+            setSelected={setAutoSelection}
             doSearch={doAPISearch}
           />
         )}
