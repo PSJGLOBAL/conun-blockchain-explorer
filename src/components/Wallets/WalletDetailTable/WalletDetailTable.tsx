@@ -1,3 +1,4 @@
+import { multiclass } from "../../../utility/functions"
 import style from "./WalletDetailTable.module.css"
 
 const WalletDetailTable = ({ walletHash }: { walletHash: string }) => {
@@ -5,7 +6,9 @@ const WalletDetailTable = ({ walletHash }: { walletHash: string }) => {
     <section className={style.table}>
       <div className={style.cell}>
         <span className={style.title}>Wallet Address</span>
-        <span className={style.content}>{walletHash}</span>
+        <span className={multiclass(style.content, "wallet-hash")}>
+          {walletHash}
+        </span>
       </div>
     </section>
   )
