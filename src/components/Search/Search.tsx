@@ -64,13 +64,6 @@ const Search = () => {
       axios.get(`/search/wallet/${str}`).then((response) => {
         logger("Autocomplete: ", "get", response)
         if (response.data.status === 200 && response.data.found) {
-          // // Test Purposes only:
-          // const dupeWallets = [...response.data.data]
-          // dupeWallets.push("0xeeeeeeeeeeeee")
-          // dupeWallets.push("0x348348348348348348")
-          // setAutoResults(dupeWallets)
-          // // End test
-
           setAutoResults(response.data.data)
         } else {
           setAutoResults(null)
