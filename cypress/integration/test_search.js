@@ -101,3 +101,4 @@ describe("Test search for wallet hash", function () {
 
         })
   })
+

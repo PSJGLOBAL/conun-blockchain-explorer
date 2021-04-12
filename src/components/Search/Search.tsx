@@ -30,8 +30,8 @@ const AutoComplete = ({
             key={r}
             className={
               r === selected
-                ? multiclass(style.item, style.selected)
-                : style.item
+                ? multiclass(style.item, style.selected, "autocomplete-option")
+                : multiclass(style.item, "autocomplete-option")
             }
             onMouseOver={() => {
               console.log(r)
