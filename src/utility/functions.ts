@@ -1,30 +1,32 @@
 export const truncate = (
   input: string | number | null,
-  truncation: number = 0
+  truncation: number = 0,
+  skipEnd: boolean = false
 ) => {
   if (!input) {
     return ""
   }
   const hashString = input.toString()
 
-  if (hashString.length > 24) {
-    let limit = 5
+  // Eject if hashstring is already short enough
+  if (hashString.length < truncation) {
+    return hashString
+  }
 
-    if (truncation < 0) {
-      return hashString
-    }
-
-    if (truncation > 0) {
-      limit = truncation
-    }
-
+  // If truncation is 0, ignore truncation (allows truncation cancelling)
+  if (truncation < 0) {
+    return hashString
+  }
+  // Controls whether double-ended truncation occurs or not
+  if (skipEnd) {
+    return hashString.substring(0, truncation) + "..."
+  } else {
     return (
-      hashString.substring(0, limit) +
+      hashString.substring(0, truncation) +
       "..." +
-      hashString.substring(hashString.length - 5)
+      hashString.substring(hashString.length - truncation)
     )
   }
-  return hashString
 }
 
 let willLog = false
