@@ -17,16 +17,26 @@ interface Props {
 const ActionValueCell = ({
   action,
   value,
+  fullPage,
 }: {
   action: string | number
   value: string | number
+  fullPage: boolean
 }) => {
   if (action) {
     switch (action) {
       case "Transfer":
       case "Mint":
       case "Burn":
-        return <span className={style.value}>{`${value} CONX`}</span>
+        const trunc = fullPage ? 14 : 7
+
+        return (
+          <span className={style.value}>{`${truncate(
+            value,
+            trunc,
+            true
+          )} CONX`}</span>
+        )
       default:
         return <span className={style.value}>{action}</span>
     }
@@ -95,7 +105,11 @@ const TxnDataBlock = ({ fullPage, data }: Props) => {
       </div>
       <div className={style.actionCell}>
         {data.tx_action && data.tx_value && (
-          <ActionValueCell action={data.tx_action} value={data.tx_value} />
+          <ActionValueCell
+            action={data.tx_action}
+            value={data.tx_value}
+            fullPage={fullPage}
+          />
         )}
       </div>
     </div>
