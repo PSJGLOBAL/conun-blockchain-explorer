@@ -36,7 +36,7 @@ const ContractDetails = () => {
   logger("Contract Details: This Data", "response", thisData)
 
   return (
-    <div className="section-block section-single">
+    <div className="section-single">
       {thisData !== null ? ( // Null means still loading
         thisData === undefined ? ( // Undefined means result returned empty
           <div className={style.noData}>

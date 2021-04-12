@@ -15,7 +15,7 @@ const ContractsMain = () => {
   dispatch(getAllContracts(activeChannelHash.toString()))
 
   return (
-    <main className="contracts-main">
+    <main className="contracts-main section-block">
       <Switch>
         <Route path="/contracts/:contractName">
           <ContractDetails />
