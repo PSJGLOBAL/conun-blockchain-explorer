@@ -33,3 +33,28 @@
 .seeMore a:hover {
   color: var(--higreen);
 }
+
+.container {
+  width: 100%;
+  overflow-x: auto;
+}
+.table {
+  min-width: 400px;
+}
+
+.container::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.container::-webkit-scrollbar-thumb {
+  background-color: var(--fore);
+  border-radius: 3px;
+}
+
+.container:hover.container::-webkit-scrollbar-thumb {
+  background-color: var(--hiblue);
+}
