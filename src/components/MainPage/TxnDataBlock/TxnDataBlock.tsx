@@ -25,6 +25,7 @@ const ActionValueCell = ({
     switch (action) {
       case "Transfer":
       case "Mint":
+      case "Burn":
         return <span className={style.value}>{`${value} CONX`}</span>
       default:
         return <span className={style.value}>{action}</span>
