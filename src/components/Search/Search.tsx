@@ -104,16 +104,6 @@ const Search = () => {
     clearSearch()
   }, [location])
 
-  // When autocomplete box appears, set top element to be selected
-  // useEffect(() => {
-  //   logger("Autocomplete: State: ", "info", autoResults)
-  //   if (!autoSelection) {
-  //     if (autoResults && autoResults.length > 0) {
-  //       setAutoSelection(autoResults[0])
-  //     }
-  //   }
-  // }, [autoResults, autoSelection])
-
   // If something is selected, set that to be the search terms
   useEffect(() => {
     if (autoSelection) {
