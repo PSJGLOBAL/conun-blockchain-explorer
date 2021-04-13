@@ -41,9 +41,11 @@
 
 .autocomplete {
   width: calc(100% - 35px);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
 
   box-sizing: border-box;
-  /* padding: 5px; */
 
   position: absolute;
   left: inherit;

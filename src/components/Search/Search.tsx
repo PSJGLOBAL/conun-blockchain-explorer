@@ -104,16 +104,6 @@ const Search = () => {
     clearSearch()
   }, [location])
 
-  // When autocomplete box appears, set top element to be selected
-  // useEffect(() => {
-  //   logger("Autocomplete: State: ", "info", autoResults)
-  //   if (!autoSelection) {
-  //     if (autoResults && autoResults.length > 0) {
-  //       setAutoSelection(autoResults[0])
-  //     }
-  //   }
-  // }, [autoResults, autoSelection])
-
   // If something is selected, set that to be the search terms
   useEffect(() => {
     if (autoSelection) {
@@ -162,6 +152,9 @@ const Search = () => {
       setSearchFail("")
       doAPISearch()
       setSearchTerms("")
+    } else if (e.key === "Escape") {
+      setAutoSelection("")
+      setAutoResults(null)
     } else if (e.key === "ArrowUp") {
       autoCompleteKeySelection(autoSelection, "up")
     } else if (e.key === "ArrowDown") {
