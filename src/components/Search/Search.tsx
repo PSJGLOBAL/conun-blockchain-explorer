@@ -162,6 +162,9 @@ const Search = () => {
       setSearchFail("")
       doAPISearch()
       setSearchTerms("")
+    } else if (e.key === "Escape") {
+      setAutoSelection("")
+      setAutoResults(null)
     } else if (e.key === "ArrowUp") {
       autoCompleteKeySelection(autoSelection, "up")
     } else if (e.key === "ArrowDown") {
