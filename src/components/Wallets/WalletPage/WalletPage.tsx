@@ -7,14 +7,14 @@ const WalletPage = () => {
   const { walletHash } = useParams<Record<string, string | undefined>>()
 
   return (
-    <div className="section-block section-single">
+    <section className="section-single">
       {walletHash && (
         <>
           <WalletDetailTable walletHash={walletHash} />
           <WalletTabbedSection walletHash={walletHash} />
         </>
       )}
-    </div>
+    </section>
   )
 }
 

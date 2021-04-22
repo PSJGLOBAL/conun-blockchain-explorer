@@ -3,7 +3,7 @@ import WalletPage from "../../components/Wallets/WalletPage/WalletPage"
 
 const WalletsMain = () => {
   return (
-    <main className="contracts-main">
+    <main className="contracts-main section-block">
       <Switch>
         <Route path="/wallets/:walletHash">
           <WalletPage />
