@@ -55,7 +55,10 @@ const ContractDetails = () => {
         </>
       )}
       {/* This includes its own skeleton */}
-      <ContractTabbedSection contractName={contractName} />
+      <ContractTabbedSection
+        contractName={contractName}
+        contractVersions={thisData?.codes.length}
+      />
     </div>
   )
 }

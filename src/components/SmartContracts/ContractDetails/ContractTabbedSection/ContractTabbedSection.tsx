@@ -8,9 +8,10 @@ import style from "./ContractTabbedSection.module.css"
 
 type Props = {
   contractName: string | undefined
+  contractVersions: number | undefined
 }
 
-const ContractTabbedSection = ({ contractName }: Props) => {
+const ContractTabbedSection = ({ contractName, contractVersions }: Props) => {
   const [activeTab, setActiveTab] = useState<string>("Transactions")
 
   useEffect(() => {
@@ -21,15 +22,21 @@ const ContractTabbedSection = ({ contractName }: Props) => {
 
   switch (activeTab) {
     case "Code":
-      displayedTab = <ContractCodeTab />
+      displayedTab = (
+        <ContractCodeTab
+          contractName={contractName}
+          contractVersions={contractVersions && contractVersions - 1}
+        />
+      )
       break
     case "Transactions":
     default:
-      displayedTab = <TXNHistoryTable param={contractName} dataRole="contract" />
+      displayedTab = (
+        <TXNHistoryTable param={contractName} dataRole="contract" />
+      )
       break
   }
 
-  // I will remove "Code" from TabMenu while code is not implemented
   return (
     <>
       <TabMenu
