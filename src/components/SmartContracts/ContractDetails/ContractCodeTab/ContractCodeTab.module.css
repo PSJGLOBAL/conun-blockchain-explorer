@@ -1,8 +1,7 @@
 .block {
   max-height: 40vh;
-  overflow-y: auto;
+  overflow: auto;
 }
-
 
 .block::-webkit-scrollbar {
   width: 5px;
@@ -21,3 +20,6 @@
   background-color: var(--higreen);
 }
 
+.block :is(h2) {
+  display: none;
+}

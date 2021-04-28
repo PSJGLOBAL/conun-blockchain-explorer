@@ -25,7 +25,7 @@ const ContractTabbedSection = ({ contractName, contractVersions }: Props) => {
       displayedTab = (
         <ContractCodeTab
           contractName={contractName}
-          contractVersions={contractVersions && contractVersions - 1}
+          contractVersions={contractVersions && contractVersions}
         />
       )
       break

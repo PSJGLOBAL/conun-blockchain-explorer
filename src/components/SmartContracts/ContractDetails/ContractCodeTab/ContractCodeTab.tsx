@@ -14,7 +14,7 @@ type Props = {
   contractVersions: number | undefined
 }
 
-const GISTPREFIX = "Aziiiz/"
+const GISTPREFIX = "conunkr/"
 
 const ContractCodeTab = ({ contractName, contractVersions }: Props) => {
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)

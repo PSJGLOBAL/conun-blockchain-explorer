@@ -227,12 +227,27 @@ header h1 {
 .gist-file {
   border: none !important;
   user-select: text;
+  margin-bottom: 20px;
 }
 
 .gist-data {
-  border: none;
+  padding-bottom: 20px;
+  border-bottom: 1px solid black;
 }
 
 .gist-meta {
   display: none;
+}
+
+.gist .blob-wrapper::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.gist .blob-wrapper::-webkit-scrollbar-track {
+  background-color: none;
+}
+.gist .blob-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--higreen);
+  border-radius: 3px;
 }
