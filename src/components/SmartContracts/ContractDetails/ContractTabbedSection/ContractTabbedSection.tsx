@@ -9,9 +9,14 @@ import style from "./ContractTabbedSection.module.css"
 type Props = {
   contractName: string | undefined
   contractVersions: number | undefined
+  latestVersion: number | undefined
 }
 
-const ContractTabbedSection = ({ contractName, contractVersions }: Props) => {
+const ContractTabbedSection = ({
+  contractName,
+  contractVersions,
+  latestVersion,
+}: Props) => {
   const [activeTab, setActiveTab] = useState<string>("Transactions")
 
   useEffect(() => {
@@ -25,6 +30,7 @@ const ContractTabbedSection = ({ contractName, contractVersions }: Props) => {
       displayedTab = (
         <ContractCodeTab
           contractName={contractName}
+          latestVersion={latestVersion}
           contractVersions={contractVersions && contractVersions}
         />
       )

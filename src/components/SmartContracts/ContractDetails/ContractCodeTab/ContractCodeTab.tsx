@@ -11,16 +11,21 @@ import style from "./ContractCodeTab.module.css"
 
 type Props = {
   contractName: string | undefined
+  latestVersion: number | undefined
   contractVersions: number | undefined
 }
 
 const GISTPREFIX = "conunkr/"
 
-const ContractCodeTab = ({ contractName, contractVersions }: Props) => {
+const ContractCodeTab = ({
+  contractName,
+  contractVersions,
+  latestVersion,
+}: Props) => {
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
   const activeChannelHash = activeChannel.channel_genesis_hash
 
-  const [reqVersion] = useState<number | undefined>(contractVersions)
+  const [reqVersion] = useState<number | undefined>(latestVersion)
   const [gistID, setGistID] = useState<string>("")
 
   useEffect(() => {

@@ -35,6 +35,10 @@ const ContractDetails = () => {
 
   logger("Contract Details: This Data", "response", thisData)
 
+  const latestVersion = Number(
+    thisData?.codes[thisData?.codes.length - 1].version
+  )
+
   return (
     <div className="section-single">
       {thisData !== null ? ( // Null means still loading
@@ -57,6 +61,7 @@ const ContractDetails = () => {
       {/* This includes its own skeleton */}
       <ContractTabbedSection
         contractName={contractName}
+        latestVersion={latestVersion}
         contractVersions={thisData?.codes.length}
       />
     </div>
