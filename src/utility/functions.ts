@@ -80,18 +80,14 @@ export const logger = (message: string, level: logType, ...data: any[]) => {
 
 export const getContractType = (serviceType: string | undefined) => {
   switch (serviceType) {
-    case "coin":
-    case "token":
-    case "mycoin":
-    case "conToken":
-    case "conun":
-    case "conos":
+    case "CONX":
       return "coin"
 
-    case "ConunDrive":
-    case "drive_1":
-    case "drive":
+    case "DRIVE":
       return "drive"
+
+    case "ENGINE":
+      return "engine"
 
     default:
       return "basic"

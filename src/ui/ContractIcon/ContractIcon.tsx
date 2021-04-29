@@ -4,6 +4,7 @@ import { getContractType } from "../../utility/functions"
 import ninjaIcon from "../../style/images/extra_icons/icon_ninja_star.svg"
 import defaultIcon from "../../style/images/extra_icons/icon_wibbly_arrows.svg"
 import familiarIcon from "../../style/images/extra_icons/icon_i_know_this_one.svg"
+import cubeCombIcon from "../../style/images/extra_icons/icon_cube_comb.svg"
 
 import style from "./ContractIcon.module.css"
 
@@ -47,6 +48,18 @@ const ContractIcon = ({ serviceType, link }: Props) => {
             data-tip={"Conun Drive"}
             className={style.iconImg}
             alt="drive"
+          />
+        </span>
+      )
+      break
+    case "engine":
+      content = (
+        <span style={spanStyle}>
+          <img
+            src={cubeCombIcon}
+            data-tip={"Conun Engine"}
+            className={style.iconImg}
+            alt="engine"
           />
         </span>
       )
