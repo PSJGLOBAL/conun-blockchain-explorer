@@ -227,12 +227,50 @@ header h1 {
 .gist-file {
   border: none !important;
   user-select: text;
+  margin-bottom: 20px;
 }
 
 .gist-data {
-  border: none;
+  padding-bottom: 20px;
+  border-bottom: none !important;
+  border-radius: 0 !important;
+}
+.gist-data tbody {
+  border-radius: 5px;
+}
+
+.gist-data tbody td {
+  font-size: 8pt !important;
+  height: 10px;
+}
+
+.gist-data .blob-code {
+  background-color: #eee !important;
+  height: 10px;
+}
+.gist-data .blob-num {
+  background-color: #ddd !important;
+
+  height: 10px;
 }
 
 .gist-meta {
   display: none;
+}
+
+.gist .blob-wrapper {
+  border-radius: 10px !important;
+}
+
+.gist .blob-wrapper::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.gist .blob-wrapper::-webkit-scrollbar-track {
+  background-color: none;
+}
+.gist .blob-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--higreen);
+  border-radius: 3px;
 }

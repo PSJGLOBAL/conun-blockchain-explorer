@@ -1,19 +1,59 @@
 // import Gist from "react-gist"
+import { useEffect, useState } from "react"
 import ReactEmbedGist from "react-embed-gist"
+import { useSelector } from "react-redux"
+
+import axios from "../../../../axios/axiosinst"
+import { logger } from "../../../../utility/functions"
+import { State } from "../../../../utility/types"
 
 import style from "./ContractCodeTab.module.css"
 
-const ContractCodeTab = () => {
-  // Use GIST to get code, embed it in the page here.
-  const gistID = "Aziiiz/64e1d17da3cc8ec2af55ba056d136603"
+type Props = {
+  contractName: string | undefined
+  latestVersion: number | undefined
+  contractVersions: number | undefined
+}
 
+const GISTPREFIX = "conunkr/"
+
+const ContractCodeTab = ({
+  contractName,
+  contractVersions,
+  latestVersion,
+}: Props) => {
+  const activeChannel = useSelector((state: State) => state.basic.activeChannel)
+  const activeChannelHash = activeChannel.channel_genesis_hash
+
+  const [reqVersion] = useState<number | undefined>(latestVersion)
+  const [gistID, setGistID] = useState<string>("")
+
+  useEffect(() => {
+    if (contractName && reqVersion) {
+      axios
+        .get(
+          `/chaincode/gist-code/${activeChannelHash}/${contractName}/${reqVersion.toString()}`
+        )
+        .then((response) => {
+          logger("Chaincode GIST: ", response.data)
+          if (response.data.rows?.code_links) {
+            setGistID(response.data.rows?.code_links)
+          }
+        })
+    }
+  }, [contractName, reqVersion, activeChannelHash])
+  // const gistID = "Aziiiz/64e1d17da3cc8ec2af55ba056d136603"
   return (
     <div className={style.block}>
-      <ReactEmbedGist
-        gist={gistID}
-        wrapperClass={style.gist}
-        contentClass={style.sectio}
-      />
+      {gistID ? (
+        <ReactEmbedGist
+          gist={GISTPREFIX + gistID}
+          wrapperClass={style.gist}
+          contentClass={style.sectio}
+        />
+      ) : (
+        <div>No Code Data</div>
+      )}
     </div>
   )
 }
