@@ -34,6 +34,7 @@ function App() {
             path={["/blocks/:detail_id", "/txns/:detail_id"]}
             component={DetailedViewSection}
           />
+          {/* <Route path="/blocks/" exact=/> */}
           <Route path={"/error"} component={ErrorBlock} />
           <Route path="/contracts">
             <Suspense fallback={<Loading />}>

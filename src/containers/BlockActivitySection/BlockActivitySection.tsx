@@ -36,7 +36,7 @@ const BlockActivitySection = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const location = useLocation()
-  const fullPage = history.location.pathname === "/blocks"
+  const fullPage = history.location.pathname.startsWith("/blocks")
 
   const doPseudoPaginate = (mode: string) => {
     switch (mode) {

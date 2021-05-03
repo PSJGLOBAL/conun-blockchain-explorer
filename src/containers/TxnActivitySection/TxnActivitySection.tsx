@@ -28,7 +28,7 @@ const TxnActivitySection = () => {
 
   const dispatch = useDispatch()
   const location = useLocation()
-  const fullPage = location.pathname === "/txns"
+  const fullPage = location.pathname.startsWith("/txns")
 
   const doPseudoPaginate = (mode: string) => {
     switch (mode) {

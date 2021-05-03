@@ -13,8 +13,8 @@ const MainPage = () => {
           <BlockActivitySection />
           <TxnActivitySection />
         </Route>
-        <Route path="/blocks" exact component={BlockActivitySection} />
-        <Route path="/txns" exact component={TxnActivitySection} />
+        <Route path="/blocks/" exact component={BlockActivitySection} />
+        <Route path="/txns/" exact component={TxnActivitySection} />
       </div>
     </main>
   )
