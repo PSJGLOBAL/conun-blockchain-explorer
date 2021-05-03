@@ -19,12 +19,12 @@ export const truncate = (
   }
   // Controls whether double-ended truncation occurs or not
   if (skipEnd) {
-    return hashString.substring(0, truncation) + "..."
+    return hashString.substring(0, truncation - 3) + "..."
   } else {
     return (
-      hashString.substring(0, truncation) +
+      hashString.substring(0, truncation - 2) +
       "..." +
-      hashString.substring(hashString.length - truncation)
+      hashString.substring(hashString.length - (truncation - 3))
     )
   }
 }
