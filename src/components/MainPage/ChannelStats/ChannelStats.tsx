@@ -22,7 +22,6 @@ const ChannelStats = () => {
   }, [activeChannel, activeChannelHash, dispatch])
 
   const channelStats = useSelector((state: State) => state.basic.channelStats)
-  // console.log("CHANNEL STATS: ", channelStats)
   return (
     <div className={style.table}>
       {/* Blocks */}

@@ -24,7 +24,6 @@ const initialState = {
 }
 
 const txnReducer = (state = initialState, action: Action) => {
-  console.log(`Confirm Redux Action: `, action.type)
   switch (action.type) {
     case TXN_ACTIVITY_DATA:
       if (!action.payload) {

@@ -23,7 +23,7 @@ const AutoComplete = ({
   }
 
   return (
-    <div className={style.autocomplete} onKeyPress={(e) => console.log(e)}>
+    <div className={style.autocomplete}>
       {results.map((r) => {
         return (
           <div
@@ -34,7 +34,6 @@ const AutoComplete = ({
                 : multiclass(style.item, "autocomplete-option")
             }
             onMouseOver={() => {
-              console.log(r)
               selection(r)
             }}
             onClick={() => doSearch()}
