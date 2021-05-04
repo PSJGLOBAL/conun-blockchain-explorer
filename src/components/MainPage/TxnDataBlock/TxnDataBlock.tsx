@@ -8,6 +8,7 @@ import { ObjectType } from "../../../utility/types"
 import { truncate, multiclass } from "../../../utility/functions"
 
 import style from "../../../style/css/maintables.module.css"
+import Tooltip from "../../Tooltip/Tooltip"
 
 interface Props {
   fullPage: boolean
@@ -84,50 +85,52 @@ const ToFromCells = ({
 const TxnDataBlock = ({ fullPage, data }: Props) => {
   return (
     <div className={style.row}>
-      <div className={style.iconCell}>
-        <IdenticonLink destination={`/txns/${data.txhash}`} />
-      </div>
-      <div
-        className={multiclass(style.hashCell, "hash-cell")}
-        data-for="txn-tips"
-        data-tip="Transaction hash / Timestamp"
-      >
-        <HashCell
-          link={`/txns/${data.txhash}`}
-          hash={truncate(data.txhash, 6)}
-        />
-        <TimeStampCell time={data.createdt} timeStyle="round" />
-      </div>
-      <div
-        className={style.iconCell}
-        data-for="txn-tips"
-        data-tip="Smart Contract"
-      >
-        <ContractIcon
-          serviceType={data.chaincodename}
-          link={`/contracts/${data.chaincodename}`}
-        />
-      </div>
-      <div
-        className={style.hashCell}
-        data-for="txn-tips"
-        data-tip="To / From Addresses"
-      >
-        <ToFromCells to={data.tx_to} from={data.tx_from} />
-      </div>
-      <div
-        className={style.actionCell}
-        data-for="txn-tips"
-        data-tip={data.tx_action ? "Action Performed" : "Lifecycle Process"}
-      >
-        {data.tx_action && data.tx_value && (
-          <ActionValueCell
-            action={data.tx_action}
-            value={data.tx_value}
-            fullPage={fullPage}
+      <Tooltip id="txn-tips" place="right">
+        <div className={style.iconCell}>
+          <IdenticonLink destination={`/txns/${data.txhash}`} />
+        </div>
+        <div
+          className={multiclass(style.hashCell, "hash-cell")}
+          data-for="txn-tips"
+          data-tip="Transaction hash / Timestamp"
+        >
+          <HashCell
+            link={`/txns/${data.txhash}`}
+            hash={truncate(data.txhash, 6)}
           />
-        )}
-      </div>
+          <TimeStampCell time={data.createdt} timeStyle="round" />
+        </div>
+        <div
+          className={style.iconCell}
+          data-for="txn-tips"
+          data-tip="Smart Contract"
+        >
+          <ContractIcon
+            serviceType={data.chaincodename}
+            link={`/contracts/${data.chaincodename}`}
+          />
+        </div>
+        <div
+          className={style.hashCell}
+          data-for="txn-tips"
+          data-tip="To / From Addresses"
+        >
+          <ToFromCells to={data.tx_to} from={data.tx_from} />
+        </div>
+        <div
+          className={style.actionCell}
+          data-for="txn-tips"
+          data-tip={data.tx_action ? "Action Performed" : "Lifecycle Process"}
+        >
+          {data.tx_action && data.tx_value && (
+            <ActionValueCell
+              action={data.tx_action}
+              value={data.tx_value}
+              fullPage={fullPage}
+            />
+          )}
+        </div>
+      </Tooltip>
     </div>
   )
 }

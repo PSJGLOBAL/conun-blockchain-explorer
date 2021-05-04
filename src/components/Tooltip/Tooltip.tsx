@@ -17,9 +17,9 @@ function Tooltip({ children, id, place = "top" }: CustomTooltipProps) {
         id={id}
         place={place}
         backgroundColor="#ffffff"
-        border={true}
         textColor="#4F4F4F"
-        delayShow={1500}
+        delayShow={800}
+        className="tooltip-override"
       />
     </>
   )

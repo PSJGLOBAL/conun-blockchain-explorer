@@ -236,3 +236,10 @@ header h1 {
 .gist-meta {
   display: none;
 }
+
+.tooltip-override {
+  border: none !important;
+}
+#block-tips {
+  z-index: 9999999999999999;
+}
