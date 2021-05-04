@@ -11,6 +11,7 @@ import TableButton from "../../components/utilityComponents/TableButton/TableBut
 import { setTxnActivityData, setChannelStats } from "../../store/actions"
 
 import { State } from "../../utility/types"
+import Tooltip from "../../components/Tooltip/Tooltip"
 
 const TxnActivitySection = () => {
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
@@ -78,26 +79,28 @@ const TxnActivitySection = () => {
       className={fullPage ? "section-block section-full" : "section-block"}
       id="recent-txns-table"
     >
-      <div className="section-title">
-        <span>Recent Transactions</span>
-        {fullPage && (
-          <PaginationMenu
-            currentPage={currentPage}
-            max={maxTxn}
-            doPseudoPaginate={doPseudoPaginate}
+      <Tooltip id="txn-tips">
+        <div className="section-title">
+          <span>Recent Transactions</span>
+          {fullPage && (
+            <PaginationMenu
+              currentPage={currentPage}
+              max={maxTxn}
+              doPseudoPaginate={doPseudoPaginate}
+            />
+          )}
+        </div>
+        <TransactionTable txnData={txnActivityData} fullPage={fullPage} />
+        {/* BUTTON */}
+        <div>
+          <TableButton
+            fullPage={fullPage}
+            destination="/txns"
+            htmlID="txn-table"
+            altLabel="View More Transactions"
           />
-        )}
-      </div>
-      <TransactionTable txnData={txnActivityData} fullPage={fullPage} />
-      {/* BUTTON */}
-      <div>
-        <TableButton
-          fullPage={fullPage}
-          destination="/txns"
-          htmlID="txn-table"
-          altLabel="View More Transactions"
-        />
-      </div>
+        </div>
+      </Tooltip>
     </section>
   )
 }

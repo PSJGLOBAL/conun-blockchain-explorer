@@ -25,7 +25,11 @@ const TimeStampCell = ({ time, timeStyle, elaborate }: Props) => {
   }
 
   return (
-    <div className={timecellSize}>
+    <div
+      className={timecellSize}
+      data-tip="transaction hash"
+      data-for="table-tips"
+    >
       <span data-tip={time}>
         <ReactTimeAgo
           date={dateObj}

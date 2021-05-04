@@ -18,6 +18,7 @@ import style from "../../style/css/maintables.module.css"
 import { State } from "../../utility/types"
 import { multiclass } from "../../utility/functions"
 import { logger } from "../../utility/functions"
+import Tooltip from "../../components/Tooltip/Tooltip"
 
 const BlockActivitySection = () => {
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
@@ -90,36 +91,42 @@ const BlockActivitySection = () => {
       className={fullPage ? "section-block section-full" : "section-block"}
       id="recent-blocks-table"
     >
-      <div className="section-title">
-        <span>Recent Blocks</span>
-        {fullPage && (
-          <PaginationMenu
-            currentPage={currentPage}
-            max={maxBlock}
-            doPseudoPaginate={doPseudoPaginate}
-          />
-        )}
-      </div>
-      <div className={containerStyle}>
-        <div className={style.table}>
-          {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
-          {blockActivityData.length > 0 ? (
-            blockActivityData.map((i) => (
-              <BlockDataBlock key={i.blockhash} fullPage={fullPage} data={i} />
-            ))
-          ) : (
-            <DuplicateSkeleton howMany={10}>
-              <BlockTableSkeleton />
-            </DuplicateSkeleton>
+      <Tooltip id="block-tips">
+        <div className="section-title">
+          <span>Recent Blocks</span>
+          {fullPage && (
+            <PaginationMenu
+              currentPage={currentPage}
+              max={maxBlock}
+              doPseudoPaginate={doPseudoPaginate}
+            />
           )}
         </div>
-      </div>
-      <TableButton
-        fullPage={fullPage}
-        destination="/blocks"
-        htmlID="block-table"
-        altLabel="View More Blocks"
-      />
+        <div className={containerStyle}>
+          <div className={style.table}>
+            {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
+            {blockActivityData.length > 0 ? (
+              blockActivityData.map((i) => (
+                <BlockDataBlock
+                  key={i.blockhash}
+                  fullPage={fullPage}
+                  data={i}
+                />
+              ))
+            ) : (
+              <DuplicateSkeleton howMany={10}>
+                <BlockTableSkeleton />
+              </DuplicateSkeleton>
+            )}
+          </div>
+        </div>
+        <TableButton
+          fullPage={fullPage}
+          destination="/blocks"
+          htmlID="block-table"
+          altLabel="View More Blocks"
+        />
+      </Tooltip>
     </section>
   )
 }

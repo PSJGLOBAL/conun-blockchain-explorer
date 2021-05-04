@@ -6,30 +6,32 @@ import TxnActivitySection from "../../containers/TxnActivitySection/TxnActivityS
 
 const MainPage = () => {
   return (
-    <main>
-      <Switch>
-        <Route path="/blocks/" exact>
-          <div className="splitcolumns">
-            <BlockActivitySection />
-          </div>
-        </Route>
-        <Route path="/txns/" exact>
-          <div className="splitcolumns">
-            <TxnActivitySection />
-          </div>
-        </Route>
-        <Route path="/" exact>
-          <StatsBlock />
-          <div className="splitcolumns">
-            <BlockActivitySection />
-            <TxnActivitySection />
-          </div>
-        </Route>
-        <Route>
-          <Redirect to="/" />
-        </Route>
-      </Switch>
-    </main>
+    <>
+      <main>
+        <Switch>
+          <Route path="/blocks/" exact>
+            <div className="splitcolumns">
+              <BlockActivitySection />
+            </div>
+          </Route>
+          <Route path="/txns/" exact>
+            <div className="splitcolumns">
+              <TxnActivitySection />
+            </div>
+          </Route>
+          <Route path="/" exact>
+            <StatsBlock />
+            <div className="splitcolumns">
+              <BlockActivitySection />
+              <TxnActivitySection />
+            </div>
+          </Route>
+          <Route>
+            <Redirect to="/" />
+          </Route>
+        </Switch>
+      </main>
+    </>
   )
 }
 
