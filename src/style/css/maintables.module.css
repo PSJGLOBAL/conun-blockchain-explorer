@@ -1,0 +1,208 @@
+/* Table Container */
+
+:root {
+  --rowHeight: 70px;
+}
+
+.container {
+  width: 100%;
+  max-height: var(--tableHeight);
+  display: flex;
+  justify-content: center;
+  overflow: auto;
+}
+
+.mainpage {
+  --tableHeight: 400px;
+}
+
+.fullpage {
+  --tableHeight: 100%;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.container::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.container::-webkit-scrollbar-thumb {
+  background-color: var(--fore);
+  border-radius: 3px;
+}
+
+.container:hover.container::-webkit-scrollbar-thumb {
+  background-color: var(--hiblue);
+}
+
+/* Table Per Se */
+
+.center {
+  background-color: blueviolet;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  min-width: 600px;
+  height: var(--rowHeight);
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  border-top: 1px solid var(--bkg);
+  background-color: var(--fore);
+
+  animation: appear 0.4s ease-in forwards;
+  transform-style: preserve-3d;
+}
+
+.row div {
+  font-family: monospace;
+  /* background-color: aqua; */
+}
+
+/* Cells */
+
+.iconCell {
+  width: 70px;
+  height: var(--rowHeight);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hashCell {
+  width: 200px;
+  height: var(--rowHeight);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* TXN Cells */
+.actionCell {
+  width: 200px;
+  height: var(--rowHeight);
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.actionCell span {
+  margin: 3px;
+}
+
+/* Block Cells */
+
+.blockNumCell {
+  width: 100px;
+  height: var(--rowHeight);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.blockNumCell a {
+  color: var(--higreen);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.txnCount {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--bkg);
+  border-radius: var(--radius) 0;
+
+  font-size: 10pt;
+}
+
+/* Cell Contents */
+
+.hash a {
+  color: var(--higreen);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.tofrom {
+  width: fit-content;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.tofrom i {
+  font-size: 7pt;
+  margin-right: 5px;
+}
+.tofrom a {
+  color: var(--higreen);
+  text-decoration: none;
+}
+
+i {
+  color: var(--hiblue);
+}
+
+.value {
+  height: 30px;
+  /* max-width: 200px; */
+  padding: 2px 10px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  border-radius: var(--radius) 0;
+  background-color: var(--bkg);
+}
+.value i {
+  font-size: 10pt;
+  color: var(--font);
+}
+
+.noHistory {
+  width: 100%;
+  height: 100px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #999;
+}
+
+@keyframes appear {
+  0% {
+    transform: translateY(-100%);
+  }
+  60% {
+    transform: translateY(0);
+  }
+  80% {
+    transform: translateY(-5%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

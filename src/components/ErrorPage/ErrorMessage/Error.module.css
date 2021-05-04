@@ -1,0 +1,61 @@
+.header {
+  width: 100%;
+
+  background-color: var(--lolite);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.header h2 {
+  width: 90%;
+  color: white;
+}
+
+.errorContainer {
+  min-height: 500px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  background-image: url("../../../style/images/cones.png");
+  background-size: 500px;
+  background-position: 70% 50%;
+  background-repeat: no-repeat;
+}
+.title {
+  font-size: 40pt;
+  font-weight: bold;
+  color: var(--lolite);
+}
+.subtitle {
+  font-weight: bold;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  font-size: 16pt;
+  text-align: right;
+}
+.message > div {
+  margin: 5px;
+}
+
+.linkBox {
+  display: flex;
+  justify-self: flex-end;
+}
+
+.link i {
+  color: white;
+}
+
+.highlight {
+  color: var(--hiblue);
+}

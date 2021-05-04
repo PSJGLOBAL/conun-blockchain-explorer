@@ -1,95 +1,138 @@
-import { useState } from "react"
+import HashCell from "../../utilityComponents/HashCell/HashCell"
+import TimeStampCell from "../../utilityComponents/TimeStampCell/TimeStampCell"
+import IdenticonLink from "../../utilityComponents/IdenticonLink/IdenticonLink"
+import ContractIcon from "../../../ui/ContractIcon/ContractIcon"
+import ToFromLink from "../../utilityComponents/ToFromLink/ToFromLink"
 
-import { NavLink } from "react-router-dom"
-
-import ReactTimeAgo from "react-time-ago"
-import TimeAgo from "javascript-time-ago"
-import en from "javascript-time-ago/locale/en"
-
-import Identicon from "react-identicons"
-import ReactTooltip from "react-tooltip"
-
-import ContractIcon from "../../ContractIcon/ContractIcon"
-
-import { truncate } from "../../../utility/functions"
 import { ObjectType } from "../../../utility/types"
+import { truncate, multiclass } from "../../../utility/functions"
 
-import "./TxnDataBlock.css"
-import "../../../style/css/table-common.css"
+import style from "../../../style/css/maintables.module.css"
+import Tooltip from "../../Tooltip/Tooltip"
 
 interface Props {
   fullPage: boolean
   data: ObjectType
 }
 
-TimeAgo.addLocale(en)
+const ActionValueCell = ({
+  action,
+  value,
+  fullPage,
+}: {
+  action: string | number
+  value: string | number
+  fullPage: boolean
+}) => {
+  if (action) {
+    switch (action) {
+      case "Transfer":
+      case "Mint":
+      case "Burn":
+        const trunc = fullPage ? 14 : 7
 
-export const TxnDataBlock = (props: Props) => {
-  const [winWidth, setWinWidth] = useState<number>(window.innerWidth)
-
-  window.addEventListener("resize", () => {
-    setWinWidth(window.innerWidth)
-  })
-
-  let truncateLimit = 0
-
-  if (winWidth < 1000) {
-    truncateLimit = Math.floor(winWidth / 50)
+        return (
+          <span className={style.value}>{`${truncate(
+            value,
+            trunc,
+            true
+          )} CONX`}</span>
+        )
+      default:
+        return <span className={style.value}>{action}</span>
+    }
   } else {
-    truncateLimit = -1
+    return <span>&nbsp;</span>
+  }
+}
+
+// At some point, action will say 'deploy' and trigger something here.
+const ToFromCells = ({
+  to,
+  from,
+}: {
+  to: string | number
+  from: string | number
+}) => {
+  if (!to && !from) {
+    return (
+      <>
+        <div className={style.tofrom}>LIFECYCLE PROCESS</div>
+        <div className={style.tofrom}>Contract Deployed</div>
+      </>
+    )
   }
 
   return (
     <>
-      <article className="data-table-row scrolly">
-        {/* IDENTICON */}
-        <div className="identicon-cell hiding-cell">
-          <NavLink to={`/txns/${props.data.txhash}`}>
-            <div className="">
-              <Identicon size={15} string={props.data.txhash.toString()} />
-            </div>
-          </NavLink>
-        </div>
+      {from && (
+        <div className={style.tofrom}>
+          <i className="fas fa-chevron-left" />
 
-        {/* CONTRACT ICON */}
-        <div className="service-cell">
-          <ContractIcon serviceType={props.data.chaincodename} />
+          <ToFromLink dest={from.toString()} inner={truncate(from, 6)} />
         </div>
-        {/* HASH CELL */}
-        <div className="hash-cell">
-          <span className="" data-tip={props.data.txhash}>
-            <NavLink
-              className={"font-clicky monofont"}
-              to={`/txns/${props.data.txhash}`}
-            >
-              <span
-                className={
-                  props.fullPage
-                    ? "result-hash-cell selectable"
-                    : "result-hash-cell"
-                }
-              >
-                {props.fullPage
-                  ? truncate(props.data.txhash.toString(), truncateLimit)
-                  : truncate(props.data.txhash.toString())}
-              </span>
-            </NavLink>
-          </span>
+      )}
+      {to && (
+        <div className={style.tofrom}>
+          <i className="fas fa-chevron-right" />
+          <ToFromLink dest={to.toString()} inner={truncate(to, 6)} />
         </div>
-
-        {/* TIMESTAMP */}
-        <div className="time-cell">
-          <span data-tip={props.data.createdt}>
-            <ReactTimeAgo
-              date={new Date(props.data.createdt)}
-              locale="en-US"
-              tooltip={false}
-              timeStyle="mini"
-            />
-          </span>
-        </div>
-      </article>
-      <ReactTooltip backgroundColor="#e95654" />
+      )}
     </>
   )
 }
+
+const TxnDataBlock = ({ fullPage, data }: Props) => {
+  return (
+    <div className={style.row}>
+      <Tooltip id="txn-tips" place="right">
+        <div className={style.iconCell}>
+          <IdenticonLink destination={`/txns/${data.txhash}`} />
+        </div>
+        <div
+          className={multiclass(style.hashCell, "hash-cell")}
+          data-for="txn-tips"
+          data-tip="Transaction hash / Timestamp"
+        >
+          <HashCell
+            link={`/txns/${data.txhash}`}
+            hash={truncate(data.txhash, 6)}
+          />
+          <TimeStampCell time={data.createdt} timeStyle="round" />
+        </div>
+        <div
+          className={style.iconCell}
+          data-for="txn-tips"
+          data-tip="Smart Contract"
+        >
+          <ContractIcon
+            serviceType={data.chaincodename}
+            link={`/contracts/${data.chaincodename}`}
+          />
+        </div>
+        <div
+          className={style.hashCell}
+          data-for="txn-tips"
+          data-tip="To / From Addresses"
+        >
+          <ToFromCells to={data.tx_to} from={data.tx_from} />
+        </div>
+        <div
+          className={style.actionCell}
+          data-for="txn-tips"
+          data-tip={data.tx_action ? "Action Performed" : "Lifecycle Process"}
+        >
+          {data.tx_action && data.tx_value && (
+            <ActionValueCell
+              action={data.tx_action}
+              value={data.tx_value}
+              fullPage={fullPage}
+            />
+          )}
+        </div>
+      </Tooltip>
+    </div>
+  )
+}
+
+export default TxnDataBlock

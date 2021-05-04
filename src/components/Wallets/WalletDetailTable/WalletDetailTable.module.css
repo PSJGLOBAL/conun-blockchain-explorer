@@ -1,0 +1,41 @@
+.table {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+
+  text-align: center;
+}
+
+.cell {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  border-left: 1px solid var(--bkg);
+}
+
+.cell:first-of-type {
+  border-left: none;
+}
+
+.title {
+  max-width: 200px;
+
+  padding: 10px;
+  box-sizing: border-box;
+
+  color: var(--hiblue);
+  text-align: left;
+}
+.content {
+  max-width: 200px;
+  display: flex;
+  align-items: center;
+  font-family: monospace;
+  user-select: text;
+}

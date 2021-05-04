@@ -1,0 +1,25 @@
+.block {
+  max-height: 40vh;
+  overflow: auto;
+}
+
+.block::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.block::-webkit-scrollbar-track {
+  background-color: none;
+}
+.block::-webkit-scrollbar-thumb {
+  background-color: var(--fore);
+  border-radius: 3px;
+}
+
+.block:hover.block::-webkit-scrollbar-thumb {
+  background-color: var(--higreen);
+}
+
+.block :is(h2) {
+  display: none;
+}

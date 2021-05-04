@@ -1,6 +1,5 @@
-import "./HeadBlock.css"
 import SelectChannel from "../../components/MainPage/SelectChannel/SelectChannel"
-import { Search } from "../../components/Search/Search"
+import Search from "../../components/Search/Search"
 
 const Header = () => {
   return (

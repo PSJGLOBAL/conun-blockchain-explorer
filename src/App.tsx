@@ -1,21 +1,23 @@
 import { Suspense, lazy } from "react"
-import { Route, Switch } from "react-router-dom"
+import { Route, Switch, Redirect } from "react-router-dom"
+
+import WebSocketProvider from "./components/providers/WebSocketProvider/WebSocketProvider"
 
 import HeadBlock from "./ui/HeadBlock/HeadBlock"
-import { HeadBar } from "./ui/HeadBar/HeadBar"
-import { Footer } from "./ui/Footer/Footer"
-
-import WebSocketProvider from "./components/WebSocketProvider/WebSocketProvider"
-
-import { InterfaceMain } from "./components/MainPage/InterfaceMain/InterfaceMain"
-import { DetailedViewSection } from "./components/DetailedView/DetailedViewSection/DetailedViewSection"
-import { Disconnected } from "./components/Disconnected/Disconnected"
+import HeadBar from "./ui/HeadBar/HeadBar"
+import Footer from "./ui/Footer/Footer"
 import Loading from "./components/Loading/Loading"
 
-import { ErrorBlock } from "./components/ErrorPage/ErrorBlock/ErrorBlock"
+import MainPage from "./pages/MainPage/MainPage"
+import { DetailedViewSection } from "./pages/Details/Details"
+import Disconnected from "./components/Disconnected/Disconnected"
+import ErrorBlock from "./components/ErrorPage/ErrorBlock/ErrorBlock"
 
 const ContractsMain = lazy(
-  () => import("./components/SmartContracts/ContractsMain/ContractsMain") // Only works with default exports?
+  () => import("./pages/Contracts/Contracts") // Only works with default exports?
+)
+const WalletsMain = lazy(
+  () => import("./pages/Wallets/Wallets") // Only works with default exports?
 )
 
 function App() {
@@ -32,19 +34,24 @@ function App() {
             path={["/blocks/:detail_id", "/txns/:detail_id"]}
             component={DetailedViewSection}
           />
+          {/* <Route path="/blocks/" exact=/> */}
           <Route path={"/error"} component={ErrorBlock} />
-          <Route
-            path="/contracts"
-            render={() => {
-              return (
-                <Suspense fallback={<Loading />}>
-                  <ContractsMain />
-                </Suspense>
-              )
-            }}
-          />
+          <Route path="/contracts">
+            <Suspense fallback={<Loading />}>
+              <ContractsMain />
+            </Suspense>
+          </Route>
+          <Route path="/wallets">
+            <Suspense fallback={<Loading />}>
+              <WalletsMain />
+            </Suspense>
+          </Route>
+
           <Route path="/disconnected" component={Disconnected} />
-          <Route path="/" component={InterfaceMain} />
+          <Route path="/" component={MainPage} />
+          <Route>
+            <Redirect to="/" />
+          </Route>
         </Switch>
       </div>
       <Footer />

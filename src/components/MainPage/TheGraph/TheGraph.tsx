@@ -14,7 +14,7 @@ type Props = {
   data: Array<ObjectType>
 }
 
-export const TheGraph = (props: Props) => {
+const TheGraph = (props: Props) => {
   const { data } = props
   const timeAgoData = data.map((i) => {
     return {
@@ -25,7 +25,7 @@ export const TheGraph = (props: Props) => {
   })
 
   return (
-    <ResponsiveContainer width={"95%"} minWidth={"50px"} height={260}>
+    <ResponsiveContainer width={"95%"} minWidth={"50px"} height={250}>
       <AreaChart
         margin={{ top: 10, right: 0, bottom: 0, left: -10 }}
         data={timeAgoData}
@@ -54,3 +54,5 @@ export const TheGraph = (props: Props) => {
     </ResponsiveContainer>
   )
 }
+
+export default TheGraph

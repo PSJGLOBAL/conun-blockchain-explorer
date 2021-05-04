@@ -1,0 +1,99 @@
+.container {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  background-color: var(--fore);
+  border-radius: var(--radius);
+  font-size: 12pt;
+}
+.row {
+  width: 100%;
+  padding: 5px;
+
+  display: flex;
+
+  border-bottom: 1px solid var(--bkg);
+  box-sizing: border-box;
+}
+
+.scrolly {
+  overflow-x: auto;
+}
+
+.row div {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 11pt;
+}
+.val {
+  padding-left: 10px;
+  font-family: monospace;
+}
+.selectVal {
+  padding-left: 10px;
+  font-family: monospace;
+  user-select: all;
+}
+
+.key {
+  /* Well, this is stupid but it works */
+  min-width: 110px;
+  max-width: 110px;
+  color: var(--hiblue);
+  align-self: center;
+  justify-self: flex-end;
+  text-align: right;
+}
+
+.link {
+  color: var(--higreen);
+  font-family: monospace;
+  text-decoration: none;
+}
+
+.contract {
+  display: flex;
+  align-items: center;
+}
+
+.validIcon {
+  width: 100px;
+  height: 30px;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  border-radius: 5px;
+
+  /* Valid */
+  background-color: rgb(235, 255, 235);
+  color: rgb(1, 179, 1);
+}
+
+.invalidIcon {
+  width: 100px;
+  height: 30px;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  border-radius: 5px;
+
+  /* Invalid */
+  background-color: rgb(255, 228, 232);
+  color: rgb(235, 135, 135);
+}
+
+.txLink {
+  color: var(--higreen);
+  font-family: monospace;
+  text-decoration: none;
+  margin: 5px 0;
+}

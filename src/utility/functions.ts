@@ -1,18 +1,32 @@
-export const truncate = (hashString: string, truncation: number = 0) => {
-  if (hashString.length > 24) {
-    let limit = 7
-
-    if (truncation < 0) {
-      return hashString
-    }
-
-    if (truncation > 0) {
-      limit = truncation
-    }
-
-    return hashString.substring(0, limit) + "..."
+export const truncate = (
+  input: string | number | null,
+  truncation: number = 0,
+  skipEnd: boolean = false
+) => {
+  if (!input) {
+    return ""
   }
-  return hashString
+  const hashString = input.toString()
+
+  // Eject if hashstring is already short enough
+  if (hashString.length < truncation) {
+    return hashString
+  }
+
+  // If truncation is 0, ignore truncation (allows truncation cancelling)
+  if (truncation < 0) {
+    return hashString
+  }
+  // Controls whether double-ended truncation occurs or not
+  if (skipEnd) {
+    return hashString.substring(0, truncation - 3) + "..."
+  } else {
+    return (
+      hashString.substring(0, truncation - 2) +
+      "..." +
+      hashString.substring(hashString.length - (truncation - 3))
+    )
+  }
 }
 
 let willLog = false
@@ -20,7 +34,16 @@ if (process.env.NODE_ENV !== "production") {
   willLog = true
 }
 
-export const logger = (message: string, level: string, ...data: any[]) => {
+type logType =
+  | "info"
+  | "success"
+  | "get"
+  | "warn"
+  | "error"
+  | "special"
+  | "log"
+  | string
+export const logger = (message: string, level: logType, ...data: any[]) => {
   if (willLog) {
     switch (level) {
       case "info":
@@ -53,4 +76,24 @@ export const logger = (message: string, level: string, ...data: any[]) => {
         break
     }
   }
+}
+
+export const getContractType = (serviceType: string | undefined) => {
+  switch (serviceType) {
+    case "CONX":
+      return "coin"
+
+    case "DRIVE":
+      return "drive"
+
+    case "ENGINE":
+      return "engine"
+
+    default:
+      return "basic"
+  }
+}
+
+export const multiclass = (...args: Array<string>) => {
+  return args.join(" ")
 }

@@ -1,41 +1,34 @@
 import { useState, useEffect } from "react"
-import { NavLink, useHistory, useLocation } from "react-router-dom"
+import { useLocation } from "react-router-dom"
 
 import { useSelector, useDispatch } from "react-redux"
 
-import { TxnDataBlock } from "../../components/MainPage/TxnDataBlock/TxnDataBlock"
-import { PaginationMenu } from "../../components/MainPage/PaginationMenu/PaginationMenu"
+import TransactionTable from "../../components/TransactionTable/TransactionTable"
+import PaginationMenu from "../../components/PaginationMenu/PaginationMenu"
 
-import { TXNTableSkeleton } from "../../ui/Skeletos/MainTableSkeleton/MainTableSkeleton"
-import { DuplicateSkeleton } from "../../ui/Skeletos/DuplicateSkeleton/DuplicateSkeleton"
+import TableButton from "../../components/utilityComponents/TableButton/TableButton"
 
 import { setTxnActivityData, setChannelStats } from "../../store/actions"
 
-import "../../components/MainPage/InterfaceMain/InterfaceMain.css"
-
 import { State } from "../../utility/types"
 
-type Props = {
-  mainpage?: true
-}
-
-export const TxnActivitySection = (props: Props) => {
+const TxnActivitySection = () => {
   const activeChannel = useSelector((state: State) => state.basic.activeChannel)
-  const activeChannelHash = activeChannel.channel_genesis_hash
   const txnActivityData = useSelector(
     (state: State) => state.txn.txnActivityData
   )
+
   const channelStats = useSelector((state: State) => state.basic.channelStats)
 
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [maxTxn, setMaxTxn] = useState<number | string>(channelStats.txCount)
 
+  const activeChannelHash = activeChannel.channel_genesis_hash
   const bottomTXN = txnActivityData[9]
-  const dispatch = useDispatch()
 
-  const history = useHistory()
+  const dispatch = useDispatch()
   const location = useLocation()
-  const fullPage = history.location.pathname === "/txns"
+  const fullPage = location.pathname.startsWith("/txns")
 
   const doPseudoPaginate = (mode: string) => {
     switch (mode) {
@@ -80,25 +73,6 @@ export const TxnActivitySection = (props: Props) => {
     setMaxTxn(channelStats.txCount)
   }, [channelStats.txCount])
 
-  // The hash cell size is flexible
-  // This function sets the header size to the same as the other cells' sizes.
-  function matchHashCellSize() {
-    const hashCells = document.getElementsByClassName("hash-cell")
-    if (hashCells.length > 1) {
-      const headerCell = hashCells[0] as HTMLElement
-      const topCell = hashCells[1]
-      headerCell.style.width = `${topCell.clientWidth}px`
-    }
-  }
-
-  useEffect(() => {
-    matchHashCellSize()
-  })
-
-  window.addEventListener("resize", () => {
-    matchHashCellSize()
-  })
-
   return (
     <section
       className={fullPage ? "section-block section-full" : "section-block"}
@@ -114,44 +88,18 @@ export const TxnActivitySection = (props: Props) => {
           />
         )}
       </div>
-      <div className="">
-        {/* HEADER */}
-        <div className="data-table-row data-table-header">
-          <div className="identicon-cell hiding-cell"></div>
-          <div className="service-cell">Service</div>
-          <div id="header-hash-cell" className="hash-cell">
-            Hash
-          </div>
-          <div className="time-cell">Time</div>
-        </div>
-
-        {/* TXN Activity - Table for each block made - shows hashes, created at, etc*/}
-        {txnActivityData.length > 0 ? (
-          txnActivityData.map((i) => (
-            <TxnDataBlock key={i.txhash} fullPage={fullPage} data={{ ...i }} />
-          ))
-        ) : (
-          <DuplicateSkeleton howMany={10}>
-            <TXNTableSkeleton />
-          </DuplicateSkeleton>
-        )}
-      </div>
+      <TransactionTable txnData={txnActivityData} fullPage={fullPage} />
       {/* BUTTON */}
       <div>
-        {fullPage ? (
-          <NavLink className="section-table-link" id="txn-table-home" to={"/"}>
-            Back To Home
-          </NavLink>
-        ) : (
-          <NavLink
-            className="section-table-link"
-            id="txn-table-more"
-            to={"/txns"}
-          >
-            View More Transactions
-          </NavLink>
-        )}
+        <TableButton
+          fullPage={fullPage}
+          destination="/txns"
+          htmlID="txn-table"
+          altLabel="View More Transactions"
+        />
       </div>
     </section>
   )
 }
+
+export default TxnActivitySection

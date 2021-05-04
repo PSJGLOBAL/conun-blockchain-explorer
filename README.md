@@ -1,4 +1,4 @@
-# Conun Blockchain Explorer V.1.2
+# Conun Blockchain Explorer V.2.0
 
 ## Current Progress
 

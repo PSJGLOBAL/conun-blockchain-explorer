@@ -18,7 +18,7 @@ import { composeWithDevTools } from "redux-devtools-extension"
 
 // Component Imports
 import App from "./App"
-import { ChannelProvider } from "./components/MainPage/ChannelProvider/ChannelProvider"
+import ChannelProvider from "./components/providers/ChannelProvider/ChannelProvider"
 
 // CSS
 import "./style/css/global.css"

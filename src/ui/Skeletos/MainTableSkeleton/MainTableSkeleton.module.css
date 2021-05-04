@@ -1,0 +1,28 @@
+.table {
+  background-color: #f8fafd;
+  border: 1px solid var(--fore);
+  border-radius: 10px;
+  animation: skeleflash 1s infinite alternate;
+}
+
+.table div {
+  background-color: var(--bkg);
+}
+
+.table .identicon {
+  animation: none;
+}
+.table .service {
+  width: 25px;
+  height: 25px;
+  border-radius: var(--radius);
+}
+
+@keyframes skeleflash {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

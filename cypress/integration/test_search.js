@@ -13,34 +13,34 @@ describe("Test Search -> 404", function () {
     })
   })
 describe("Test Search for Real Block", function () {
-    it("Search for block no. 300, verify all data cells exist", function () {
+    it("Search for block no. 21314, verify all data cells exist", function () {
 
         cy.visit("http://localhost:3000/")
 
         cy.wait(1000)
 
-        cy.get("#search-input").type("300").type("{enter}")
+        cy.get("#search-input").type("21314").type("{enter}")
   
-        cy.contains("300").should("contain", "300")
+        cy.contains("21314")
         cy.contains("Block Size")
         cy.contains("Block Hash")
         cy.contains("Data Hash")
         cy.contains("Previous Hash")
-        cy.contains("Transactions:")
+        cy.contains("Transactions")
     
         })
   })
 
 describe("Follow Block Search to TXN", function () {
-    it("Follow TXN link from block no. 300, verify the TXN hash matches on both pages", function () {
+    it("Follow TXN link from block no. 21314, verify the TXN hash matches on both pages", function () {
 
-        cy.visit("http://localhost:3000/blocks/300")
+        cy.visit("http://localhost:3000/blocks/21314")
 
         cy.wait(1000)
 
-        cy.contains("Transactions:")
+        cy.contains("Transactions")
 
-        cy.get(".info-table-link").first().as('txnHash')
+        cy.get(".block-txn-link").first().as('txnHash')
         cy.get("@txnHash").then(($txnhash) => { const value = $txnhash.text()
             cy.get("@txnHash").click()
             
@@ -55,13 +55,13 @@ describe("Follow Block Search to TXN", function () {
 describe("Extract TXN from Block hash, Search", function () {
     it("Get a TXN hash from a block page, search for it in bar", function () {
 
-        cy.visit("http://localhost:3000/blocks/300")
+        cy.visit("http://localhost:3000/blocks/21314")
 
         cy.wait(1000)
 
-        cy.contains("Transactions:")
+        cy.contains("Transactions")
 
-        cy.get(".info-table-link").first().as('txnHash')
+        cy.get(".block-txn-link").first().as('txnHash')
         cy.get("@txnHash").then(($txnhash) => { const value = $txnhash.text()
             
             cy.get("#search-input").type(value).type("{enter}")
@@ -71,3 +71,34 @@ describe("Extract TXN from Block hash, Search", function () {
         })
         })
   })
+
+
+describe("Test search for wallet hash", function () {
+    it("Get wallet hash from txn, search for it", function () {
+
+        cy.visit("http://localhost:3000/blocks/21342")
+
+        cy.wait(1000)
+
+        cy.contains("Transactions")
+
+        cy.get(".block-txn-link").first().as('txnHash')
+        cy.get("@txnHash").click()
+
+        cy.wait(100)
+
+        cy.get(".to-from-cell").should("exist")
+
+        cy.get(".to-from-cell").first().as("walletHash")
+
+        cy.get("@walletHash").then(($walletHash)=> {
+          const walletHashString = $walletHash.text()
+
+          cy.get("#search-input").type(walletHashString).type("{enter}")
+          cy.contains(walletHashString)
+
+        })
+
+        })
+  })
+

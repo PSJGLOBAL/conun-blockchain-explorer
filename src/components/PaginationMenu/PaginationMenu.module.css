@@ -1,0 +1,49 @@
+.pagination {
+  display: flex;
+  flex-direction: row;
+  user-select: none;
+}
+
+.buttonBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonBox div {
+  height: 10px;
+  margin: 2px;
+  padding: 7px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--hihover);
+  border-radius: 5px;
+}
+
+.buttonBox div:hover {
+  background-color: var(--hilite);
+}
+
+.indicator {
+  margin-right: 15px;
+
+  align-self: flex-end;
+  text-align: center;
+}
+.label {
+  width: 30px;
+}
+
+.label i {
+  font-size: 16pt;
+  color: white;
+}
+
+@media only screen and (max-width: 400px) {
+  .pagination {
+    flex-direction: column;
+  }
+}

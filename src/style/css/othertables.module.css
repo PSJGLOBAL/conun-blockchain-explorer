@@ -1,0 +1,56 @@
+.scrolly {
+  overflow-x: auto;
+}
+
+.header {
+  border: none !important;
+  animation: none !important;
+}
+
+.row {
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  z-index: 1;
+
+  background-color: var(--fore);
+  border-top: 1px solid var(--bkg);
+  border-bottom: 1px solid var(--bkg);
+}
+
+.row:first {
+  border-top: 0px;
+}
+
+.row div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.row a {
+  text-decoration: none;
+}
+
+.time {
+  width: 60px;
+}
+.largeTime {
+  max-width: 380px;
+}
+.superTime {
+  min-width: 380px;
+  max-width: 500px;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+}
+.superTime span {
+  margin-right: 10px;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--higreen);
+}

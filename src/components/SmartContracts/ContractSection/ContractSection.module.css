@@ -1,0 +1,60 @@
+.name {
+  width: 180px;
+}
+.name :is(span, a) {
+  width: 100%;
+  text-align: left;
+}
+
+.icon {
+  width: 200px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+.version {
+  width: 200px;
+}
+
+.date {
+  width: 200px;
+}
+.seeMore {
+  align-self: flex-end;
+  height: 100%;
+  margin: 20px;
+}
+.seeMore a {
+  text-decoration: none;
+  color: var(--hiblue);
+}
+.seeMore a:hover {
+  color: var(--higreen);
+}
+
+.container {
+  width: 100%;
+  overflow-x: auto;
+}
+.table {
+  min-width: 400px;
+}
+
+.container::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.container::-webkit-scrollbar-thumb {
+  background-color: var(--fore);
+  border-radius: 3px;
+}
+
+.container:hover.container::-webkit-scrollbar-thumb {
+  background-color: var(--hiblue);
+}

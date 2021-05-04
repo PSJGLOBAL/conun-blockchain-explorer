@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 
-import { HeadBar } from "../../ui/HeadBar/HeadBar"
+import HeadBar from "../../ui/HeadBar/HeadBar"
 import HeadBlock from "../../ui/HeadBlock/HeadBlock"
 
-import "./Disconnected.css"
+import style from "./Disconnected.module.css"
 
-export const Disconnected = () => {
+const Disconnected = () => {
   const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
@@ -23,9 +23,9 @@ export const Disconnected = () => {
       <HeadBar />
       <div className="app">
         <HeadBlock />
-        <main className="disconnected">
+        <main className={style.disconnected}>
           {loading ? (
-            <div className="loader">Loading...</div>
+            <div className={style.loader}>Loading...</div>
           ) : (
             <div>
               Oops! It looks like your server is disconnected. Contact your
@@ -37,3 +37,5 @@ export const Disconnected = () => {
     </>
   )
 }
+
+export default Disconnected

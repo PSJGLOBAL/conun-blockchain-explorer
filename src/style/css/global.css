@@ -43,7 +43,7 @@ main {
 }
 .monofont {
   font-family: monospace, "Courier New", Courier;
-  font-size: 11pt;
+  font-size: 9pt;
 }
 .selectable {
   user-select: text;
@@ -69,12 +69,12 @@ main {
 
 .app {
   width: 1400px;
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - 160px);
 }
 
 .splitcolumns {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 50% 50%;
 }
 
 .section-full {
@@ -136,7 +136,7 @@ main {
 }
 
 .section-block {
-  margin: 10px;
+  margin: 20px 10px 10px 10px;
   padding: 20px;
 
   display: flex;
@@ -147,6 +147,47 @@ main {
 }
 .section-single {
   width: 100%;
+}
+
+header {
+  height: 150px;
+  margin: 70px 10px 10px 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--fore);
+
+  border-radius: var(--radius);
+}
+
+header h1 {
+  text-align: center;
+}
+
+@media only screen and (max-width: 800px) {
+  header {
+    height: 240px;
+  }
+  header h1 {
+    font-size: 2em;
+  }
+}
+
+.contracts-main {
+  min-height: 300px;
+  margin: 20px 10px 10px 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* background-color: var(--fore);
+  border-radius: var(--radius); */
+  /* margin: 10px; */
+  padding: 20px;
 }
 
 @keyframes link-hover {
@@ -166,7 +207,7 @@ main {
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1200px) {
   .splitcolumns {
     display: flex;
     flex-direction: column;
@@ -181,4 +222,55 @@ main {
     height: 100%;
     flex-direction: column;
   }
+}
+
+.gist-file {
+  border: none !important;
+  user-select: text;
+  margin-bottom: 20px;
+}
+
+.gist-data {
+  padding-bottom: 20px;
+  border-bottom: none !important;
+  border-radius: 0 !important;
+}
+.gist-data tbody {
+  border-radius: 5px;
+}
+
+.gist-data tbody td {
+  font-size: 8pt !important;
+  height: 10px;
+}
+
+.gist-data .blob-code {
+  background-color: #eee !important;
+  height: 10px;
+}
+.gist-data .blob-num {
+  background-color: #ddd !important;
+
+  height: 10px;
+}
+
+.gist-meta {
+  display: none;
+}
+
+.gist .blob-wrapper {
+  border-radius: 10px !important;
+}
+
+.gist .blob-wrapper::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.gist .blob-wrapper::-webkit-scrollbar-track {
+  background-color: none;
+}
+.gist .blob-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--higreen);
+  border-radius: 3px;
 }

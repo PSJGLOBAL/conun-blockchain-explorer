@@ -1,0 +1,42 @@
+.table {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  cursor: pointer;
+}
+
+.tab {
+  height: 30px;
+  width: 100%;
+  margin: 3px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: bold;
+  text-align: center;
+
+  border-radius: 0 0 var(--radius) var(--radius);
+
+  user-select: none;
+}
+
+.tab:hover {
+  background-color: #f3faff;
+}
+
+.active {
+  background-color: var(--hiblue);
+  color: white;
+}
+.active:hover {
+  background-color: var(--higreen);
+}
+
+@media only screen and (max-width: 600px) {
+  .table {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}

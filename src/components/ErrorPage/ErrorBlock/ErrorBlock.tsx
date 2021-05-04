@@ -2,9 +2,7 @@ import { useLocation } from "react-router-dom"
 
 import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
-import "./ErrorBlock.css"
-
-export const ErrorBlock = () => {
+const ErrorBlock = () => {
   const query = new URLSearchParams(useLocation().search)
   switch (query.get("type")) {
     case "invalid_search":
@@ -47,6 +45,16 @@ export const ErrorBlock = () => {
           message="The server did not respond."
         />
       )
+    case "no_wallet_hash":
+      return (
+        <ErrorMessage
+          code="404"
+          title="Page Doesn't Exist"
+          subtitle="Invalid wallet address:"
+          terms=""
+          message="No wallet address found."
+        />
+      )
     default:
       return (
         <ErrorMessage
@@ -59,3 +67,5 @@ export const ErrorBlock = () => {
       )
   }
 }
+
+export default ErrorBlock

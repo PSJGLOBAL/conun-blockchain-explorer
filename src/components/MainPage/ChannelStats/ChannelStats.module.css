@@ -1,0 +1,54 @@
+.table {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.column {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.icon {
+  width: 50px;
+  padding: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 24pt;
+}
+
+.icon img {
+  width: 50px;
+  height: auto;
+
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.data {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  font-weight: bold;
+}
+
+.data span{
+  margin-left: 5px;
+}
+
+@media only screen and (max-width: 700px) {
+  .column {
+    flex-direction: column;
+  }
+  .label {
+    display: none;
+  }
+  .data span {
+    margin-left:auto;
+  }
+}

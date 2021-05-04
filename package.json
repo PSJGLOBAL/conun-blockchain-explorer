@@ -15,6 +15,8 @@
     "numeral": "^2.0.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-embed-gist": "^1.0.11",
+    "react-gist": "^1.2.2",
     "react-identicons": "^1.2.5",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
@@ -33,7 +35,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy-loc": "npm run build && pm2 serve build 8888 --spa --name \"conscan-test\""
+    "deploy": "sudo pm2 stop \"conscan-test\" && pm2 delete \"conscan-test\" && rm -rf build && echo \"Existing build files deleted\" && git pull && npm run build &&  pm2 serve build 8888 --spa --name \"conscan-test\"",
+    "deploy-build": "npm run build &&  pm2 serve build 8888 --spa --name \"conscan-test\""
   },
   "eslintConfig": {
     "extends": [
