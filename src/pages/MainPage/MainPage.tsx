@@ -1,4 +1,4 @@
-import { Route } from "react-router-dom"
+import { Redirect, Route, Switch } from "react-router-dom"
 
 import StatsBlock from "../../containers/StatsBlock/Statsblock"
 import BlockActivitySection from "../../containers/BlockActivitySection/BlockActivitySection"
@@ -7,15 +7,28 @@ import TxnActivitySection from "../../containers/TxnActivitySection/TxnActivityS
 const MainPage = () => {
   return (
     <main>
-      <Route path="/" exact component={StatsBlock} />
-      <div className="splitcolumns">
-        <Route path="/" exact>
-          <BlockActivitySection />
-          <TxnActivitySection />
+      <Switch>
+        <Route path="/blocks/" exact>
+          <div className="splitcolumns">
+            <BlockActivitySection />
+          </div>
         </Route>
-        <Route path="/blocks/" exact component={BlockActivitySection} />
-        <Route path="/txns/" exact component={TxnActivitySection} />
-      </div>
+        <Route path="/txns/" exact>
+          <div className="splitcolumns">
+            <TxnActivitySection />
+          </div>
+        </Route>
+        <Route path="/" exact>
+          <StatsBlock />
+          <div className="splitcolumns">
+            <BlockActivitySection />
+            <TxnActivitySection />
+          </div>
+        </Route>
+        <Route>
+          <Redirect to="/" />
+        </Route>
+      </Switch>
     </main>
   )
 }

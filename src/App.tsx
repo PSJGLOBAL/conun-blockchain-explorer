@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react"
-import { Route, Switch } from "react-router-dom"
+import { Route, Switch, Redirect } from "react-router-dom"
 
 import WebSocketProvider from "./components/providers/WebSocketProvider/WebSocketProvider"
 
@@ -49,6 +49,9 @@ function App() {
 
           <Route path="/disconnected" component={Disconnected} />
           <Route path="/" component={MainPage} />
+          <Route>
+            <Redirect to="/" />
+          </Route>
         </Switch>
       </div>
       <Footer />
