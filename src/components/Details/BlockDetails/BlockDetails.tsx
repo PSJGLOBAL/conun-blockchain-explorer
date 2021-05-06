@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 
 import DetailsTableHeader from "../DetailsTableHeader/DetailsTableHeader"
@@ -11,8 +10,8 @@ import style from "../Details.module.css"
 
 import axios from "../../../axios/axiosinst"
 
-import { State } from "../../../utility/types"
 import { logger } from "../../../utility/functions"
+import useChannelHash from "../../../hooks/useChannelHash"
 
 interface Props {
   blocknum?: string | null
@@ -20,8 +19,7 @@ interface Props {
 
 const BlockDetails = (props: Props) => {
   const [blockData, setBlockData] = useState<any>(null)
-  const activeChannel = useSelector((state: State) => state.basic.activeChannel)
-  const activeChannelHash = activeChannel.channel_genesis_hash
+  const activeChannelHash = useChannelHash()
 
   let history = useHistory()
 

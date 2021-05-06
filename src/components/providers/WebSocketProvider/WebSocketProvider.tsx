@@ -8,12 +8,12 @@ import { State } from "../../../utility/types"
 import { logger } from "../../../utility/functions"
 import * as actions from "../../../store/actions"
 import { SOCKETURL } from "../../../utility/config.json"
+import useChannelHash from "../../../hooks/useChannelHash"
 
 function WebSocketProvider() {
   const [socket, setSocket] = useState<null | W3CWebsocket>(null)
   const dispatch = useDispatch()
-  const activeChannel = useSelector((state: State) => state.basic.activeChannel)
-  const activeChannelHash = activeChannel.channel_genesis_hash
+  const activeChannelHash = useChannelHash()
   const blockActivityData = useSelector(
     (state: State) => state.block.blockActivityData
   )
