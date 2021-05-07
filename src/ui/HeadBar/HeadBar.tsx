@@ -4,7 +4,7 @@ import { BASEURL } from "../../utility/config.json"
 
 import style from "./HeadBar.module.css"
 
-import logo from "../../style/images/conun-logo.png"
+import logo from "../../style/images/conunLogoHeadBar.svg"
 
 const HeadBar = () => {
   const [show, setShow] = useState<boolean>(false)

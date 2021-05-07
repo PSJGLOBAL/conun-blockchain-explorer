@@ -1,4 +1,4 @@
-import logo from "../../style/images/conun-logo-white.png"
+import logo from "../../style/images/conunLogoFooter.svg"
 import tele from "../../style/images/telegramIcon.png"
 import face from "../../style/images/facebookIcon.png"
 import twit from "../../style/images/twitterIcon.png"
