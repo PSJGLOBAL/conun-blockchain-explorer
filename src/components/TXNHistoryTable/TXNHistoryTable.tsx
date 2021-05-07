@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
 
-import { useSelector, useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 import { setChannelStats } from "../../store/actions"
 import axios from "../../axios/axiosinst"
 
-import { State, ObjectType } from "../../utility/types"
+import { ObjectType } from "../../utility/types"
 
 import TransactionTable from "../../components/TransactionTable/TransactionTable"
 import PaginationMenu from "../PaginationMenu/PaginationMenu"
+import useChannelHash from "../../hooks/useChannelHash"
 
 type Props = {
   param: string | undefined
@@ -15,8 +16,7 @@ type Props = {
 }
 
 const TXNHistoryTable = ({ param, dataRole }: Props) => {
-  const activeChannel = useSelector((state: State) => state.basic.activeChannel)
-  const activeChannelHash = activeChannel.channel_genesis_hash
+  const activeChannelHash = useChannelHash()
 
   const axiosURL =
     dataRole === "wallet"

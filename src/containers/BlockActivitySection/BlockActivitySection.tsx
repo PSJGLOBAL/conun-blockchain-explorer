@@ -18,9 +18,9 @@ import style from "../../style/css/maintables.module.css"
 import { State } from "../../utility/types"
 import { multiclass } from "../../utility/functions"
 import { logger } from "../../utility/functions"
+import useChannelHash from "../../hooks/useChannelHash"
 
 const BlockActivitySection = () => {
-  const activeChannel = useSelector((state: State) => state.basic.activeChannel)
   const channelStats = useSelector((state: State) => state.basic.channelStats)
   const blockActivityData = useSelector(
     (state: State) => state.block.blockActivityData
@@ -32,7 +32,7 @@ const BlockActivitySection = () => {
   )
 
   const bottomBlock = blockActivityData[9]
-  const activeChannelHash = activeChannel.channel_genesis_hash
+  const activeChannelHash = useChannelHash()
   const dispatch = useDispatch()
   const history = useHistory()
   const location = useLocation()

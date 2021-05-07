@@ -2,16 +2,17 @@ import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 
 import { setChannelStats } from "../../../store/actions"
+import useChannelHash from "../../../hooks/useChannelHash"
 
 import { State } from "../../../utility/types"
-import style from "./ChannelStats.module.css"
+
 import blocksIcon from "../../../style/images/blocks-icon.svg"
 import txnIcon from "../../../style/images/txn-icon.svg"
+import style from "./ChannelStats.module.css"
 
 const ChannelStats = () => {
   const dispatch = useDispatch()
-  const activeChannel = useSelector((state: State) => state.basic.activeChannel)
-  const activeChannelHash = activeChannel.channel_genesis_hash
+  const activeChannelHash = useChannelHash()
 
   // Get channel stats directly from this component
   // This means the channel provider is loaded and executed before this. More reliable.
@@ -19,7 +20,7 @@ const ChannelStats = () => {
     if (activeChannelHash && activeChannelHash !== "") {
       dispatch(setChannelStats(activeChannelHash.toString()))
     }
-  }, [activeChannel, activeChannelHash, dispatch])
+  }, [activeChannelHash, dispatch])
 
   const channelStats = useSelector((state: State) => state.basic.channelStats)
   return (
