@@ -33,7 +33,7 @@ const BlockDetailsTable = ({
       <DetailsTableRow keyCell="Data Hash" value={datahash} />
       <DetailsTableRow keyCell="Previous Hash" value={prehash} />
       <DetailsTableRow keyCell={`Transactions (${txcount})`}>
-        {txhash.map((t: string) => (
+        {txhash?.map((t: string) => (
           <NavLink
             className={multiclass(style.txLink, "block-txn-link")}
             to={`/txns/${t}`}

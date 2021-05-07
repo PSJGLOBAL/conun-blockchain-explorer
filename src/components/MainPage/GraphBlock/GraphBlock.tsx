@@ -1,18 +1,18 @@
 import { useState, useEffect, useCallback } from "react"
-import { useSelector } from "react-redux"
 
-import axios from "../../../axios/axiosinst"
-
+import GraphSkeleton from "../../../ui/Skeletos/GraphSkeleton/GraphSkeleton"
 import GraphControls from "../GraphControls/GraphControls"
 import TheGraph from "../TheGraph/TheGraph"
 
-import { State, ObjectType } from "../../../utility/types"
+import useChannelHash from "../../../hooks/useChannelHash"
+
+import axios from "../../../axios/axiosinst"
+
+import { ObjectType } from "../../../utility/types"
 import { logger } from "../../../utility/functions"
-import GraphSkeleton from "../../../ui/Skeletos/GraphSkeleton/GraphSkeleton"
 
 const GraphBlock = () => {
-  const activeChannel = useSelector((state: State) => state.basic.activeChannel)
-  const activeChannelHash = activeChannel.channel_genesis_hash
+  const activeChannelHash = useChannelHash()
 
   const [graphMode, setGraphMode] = useState<string>("txn-min")
   const [graphData, setGraphData] = useState<Array<ObjectType>>([])
