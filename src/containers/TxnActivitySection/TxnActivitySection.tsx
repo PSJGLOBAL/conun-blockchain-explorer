@@ -11,9 +11,9 @@ import TableButton from "../../components/utilityComponents/TableButton/TableBut
 import { setTxnActivityData, setChannelStats } from "../../store/actions"
 
 import { State } from "../../utility/types"
+import useChannelHash from "../../hooks/useChannelHash"
 
 const TxnActivitySection = () => {
-  const activeChannel = useSelector((state: State) => state.basic.activeChannel)
   const txnActivityData = useSelector(
     (state: State) => state.txn.txnActivityData
   )
@@ -23,7 +23,7 @@ const TxnActivitySection = () => {
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [maxTxn, setMaxTxn] = useState<number | string>(channelStats.txCount)
 
-  const activeChannelHash = activeChannel.channel_genesis_hash
+  const activeChannelHash = useChannelHash()
   const bottomTXN = txnActivityData[9]
 
   const dispatch = useDispatch()

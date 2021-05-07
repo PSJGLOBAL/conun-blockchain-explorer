@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 import { Route, Switch } from "react-router-dom"
 
 import { getAllContracts } from "../../store/actions"
@@ -6,12 +6,12 @@ import { getAllContracts } from "../../store/actions"
 import ContractSection from "../../components/SmartContracts/ContractSection/ContractSection"
 import ContractDetails from "../../components/SmartContracts/ContractDetails/ContractDetailPage/ContractDetails"
 
-import { State } from "../../utility/types"
+import useChannelHash from "../../hooks/useChannelHash"
 
 const ContractsMain = () => {
-  const activeChannel = useSelector((state: State) => state.basic.activeChannel)
-  const activeChannelHash = activeChannel.channel_genesis_hash
+  const activeChannelHash = useChannelHash()
   const dispatch = useDispatch()
+
   dispatch(getAllContracts(activeChannelHash.toString()))
 
   return (

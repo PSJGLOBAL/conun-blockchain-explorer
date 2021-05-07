@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react"
 
-import { useSelector, useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 import { setChannelStats } from "../../../../store/actions"
 import axios from "../../../../axios/axiosinst"
 
 import { logger } from "../../../../utility/functions"
-import { State, ObjectType } from "../../../../utility/types"
+import { ObjectType } from "../../../../utility/types"
 
 import TransactionTable from "../../../../components/TransactionTable/TransactionTable"
+import useChannelHash from "../../../../hooks/useChannelHash"
 
 type Props = {
   contractName: string | undefined
 }
 
 const ContractHistoryTable = ({ contractName }: Props) => {
-  const activeChannel = useSelector((state: State) => state.basic.activeChannel)
-  const activeChannelHash = activeChannel.channel_genesis_hash
+  const activeChannelHash = useChannelHash()
 
   const [
     contractTxnData,

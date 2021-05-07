@@ -1,11 +1,10 @@
 // import Gist from "react-gist"
 import { useEffect, useState } from "react"
 import ReactEmbedGist from "react-embed-gist"
-import { useSelector } from "react-redux"
 
 import axios from "../../../../axios/axiosinst"
+import useChannelHash from "../../../../hooks/useChannelHash"
 import { logger } from "../../../../utility/functions"
-import { State } from "../../../../utility/types"
 
 import style from "./ContractCodeTab.module.css"
 
@@ -22,8 +21,7 @@ const ContractCodeTab = ({
   contractVersions,
   latestVersion,
 }: Props) => {
-  const activeChannel = useSelector((state: State) => state.basic.activeChannel)
-  const activeChannelHash = activeChannel.channel_genesis_hash
+  const activeChannelHash = useChannelHash()
 
   const [reqVersion] = useState<number | undefined>(latestVersion)
   const [gistID, setGistID] = useState<string>("")
