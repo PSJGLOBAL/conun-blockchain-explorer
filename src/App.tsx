@@ -1,23 +1,23 @@
 import { Suspense, lazy } from "react"
 import { Route, Switch, Redirect } from "react-router-dom"
 
-import WebSocketProvider from "./components/providers/WebSocketProvider/WebSocketProvider"
+import WebSocketProvider from "./components/providers/WebSocketProvider"
 
-import HeadBlock from "./ui/HeadBlock/HeadBlock"
-import HeadBar from "./ui/HeadBar/HeadBar"
-import Footer from "./ui/Footer/Footer"
-import Loading from "./components/Loading/Loading"
+import HeadBlock from "./ui/HeadBlock"
+import HeadBar from "./ui/HeadBar"
+import Footer from "./ui/Footer"
+import Loading from "./components/Loading"
 
-import MainPage from "./pages/MainPage/MainPage"
-import { DetailedViewSection } from "./pages/Details/Details"
-import Disconnected from "./components/Disconnected/Disconnected"
-import ErrorBlock from "./components/ErrorPage/ErrorBlock/ErrorBlock"
+import MainPage from "./pages/MainPage"
+import { DetailedViewSection } from "./pages/Details"
+import Disconnected from "./pages/Disconnected"
+import ErrorBlock from "./pages/ErrorPage/ErrorBlock"
 
 const ContractsMain = lazy(
-  () => import("./pages/Contracts/Contracts") // Only works with default exports?
+  () => import("./pages/Contracts") // Only works with default exports?
 )
 const WalletsMain = lazy(
-  () => import("./pages/Wallets/Wallets") // Only works with default exports?
+  () => import("./pages/Wallets") // Only works with default exports?
 )
 
 function App() {
