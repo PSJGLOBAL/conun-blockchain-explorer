@@ -12,6 +12,8 @@ import MainPage from "./pages/MainPage"
 import { DetailedViewSection } from "./pages/Details"
 import Disconnected from "./pages/Disconnected"
 import ErrorBlock from "./pages/ErrorPage/ErrorBlock"
+import BlocksPage from "./pages/BlocksPage"
+import TxnsPage from "./pages/TxnsPage"
 
 const ContractsMain = lazy(
   () => import("./pages/Contracts") // Only works with default exports?
@@ -48,6 +50,8 @@ function App() {
           </Route>
 
           <Route path="/disconnected" component={Disconnected} />
+          <Route path="/blocks/" component={BlocksPage} />
+          <Route path="/txns/" component={TxnsPage} />
           <Route path="/" component={MainPage} />
           <Route>
             <Redirect to="/" />

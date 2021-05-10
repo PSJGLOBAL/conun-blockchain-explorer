@@ -11,11 +11,7 @@ const TableButton = ({ fullPage, destination, htmlID, altLabel }: Props) => {
   return (
     <div>
       {fullPage ? (
-        <NavLink
-          className="section-table-link hover-gradient"
-          id={`${htmlID}-home`}
-          to={"/"}
-        >
+        <NavLink className="section-table-link" id={`${htmlID}-home`} to={"/"}>
           Back To Home
         </NavLink>
       ) : (
