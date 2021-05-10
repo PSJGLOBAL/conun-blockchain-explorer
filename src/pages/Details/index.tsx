@@ -2,7 +2,7 @@ import { useParams, useLocation } from "react-router-dom"
 import BlockDetails from "./BlockDetails"
 import TransactionDetails from "./TransactionDetails"
 
-export const DetailedViewSection = () => {
+const DetailedViewSection = () => {
   const { pathname } = useLocation()
   const { detail_id } = useParams<Record<string, string | undefined>>()
 
@@ -20,3 +20,5 @@ export const DetailedViewSection = () => {
     </div>
   )
 }
+
+export default DetailedViewSection

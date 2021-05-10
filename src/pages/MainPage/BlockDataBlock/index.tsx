@@ -25,13 +25,13 @@ const BlockNumCell = ({ num }: { num: string | number }) => {
 
 const BlockDataBlock = ({ fullPage, data }: Props) => {
   return (
-    <div className={style.row}>
+    <div className={multiclass(style.row, "block-data-row")}>
       <Tooltip id="block-tips" place="right">
         <div className={style.iconCell}>
           <IdenticonLink destination={`/blocks/${data.blocknum}`} />
         </div>
         <div
-          className={style.blockNumCell}
+          className={multiclass(style.blockNumCell, "block-number")}
           data-tip="Block Number"
           data-for="block-tips"
         >
