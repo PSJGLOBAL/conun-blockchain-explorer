@@ -11,14 +11,16 @@ import TableButton from "../../components/TableButton"
 import { BlockTableSkeleton } from "../../ui/Skeletos/MainTableSkeleton"
 import DuplicateSkeleton from "../../ui/Skeletos/DuplicateSkeleton"
 
+import useChannelHash from "../../hooks/useChannelHash"
+
 import { setBlockActivityData, setChannelStats } from "../../store/actions"
 
-import style from "../../style/css/maintables.module.css"
+import { multiclass } from "../../utility/functions"
 
 import { State } from "../../utility/types"
-import { multiclass } from "../../utility/functions"
-import { logger } from "../../utility/functions"
-import useChannelHash from "../../hooks/useChannelHash"
+
+import style from "../../style/css/maintables.module.css"
+import usePaginate from "../../hooks/usePaginate"
 
 const BlockActivitySection = () => {
   const channelStats = useSelector((state: State) => state.basic.channelStats)
@@ -26,12 +28,14 @@ const BlockActivitySection = () => {
     (state: State) => state.block.blockActivityData
   )
 
+  const { getFirstPage, getNextPage, getPrevPage, isLoading, prevent } =
+    usePaginate(setBlockActivityData, Number(channelStats.latestBlock), "block")
+
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [maxBlock, setMaxBlock] = useState<number | string>(
     channelStats.latestBlock
   )
-
-  const bottomBlock = blockActivityData[9]
+  const bottomBlock = blockActivityData[blockActivityData?.length - 1]
   const activeChannelHash = useChannelHash()
   const dispatch = useDispatch()
   const history = useHistory()
@@ -39,29 +43,32 @@ const BlockActivitySection = () => {
   const fullPage = history.location.pathname.startsWith("/blocks")
 
   const doPseudoPaginate = (mode: string) => {
-    switch (mode) {
-      case "first":
-        dispatch(setBlockActivityData(activeChannelHash))
-        setCurrentPage(1)
-        break
-      case "next":
-        dispatch(setBlockActivityData(activeChannelHash, bottomBlock.blocknum))
-        setCurrentPage(currentPage + 1)
-        break
-      case "prev":
-        if (currentPage > 1) {
-          let target = Number(bottomBlock.blocknum)
-          target += 20 // It's 20 because bottomBlock is already -10
-          logger("PAGINATE: Target block no.: ", "info", target)
-          dispatch(setBlockActivityData(activeChannelHash, target))
-          setCurrentPage(currentPage - 1)
-        } else {
+    if (!prevent) {
+      switch (mode) {
+        case "first":
+          getFirstPage()
           setCurrentPage(1)
-        }
-        break
-      default:
-        console.log("Pagination action not possible")
-        break
+          break
+
+        case "next":
+          if (bottomBlock.blocknum) {
+            getNextPage(currentPage, Number(bottomBlock.blocknum))
+            setCurrentPage(currentPage + 1)
+          }
+          break
+
+        case "prev":
+          if (bottomBlock.blocknum) {
+            if (currentPage - 1 >= 1) {
+              getPrevPage(currentPage, Number(bottomBlock.blocknum))
+              setCurrentPage(currentPage - 1 < 1 ? 1 : currentPage - 1)
+            }
+          }
+          break
+        default:
+          console.log("Pagination action not possible")
+          break
+      }
     }
   }
 
@@ -69,14 +76,15 @@ const BlockActivitySection = () => {
     window.scrollTo(0, 0)
   }, [location])
 
+  // useEffect to load the data
   useEffect(() => {
     if (activeChannelHash) {
       dispatch(setChannelStats(activeChannelHash))
       dispatch(setBlockActivityData(activeChannelHash))
-      setCurrentPage(1)
     }
-  }, [activeChannelHash, dispatch])
+  }, [activeChannelHash, blockActivityData.length, dispatch])
 
+  // useEffect to set the cap
   useEffect(() => {
     setMaxBlock(channelStats.latestBlock)
   }, [channelStats.latestBlock])
@@ -95,15 +103,14 @@ const BlockActivitySection = () => {
         {fullPage && (
           <PaginationMenu
             currentPage={currentPage}
-            max={maxBlock}
+            max={Math.floor(Number(maxBlock) / 10) || null}
             doPseudoPaginate={doPseudoPaginate}
           />
         )}
       </div>
       <div className={containerStyle}>
         <div className={style.table}>
-          {/* Block Activity - Table for each block made - shows hashes, created at, etc*/}
-          {blockActivityData.length > 0 ? (
+          {!isLoading ? (
             blockActivityData.map((i) => (
               <BlockDataBlock key={i.blockhash} fullPage={fullPage} data={i} />
             ))
