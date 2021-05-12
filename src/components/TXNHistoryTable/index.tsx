@@ -31,7 +31,7 @@ const TXNHistoryTable = ({ param, dataRole }: Props) => {
 
   const getTxnData = (url: string, txFrom: string | number | null = null) => {
     if (txFrom) {
-      axios.get(`${url}?txId=${txFrom}`).then((response) => {
+      axios.get(`${url}&txId=${txFrom}`).then((response) => {
         setTxnData(response.data.row)
       })
     } else {
@@ -49,8 +49,11 @@ const TXNHistoryTable = ({ param, dataRole }: Props) => {
           getTxnData(axiosURL)
           break
         case "next":
-          setCurrentPage(currentPage + 1)
-          getTxnData(axiosURL, bottomTXN)
+          if (txnData?.length === 10) {
+            //Block pagination if there are less than 10 txns in the page (i.e, you're on the last page)
+            setCurrentPage(currentPage + 1)
+            getTxnData(axiosURL, bottomTXN)
+          }
           break
         case "prev":
           let target = Number(bottomTXN)
