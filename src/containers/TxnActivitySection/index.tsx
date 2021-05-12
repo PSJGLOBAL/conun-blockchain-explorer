@@ -12,6 +12,7 @@ import { setTxnActivityData, setChannelStats } from "../../store/actions"
 
 import { State } from "../../utility/types"
 import useChannelHash from "../../hooks/useChannelHash"
+import usePaginate from "../../hooks/usePaginate"
 
 const TxnActivitySection = () => {
   const txnActivityData = useSelector(
@@ -19,7 +20,11 @@ const TxnActivitySection = () => {
   )
 
   const channelStats = useSelector((state: State) => state.basic.channelStats)
-
+  const { getFirstPage, getNextPage, getPrevPage, prevent } = usePaginate(
+    setTxnActivityData,
+    Number(channelStats.txCount),
+    "txn"
+  )
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [maxTxn, setMaxTxn] = useState<number | string>(channelStats.txCount)
 
@@ -31,29 +36,32 @@ const TxnActivitySection = () => {
   const fullPage = location.pathname.startsWith("/txns")
 
   const doPseudoPaginate = (mode: string) => {
-    switch (mode) {
-      case "first":
-        dispatch(setTxnActivityData(activeChannelHash))
-        setCurrentPage(1)
-        break
-      case "next":
-        dispatch(setTxnActivityData(activeChannelHash, bottomTXN.id))
-        setCurrentPage(currentPage + 1)
-        break
-      case "prev":
-        let target = Number(bottomTXN.id)
-        target += 20 // It's 20 because bottomTXN is already -10
-        dispatch(setTxnActivityData(activeChannelHash, target))
-        if (currentPage > 1) {
-          setCurrentPage(currentPage - 1)
-        } else {
+    if (!prevent) {
+      switch (mode) {
+        case "first":
+          getFirstPage()
           setCurrentPage(1)
-        }
-        break
+          break
+        case "next":
+          if (bottomTXN.id) {
+            getNextPage(currentPage, Number(bottomTXN.id))
+            setCurrentPage(currentPage + 1)
+          }
+          break
 
-      default:
-        console.log("Pagination action not possible")
-        break
+        case "prev":
+          if (bottomTXN.id) {
+            if (currentPage - 1 >= 1) {
+              getPrevPage(currentPage, Number(bottomTXN.id))
+              setCurrentPage(currentPage - 1 < 1 ? 1 : currentPage - 1)
+            }
+          }
+          break
+
+        default:
+          console.log("Pagination action not possible")
+          break
+      }
     }
   }
 
@@ -65,7 +73,6 @@ const TxnActivitySection = () => {
     if (activeChannelHash) {
       dispatch(setChannelStats(activeChannelHash))
       dispatch(setTxnActivityData(activeChannelHash))
-      setCurrentPage(1)
     }
   }, [activeChannelHash, dispatch])
 
@@ -83,7 +90,7 @@ const TxnActivitySection = () => {
         {fullPage && (
           <PaginationMenu
             currentPage={currentPage}
-            max={maxTxn}
+            max={Math.floor(Number(maxTxn) / 10) || null}
             doPseudoPaginate={doPseudoPaginate}
           />
         )}

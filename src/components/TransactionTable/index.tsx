@@ -54,7 +54,6 @@ const TransactionTable = ({ txnData, fullPage }: Props) => {
       <TXNTableSkeleton />
     </DuplicateSkeleton>
   )
-
   if (!loading) {
     if (success) {
       if (txnData && txnData.length > 0) {

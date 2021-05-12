@@ -11,7 +11,7 @@ const PaginationMenu = (props: Props) => {
   return (
     <div className={style.pagination}>
       <div className={style.indicator}>
-        {props.max && `${(props.currentPage * 10).toString()} of ${props.max}`}
+        {props.max && `${props.currentPage.toString()} of ${props.max}`}
       </div>
       <div className={style.buttonBox}>
         <div
