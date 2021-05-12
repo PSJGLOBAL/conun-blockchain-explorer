@@ -14,6 +14,7 @@
 
 .mainpage {
   --tableHeight: 400px;
+  border-bottom: 1px solid var(--bkg);
 }
 
 .fullpage {
@@ -46,7 +47,6 @@
 /* Table Per Se */
 
 .center {
-  background-color: blueviolet;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -40,7 +40,7 @@ const ContractCodeTab = ({
         })
     }
   }, [contractName, reqVersion, activeChannelHash])
-  // const gistID = "Aziiiz/64e1d17da3cc8ec2af55ba056d136603"
+
   return (
     <div className={style.block}>
       {gistID ? (
