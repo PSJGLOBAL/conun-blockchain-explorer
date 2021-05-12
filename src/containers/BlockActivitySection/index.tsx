@@ -23,10 +23,10 @@ import style from "../../style/css/maintables.module.css"
 import usePaginate from "../../hooks/usePaginate"
 
 const BlockActivitySection = () => {
-  const channelStats = useSelector((state: State) => state.basic.channelStats)
   const blockActivityData = useSelector(
     (state: State) => state.block.blockActivityData
   )
+  const channelStats = useSelector((state: State) => state.basic.channelStats)
 
   const { getFirstPage, getNextPage, getPrevPage, isLoading, prevent } =
     usePaginate(setBlockActivityData, Number(channelStats.latestBlock), "block")
@@ -37,6 +37,7 @@ const BlockActivitySection = () => {
   )
   const bottomBlock = blockActivityData[blockActivityData?.length - 1]
   const activeChannelHash = useChannelHash()
+
   const dispatch = useDispatch()
   const history = useHistory()
   const location = useLocation()
