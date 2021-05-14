@@ -10,6 +10,7 @@ import axios from "../../../axios/axiosinst"
 
 import { ObjectType } from "../../../utility/types"
 import { logger } from "../../../utility/functions"
+import { format } from "date-fns"
 
 const GraphBlock = () => {
   const activeChannelHash = useChannelHash()
@@ -48,7 +49,15 @@ const GraphBlock = () => {
           .get(`/${axiosUrlSegment}/${activeChannelHash}/1`)
           .then((response) => {
             logger("GRAPH: Response: ", "get", response)
-            setGraphData(response.data.rows)
+            setGraphData(
+              response.data.rows.map((i: any) => {
+                return {
+                  ...i,
+                  count: Number(i.count),
+                  datetime: format(new Date(i.datetime.toString()), "kk:mm"),
+                }
+              })
+            )
           })
       }
     },

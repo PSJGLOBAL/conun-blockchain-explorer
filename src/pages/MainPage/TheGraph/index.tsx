@@ -7,31 +7,21 @@ import {
   ResponsiveContainer,
 } from "recharts"
 import { ObjectType } from "../../../utility/types"
-import { format } from "date-fns"
 import numeral from "numeral"
 
 type Props = {
   data: Array<ObjectType>
-  width : number | string
+  width: number | string
   minWidth: number | string
-  height : number | string
+  height: number | string
 }
 
-const TheGraph = ({ data, width, minWidth, height } : Props) => {
-
-  const timeAgoData = data.map((i) => {
-    return {
-      ...i,
-      count: Number(i.count),
-      datetime: format(new Date(i.datetime.toString()), "kk:mm"),
-    }
-  })
-
+const TheGraph = ({ data, width, minWidth, height }: Props) => {
   return (
     <ResponsiveContainer width={width} minWidth={minWidth} height={height}>
       <AreaChart
         margin={{ top: 10, right: 0, bottom: 0, left: -10 }}
-        data={timeAgoData}
+        data={data && data}
       >
         <XAxis id="xaxis" dataKey="datetime" minTickGap={40} axisLine={false} />
         <YAxis

@@ -1,12 +1,9 @@
-import { useState, useEffect } from "react"
-import axios from "../../../../axios/axiosinst"
-
 import TheGraph from "../../../MainPage/TheGraph"
 
 import useChannelHash from "../../../../hooks/useChannelHash"
+import useGraphData from "../../../../hooks/useGraphData"
 
 import { format } from "date-fns"
-import { logger } from "../../../../utility/functions"
 
 import style from "./ContractsStatsTab.module.css"
 
@@ -16,26 +13,22 @@ type Props = {
 
 function ContractStatsTab({ contractName }: Props) {
   const activeChannelHash = useChannelHash()
+  const url = `/chaincode/txByDay/${activeChannelHash}/${contractName}/${format(
+    new Date(),
+    "yyyy%2'F'MM%2'F'dd"
+  )}}`
 
-  const [graphData, setGraphData] = useState([])
-
-  useEffect(() => {
-    axios
-      .get(
-        `/chaincode/txByDay/${activeChannelHash}/${contractName}/${format(
-          new Date(),
-          "yyyy%2'F'MM%2'F'dd"
-        )}}`
-      )
-      .then((response) => {
-        logger("Chaincode Stats: ", "get", response)
-        setGraphData(response.data.rows)
-      })
-  }, [activeChannelHash, contractName])
-
+  const { graphData } = useGraphData(url)
   return (
     <div className={style.block}>
-      <TheGraph data={graphData} width={"95%"} minWidth={"50px"} height={500} />
+      {graphData && (
+        <TheGraph
+          data={graphData.slice(graphData.length - 24)}
+          width={"95%"}
+          minWidth={"50px"}
+          height={500}
+        />
+      )}
     </div>
   )
 }
