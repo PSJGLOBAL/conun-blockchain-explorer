@@ -12,10 +12,13 @@ import numeral from "numeral"
 
 type Props = {
   data: Array<ObjectType>
+  width : number | string
+  minWidth: number | string
+  height : number | string
 }
 
-const TheGraph = (props: Props) => {
-  const { data } = props
+const TheGraph = ({ data, width, minWidth, height } : Props) => {
+
   const timeAgoData = data.map((i) => {
     return {
       ...i,
@@ -25,7 +28,7 @@ const TheGraph = (props: Props) => {
   })
 
   return (
-    <ResponsiveContainer width={"95%"} minWidth={"50px"} height={250}>
+    <ResponsiveContainer width={width} minWidth={minWidth} height={height}>
       <AreaChart
         margin={{ top: 10, right: 0, bottom: 0, left: -10 }}
         data={timeAgoData}

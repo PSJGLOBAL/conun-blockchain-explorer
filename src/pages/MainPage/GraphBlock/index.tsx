@@ -76,7 +76,12 @@ const GraphBlock = () => {
     <div className="section-block graph-block">
       {graphData.length > 0 ? (
         <>
-          <TheGraph data={graphData} />
+          <TheGraph
+            data={graphData}
+            width={"95%"}
+            minWidth={"50px"}
+            height={250}
+          />
           <GraphControls clickHandler={setGraphMode} active={graphMode} />
         </>
       ) : (
