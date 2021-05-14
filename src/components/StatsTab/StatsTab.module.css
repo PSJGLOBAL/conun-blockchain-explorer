@@ -1,0 +1,13 @@
+.Title {
+  display: flex;
+  margin: 20px;
+  width: 100%;
+}
+
+.Graph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 550px;
+}

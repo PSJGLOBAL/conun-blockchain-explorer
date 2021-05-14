@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react"
 
-// import ContractHistoryTable from "../ContractHistoryTable/ContractHistoryTable"
-import TXNHistoryTable from "../../TXNHistoryTable"
-
-import TabMenu from "../../TabMenu"
+import TXNHistoryTable from "../../../components/TXNHistoryTable"
+import TabMenu from "../../../components/TabMenu"
+import StatsTab from "../../../components/StatsTab"
 
 const WalletTabbedSection = ({ walletHash }: { walletHash: string }) => {
   const [activeTab, setActiveTab] = useState<string>("Transactions")
@@ -16,6 +15,15 @@ const WalletTabbedSection = ({ walletHash }: { walletHash: string }) => {
   let displayedTab
 
   switch (activeTab) {
+    case "Stats":
+      displayedTab = (
+        <StatsTab
+          role="wallet"
+          title="Transactions per hour"
+          searchParam={walletHash}
+        />
+      )
+      break
     case "Transactions":
     default:
       displayedTab = <TXNHistoryTable param={walletHash} dataRole="wallet" />
@@ -24,7 +32,7 @@ const WalletTabbedSection = ({ walletHash }: { walletHash: string }) => {
   return (
     <>
       <TabMenu
-        tabs={["Transactions"]}
+        tabs={["Transactions", "Stats"]}
         activeTab={activeTab}
         doChangeTab={setActiveTab}
       />

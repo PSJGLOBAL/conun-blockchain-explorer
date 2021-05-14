@@ -1,5 +1,5 @@
 import { Route, Switch, Redirect } from "react-router-dom"
-import WalletPage from "../../components/Wallets/WalletPage"
+import WalletPage from "../Wallets/WalletPage"
 
 const WalletsMain = () => {
   return (

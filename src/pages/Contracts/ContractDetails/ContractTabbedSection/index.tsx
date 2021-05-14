@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 
 import TXNHistoryTable from "../../../../components/TXNHistoryTable"
 import ContractCodeTab from "../ContractCodeTab"
-import ContractStatsTab from "../ContractStatsTab"
+import StatsTab from "../../../../components/StatsTab"
 import TabMenu from "../../../../components/TabMenu"
 
 import style from "./ContractTabbedSection.module.css"
@@ -28,7 +28,13 @@ const ContractTabbedSection = ({
 
   switch (activeTab) {
     case "Stats":
-      displayedTab = <ContractStatsTab contractName={contractName} />
+      displayedTab = (
+        <StatsTab
+          role="contract"
+          title="Transactions per hour"
+          searchParam={contractName}
+        />
+      )
       break
     case "Code":
       displayedTab = (
