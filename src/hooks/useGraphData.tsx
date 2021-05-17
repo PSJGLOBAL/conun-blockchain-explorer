@@ -3,10 +3,21 @@ import { useState, useEffect } from "react"
 import { format } from "date-fns"
 import axios from "../axios/axiosinst"
 import { logger } from "../utility/functions"
-import { ObjectType } from "../utility/types"
+import { GraphConfig, ObjectType } from "../utility/types"
 
-function useGraphData(sourceURL: string) {
+function useGraphData(sourceURL: string, dateFormat: GraphConfig) {
   const [graphData, setGraphData] = useState<Array<ObjectType> | null>(null)
+
+  let formatString: string
+  switch (dateFormat) {
+    case "weekly":
+      formatString = "MM/dd"
+      break
+    case "daily":
+    default:
+      formatString = "kk:mm"
+      break
+  }
 
   useEffect(() => {
     axios.get(sourceURL).then((response) => {
@@ -16,12 +27,12 @@ function useGraphData(sourceURL: string) {
           return {
             ...i,
             count: Number(i.count),
-            datetime: format(new Date(i.datetime.toString()), "kk:mm"),
+            datetime: format(new Date(i.datetime.toString()), formatString),
           }
         })
       )
     })
-  }, [sourceURL])
+  }, [sourceURL, formatString])
 
   return { graphData }
 }

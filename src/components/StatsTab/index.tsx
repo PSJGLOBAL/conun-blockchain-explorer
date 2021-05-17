@@ -1,11 +1,12 @@
+import { useState } from "react"
+
 import TheGraph from "../../pages/MainPage/TheGraph"
 
 import useChannelHash from "../../hooks/useChannelHash"
 import useGraphData from "../../hooks/useGraphData"
 
-import { format } from "date-fns"
-
 import style from "./StatsTab.module.css"
+import { GraphConfig } from "../../utility/types"
 
 type Props = {
   role: "contract" | "wallet"
@@ -15,15 +16,13 @@ type Props = {
 
 function StatsTab({ role, title, searchParam }: Props) {
   const activeChannelHash = useChannelHash()
+  const [graphDuration] = useState<GraphConfig>("weekly")
 
   const prefix = role === "contract" ? "chaincode" : "user"
 
-  const url = `/${prefix}/txByDay/${activeChannelHash}/${searchParam}/${format(
-    new Date(),
-    "yyyy%2'F'MM%2'F'dd"
-  )}`
+  const url = `/${prefix}/txByDay/${activeChannelHash}/${searchParam}/6`
 
-  const { graphData } = useGraphData(url)
+  const { graphData } = useGraphData(url, graphDuration)
   return (
     <div>
       <div className={style.Title}>{title}</div>

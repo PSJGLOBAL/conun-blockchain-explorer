@@ -19,7 +19,7 @@ const WalletTabbedSection = ({ walletHash }: { walletHash: string }) => {
       displayedTab = (
         <StatsTab
           role="wallet"
-          title="Transactions per hour"
+          title="Total transactions for the last 7 days"
           searchParam={walletHash}
         />
       )

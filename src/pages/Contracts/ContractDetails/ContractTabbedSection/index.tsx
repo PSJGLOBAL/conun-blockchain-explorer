@@ -31,7 +31,7 @@ const ContractTabbedSection = ({
       displayedTab = (
         <StatsTab
           role="contract"
-          title="Transactions per hour"
+          title="Total transactions for the last 7 days"
           searchParam={contractName}
         />
       )

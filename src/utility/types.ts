@@ -42,3 +42,5 @@ export type State = {
     contractData: Array<ContractType>
   }
 }
+
+export type GraphConfig = "weekly" | "daily"
