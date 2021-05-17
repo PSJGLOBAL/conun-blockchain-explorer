@@ -3,13 +3,19 @@ import { useState, useEffect } from "react"
 import { format } from "date-fns"
 import axios from "../axios/axiosinst"
 import { logger } from "../utility/functions"
-import { GraphConfig, ObjectType } from "../utility/types"
+import { ObjectType } from "../utility/types"
 
-function useGraphData(sourceURL: string, dateFormat: GraphConfig) {
+function useGraphData(sourceURL: string, dateFormat: string) {
   const [graphData, setGraphData] = useState<Array<ObjectType> | null>(null)
 
   let formatString: string
   switch (dateFormat) {
+    case "yearly":
+      formatString = "yyyy"
+      break
+    case "monthly":
+      formatString = "yyyy/MM"
+      break
     case "weekly":
       formatString = "MM/dd"
       break

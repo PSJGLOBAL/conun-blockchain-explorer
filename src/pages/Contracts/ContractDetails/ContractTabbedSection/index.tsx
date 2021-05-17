@@ -28,13 +28,7 @@ const ContractTabbedSection = ({
 
   switch (activeTab) {
     case "Stats":
-      displayedTab = (
-        <StatsTab
-          role="contract"
-          title="Total transactions for the last 7 days"
-          searchParam={contractName}
-        />
-      )
+      displayedTab = <StatsTab role="contract" searchParam={contractName} />
       break
     case "Code":
       displayedTab = (

@@ -16,13 +16,7 @@ const WalletTabbedSection = ({ walletHash }: { walletHash: string }) => {
 
   switch (activeTab) {
     case "Stats":
-      displayedTab = (
-        <StatsTab
-          role="wallet"
-          title="Total transactions for the last 7 days"
-          searchParam={walletHash}
-        />
-      )
+      displayedTab = <StatsTab role="wallet" searchParam={walletHash} />
       break
     case "Transactions":
     default:
