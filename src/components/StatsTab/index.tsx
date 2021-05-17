@@ -37,7 +37,7 @@ function StatsTab({ role, searchParam }: Props) {
     default:
       duration = "txByDay"
       timeParam = "6"
-      title = "Total transations per day for the last week"
+      title = "Total transactions per day for the last week"
   }
 
   const url = `/${prefix}/${duration}/${activeChannelHash}/${searchParam}/${timeParam}`

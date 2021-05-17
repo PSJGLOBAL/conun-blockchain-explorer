@@ -10,16 +10,16 @@ function useGraphData(sourceURL: string, dateFormat: string) {
 
   let formatString: string
   switch (dateFormat) {
-    case "yearly":
+    case "Yearly":
       formatString = "yyyy"
       break
-    case "monthly":
+    case "Monthly":
       formatString = "yyyy/MM"
       break
-    case "weekly":
+    case "Weekly":
       formatString = "MM/dd"
       break
-    case "daily":
+    case "Daily":
     default:
       formatString = "kk:mm"
       break
