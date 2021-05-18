@@ -1,6 +1,0 @@
-.tabBlock {
-  padding: 10px;
-  box-sizing: border-box;
-  border: 1px solid var(--bkg);
-  border-radius: 0 var(--radius) var(--radius) var(--radius);
-}
