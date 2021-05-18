@@ -5,21 +5,24 @@ import axios from "../axios/axiosinst"
 import { logger } from "../utility/functions"
 import { ObjectType } from "../utility/types"
 
-function useGraphData(sourceURL: string, dateFormat: string) {
+function useGraphData(
+  sourceURL: string,
+  dateFormat: "byYear" | "byMonth" | "byDay" | "byHour"
+) {
   const [graphData, setGraphData] = useState<Array<ObjectType> | null>(null)
 
   let formatString: string
   switch (dateFormat) {
-    case "Yearly":
+    case "byYear":
       formatString = "yyyy"
       break
-    case "Monthly":
+    case "byMonth":
       formatString = "yyyy/MM"
       break
-    case "Weekly":
+    case "byDay":
       formatString = "MM/dd"
       break
-    case "Daily":
+    case "byHour":
     default:
       formatString = "kk:mm"
       break

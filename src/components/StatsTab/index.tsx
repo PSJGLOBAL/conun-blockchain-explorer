@@ -1,12 +1,9 @@
-import { useState } from "react"
-
 import TheGraph from "../../pages/MainPage/TheGraph"
 
 import useChannelHash from "../../hooks/useChannelHash"
 import useGraphData from "../../hooks/useGraphData"
 
 import style from "./StatsTab.module.css"
-import TabMenu from "../TabMenu"
 
 type Props = {
   role: "contract" | "wallet"
@@ -15,42 +12,17 @@ type Props = {
 
 function StatsTab({ role, searchParam }: Props) {
   const activeChannelHash = useChannelHash()
-  const [graphDuration, setGraphDuration] = useState<string>("Weekly")
 
   const prefix = role === "contract" ? "chaincode" : "user"
-  let duration: string
-  let timeParam: string
-  let title: string
 
-  switch (graphDuration) {
-    case "Yearly":
-      duration = "txByYear"
-      timeParam = "3"
-      title = "Total transactions per year for the last 3 years "
-      break
-    case "Monthly":
-      duration = "txByMonth"
-      timeParam = "5"
-      title = "Total transactions per month for the last 6 months"
-      break
-    case "Weekly":
-    default:
-      duration = "txByDay"
-      timeParam = "6"
-      title = "Total transactions per day for the last week"
-  }
+  const url = `/${prefix}/txByDay/${activeChannelHash}/${searchParam}/30`
 
-  const url = `/${prefix}/${duration}/${activeChannelHash}/${searchParam}/${timeParam}`
-
-  const { graphData } = useGraphData(url, graphDuration)
+  const { graphData } = useGraphData(url, "byDay")
   return (
     <div>
-      <div className={style.Title}>{title}</div>
-      <TabMenu
-        tabs={["Weekly", "Monthly"]}
-        activeTab={graphDuration}
-        doChangeTab={setGraphDuration}
-      />
+      <div className={style.Title}>
+        Total transactions per day for the last 30 days
+      </div>
       <div className={style.Graph}>
         {graphData && (
           <TheGraph
