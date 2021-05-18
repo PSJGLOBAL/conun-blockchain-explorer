@@ -4,6 +4,8 @@ import TXNHistoryTable from "../../../components/TXNHistoryTable"
 import TabMenu from "../../../components/TabMenu"
 import StatsTab from "../../../components/StatsTab"
 
+import style from "./WalletTabbedSection.module.css"
+
 const WalletTabbedSection = ({ walletHash }: { walletHash: string }) => {
   const [activeTab, setActiveTab] = useState<string>("Transactions")
 
@@ -30,7 +32,7 @@ const WalletTabbedSection = ({ walletHash }: { walletHash: string }) => {
         activeTab={activeTab}
         doChangeTab={setActiveTab}
       />
-      <section>{displayedTab}</section>
+      <section className={style.tabBlock}>{displayedTab}</section>
     </>
   )
 }
