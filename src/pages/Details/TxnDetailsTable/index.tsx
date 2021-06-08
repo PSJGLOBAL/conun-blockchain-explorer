@@ -36,7 +36,7 @@ const ValidityIcon = ({ validity }: { validity: string }) => {
   )
 }
 
-const value = (value: string, action: string) => {
+const uniformValue = (value: string, action: string) => {
   switch (action) {
     case "Transfer":
     case "Mint":
@@ -60,14 +60,14 @@ const TxnDetailsTable = ({
 }: Props) => {
   return (
     <div className={style.container}>
-      <DetailsTableRow keyCell="Transaction Hash" value={txhash} select />
+      <DetailsTableRow keyCell="Transaction Hash" value={txhash} copy />
       <DetailsTableRow keyCell="Timestamp">
         <TimeStampCell time={createdt} timeStyle="round" elaborate />
       </DetailsTableRow>
       <DetailsTableRow keyCell="Validity">
         <ValidityIcon validity={validation_code} />
       </DetailsTableRow>
-      <DetailsTableRow keyCell="Contract" select>
+      <DetailsTableRow keyCell="Contract">
         <span className={style.contract}>
           {chaincodename ? (
             <Link to={`/contracts/${chaincodename}`}>
@@ -84,23 +84,26 @@ const TxnDetailsTable = ({
         </span>
       </DetailsTableRow>
       {tx_from && (
-        <DetailsTableRow keyCell="From" select scroll>
+        <DetailsTableRow keyCell="From" scroll>
           <ToFromLink dest={tx_from} inner={tx_from} />
         </DetailsTableRow>
       )}
       {tx_to && (
-        <DetailsTableRow keyCell="To" select scroll>
+        <DetailsTableRow keyCell="To" scroll>
           <ToFromLink dest={tx_to} inner={tx_to} />
         </DetailsTableRow>
       )}
       {tx_action && <DetailsTableRow keyCell="Action" value={tx_action} />}
       {tx_value && (
-        <DetailsTableRow keyCell="Value" value={value(tx_value, tx_action)} />
+        <DetailsTableRow
+          keyCell="Value"
+          value={uniformValue(tx_value, tx_action)}
+          copy={tx_action !== "Transfer" && tx_action !== "Mint"}
+        />
       )}
       <DetailsTableRow
         keyCell="Payload Proposal Hash"
         value={payload_proposal_hash}
-        select
       />
     </div>
   )
