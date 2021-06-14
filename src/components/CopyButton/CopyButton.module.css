@@ -1,0 +1,19 @@
+.CopyBtn {
+  height: 10px;
+  margin-left: 10px;
+  width: 10px;
+}
+.Button {
+  cursor: pointer !important;
+}
+
+.CopyIcon {
+  height: 10px;
+  width: 10px;
+}
+.CopyIcon:hover {
+  filter: opacity(50%);
+}
+.CopyIcon:active {
+  filter: opacity(100%);
+}
