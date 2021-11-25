@@ -41,36 +41,36 @@ const txnReducer = (state = initialState, action: Action) => {
       if (!action.payload) {
         return state
       }
-
-      const updatedTxnData = [...action.payload.previousTxnData] // Save existing txns
       let txnsToAdd: Array<ObjectType>
 
+      // If more than 10 new transactions are incoming
       if (action.payload.newTxnsArray.length > 10) {
         logger(
           "TXN REDUCER: Incoming array has too many txns.",
           "warn",
           action.payload.newTxnsArray
         )
+        // Return the first 10 of the incoming transactions
         txnsToAdd = action.payload.newTxnsArray.slice(0, 10)
         return {
           ...state,
           txnActivityData: txnsToAdd, //maintain only 10 blocks on this page
         }
-      } else {
-        if (action.payload.newTxnsArray.length < 10) {
-          logger(
-            "TXN REDUCER: Incoming array has too few txns. ",
-            "warn",
-            action.payload.newTxnsArray
-          )
+        // If less than 10 new transactions are incoming
+      } else if (action.payload.newTxnsArray.length === 10) {
+        return {
+          ...state,
+          txnActivityData: action.payload.newTxnsArray, //maintain only 10 blocks on this page
         }
-        txnsToAdd = action.payload.newTxnsArray
-        updatedTxnData.unshift(...txnsToAdd)
+      } else {
+        const updatedTxnData = [
+          ...action.payload.newTxnsArray,
+          ...action.payload.previousTxnData,
+        ] // Save existing txns
         logger("TXN REDUCER: Combined txns are: ", "info", updatedTxnData)
         return {
           ...state,
-          // txnActivityData: updatedTxnData.slice(0, 10), //maintain only 10 blocks on this page
-          txnActivityData: updatedTxnData,
+          txnActivityData: updatedTxnData.slice(0, 10),
         }
       }
 
