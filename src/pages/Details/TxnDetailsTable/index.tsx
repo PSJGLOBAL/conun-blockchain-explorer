@@ -40,10 +40,10 @@ const uniformValue = (value: string, action: string) => {
   switch (action) {
     case "Transfer":
     case "Mint":
-      return `${value} CON`
+      return `${(Number(value) / 1e18).toFixed(20).replace(/\.?0+$/, "")}`
 
     default:
-      return value
+      return `${(Number(value) / 1e18).toFixed(20).replace(/\.?0+$/, "")}`
   }
 }
 

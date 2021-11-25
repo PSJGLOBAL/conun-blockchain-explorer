@@ -9,7 +9,7 @@ export const truncate = (
   const hashString = input.toString()
 
   // Eject if hashstring is already short enough
-  if (hashString.length < truncation) {
+  if (hashString.length <= truncation) {
     return hashString
   }
 
