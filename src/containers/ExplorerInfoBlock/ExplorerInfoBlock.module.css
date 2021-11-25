@@ -23,6 +23,7 @@
 .largeLayout {
   display: flex;
   flex-direction: column;
+  gap: 5px;
 }
 .smallLayout {
   display: none;
@@ -58,7 +59,7 @@
 }
 
 .row img {
-  width: 45px;
+  width: 40px;
   user-select: none;
   -webkit-user-drag: none;
 }
