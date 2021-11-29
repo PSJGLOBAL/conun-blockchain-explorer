@@ -7,15 +7,18 @@ import {
 } from "../../../../ui/Skeletos/ContractSkeleton"
 
 import ContractDetailTable from "../ContractDetailTable"
-import ContractTabbedSection from "../ContractTabbedSection"
 import ContractTextBlock from "../ContractTextBlock"
+import TabbedPage from "../../../../components/TabbedPage"
+import TXNHistoryTable from "../../../../components/TXNHistoryTable"
 
-import style from "./ContractDetails.module.css"
+import { logger } from "../../../../utility/functions"
+import { getContractType } from "../../../../utility/functions"
 
 import { State, ContractType } from "../../../../utility/types"
-import { logger } from "../../../../utility/functions"
 
-import { getContractType } from "../../../../utility/functions"
+import style from "./ContractDetails.module.css"
+import ContractCodeTab from "../ContractCodeTab"
+import StatsTab from "../../../../components/StatsTab"
 
 const ContractDetails = () => {
   const { contractName } = useParams<Record<string, string | undefined>>()
@@ -39,6 +42,18 @@ const ContractDetails = () => {
     thisData?.codes[thisData?.codes.length - 1].version
   )
 
+  const tabs = {
+    Transactions: <TXNHistoryTable param={contractName} dataRole="contract" />,
+    Code: (
+      <ContractCodeTab
+        contractName={contractName}
+        latestVersion={latestVersion}
+        contractVersions={thisData?.codes && thisData?.codes.length}
+      />
+    ),
+    Stats: <StatsTab role="contract" searchParam={contractName} />,
+  }
+
   return (
     <div className="section-single">
       {thisData !== null ? ( // Null means still loading
@@ -58,12 +73,7 @@ const ContractDetails = () => {
           <ContractTextSkeleton />
         </>
       )}
-      {/* This includes its own skeleton */}
-      <ContractTabbedSection
-        contractName={contractName}
-        latestVersion={latestVersion}
-        contractVersions={thisData?.codes.length}
-      />
+      <TabbedPage tabTitles={["Transactions", "Code", "Stats"]} tabs={tabs} />
     </div>
   )
 }

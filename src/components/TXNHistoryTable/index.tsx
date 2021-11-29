@@ -9,6 +9,7 @@ import { ObjectType } from "../../utility/types"
 import TransactionTable from "../TransactionTable"
 import PaginationMenu from "../PaginationMenu"
 import useChannelHash from "../../hooks/useChannelHash"
+import { logger } from "../../utility/functions"
 
 type Props = {
   param: string | undefined
@@ -31,7 +32,10 @@ const TXNHistoryTable = ({ param, dataRole }: Props) => {
 
   const getTxnData = (url: string, txFrom: string | number | null = null) => {
     if (txFrom) {
-      axios.get(`${url}?txId=${txFrom}`).then((response) => {
+      const txQuery = dataRole === "wallet" ? "?txId" : "&txId"
+
+      logger("Get filtered txns: ", "info", `${url}${txQuery}=${txFrom}`)
+      axios.get(`${url}${txQuery}=${txFrom}`).then((response) => {
         setTxnData(response.data.row)
       })
     } else {
@@ -49,8 +53,11 @@ const TXNHistoryTable = ({ param, dataRole }: Props) => {
           getTxnData(axiosURL)
           break
         case "next":
-          setCurrentPage(currentPage + 1)
-          getTxnData(axiosURL, bottomTXN)
+          if (txnData?.length === 10) {
+            //Block pagination if there are less than 10 txns in the page (i.e, you're on the last page)
+            setCurrentPage(currentPage + 1)
+            getTxnData(axiosURL, bottomTXN)
+          }
           break
         case "prev":
           let target = Number(bottomTXN)
@@ -80,6 +87,7 @@ const TXNHistoryTable = ({ param, dataRole }: Props) => {
     if (activeChannelHash && param) {
       getTxnData(axiosURL)
     }
+    //eslint-disable-next-line
   }, [activeChannelHash, param, axiosURL, dispatch])
 
   useEffect(() => {

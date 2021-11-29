@@ -29,16 +29,14 @@ const ActionValueCell = ({
       case "Transfer":
       case "Mint":
       case "Burn":
-        const trunc = fullPage ? 14 : 7
-
+      case "BurnFrom":
         return (
-          <span className={style.value}>{`${truncate(
-            value,
-            trunc,
-            true
-          )} CONX`}</span>
+          <span className={style.value}>{`${(Number(value) / 1e18)
+            .toFixed(8)
+            .replace(/\.?0+$/, "")} CONX`}</span>
         )
       default:
+        console.log("Hit default: ", action)
         return <span className={style.value}>{action}</span>
     }
   } else {

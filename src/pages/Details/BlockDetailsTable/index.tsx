@@ -27,7 +27,7 @@ const BlockDetailsTable = ({
 }: Props) => {
   return (
     <div className={style.container}>
-      <DetailsTableRow keyCell="Block Number" value={blocknum} select />
+      <DetailsTableRow keyCell="Block Number" value={blocknum} />
       <DetailsTableRow keyCell="Block Size" value={blksize} />
       <DetailsTableRow keyCell="Block Hash" value={blockhash} />
       <DetailsTableRow keyCell="Data Hash" value={datahash} />

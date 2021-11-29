@@ -9,7 +9,7 @@ export const truncate = (
   const hashString = input.toString()
 
   // Eject if hashstring is already short enough
-  if (hashString.length < truncation) {
+  if (hashString.length <= truncation) {
     return hashString
   }
 
@@ -43,6 +43,13 @@ type logType =
   | "special"
   | "log"
   | string
+
+/**
+ * Logs only whilst in development
+ * @param message The label for your log
+ * @param level Can be [info, success, get, warn, error, special, log]. Affects color of log.
+ * @param data Data received, if you want to log objects/arrays.
+ */
 export const logger = (message: string, level: logType, ...data: any[]) => {
   if (willLog) {
     switch (level) {

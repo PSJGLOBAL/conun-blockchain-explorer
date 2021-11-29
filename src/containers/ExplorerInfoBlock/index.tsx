@@ -1,8 +1,8 @@
 import ChannelStats from "../../pages/MainPage/ChannelStats"
 import style from "./ExplorerInfoBlock.module.css"
 
-import cubeCombIcon from "../../style/images/extra_icons/icon_cube_comb.svg"
 import ninjaIcon from "../../style/images/extra_icons/icon_ninja_star.svg"
+import bridgeIcon from "../../style/images/extra_icons/icon_wibbly_arrows.svg"
 import familiarIcon from "../../style/images/extra_icons/icon_i_know_this_one.svg"
 
 const ExplorerInfoBlock = () => {
@@ -32,17 +32,17 @@ const ExplorerInfoBlock = () => {
             </div>
           </div>
           <div className={style.row}>
+            <img src={bridgeIcon} alt="bridge" data-tip={"Bridge"} />
+            <div className={style.title}>Bridge</div>
+            <div className={style.description}>
+              Bridge contract between Ethereum and Conun networks
+            </div>
+          </div>
+          <div className={style.row}>
             <img src={familiarIcon} alt="drive" data-tip={"Drive"} />
             <div className={style.title}>Drive</div>
             <div className={style.description}>
               Decentralised peer-to-peer file transfer service
-            </div>
-          </div>
-          <div className={style.row}>
-            <img src={cubeCombIcon} alt="engine" data-tip={"Engine"} />
-            <div className={style.title}>Engine</div>
-            <div className={style.description}>
-              Distributed supercomputing service
             </div>
           </div>
         </div>
@@ -54,19 +54,19 @@ const ExplorerInfoBlock = () => {
           </div>
           <div className={style.row}>
             <img
+              src={bridgeIcon}
+              alt="bridge"
+              data-tip={"Bridge between Ethereum and Conun"}
+            />
+            <div className={style.title}>Bridge</div>
+          </div>
+          <div className={style.row}>
+            <img
               src={familiarIcon}
               alt="drive"
               data-tip={"Peer-to-peer file transfer"}
             />
             <div className={style.title}>Drive</div>
-          </div>
-          <div className={style.row}>
-            <img
-              src={cubeCombIcon}
-              alt="engine"
-              data-tip={"Distributed Supercomputing"}
-            />
-            <div className={style.title}>Engine</div>
           </div>
         </div>
       </div>

@@ -10,11 +10,15 @@ import style from "./Footer.module.css"
 
 const Footer = () => {
   return (
-    <footer className="textured-bkg">
-      <div className={style.world}>
-        <img src={worled} alt="The whole world as a pitcher" />
+    <footer>
+      <div className={style.worldCell}>
+        <img
+          className={style.world}
+          src={worled}
+          alt="The whole world as a pitcher"
+        />
       </div>
-      <div className={style.general}>
+      <div className={style.mainCell}>
         <img className={style.logo} src={logo} alt="Conun Logo" />
         <div>Powered by Conun</div>
         <div className={style.contactLinks}>
@@ -59,73 +63,52 @@ const Footer = () => {
         </div>
         <div>Conun Blockchain Explorer V.2.0.0</div>
       </div>
-
-      <div className={style.internalLinks}>
+      <div className={style.linkCell}>
         <div className={style.title}>Company</div>
-        <div>
-          <a
-            href="https://conun.io/#overview"
-            target="_blank"
-            rel="noreferrer"
-            className={style.link}
-          >
-            About Us
-          </a>
-        </div>
-        <div>
-          <a
-            href="https://conun.io/contactus"
-            target="_blank"
-            rel="noreferrer"
-            className={style.link}
-          >
-            Contact Us
-          </a>
-        </div>
-        <div>
-          <a
-            href="https://conun.io/policy/termsandcondition"
-            target="_blank"
-            rel="noreferrer"
-            className={style.link}
-          >
-            Terms of Service
-          </a>
-        </div>
-        <div></div>
+        <a
+          href="https://conun.io/#overview"
+          target="_blank"
+          rel="noreferrer"
+          className={style.link}
+        >
+          About Us
+        </a>
+        <a
+          href="https://conun.io/contactus"
+          target="_blank"
+          rel="noreferrer"
+          className={style.link}
+        >
+          Contact Us
+        </a>
+        <a
+          href="https://conun.io/policy/termsandcondition"
+          target="_blank"
+          rel="noreferrer"
+          className={style.link}
+        >
+          Terms of Service
+        </a>
       </div>
-      <div className={style.internalLinks}>
+      <div className={style.linkCell}>
         <div className={style.title}>Community</div>
-        {/* <div data-tip={"Not yet implemented"}>Developer Documentation</div> */}
-        <div>
-          <a
-            className={style.link}
-            href="https://conun.io/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Main Site
-          </a>
-        </div>
-        <div>
-          <a
-            href="https://discord.gg/VvXvQfa3Za"
-            target="_blank"
-            rel="noreferrer"
-            className={style.link}
-          >
-            Discord
-          </a>
-        </div>
-        <div></div>
+        <a
+          className={style.link}
+          href="https://conun.io/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Main Site
+        </a>
+        <a
+          href="https://discord.gg/VvXvQfa3Za"
+          target="_blank"
+          rel="noreferrer"
+          className={style.link}
+        >
+          Discord
+        </a>
       </div>
-      {/* <div className={style.internalLinks}>
-        <div className="footer-title">Products</div>
-        <div data-tip={"Not yet implemented"}>Explorer</div>
-        <div data-tip={"Not yet implemented"}>Coin</div>
-        <div data-tip={"Not yet implemented"}>Drive</div>
-        <div data-tip={"Not yet implemented"}>Engine</div>
-      </div> */}
     </footer>
   )
 }

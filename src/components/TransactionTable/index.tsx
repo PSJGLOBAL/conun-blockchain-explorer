@@ -22,7 +22,7 @@ const TransactionTable = ({ txnData, fullPage }: Props) => {
   const doTimeout = () => {
     const t = setTimeout(() => {
       setLoading(false)
-    }, 5000)
+    }, 3000)
 
     return t
   }
@@ -33,7 +33,7 @@ const TransactionTable = ({ txnData, fullPage }: Props) => {
     return () => {
       clearTimeout(t)
     }
-  }, [])
+  })
 
   useEffect(() => {
     setLoading(true)
@@ -54,7 +54,6 @@ const TransactionTable = ({ txnData, fullPage }: Props) => {
       <TXNTableSkeleton />
     </DuplicateSkeleton>
   )
-
   if (!loading) {
     if (success) {
       if (txnData && txnData.length > 0) {
